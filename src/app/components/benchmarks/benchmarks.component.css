@@ -1,0 +1,45 @@
+mat-sidenav-container, mat-sidenav-content, mat-sidenav {
+  height: 100%;
+}
+
+
+.page-header {
+  height: 80px;
+  background-color: #3f51b5;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: 200;
+}
+
+.example-container {
+  height: 100%;
+}
+
+.my-drawer {
+  overflow: auto;
+}
+
+mat-drawer-container {
+  margin: 0px;
+}
+
+.mat-drawer-container h3 {
+  margin-bottom: 0px;
+  background-color: lightgray;
+  padding: 5px 5px 5px 5px;
+  font-weight: normal;
+}
+
+@media screen and (max-width: 720px) {
+
+.page-header {
+  padding-left: 0px;
+}
+
+}

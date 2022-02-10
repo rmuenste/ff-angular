@@ -1,0 +1,33 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav class="bench-side">Start
+  <p>benchmarks works!</p>
+  </mat-sidenav>
+  <mat-sidenav-content class="main-bench">
+    <div class="page-header">
+    <button mat-icon-button (click)="sidenav.toggle()" class="hide-gt-small">
+      <mat-icon aria-label="Side nav toggle">menu</mat-icon>
+    </button>
+    <h1>Benchmarks</h1>
+    </div>
+    <mat-drawer-container class="example-container">
+      <mat-drawer mode="side" opened class="my-drawer">
+        <h3>FeatFlow Benchmarks</h3>
+        <mat-nav-list>
+          <a mat-list-item href="#">CC2D</a>
+          <a mat-list-item href="#">CC3D</a>
+          <a mat-list-item href="#">PP2D</a>
+          <a mat-list-item href="#">PP3D</a>
+        </mat-nav-list>
+        <h3>CFD Benchmarking</h3>
+        <mat-nav-list>
+          <a mat-list-item href="#">Flow around Cylinder</a>
+          <a mat-list-item href="#">Rising Bubble</a>
+          <a mat-list-item href="#">FSI Benchmark</a>
+          <a mat-list-item href="#">MIT Benchmark</a>
+        </mat-nav-list>
+        </mat-drawer>
+      <mat-drawer-content class="example-container">
+      </mat-drawer-content>
+    </mat-drawer-container>
+  </mat-sidenav-content>
+</mat-sidenav-container>
