@@ -17,16 +17,20 @@ h1 {
   font-weight: 200;
 }
 
-.example-container {
+.mydrawer-container {
+  margin: 0px;
+/*
+  height: 600px;
   height: 100%;
+*/
+}
+
+.example-container {
+  height: 600px;
 }
 
 .my-drawer {
   overflow: auto;
-}
-
-mat-drawer-container {
-  margin: 0px;
 }
 
 .mat-drawer-container h3 {

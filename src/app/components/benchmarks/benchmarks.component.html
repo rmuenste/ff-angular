@@ -1,15 +1,7 @@
-<mat-sidenav-container>
-  <mat-sidenav #sidenav class="bench-side">Start
-  <p>benchmarks works!</p>
-  </mat-sidenav>
-  <mat-sidenav-content class="main-bench">
     <div class="page-header">
-    <button mat-icon-button (click)="sidenav.toggle()" class="hide-gt-small">
-      <mat-icon aria-label="Side nav toggle">menu</mat-icon>
-    </button>
     <h1>Benchmarks</h1>
     </div>
-    <mat-drawer-container class="example-container">
+    <mat-drawer-container opened class="mydrawer-container">
       <mat-drawer mode="side" opened class="my-drawer">
         <h3>FeatFlow Benchmarks</h3>
         <mat-nav-list>
@@ -27,7 +19,6 @@
         </mat-nav-list>
         </mat-drawer>
       <mat-drawer-content class="example-container">
+        <app-benchmark-detail></app-benchmark-detail>
       </mat-drawer-content>
     </mat-drawer-container>
-  </mat-sidenav-content>
-</mat-sidenav-container>

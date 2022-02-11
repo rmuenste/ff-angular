@@ -17,13 +17,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { BenchmarksComponent } from './components/benchmarks/benchmarks.component';
 import { MainComponent } from './components/main/main.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FooterComponent } from './components/footer/footer.component';
+import { MathjaxComponent } from './components/mathjax/mathjax.component';
+import { BenchmarkDetailComponent } from './components/benchmark-detail/benchmark-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     BenchmarksComponent,
-    MainComponent
+    MainComponent,
+    FooterComponent,
+    MathjaxComponent,
+    BenchmarkDetailComponent
   ],
   imports: [
     BrowserModule,
