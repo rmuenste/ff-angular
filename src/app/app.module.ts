@@ -11,6 +11,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatTableModule } from '@angular/material/table';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
@@ -39,6 +41,8 @@ import { BenchmarkExampleComponent } from './components/benchmark-example/benchm
     BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,
+    MatTableModule,
+    MatTabsModule,
     MatFormFieldModule,
     MatListModule,
     FormsModule,
