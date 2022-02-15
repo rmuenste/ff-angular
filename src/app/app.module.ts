@@ -20,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './components/footer/footer.component';
 import { MathjaxComponent } from './components/mathjax/mathjax.component';
 import { BenchmarkDetailComponent } from './components/benchmark-detail/benchmark-detail.component';
+import { BenchmarkExampleComponent } from './components/benchmark-example/benchmark-example.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { BenchmarkDetailComponent } from './components/benchmark-detail/benchmar
     MainComponent,
     FooterComponent,
     MathjaxComponent,
-    BenchmarkDetailComponent
+    BenchmarkDetailComponent,
+    BenchmarkExampleComponent
   ],
   imports: [
     BrowserModule,
