@@ -3,7 +3,6 @@ position: fixed;
 width: 100%;
 bottom: 0;
 background:#3f51b5;
-height: 150px;
 color: white;
 /*margin-top: -21px;*/
 }
@@ -23,13 +22,11 @@ text-align: left;
 .footer-item2 {
 flex-grow: 1;
 text-align: center;
-height: 54px;
 justify-content: center;
 }
 .footer-item3 {
 flex-grow: 1;
 text-align: right;
-height: 54px;
 }
 
 .myspan {
