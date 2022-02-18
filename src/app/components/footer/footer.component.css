@@ -1,9 +1,19 @@
+/*
 .myfooter {
 position: fixed;
 width: 100%;
 bottom: 0;
 background:#3f51b5;
 color: white;
+min-height: 25px;
+}
+*/
+.myfooter {
+width: 100%;
+background: var(--primary-bg-color);
+color: white;
+color: var(--primary-text-color);
+min-height: 25px;
 /*margin-top: -21px;*/
 }
 

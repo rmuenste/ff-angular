@@ -1,12 +1,22 @@
 <mat-toolbar color="primary" class="myfixed">
   <mat-toolbar-row>
     <nav class="nav-content">
-      <a routerLink="/" mat-button>
+      <a routerLink="/"
+        mat-button>
         <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
       </a>
-      <a routerLink="/benchmarks" mat-button class="hide-small">Benchmarks</a>
-      <a href="#" mat-button class="hide-small">Gallery</a>
-      <a href="#" mat-button class="hide-small">Guides</a>
+      <a routerLink="/benchmarks"
+         routerLinkActive="mat-active"
+         mat-button
+         class="hide-small">Benchmarks</a>
+      <a href="#"
+        routerLinkActive="mat-active"
+        mat-button
+        class="hide-small">Gallery</a>
+      <a href="#"
+        routerLinkActive="mat-active"
+        mat-button
+        class="hide-small">Guides</a>
       <div class="flex-spacer"></div>
       <!--
       <app-version-picker></app-version-picker>

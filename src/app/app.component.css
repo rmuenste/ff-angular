@@ -1,8 +1,14 @@
+/*
 .app-wrapper {
-  margin-top: 64px;
   height: 100%;
 }
+*/
 
+/*
 .container {
   height: 100%;
+}
+*/
+/* If a height is assigned here, then the footer vanishes in benchmarks  */
+.app-wrapper {
 }

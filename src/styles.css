@@ -1,6 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+/*
+ You can add global styles to this file, and also import other style files
+ background-color: #3f51b5;
+  --primary-bg-color: #c2185b;
 
-html, body { height: 100%; }
+  500: #8bc34a,
+ */
+
+:root {
+  --primary-bg-color: #8bc34a;
+  --primary-text-color: rgba(0, 0, 0, 0.87);
+  --dark-theme-background: #303030;
+}
+
+html, body { height: 100% }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* width */
@@ -26,27 +38,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     background: grey;
 }
 
-.myfixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
-}
+*
+ {
+        margin-top: 0;
+  }
 
-mat-toolbar {
-  padding: 0px;
-  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2);
-}
-
-.nav-content {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  padding: 8px 16px;
-}
-
-.flex-spacer {
-  flex-grow: 1;
+.main-content {
+  padding-top: 64px;
 }
