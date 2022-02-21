@@ -12,13 +12,76 @@ width: 100%;
 background: var(--primary-bg-color);
 color: var(--primary-text-color);
 height: 420px;
+position: relative;
 /*margin-top: -21px;*/
 }
 
+.main-header:before {
+  position: absolute;
+  content: "";
+  background-image: url("/assets/ff-logo-4.png");
+  background-size: 300px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-repeat: no-repeat;
+  background-position: 65% 20px;
+  opacity: .2;
+}
+
+.main-header-section {
+  position: absolute;
+  width: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+}
+
+.main-header-headline {
+  text-align: center;
+}
+
+.mat-h1 {
+font-size: 70px;
+line-height: 70px;
+font-weight: 700;
+}
+
+.mat-h2 {
+font-weight: 300;
+}
+
+/* Main page configuration */
+
 .main-page {
-width: 100%;
+width: 55%;
 background: var(--dark-theme-background);
-color: var(--primary-text-color);
 height: 500px;
+color: #ffffffb3;
+display: flex;
+flex-direction: column;
+padding: 16px;
 /*margin-top: -21px;*/
+margin: auto;
+align-items: center;
+}
+
+.main-elem-row {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  margin: 50px 0;
+  gap: 5%;
+}
+
+.main-elem-col {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+mat-divider {
+  margin-bottom: 20px;
 }

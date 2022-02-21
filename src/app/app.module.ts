@@ -23,6 +23,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MathjaxComponent } from './components/mathjax/mathjax.component';
 import { BenchmarkDetailComponent } from './components/benchmark-detail/benchmark-detail.component';
 import { BenchmarkExampleComponent } from './components/benchmark-example/benchmark-example.component';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { BenchmarkExampleComponent } from './components/benchmark-example/benchm
     ReactiveFormsModule,
     MatToolbarModule,
     MatSidenavModule,
+    MatDividerModule,
     HttpClientModule
   ],
   providers: [],
