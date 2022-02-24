@@ -17,10 +17,13 @@ h1 {
 
 .mydrawer-container {
   margin: 0px;
+  min-height: 800px;
 /*
   height: 600px;
 
   "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
+  border: 2px solid rgb(44, 44, 44);
+  border-style: solid none none none;
   height: 100%;
 */
 }
@@ -35,14 +38,32 @@ h1 {
 
 .mat-drawer-container h3 {
   margin-bottom: 0px;
-  background-color: darkgray;
+  background-color: rgba(0, 0, 0, 0.1);
   padding: 5px 5px 5px 5px;
   font-weight: normal;
   text-align: center;
-  border: 2px solid rgb(44, 44, 44);
-  border-style: solid none none none;
 }
 
+.nav-item-style {
+  color: #ffffffa6;
+}
+
+/*
+a.benchmarks-selected {
+color:rgb(154, 212, 159);
+background-color: #8bc34a7c;
+}
+
+a.benchmarks-selected:hover {
+ color:rgb(154, 212, 159);
+ background-color: #b3e7787c;
+}
+
+
+mat-drawer mat-list-item a.benchmark-selected {
+ background-color: #b3e7787c;
+}
+*/
 @media screen and (max-width: 720px) {
 
 .page-header {

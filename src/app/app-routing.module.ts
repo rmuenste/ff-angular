@@ -6,8 +6,16 @@ import { MainComponent } from './components/main/main.component';
 
 const routes: Routes = [
   {path: '', component: MainComponent},
-  {path: 'benchmarks', component: BenchmarksComponent},
-  {path: 'benchmark/example', component: BenchmarkExampleComponent},
+  {
+    path: 'benchmarks',
+    component: BenchmarksComponent,
+    children: [
+      {
+        path: 'example',
+        component: BenchmarkExampleComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({

@@ -6,19 +6,34 @@
     <mat-drawer mode="side" opened class="my-drawer">
       <h3>Flow Around A Cylinder</h3>
       <mat-nav-list>
-        <a routerLink="/benchmark/example" mat-list-item>PP3D</a>
-        <a mat-list-item href="#">Placeholder1</a>
-        <a mat-list-item href="#">Placeholder2</a>
+        <a routerLink="example"
+           routerLinkActive="benchmarks-selected" mat-list-item
+           (isActiveChange)="this.onRouterLinkActive($event)"
+           >
+          <span class="nav-item-style">PP3D</span>
+        </a>
+        <a routerLink="example" mat-list-item>
+          <span class="nav-item-style">Placeholder1</span>
+        </a>
+        <a routerLink="#" mat-list-item>
+          <span class="nav-item-style">Placeholder2</span>
+        </a>
       </mat-nav-list>
       <h3>Rising Bubble</h3>
       <mat-nav-list>
-        <a mat-list-item href="#">3D Rising Bubble</a>
-        <a mat-list-item href="#">Placeholder1</a>
-        <a mat-list-item href="#">Placeholder2</a>
+        <a routerLink="example" mat-list-item>
+          <span class="nav-item-style">3D Rising Bubble</span>
+        </a>
+        <a routerLink="example" mat-list-item>
+          <span class="nav-item-style">Placeholder1</span>
+        </a>
+        <a routerLink="example" mat-list-item>
+          <span class="nav-item-style">Placeholder2</span>
+        </a>
       </mat-nav-list>
       </mat-drawer>
     <mat-drawer-content fxLayout="row" fxLayoutAligh="start center">
-      <app-benchmark-example></app-benchmark-example>
+      <router-outlet></router-outlet>
     </mat-drawer-content>
   </mat-drawer-container>
 </div>

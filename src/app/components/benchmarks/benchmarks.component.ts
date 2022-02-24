@@ -12,4 +12,8 @@ export class BenchmarksComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onRouterLinkActive(e: any) {
+    console.log("active");
+  }
+
 }
