@@ -6,25 +6,21 @@
       </h4>
     </div>
     <div class="text-wrapper">
-     The initial configuration, see the figure below, is identical for both test cases and
+     The initial configuration, see the figure below,
      consists of a circular bubble of radius <app-mathjax [content]="'$r_0 = 0.25$ centered at $(x,y) = (0.5, 0.5)$'"></app-mathjax> in a
-     1 by 2 rectangular domain. The density of the bubble is smaller than that of the
-     surrounding fluid <app-mathjax [content]="'$(\\rho_1 \\lt \\rho_2)$'"></app-mathjax>. The no-slip boundary condition (<app-mathjax [content]="'$\\mathbf{u}=0$'"></app-mathjax>) is used at the top and
-     bottom boundaries, whereas the free slip condition <app-mathjax [content]="'$ \\left ( \\mathbf{u} \\cdot \\hat{\\mathbf{n}} = 0, \\hat{\\boldsymbol{\\tau}}
-     \\cdot \\left ( \\nabla \\mathbf{u} + \\nabla \\mathbf{u}^T \\right ) \\right )$'"></app-mathjax>, where <app-mathjax [content]="'$\\hat{\\boldsymbol{\\tau}}$'"></app-mathjax> is the
-     tangent vector imposed on the vertical walls.
+     1 by 2 cuboid domain. The density of the bubble is smaller than that of the
+     surrounding fluid <app-mathjax [content]="'$(\\rho_1 \\lt \\rho_2)$'"></app-mathjax>. The no-slip boundary condition (<app-mathjax [content]="'$\\mathbf{u}=0$'"></app-mathjax>)
+     is used on all boundaries.
     </div>
      <div class="im-div">
        <h3 class="mat-h3">Initial configuration and boundary conditions for the test cases</h3>
-       <img src="assets/img16.png" alt="bla">
+       <img src="assets/geometry3D.png" alt="geometry">
      </div>
      <div class="text-wrapper">
      The table below lists the fluid and physical parameters which specify the test cases. The
      evolution of the bubbles should be tracked for 3 time units during which the defined
      benchmark quantities should be measured. The first test case models a rising bubble with Reynolds
      number <app-mathjax [content]="'$Re=35$'"></app-mathjax>, Eötvös number <app-mathjax [content]="'$Eo=10$'"></app-mathjax>, and both density and viscosity ratios equal to 10.
-     The second and more challenging test case models a rising bubble with <app-mathjax [content]="'$Re=35$, $Eo=125$'"></app-mathjax>,
-     and with large density and viscosity ratios (1000 and 100).
      </div>
 <div class="table-wrapper">
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -95,9 +91,65 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 </div>
+<div class="text-wrapper">
+The considered benchmark quantities are selected as for the original 2D benchmark, namely:
+<!--
+
+<mat-list>
+ <mat-list-item> <b>Bubble Size: </b> Size of the bubble in two different directions, namely in the rise direction (
+ (normalized
+w.r.t.
+ initial bubble size
+) and in a perpendicular to rise direction being aligned with one of the cartesian axis (
+ or
+) expressed as.
+ </mat-list-item>
+ <mat-list-item> Bubble Sphericity </mat-list-item>
+ <mat-list-item> Rise Velocity </mat-list-item>
+</mat-list>
+-->
+
+<div class="definition-wrapper">
+  <p class="definition-heading">Bubble Size</p>
+  <div>
+  Size of the bubble in two different directions, namely in the rise direction <app-mathjax [content]="'$z$'"></app-mathjax> expressed as
+  <app-mathjax [content]="'$R_z / R_0 $'"></app-mathjax> (normalized w.r.t. initial bubble size <app-mathjax [content]="'$R_0 $'"></app-mathjax>) and in a perpendicular
+  to rise direction being aligned with one of the cartesian axis (<app-mathjax [content]="'$x$'"></app-mathjax> or <app-mathjax [content]="'$y$'"></app-mathjax>) expressed
+  as <app-mathjax [content]="'$R_{x,y} / R_0 $'"></app-mathjax>.
+  </div>
+</div>
+
+<div class="definition-wrapper">
+  <p class="definition-heading">Bubble Sphericity</p>
+  <div>
+    The "degree of sphericity" in <app-mathjax [content]="'$\\mathbb{R}^3$'"></app-mathjax> can be defined as
+    <div class="equation-wrapper">
+      <app-mathjax [content]="'$\\frac{A_0}{A} = \\frac{4 \\pi R^2_0}{A}$'"></app-mathjax>
+    </div>
+    Here, <app-mathjax [content]="'$A_0 $'"></app-mathjax> denotes the interfacial area of an equivalent (in terms of volume) spherical bubble of radius <app-mathjax [content]="'$R_0 $'"></app-mathjax>
+    (i.e. the surface area of the initial bubble) and <app-mathjax [content]="'$A$'"></app-mathjax> denotes the interfacial area of the simulated bubble at the given time level.
+  </div>
+</div>
+
+<div class="definition-wrapper">
+  <p class="definition-heading">Rise Velocity</p>
+  <div>
+    The mean velocity with which the bubble is rising or moving and is defined as:
+    <div class="equation-wrapper">
+      <app-mathjax [content]="'$\\mathbf{U}_c = \\frac{ \\int_{\\Omega_2} \\mathbf{u} \\; \\mathrm{d}x }{ \\int_{\\Omega_2} 1\\; \\mathrm{d}x }$'"></app-mathjax>
+    </div>
+    where <app-mathjax [content]="'$\\Omega_2$'"></app-mathjax> denotes the region that the bubble occupies. The velocity component in the direction opposite to the gravity vector is then
+    denoted as rise velocity <app-mathjax [content]="'$V_c$'"></app-mathjax> for which the stationary limit is called terminal velocity.
+  </div>
+</div>
+According to the definition of this benchmark problem, the evolution of all these quantities is to be predicted in the course of a transient simulation starting with a bubble at rest, which
+due to the buyoancy forces begins to rise in the surrounding fluid giving rise to an interplay of surface tension forces with the hydrodynamic forces in form of deformation of the bubble
+surface. The dimensionless timespan of the simulation covers the time interval from t = 0 up to t = 3.
+</div>
 
 
   </mat-tab>
   <mat-tab label="Verification"> Flow Parameters </mat-tab>
   <mat-tab label="Reference Data"> Results </mat-tab>
 </mat-tab-group>
+

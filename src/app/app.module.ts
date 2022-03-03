@@ -24,6 +24,7 @@ import { MathjaxComponent } from './components/mathjax/mathjax.component';
 import { BenchmarkDetailComponent } from './components/benchmark-detail/benchmark-detail.component';
 import { BenchmarkExampleComponent } from './components/benchmark-example/benchmark-example.component';
 import {MatDividerModule} from '@angular/material/divider';
+import { BenchmarkBubble3Component } from './components/benchmark-bubble3/benchmark-bubble3.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {MatDividerModule} from '@angular/material/divider';
     FooterComponent,
     MathjaxComponent,
     BenchmarkDetailComponent,
-    BenchmarkExampleComponent
+    BenchmarkExampleComponent,
+    BenchmarkBubble3Component
   ],
   imports: [
     BrowserModule,

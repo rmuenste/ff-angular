@@ -4,7 +4,7 @@ import { ConfigService } from 'src/app/config.service';
 @Component({
   selector: 'app-mathjax',
   templateUrl: './mathjax.component.html',
-  styleUrls: ['./mathjax.component.css']
+  styleUrls: ['./mathjax.component.scss']
 })
 export class MathjaxComponent implements OnInit {
   @Input() content: string = "";

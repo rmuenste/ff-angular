@@ -16,15 +16,15 @@ export interface PeriodicElement {
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {position: 1, p1: 1000, p2: 100, mu1: 10, mu2: 1, g: 0.98, sigma: 24.5, re: 35, eo: 10, rel: 10, relmu: 10},
-  {position: 2, p1: 1000, p2: 1, mu1: 10, mu2: 0.1, g: 0.98, sigma: 1.96, re: 35, eo: 125, rel: 1000, relmu: 100},
 ];
 
 @Component({
-  selector: 'app-benchmark-example',
-  templateUrl: './benchmark-example.component.html',
-  styleUrls: ['./benchmark-example.component.scss']
+  selector: 'app-benchmark-bubble3',
+  templateUrl: './benchmark-bubble3.component.html',
+  styleUrls: ['./benchmark-bubble3.component.scss']
 })
-export class BenchmarkExampleComponent implements OnInit {
+
+export class BenchmarkBubble3Component implements OnInit {
 
   displayedColumns: string[] = ['position', 'p1', 'p2', 'mu1', 'mu2', 'g', 'sigma', 're', 'eo', 'rel', 'relmu'];
   dataSource = ELEMENT_DATA;
@@ -37,3 +37,4 @@ export class BenchmarkExampleComponent implements OnInit {
   }
 
 }
+
