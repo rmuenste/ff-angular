@@ -1,5 +1,5 @@
 <mat-tab-group>
-  <mat-tab label="Benchmark Description">
+  <mat-tab label="Benchmark Intro">
     <div class="heading-wrapper">
       <h4>
       Three-dimensional rising bubbles
@@ -9,6 +9,68 @@
     We provide the computational details of a 3D multiphase flow benchmark problem which follows its already well-established 2D counterpart. The only introduced difference
     with respect to 2D benchmark case (aside of the additional spatial dimension) is the type of boundary condition applied at the side of the channel which according to the
     original 2D is attributed to free slip boundary condition, but in the 3D benchmark it is related to a no slip boundary condition.
+    </div>
+    <div class="text-wrapper">
+      In the table below we list the parameters of the meshes used in the computations. As we can see, meshes of different refinement levels
+      are used in our simulations. The refinement levels are created by regular refinement of the same base mesh. We show the problem resolution
+      (mx, my, mz), the mesh resolution (nx, ny, nz), the number of elements (NEL), the number of Q2 degrees of freedom (dof) and the total number of dofs.
+    </div>
+    <div class="table-wrapper">
+      <table mat-table [dataSource]="dataSourceMesh" class="mat-elevation-z8">
+        <!-- Level Column -->
+        <ng-container matColumnDef="lvl">
+          <th mat-header-cell *matHeaderCellDef> Level </th>
+          <td mat-cell *matCellDef="let element"> {{element.lvl}} </td>
+        </ng-container>
+
+          <ng-container matColumnDef="mx">
+            <th mat-header-cell *matHeaderCellDef> mx </th>
+            <td mat-cell *matCellDef="let element"> {{element.mx}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="my">
+            <th mat-header-cell *matHeaderCellDef> my </th>
+            <td mat-cell *matCellDef="let element"> {{element.my}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="mz">
+            <th mat-header-cell *matHeaderCellDef> mz </th>
+            <td mat-cell *matCellDef="let element"> {{element.mz}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="nx">
+            <th mat-header-cell *matHeaderCellDef> nx </th>
+            <td mat-cell *matCellDef="let element"> {{element.nx}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="ny">
+            <th mat-header-cell *matHeaderCellDef> ny </th>
+            <td mat-cell *matCellDef="let element"> {{element.ny}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="nz">
+            <th mat-header-cell *matHeaderCellDef> nz </th>
+            <td mat-cell *matCellDef="let element"> {{element.nz}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="nel">
+            <th mat-header-cell *matHeaderCellDef> NEL </th>
+            <td mat-cell *matCellDef="let element"> {{element.nel}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="nq2">
+            <th mat-header-cell *matHeaderCellDef> #Q2 </th>
+            <td mat-cell *matCellDef="let element"> {{element.nq2}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="tdof">
+            <th mat-header-cell *matHeaderCellDef> Total Dofs </th>
+            <td mat-cell *matCellDef="let element"> {{element.tdof}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumnsMesh"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumnsMesh;"></tr>
+      </table>
     </div>
     <div class="video-wrapper">
     <h4>Video Rising Bubble 3D</h4>

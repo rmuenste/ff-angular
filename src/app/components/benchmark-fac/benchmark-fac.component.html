@@ -1,0 +1,117 @@
+<mat-tab-group>
+  <mat-tab label="Benchmark Intro">
+    <div class="heading-wrapper">
+      <h4>
+      Flow Around A Cylinder
+      </h4>
+    </div>
+    <div class="text-wrapper">
+      Flow around a cylinder is a well-known benchmark for the evaluation of numerical algorithms for incompressible
+      Navier-Stokes equations in the laminar case. It was developed in 1995 as part of the research project "Flow simulation on high-performance computers"
+      funded by the German Research Association (DFG). In analogy to the 2D case a cuboid-shaped domain with a cylindrical obstacle is created and flow
+      configurations for Re=20 and Re=100 are simulated. As observables for these simulations we choose the drag and lift coefficients on the cylinder.
+    </div>
+  </mat-tab>
+  <mat-tab label="Benchmark Definition">
+    <div class="heading-wrapper">
+      <h4>
+      Geometry and flow configurations
+      </h4>
+    </div>
+    <div class="text-wrapper">
+     The initial configuration, see the figure below, is identical for both test cases and
+     consists of a circular bubble of radius <app-mathjax [content]="'$r_0 = 0.25$ centered at $(x,y) = (0.5, 0.5)$'"></app-mathjax> in a
+     1 by 2 rectangular domain. The density of the bubble is smaller than that of the
+     surrounding fluid <app-mathjax [content]="'$(\\rho_1 \\lt \\rho_2)$'"></app-mathjax>. The no-slip boundary condition (<app-mathjax [content]="'$\\mathbf{u}=0$'"></app-mathjax>) is used at the top and
+     bottom boundaries, whereas the free slip condition <app-mathjax [content]="'$ \\left ( \\mathbf{u} \\cdot \\hat{\\mathbf{n}} = 0, \\hat{\\boldsymbol{\\tau}}
+     \\cdot \\left ( \\nabla \\mathbf{u} + \\nabla \\mathbf{u}^T \\right ) \\right )$'"></app-mathjax>, where <app-mathjax [content]="'$\\hat{\\boldsymbol{\\tau}}$'"></app-mathjax> is the
+     tangent vector imposed on the vertical walls.
+    </div>
+     <div class="im-div">
+       <h3 class="mat-h3">Initial configuration and boundary conditions for the test cases</h3>
+       <img src="assets/img16.png" alt="bla">
+     </div>
+     <div class="text-wrapper">
+     The table below lists the fluid and physical parameters which specify the test cases. The
+     evolution of the bubbles should be tracked for 3 time units during which the defined
+     benchmark quantities should be measured. The first test case models a rising bubble with Reynolds
+     number <app-mathjax [content]="'$Re=35$'"></app-mathjax>, Eötvös number <app-mathjax [content]="'$Eo=10$'"></app-mathjax>, and both density and viscosity ratios equal to 10.
+     The second and more challenging test case models a rising bubble with <app-mathjax [content]="'$Re=35$, $Eo=125$'"></app-mathjax>,
+     and with large density and viscosity ratios (1000 and 100).
+     </div>
+<div class="table-wrapper">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef> TestCase </th>
+    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="p1">
+    <th mat-header-cell *matHeaderCellDef> ρ<sub>1</sub> </th>
+    <td mat-cell *matCellDef="let element"> {{element.p1}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="p2">
+    <th mat-header-cell *matHeaderCellDef> ρ<sub>2</sub> </th>
+    <td mat-cell *matCellDef="let element"> {{element.p2}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="mu1">
+    <th mat-header-cell *matHeaderCellDef> μ<sub>1</sub> </th>
+    <td mat-cell *matCellDef="let element"> {{element.mu1}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="mu2">
+    <th mat-header-cell *matHeaderCellDef> μ<sub>2</sub> </th>
+    <td mat-cell *matCellDef="let element"> {{element.mu2}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="g">
+    <th mat-header-cell *matHeaderCellDef> g </th>
+    <td mat-cell *matCellDef="let element"> {{element.g}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="sigma">
+    <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$\\sigma$'"></app-mathjax> </th>
+    <td mat-cell *matCellDef="let element"> {{element.sigma}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="re">
+    <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$Re$'"></app-mathjax> </th>
+    <td mat-cell *matCellDef="let element"> {{element.re}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="eo">
+    <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$Eo$'"></app-mathjax> </th>
+    <td mat-cell *matCellDef="let element"> {{element.eo}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="rel">
+    <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$\\rho_1 / \\rho_2$'"></app-mathjax> </th>
+    <td mat-cell *matCellDef="let element"> {{element.rel}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="relmu">
+    <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$\\mu_1 / \\mu_2$'"></app-mathjax> </th>
+    <td mat-cell *matCellDef="let element"> {{element.relmu}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</div>
+
+
+  </mat-tab>
+  <mat-tab label="Verification"> Flow Parameters </mat-tab>
+  <mat-tab label="Reference Data"> Results </mat-tab>
+</mat-tab-group>
+

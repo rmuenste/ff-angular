@@ -68,6 +68,21 @@ font-weight: 500;
 font-size: 18px;
 }
 
+.text-wrapper {
+  padding: 20px 10px 10px 10px;
+}
+
+.table-wrapper {
+  width: 80%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.im-div {
+  text-align: center;
+}
 
 .definition-wrapper {
   width: 90%;
@@ -87,4 +102,8 @@ margin-bottom: 10px;
 margin-bottom: 8px;
 font-style: italic;
 color: $text-dark2;
+}
+
+.heading-wrapper {
+  text-align: center;
 }
