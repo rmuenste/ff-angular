@@ -9,8 +9,24 @@
       Flow around a cylinder is a well-known benchmark for the evaluation of numerical algorithms for incompressible
       Navier-Stokes equations in the laminar case. It was developed in 1995 as part of the research project "Flow simulation on high-performance computers"
       funded by the German Research Association (DFG). In analogy to the 2D case a cuboid-shaped domain with a cylindrical obstacle is created and flow
-      configurations for Re=20 and Re=100 are simulated. As observables for these simulations we choose the drag and lift coefficients on the cylinder.
+      configurations for <app-mathjax [content]="'$Re = 20$'"></app-mathjax> and <app-mathjax [content]="'$Re = 100$'"></app-mathjax> are simulated. As observables for these simulations we choose the drag and lift coefficients on the cylinder.
     </div>
+    <div class="text-wrapper">
+      The benchmark problems are studied with the open-source software package OpenFOAM, the widely used commercial code ANSYS-CFX (CFX) and our in-house code FeatFloWer. For OpenFOAM (version 1.6)
+      the icoFoam solver was used to solve the incompressible Navier-Stokes equations. For CFX (version 12.0 Service Pack 1) we used the transient Finite Volume solver to solve the fluid equations.
+    </div>
+    <div class="text-wrapper">
+      Studying benchmark problem with these three different software packages which employ different numerical techniques also give an insight to answer of the following questions:
+      <ul>
+        <li>Can one construct an efficient solver for incompressible flow without employing multigrid components, at least for the pressure Poisson equation?</li>
+        <li>What is the "best" strategy for time stepping: fully coupled iteration or operator splitting (pressure correction scheme)?</li>
+        <li>Does it pay to use higher order discretization in space or time?</li>
+      </ul>
+    </div>
+     <div class="im-div">
+       <h3 class="mat-h3">Flow Around Cylinder Visualization</h3>
+       <img src="assets/fac.jpg" alt="Flow around a Cylinder" width="400px">
+     </div>
   </mat-tab>
   <mat-tab label="Benchmark Definition">
     <div class="heading-wrapper">
@@ -19,26 +35,45 @@
       </h4>
     </div>
     <div class="text-wrapper">
-     The initial configuration, see the figure below, is identical for both test cases and
-     consists of a circular bubble of radius <app-mathjax [content]="'$r_0 = 0.25$ centered at $(x,y) = (0.5, 0.5)$'"></app-mathjax> in a
-     1 by 2 rectangular domain. The density of the bubble is smaller than that of the
-     surrounding fluid <app-mathjax [content]="'$(\\rho_1 \\lt \\rho_2)$'"></app-mathjax>. The no-slip boundary condition (<app-mathjax [content]="'$\\mathbf{u}=0$'"></app-mathjax>) is used at the top and
-     bottom boundaries, whereas the free slip condition <app-mathjax [content]="'$ \\left ( \\mathbf{u} \\cdot \\hat{\\mathbf{n}} = 0, \\hat{\\boldsymbol{\\tau}}
-     \\cdot \\left ( \\nabla \\mathbf{u} + \\nabla \\mathbf{u}^T \\right ) \\right )$'"></app-mathjax>, where <app-mathjax [content]="'$\\hat{\\boldsymbol{\\tau}}$'"></app-mathjax> is the
-     tangent vector imposed on the vertical walls.
+    The solvers are tested in two benchmark configurations with an incompressible Newtonian fluid whose kinematic viscosity <app-mathjax [content]="'$\\nu$'"></app-mathjax> is equal to
+    <app-mathjax [content]="'$10^{-3}\\frac{m^2}{s}$'"></app-mathjax> and for which the conservation equations of mass and momentum are written as follows:
     </div>
+    <div class="equation-wrapper">
+      <app-mathjax [content]="'$ \\frac{\\partial \\mathbf{u}}{\\partial t} + \\mathbf{u} \\cdot \\nabla \\mathbf{u} = -\\nabla p + \\nu \\Delta \\mathbf{u}$'"></app-mathjax>
+    </div>
+    <div class="equation-wrapper">
+      <app-mathjax [content]="'$ \\nabla \\cdot \\mathbf{u} = \\mathbf{0}$'"></app-mathjax>
+    </div>
+     <div class="text-wrapper">
+     The Reynolds number is defined as Re=UD/ν where U is the mean velocity of the imposed parabolic profile on the inflow boundary and D is the diameter of the cylinder. The benchmark
+     geometry and the corresponding 2D mesh at the coarsest level are shown in the figure below. The 3D mesh is obtained by extruding the 2D mesh in the z direction with 4 layers of cells,
+     however the first level mesh for the computations is obtained by two successive refinements via connecting opposite midpoints of the the coarsest mesh which yields a mesh of 6144 cells.
+     Our preliminary studies showed that this mesh offers a good balance between accuracy and computational cost.
+     </div>
+
      <div class="im-div">
-       <h3 class="mat-h3">Initial configuration and boundary conditions for the test cases</h3>
-       <img src="assets/img16.png" alt="bla">
+       <h3 class="mat-h3">Initial configuration and boundary conditions for the benchmark</h3>
+       <img src="assets/fac_geo_3d.png" alt="FAC3D Geometry">
+     </div>
+
+     <div class="im-div">
+       <h3 class="mat-h3">Base mesh for the benchmark</h3>
+       <img src="assets/meshV3_side_new.png" alt="FAC3D Geometry" width="699px">
      </div>
      <div class="text-wrapper">
-     The table below lists the fluid and physical parameters which specify the test cases. The
-     evolution of the bubbles should be tracked for 3 time units during which the defined
-     benchmark quantities should be measured. The first test case models a rising bubble with Reynolds
-     number <app-mathjax [content]="'$Re=35$'"></app-mathjax>, Eötvös number <app-mathjax [content]="'$Eo=10$'"></app-mathjax>, and both density and viscosity ratios equal to 10.
-     The second and more challenging test case models a rising bubble with <app-mathjax [content]="'$Re=35$, $Eo=125$'"></app-mathjax>,
-     and with large density and viscosity ratios (1000 and 100).
+     The software tools employ different numerical approaches to the discretization in space which leads to different numbers of degrees of freedom (DOF) for the same problem. In the case
+     of OpenFOAM and CFX, the numbers of DOF are comparable while FeatFlow has a greater number of DOF for the same mesh due to a high order finite element approximation. Therefore, while
+     comparing the results, reader should keep in mind that for the same computational mesh, FeatFlow has approximately as many DOF as the others have at one level finer grid. The number
+     of DOF is always proportional to number of cells (equivalent to number of vertices for hexahedral meshes with large number of cells) in all CFD packages. The numbers of DOF are
+     presented with respect to the number of cells of the corresponding mesh levels in the table below.
+     <ul>
+       <li>ndof = 3 · nvt for velocity and ndof = nvt for pressure in case of CFX</li>
+       <li>ndof = 3 · nel for velocity and ndof = nel for pressure in case of OpenFOAM</li>
+       <li>ndof = 24 · nvt for velocity and ndof = 4 · nel for pressure in case of FeatFlow</li>
+     </ul>
+     where ndof, nvt and nel denote the number of DOF, the number of vertices and the number of cells, respectively.
      </div>
+
 <div class="table-wrapper">
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -47,61 +82,26 @@
 
   <!-- Position Column -->
   <ng-container matColumnDef="position">
-    <th mat-header-cell *matHeaderCellDef> TestCase </th>
+    <th mat-header-cell *matHeaderCellDef> No. </th>
     <td mat-cell *matCellDef="let element"> {{element.position}} </td>
   </ng-container>
 
   <!-- Name Column -->
-  <ng-container matColumnDef="p1">
-    <th mat-header-cell *matHeaderCellDef> ρ<sub>1</sub> </th>
-    <td mat-cell *matCellDef="let element"> {{element.p1}} </td>
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
   </ng-container>
 
   <!-- Weight Column -->
-  <ng-container matColumnDef="p2">
-    <th mat-header-cell *matHeaderCellDef> ρ<sub>2</sub> </th>
-    <td mat-cell *matCellDef="let element"> {{element.p2}} </td>
+  <ng-container matColumnDef="weight">
+    <th mat-header-cell *matHeaderCellDef> Weight </th>
+    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
   </ng-container>
 
   <!-- Symbol Column -->
-  <ng-container matColumnDef="mu1">
-    <th mat-header-cell *matHeaderCellDef> μ<sub>1</sub> </th>
-    <td mat-cell *matCellDef="let element"> {{element.mu1}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="mu2">
-    <th mat-header-cell *matHeaderCellDef> μ<sub>2</sub> </th>
-    <td mat-cell *matCellDef="let element"> {{element.mu2}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="g">
-    <th mat-header-cell *matHeaderCellDef> g </th>
-    <td mat-cell *matCellDef="let element"> {{element.g}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="sigma">
-    <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$\\sigma$'"></app-mathjax> </th>
-    <td mat-cell *matCellDef="let element"> {{element.sigma}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="re">
-    <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$Re$'"></app-mathjax> </th>
-    <td mat-cell *matCellDef="let element"> {{element.re}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="eo">
-    <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$Eo$'"></app-mathjax> </th>
-    <td mat-cell *matCellDef="let element"> {{element.eo}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="rel">
-    <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$\\rho_1 / \\rho_2$'"></app-mathjax> </th>
-    <td mat-cell *matCellDef="let element"> {{element.rel}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="relmu">
-    <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$\\mu_1 / \\mu_2$'"></app-mathjax> </th>
-    <td mat-cell *matCellDef="let element"> {{element.relmu}} </td>
+  <ng-container matColumnDef="symbol">
+    <th mat-header-cell *matHeaderCellDef> Symbol </th>
+    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
