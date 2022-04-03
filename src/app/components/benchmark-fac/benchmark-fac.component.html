@@ -143,7 +143,155 @@ The drag and lift force on the cylinder we evalute as follows:
 
 </div>
   </mat-tab>
-  <mat-tab label="Verification"> Flow Parameters </mat-tab>
-  <mat-tab label="Reference Data"> Results </mat-tab>
+  <mat-tab label="Verification">
+    <div class="heading-wrapper">
+      <h4>
+     Verification and Results
+      </h4>
+    </div>
+    <div class="text-wrapper">
+The old results for <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> and <app-mathjax [content]="'$c_{Lmin}$'"></app-mathjax> had been given within the intervals, [3.2000,3.3000]
+and [0.0020,0.0040] respectively, by Turek et al., and <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> has been determined as 3.2968
+by John. These old results are not sufficient and accurate enough to establish an inclusive
+benchmark study. Besides, to evaluate the results of benchmark calculations with respect to
+only <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> and <app-mathjax [content]="'$c_{Lmin}$'"></app-mathjax> is not much elucidating on the accuracy of the results. Hence,
+additional to the comparison of <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> and <app-mathjax [content]="'$c_{Lmin}$'"></app-mathjax> values, we also compare the solution
+regarding <app-mathjax [content]="'$L_{2}$'"></app-mathjax> error and <app-mathjax [content]="'$L_{\\infty}$'"></app-mathjax> error which denotes the <app-mathjax [content]="'$L_{2}$'"></app-mathjax> norm of the error normalized by <app-mathjax [content]="'$L_{2}$'"></app-mathjax> norm of the reference
+solution and the <app-mathjax [content]="'$L_{\\infty}$'"></app-mathjax> norm of error, respectively, are obtained through the following
+calculation steps:
+  <ul class="fac-ul">
+    <li>
+    An equidistant discrete time step is specified for which <app-mathjax [content]="'$L_{2}$'"></app-mathjax> error is independent of the step
+    size. The reference solution and the other solutions are interpolated (linear interpolation) to the specified discrete time step.
+    </li>
+    <li>
+    <app-mathjax [content]="'$L_{2}$'"></app-mathjax> norm and <app-mathjax [content]="'$L_{\\infty}$'"></app-mathjax> norm of the differences between reference solution and other solutions are calculated.
+    </li>
+  </ul>
+Results of the benchmark calculations for FeatFlow are plotted here. Values of the comparison criteria, <app-mathjax [content]="'$L_{2}$'"></app-mathjax> error, <app-mathjax [content]="'$L_{\\infty}$'"></app-mathjax> error and relative errors
+due to the comparison criteria are given here and here.
+
+The finest level results are presented in the table below; the second table compares the relative errors. It is obvious that the results are in agreement. An interesting finding is that the FeatFlow results at level 2 are as accurate as results of CFX or OpenFOAM at the finest level.
+    </div>
+    <div class="table-wrapper">
+    <table mat-table [dataSource]="dataSourceDragTime" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Case Column -->
+      <ng-container matColumnDef="case">
+        <th mat-header-cell *matHeaderCellDef> Case </th>
+        <td mat-cell *matCellDef="let element"> {{element.case}} </td>
+      </ng-container>
+
+      <!-- cells Column -->
+      <ng-container matColumnDef="cells">
+        <th mat-header-cell *matHeaderCellDef> # of cells </th>
+        <td mat-cell *matCellDef="let element"> {{element.cells}} </td>
+      </ng-container>
+
+      <!-- dragmax Column -->
+      <ng-container matColumnDef="dragmax">
+        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> </th>
+        <td mat-cell *matCellDef="let element"> {{element.dragmax}} </td>
+      </ng-container>
+
+      <!-- liftmax Column -->
+      <ng-container matColumnDef="liftmax">
+        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Lmax}$'"></app-mathjax> </th>
+        <td mat-cell *matCellDef="let element"> {{element.liftmax}} </td>
+      </ng-container>
+
+      <!-- liftmin Column -->
+      <ng-container matColumnDef="liftmin">
+        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Lmin}$'"></app-mathjax> </th>
+        <td mat-cell *matCellDef="let element"> {{element.liftmin}} </td>
+      </ng-container>
+
+      <!-- tstep Column -->
+      <ng-container matColumnDef="tstep">
+        <th mat-header-cell *matHeaderCellDef>Tstep (s)</th>
+        <td mat-cell *matCellDef="let element"> {{element.tstep}} </td>
+      </ng-container>
+
+      <!-- time Column -->
+      <ng-container matColumnDef="time">
+        <th mat-header-cell *matHeaderCellDef>Time (s)</th>
+        <td mat-cell *matCellDef="let element"> {{element.time}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsDragTime"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsDragTime;"></tr>
+    </table>
+    </div>
+
+  </mat-tab>
+  <mat-tab label="Reference Data">
+    <div class="heading-wrapper">
+      <h4>
+     Reference Data
+      </h4>
+    </div>
+    <div class="table-wrapper">
+    <table mat-table [dataSource]="dataSourceRefData" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Column Column -->
+      <ng-container matColumnDef="column">
+        <th mat-header-cell *matHeaderCellDef> Column </th>
+        <td mat-cell *matCellDef="let element"> {{element.column}} </td>
+      </ng-container>
+
+      <!-- Quantity Column -->
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef> Quantity </th>
+        <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsRefData"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsRefData;"></tr>
+    </table>
+    </div>
+    <div class="table-wrapper">
+    <table mat-table [dataSource]="dataSourceFiles" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- File Column -->
+      <ng-container matColumnDef="file">
+        <th mat-header-cell *matHeaderCellDef> File </th>
+        <td mat-cell *matCellDef="let element"> {{element.file}} </td>
+      </ng-container>
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element"> {{element.action}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsFiles"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsFiles;"></tr>
+    </table>
+    </div>
+    <div class="text-wrapper">
+    <h4>
+    GnuPlot
+    </h4>
+    The file contains the benchmarks results and can be plotted with the following gnuplot commands:
+    <pre>
+set xrange[0:8];
+set yrange [-0.5:3.5];
+plot "BenchValues.txt" using ($1):($2) with lines lt 2 t "drag"
+
+set xrange[0:8];
+set yrange [-0.015:0.005];
+plot "BenchValues.txt" using ($1):($3) with lines lt 1 t "lift"
+    </pre>
+    </div>
+  </mat-tab>
 </mat-tab-group>
 
