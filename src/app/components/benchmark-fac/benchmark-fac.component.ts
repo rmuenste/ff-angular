@@ -2,22 +2,26 @@ import { Component, OnInit } from '@angular/core';
 
 export interface PeriodicElement {
   name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+  level: string;
+  dofu: number;
+  dofp: number;
+  doft: number;
+  cells: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+  {level: "", name: 'CFX', cells: "", dofu: 21828, dofp: 7276, doft: 29104},
+  {level: "L1", name: 'OpenFOAM', cells: "6144", dofu: 18423, dofp: 6144, doft: 24567},
+  {level: "", name: 'FeatFlow', cells: "", dofu: 174624, dofp: 24576, doft: 199200},
+  {level: "", name: 'CFX', cells: "", dofu: 160776, dofp: 53592, doft: 214368},
+  {level: "L2", name: 'OpenFOAM', cells: "49152", dofu: 147456, dofp: 49152, doft: 196608},
+  {level: "", name: 'FeatFlow', cells: "", dofu: 1286208, dofp: 196608, doft: 1482816},
+  {level: "", name: 'CFX', cells: "", dofu: 1232400, dofp: 410800, doft: 1643200},
+  {level: "L3", name: 'OpenFOAM', cells: "393216", dofu: 1179648, dofp: 393216, doft: 1572864},
+  {level: "", name: 'FeatFlow', cells: "", dofu: 9859200, dofp: 1572864, doft: 11432064},
+  {level: "", name: 'CFX', cells: "", dofu: 9647136, dofp: 3215712, doft: 12862848},
+  {level: "L4", name: 'OpenFOAM', cells: "9437184", dofu: 9437184, dofp: 3145728, doft: 12582912},
+  {level: "", name: 'FeatFlow', cells: "", dofu: 77177104, dofp: 12582912, doft: 89760016},
 ];
 
 
@@ -28,7 +32,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class BenchmarkFacComponent implements OnInit {
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['level', 'cells', 'name', 'dofu', 'dofp', 'doft'];
   dataSource = ELEMENT_DATA;
 
   mathEq = `When $ a \\ne 0 $`;

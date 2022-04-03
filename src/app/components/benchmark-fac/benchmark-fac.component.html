@@ -81,9 +81,15 @@
         The actual rendered columns are set as a property on the row definition" -->
 
   <!-- Position Column -->
-  <ng-container matColumnDef="position">
-    <th mat-header-cell *matHeaderCellDef> No. </th>
-    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+  <ng-container matColumnDef="level">
+    <th mat-header-cell *matHeaderCellDef> Levels </th>
+    <td mat-cell *matCellDef="let element"> {{element.level}} </td>
+  </ng-container>
+
+  <!-- Cells Column -->
+  <ng-container matColumnDef="cells">
+    <th mat-header-cell *matHeaderCellDef> # of cells </th>
+    <td mat-cell *matCellDef="let element"> {{element.cells}} </td>
   </ng-container>
 
   <!-- Name Column -->
@@ -93,23 +99,49 @@
   </ng-container>
 
   <!-- Weight Column -->
-  <ng-container matColumnDef="weight">
-    <th mat-header-cell *matHeaderCellDef> Weight </th>
-    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+  <ng-container matColumnDef="dofu">
+    <th mat-header-cell *matHeaderCellDef> # of DOF u </th>
+    <td mat-cell *matCellDef="let element"> {{element.dofu}} </td>
   </ng-container>
 
   <!-- Symbol Column -->
-  <ng-container matColumnDef="symbol">
-    <th mat-header-cell *matHeaderCellDef> Symbol </th>
-    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+  <ng-container matColumnDef="dofp">
+    <th mat-header-cell *matHeaderCellDef> # of DOF p </th>
+    <td mat-cell *matCellDef="let element"> {{element.dofp}} </td>
+  </ng-container>
+
+  <!-- doft Column -->
+  <ng-container matColumnDef="doft">
+    <th mat-header-cell *matHeaderCellDef>total # of DOF</th>
+    <td mat-cell *matCellDef="let element"> {{element.doft}} </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 </div>
+<div class="text-wrapper">
+The first benchmark problem is at <app-mathjax [content]="'$Re=20$'"></app-mathjax> and has been studied numerically by many research groups, and very accurate results have been presented. The second benchmark problem is unsteady,
+with a time-varying inflow profile which is very challenging and has not been rigorously studied, consequently the results have not yet been precisely determined. For the benchmark
+problems, no-slip boundary condition is employed on the walls and natural do-nothing boundary conditions are imposed at the outflow plane. The inflow conditions are set with <app-mathjax [content]="'$U_m=0.45 m/s$'"></app-mathjax>
+and <app-mathjax [content]="'$U_m=2.25 m/s$'"></app-mathjax> for the first and the second benchmark problem with the parabolic velocity profiles from the following two equations:
+</div>
+<div class="equation-wrapper">
+  <app-mathjax [content]="'$$\\begin{aligned} \\mathbf{U}(0, y, z) &= 16U_m yz(H - y)(H - z)/H^4,\\; V = W = 0 \\\\
+                                            \\mathbf{U}(0, y, z) &= 16U_m yz \\sin(\\pi t / 8) (H - y)(H - z)/H^4,\\; V = W = 0
+  \\end{aligned}$$'"></app-mathjax>
+</div>
+The drag and lift force on the cylinder we evalute as follows:
+<div class="equation-wrapper">
+  <app-mathjax [content]="'$$\\begin{aligned} \\mathbf{F}_D = \\int \\left (  \\rho \\nu \\frac{\\partial v_t}{\\partial n}n_y - pn_x\\right) dS \\\\
+                                              \\mathbf{F}_L =-\\int \\left ( \\rho \\nu \\frac{\\partial v_t}{\\partial n}n_x - pn_y\\right) dS
+  \\end{aligned}$$'"></app-mathjax>
+</div>
+<div class="text-wrapper">
+  where S is the surface of the cylinder, <app-mathjax [content]="'$\\mathbf{n}$'"></app-mathjax> the normal on S, <app-mathjax [content]="'$\\mathbf{v}_t$'"></app-mathjax> the tangential velocity
+  on S with tangent vector <app-mathjax [content]="'$t=(n_y, -n_x, 0)$'"></app-mathjax>.
 
-
+</div>
   </mat-tab>
   <mat-tab label="Verification"> Flow Parameters </mat-tab>
   <mat-tab label="Reference Data"> Results </mat-tab>
