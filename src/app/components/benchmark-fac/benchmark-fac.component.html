@@ -225,7 +225,22 @@ The finest level results are presented in the table below; the second table comp
       <tr mat-row *matRowDef="let row; columns: displayedColumnsDragTime;"></tr>
     </table>
     </div>
-
+  <ngx-charts-line-chart
+    [view]="view"
+    [legend]="legend"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxis]="xAxis"
+    [yAxis]="yAxis"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel"
+    [timeline]="timeline"
+    [results]="lineData"
+    (select)="onSelect($event)"
+    (activate)="onActivate($event)"
+    (deactivate)="onDeactivate($event)"
+    >
+  </ngx-charts-line-chart>
   </mat-tab>
   <mat-tab label="Reference Data">
     <div class="heading-wrapper">

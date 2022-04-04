@@ -26,6 +26,7 @@ import { BenchmarkExampleComponent } from './components/benchmark-example/benchm
 import {MatDividerModule} from '@angular/material/divider';
 import { BenchmarkBubble3Component } from './components/benchmark-bubble3/benchmark-bubble3.component';
 import { BenchmarkFacComponent } from './components/benchmark-fac/benchmark-fac.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { BenchmarkFacComponent } from './components/benchmark-fac/benchmark-fac.
     MatToolbarModule,
     MatSidenavModule,
     MatDividerModule,
+    NgxChartsModule,
     HttpClientModule
   ],
   providers: [],

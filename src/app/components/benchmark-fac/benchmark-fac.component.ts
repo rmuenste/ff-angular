@@ -62,6 +62,35 @@ const fileData: FileDownload[] = [
   {file: "BenchValues.txt", action: "Download"},
 ];
 
+const lineChartData =
+[
+  {
+    "name": "Haiti",
+    "series": [
+      {
+        "value": 3639,
+        "name": "2016-09-18T22:14:15.584Z"
+      },
+      {
+        "value": 4767,
+        "name": "2016-09-22T20:24:55.944Z"
+      },
+      {
+        "value": 2029,
+        "name": "2016-09-14T04:12:22.554Z"
+      },
+      {
+        "value": 2377,
+        "name": "2016-09-21T11:20:25.195Z"
+      },
+      {
+        "value": 4329,
+        "name": "2016-09-21T02:30:02.077Z"
+      }
+    ]
+  }
+];
+
 @Component({
   selector: 'app-benchmark-fac',
   templateUrl: './benchmark-fac.component.html',
@@ -81,11 +110,38 @@ export class BenchmarkFacComponent implements OnInit {
   displayedColumnsFiles: string[] = ['file', 'action'];
   dataSourceFiles = fileData;
 
+  lineData = lineChartData;
+  view: [number, number] = [700, 300];
+
   mathEq = `When $ a \\ne 0 $`;
+
+  // options
+  legend: boolean = true;
+  showLabels: boolean = true;
+  animations: boolean = true;
+  xAxis: boolean = true;
+  yAxis: boolean = true;
+  showYAxisLabel: boolean = true;
+  showXAxisLabel: boolean = true;
+  xAxisLabel: string = 'Year';
+  yAxisLabel: string = 'Population';
+  timeline: boolean = true;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onSelect(data: any): void {
+    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
+  }
+
+  onActivate(data: any): void {
+    console.log('Activate', JSON.parse(JSON.stringify(data)));
+  }
+
+  onDeactivate(data: any): void {
+    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
 
 }
