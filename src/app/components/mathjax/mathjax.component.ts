@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges, OnChanges } from '@angular/core';
 import { ConfigService } from 'src/app/config.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { ConfigService } from 'src/app/config.service';
   templateUrl: './mathjax.component.html',
   styleUrls: ['./mathjax.component.scss']
 })
-export class MathjaxComponent implements OnInit {
+export class MathjaxComponent implements OnInit, OnChanges {
   @Input() content: string = "";
 
   constructor(private cs: ConfigService) { }
@@ -18,7 +18,7 @@ export class MathjaxComponent implements OnInit {
     this.loadMathConfig();
   }
 
-  ngOnchanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges) {
     if(changes['content'])
       this.renderMath();
   }
