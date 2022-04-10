@@ -1,5 +1,5 @@
 <mat-tab-group>
-  <mat-tab label="Benchmark Intro">
+  <mat-tab label="Benchmark Intro" class="hidden-cursor">
     <div class="heading-wrapper">
       <h4>
       Flow Around A Cylinder
@@ -227,22 +227,24 @@ The finest level results are presented in the table below; the second table comp
       <tr mat-row *matRowDef="let row; columns: displayedColumnsDragTime;"></tr>
     </table>
     </div>
-  <ngx-charts-line-chart
-    [view]="view"
-    [legend]="legend"
-    [showXAxisLabel]="showXAxisLabel"
-    [showYAxisLabel]="showYAxisLabel"
-    [xAxis]="xAxis"
-    [yAxis]="yAxis"
-    [xAxisLabel]="xAxisLabel"
-    [yAxisLabel]="yAxisLabel"
-    [timeline]="timeline"
-    [results]="lineData"
-    (select)="onSelect($event)"
-    (activate)="onActivate($event)"
-    (deactivate)="onDeactivate($event)"
-    >
-  </ngx-charts-line-chart>
+    <div class="chart-wrapper">
+      <ngx-charts-line-chart
+        [view]="view"
+        [legend]="legend"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxis]="xAxis"
+        [yAxis]="yAxis"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel"
+        [timeline]="timeline"
+        [results]="lineData"
+        (select)="onSelect($event)"
+        (activate)="onActivate($event)"
+        (deactivate)="onDeactivate($event)"
+        >
+      </ngx-charts-line-chart>
+    </div>
   </mat-tab>
   <mat-tab label="Reference Data">
     <div class="heading-wrapper">

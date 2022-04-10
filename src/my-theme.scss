@@ -2,11 +2,20 @@
 
  @include mat.core();
 
+ /*
+ * Define the primary, accent, warn palettes for our material theme availabe in palette.scss which is
+ * imported from the node_modules folder. For each palette we can optionally specify a default, ligher and darker hue.
+ * Look at available color palettes: https://material.io/design/color
+ */
  $my-primary: mat.define-palette(mat.$light-green-palette);
+
+ // Here we set the accent color palette
  $my-accent: mat.define-palette(mat.$deep-orange-palette);
 
+ // Here we set the warn color palette
  $my-warn: mat.define-palette(mat.$red-palette);
 
+ // Here we create a theme object called $my-theme with our primary, accent and warn palettes
  $my-theme: mat.define-dark-theme((
    color: (
      primary: $my-primary,

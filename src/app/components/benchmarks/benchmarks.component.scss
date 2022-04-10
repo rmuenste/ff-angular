@@ -1,7 +1,9 @@
 
+@import 'src/styles.scss';
+
 .page-header {
   height: 80px;
-  background: var(--primary-bg-color);
+  background: $my-primary-color;
   color: white;
   color: var(--primary-text-color);
   display: flex;
