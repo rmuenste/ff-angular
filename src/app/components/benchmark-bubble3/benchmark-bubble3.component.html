@@ -12,8 +12,8 @@
     </div>
     <div class="text-wrapper">
       In the table below we list the parameters of the meshes used in the computations. As we can see, meshes of different refinement levels
-      are used in our simulations. The refinement levels are created by regular refinement of the same base mesh. We show the problem resolution
-      (mx, my, mz), the mesh resolution (nx, ny, nz), the number of elements (NEL), the number of Q2 degrees of freedom (dof) and the total number of dofs.
+      are used in our simulations. The refinement levels are created by regular refinement of the same base mesh. We show the problem resolution <app-mathjax [content]="'$(mx, my, mz)$'"></app-mathjax>
+      , the mesh resolution <app-mathjax [content]="'$(nx, ny, nz)$'"></app-mathjax>, the number of elements (NEL), the number of Q2 degrees of freedom (dof) and the total number of dofs.
     </div>
     <div class="table-wrapper">
       <table mat-table [dataSource]="dataSourceMesh" class="mat-elevation-z8">

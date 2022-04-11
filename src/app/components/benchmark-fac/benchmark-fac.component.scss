@@ -39,3 +39,29 @@ table {
 mat-tab-group {
   caret-color: rgba(0,0,0,0);
 }
+
+.image-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.red {
+flex: 1;
+background-color: red;
+width: 200px;
+height: 100px;
+}
+
+.blue {
+flex: 1;
+background-color: blue;
+width: 200px;
+height: 100px;
+}
+
+.green {
+flex: 1;
+background-color: green;
+width: 200px;
+height: 100px;
+}
