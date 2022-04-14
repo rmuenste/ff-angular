@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { multi } from './data';
+import { bubble } from './data';
 
 export interface MeshTable {
   lvl: number;
@@ -54,9 +56,37 @@ export class BenchmarkBubble3Component implements OnInit {
 
   mathEq = `When $ a \\ne 0 $`;
 
+  lineData = bubble;
+  view: [number, number] = [700, 700];
+
+  // options
+  legend: boolean = true;
+  showLabels: boolean = true;
+  animations: boolean = true;
+  xAxis: boolean = true;
+  yAxis: boolean = true;
+  showYAxisLabel: boolean = true;
+  showXAxisLabel: boolean = true;
+  xAxisLabel: string = 'Time[s]';
+  yAxisLabel: string = 'Population';
+  timeline: boolean = true;
+  autoScale: boolean = true;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onSelect(data: any): void {
+    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
+  }
+
+  onActivate(data: any): void {
+    console.log('Activate', JSON.parse(JSON.stringify(data)));
+  }
+
+  onDeactivate(data: any): void {
+    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
 
 }

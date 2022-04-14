@@ -27,6 +27,11 @@ import {MatDividerModule} from '@angular/material/divider';
 import { BenchmarkBubble3Component } from './components/benchmark-bubble3/benchmark-bubble3.component';
 import { BenchmarkFacComponent } from './components/benchmark-fac/benchmark-fac.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import * as PlotlyJS from 'plotly.js-dist-min';
+import { PlotlyModule } from 'angular-plotly.js';
+
+PlotlyModule.plotlyjs = PlotlyJS;
+
 
 @NgModule({
   declarations: [
@@ -57,7 +62,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     MatSidenavModule,
     MatDividerModule,
     NgxChartsModule,
-    HttpClientModule
+    HttpClientModule,
+    PlotlyModule
   ],
   providers: [],
   bootstrap: [AppComponent]

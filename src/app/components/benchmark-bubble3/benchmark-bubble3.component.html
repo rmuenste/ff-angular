@@ -227,10 +227,28 @@ According to the definition of this benchmark problem, the evolution of all thes
 due to the buyoancy forces begins to rise in the surrounding fluid giving rise to an interplay of surface tension forces with the hydrodynamic forces in form of deformation of the bubble
 surface. The dimensionless timespan of the simulation covers the time interval from t = 0 up to t = 3.
 </div>
-
-
-  </mat-tab>
-  <mat-tab label="Verification"> Flow Parameters </mat-tab>
-  <mat-tab label="Reference Data"> Results </mat-tab>
+</mat-tab>
+<mat-tab label="Verification">
+<div class="video-wrapper">
+  <ngx-charts-line-chart
+    [view]="view"
+    [legend]="legend"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxis]="xAxis"
+    [yAxis]="yAxis"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel"
+    [autoScale]="autoScale"
+    [timeline]="timeline"
+    [results]="lineData"
+    (select)="onSelect($event)"
+    (activate)="onActivate($event)"
+    (deactivate)="onDeactivate($event)"
+    >
+  </ngx-charts-line-chart>
+</div>
+</mat-tab>
+<mat-tab label="Reference Data"> Results </mat-tab>
 </mat-tab-group>
 
