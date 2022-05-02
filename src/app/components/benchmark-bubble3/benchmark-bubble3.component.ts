@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { multi } from './data';
-import { bubble } from './data';
+import { bubble, dt_1 } from './data';
 
 export interface MeshTable {
   lvl: number;
@@ -47,6 +47,58 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 
 export class BenchmarkBubble3Component implements OnInit {
+  //=============================================================================
+  // Line chart
+  graph2 = {
+    data: [
+      { x: [1, 2, 3, 4, 5], y: [1, 4, 9, 4, 1], type: 'scatter' },
+      { x: [1, 2, 3, 4, 5], y: [1, 3, 6, 9, 6], type: 'scatter' },
+      { x: [1, 2, 3, 4, 5], y: [1, 2, 4, 5, 6], type: 'scatter' },
+    ],
+    layout: {title: 'Some Data to Highlight'}
+  };
+  // Line chart
+  //           plot_bgcolor: '#303030',
+//$text-dark1: #ffffffb3;
+  graph3 = {
+    data: dt_1.data,
+    layout: {title: {
+              text: 'Some Data to Highlight',
+              font: {
+                color: '#ffffffb3'
+              }
+            },
+             plot_bgcolor: '#303030',
+             paper_bgcolor: '#303030',
+             xaxis: {
+              showgrid: true,
+              tickfont: {
+                color: '#ffffffb3'
+              },
+              gridcolor: '#505050',
+              title: {
+                text: 'Time[s]',
+                font: {
+                  color: '#ffffffb3'
+                }
+               }
+             },
+             yaxis: {
+              showgrid: true,
+              tickfont: {
+                color: '#ffffffb3'
+              },
+              gridcolor: '#505050',
+              title: {
+                text: 'Sphericity',
+                font: {
+                  color: '#ffffffb3'
+                }
+              }
+             }
+            }
+  };
+  //=============================================================================
 
   displayedColumns: string[] = ['position', 'p1', 'p2', 'mu1', 'mu2', 'g', 'sigma', 're', 'eo', 'rel', 'relmu'];
   dataSource = ELEMENT_DATA;

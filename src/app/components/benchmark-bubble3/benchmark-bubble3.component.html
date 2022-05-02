@@ -229,7 +229,7 @@ surface. The dimensionless timespan of the simulation covers the time interval f
 </div>
 </mat-tab>
 <mat-tab label="Verification">
-<div class="video-wrapper">
+<div class="my-video-wrapper">
   <ngx-charts-line-chart
     [view]="view"
     [legend]="legend"
@@ -247,6 +247,13 @@ surface. The dimensionless timespan of the simulation covers the time interval f
     (deactivate)="onDeactivate($event)"
     >
   </ngx-charts-line-chart>
+</div>
+<div class="video-wrapper">
+<plotly-plot
+  [data]="graph3.data"
+  [layout]="graph3.layout"
+  [useResizeHandler]="false"
+></plotly-plot>
 </div>
 </mat-tab>
 <mat-tab label="Reference Data"> Results </mat-tab>

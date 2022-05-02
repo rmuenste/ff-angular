@@ -29,6 +29,7 @@ import { BenchmarkFacComponent } from './components/benchmark-fac/benchmark-fac.
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import * as PlotlyJS from 'plotly.js-dist-min';
 import { PlotlyModule } from 'angular-plotly.js';
+import { PlotlyExampleComponentComponent } from './components/plotly-example-component/plotly-example-component.component';
 
 PlotlyModule.plotlyjs = PlotlyJS;
 
@@ -44,7 +45,8 @@ PlotlyModule.plotlyjs = PlotlyJS;
     BenchmarkDetailComponent,
     BenchmarkExampleComponent,
     BenchmarkBubble3Component,
-    BenchmarkFacComponent
+    BenchmarkFacComponent,
+    PlotlyExampleComponentComponent
   ],
   imports: [
     BrowserModule,

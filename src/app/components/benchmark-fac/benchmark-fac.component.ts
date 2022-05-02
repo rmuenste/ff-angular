@@ -1,23 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ELEMENT_DATA } from './lvl_dofs_comp';
+import { dragTimeData } from './drag_time_results';
+import { COMPARISON_DRAG_TIME } from './result_comp_drag';
+import { FF_ERROR_RESULTS } from './ff_error_results'
 
-export interface DragTime {
-  case: string;
-  cells: number;
-  dragmax: number;
-  liftmax: number;
-  liftmin: number;
-  tstep: number;
-  time: string;
-}
-
-export interface PeriodicElement {
-  name: string;
-  level: string;
-  dofu: number;
-  dofp: number;
-  doft: number;
-  cells: string;
-}
 
 export interface ReferenceElement {
   column: number;
@@ -29,27 +15,6 @@ export interface FileDownload {
   action: string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {level: "", name: 'CFX', cells: "", dofu: 21828, dofp: 7276, doft: 29104},
-  {level: "L1", name: 'OpenFOAM', cells: "6144", dofu: 18423, dofp: 6144, doft: 24567},
-  {level: "", name: 'FeatFlow', cells: "", dofu: 174624, dofp: 24576, doft: 199200},
-  {level: "", name: 'CFX', cells: "", dofu: 160776, dofp: 53592, doft: 214368},
-  {level: "L2", name: 'OpenFOAM', cells: "49152", dofu: 147456, dofp: 49152, doft: 196608},
-  {level: "", name: 'FeatFlow', cells: "", dofu: 1286208, dofp: 196608, doft: 1482816},
-  {level: "", name: 'CFX', cells: "", dofu: 1232400, dofp: 410800, doft: 1643200},
-  {level: "L3", name: 'OpenFOAM', cells: "393216", dofu: 1179648, dofp: 393216, doft: 1572864},
-  {level: "", name: 'FeatFlow', cells: "", dofu: 9859200, dofp: 1572864, doft: 11432064},
-  {level: "", name: 'CFX', cells: "", dofu: 9647136, dofp: 3215712, doft: 12862848},
-  {level: "L4", name: 'OpenFOAM', cells: "9437184", dofu: 9437184, dofp: 3145728, doft: 12582912},
-  {level: "", name: 'FeatFlow', cells: "", dofu: 77177104, dofp: 12582912, doft: 89760016},
-];
-
-const dragTimeData: DragTime[] = [
-{case: "FFL1", cells: 6144, dragmax: 3.2207, liftmax: 0.0027, liftmin: -0.0095, tstep: 0.010, time: "3220 x 2"},
-{case: "FFL2", cells: 49152, dragmax: 3.2877, liftmax: 0.0028, liftmin: -0.010892, tstep: 0.010, time: "17300 x 4"},
-{case: "FFL3", cells: 393216, dragmax: 3.2963, liftmax: 0.0028, liftmin: -0.010992, tstep: 0.010, time: "35550 x 24"},
-{case: "FFL4", cells: 3145728, dragmax: 3.2978, liftmax: 0.0028, liftmin: -0.010999, tstep: 0.005, time: "214473 x 48"},
-];
 
 const referenceData: ReferenceElement[] = [
   {column: 1, quantity: "Time"},
@@ -62,34 +27,6 @@ const fileData: FileDownload[] = [
   {file: "BenchValues.txt", action: "Download"},
 ];
 
-const lineChartData =
-[
-  {
-    "name": "Haiti",
-    "series": [
-      {
-        "value": 3639,
-        "name": "2016-09-18T22:14:15.584Z"
-      },
-      {
-        "value": 4767,
-        "name": "2016-09-22T20:24:55.944Z"
-      },
-      {
-        "value": 2029,
-        "name": "2016-09-14T04:12:22.554Z"
-      },
-      {
-        "value": 2377,
-        "name": "2016-09-21T11:20:25.195Z"
-      },
-      {
-        "value": 4329,
-        "name": "2016-09-21T02:30:02.077Z"
-      }
-    ]
-  }
-];
 //Case ID #86594961
 @Component({
   selector: 'app-benchmark-fac',
@@ -110,7 +47,13 @@ export class BenchmarkFacComponent implements OnInit {
   displayedColumnsFiles: string[] = ['file', 'action'];
   dataSourceFiles = fileData;
 
-  lineData = lineChartData;
+  displayedColumnsDragLiftComp: string[] = ['numCells', 'name', 'drag', 'lift', 'errDrag', 'errLift'];
+  dataSourceDragLiftComp = COMPARISON_DRAG_TIME;
+
+  displayedColumnsErrorTableFF: string[] = ['name', "errcdmax", "errclmin", "errl2cd", "errl2cl", "errlinfcd", "errlinfcl"];
+  dataSourceErrorTableFF = FF_ERROR_RESULTS;
+
+
   view: [number, number] = [700, 300];
 
   mathEq = `When $ a \\ne 0 $`;

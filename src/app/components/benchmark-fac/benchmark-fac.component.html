@@ -152,6 +152,90 @@ The drag and lift force on the cylinder we evalute as follows:
       </h4>
     </div>
     <div class="text-wrapper">
+    In the following table we show the accuracy of the employed CFD softwares for the benchmark case Re=20.
+    </div>
+    <div class="table-wrapper">
+
+    <div class="heading-wrapper">
+      <h4>Steady Test Case (Re=20) Results</h4>
+    </div>
+    <table mat-table [dataSource]="dataSourceDragLiftComp" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="numCells">
+        <th mat-header-cell *matHeaderCellDef> Cells </th>
+        <td mat-cell *matCellDef="let element"> {{element.numCells}} </td>
+      </ng-container>
+
+      <!-- Cells Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Software </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="drag">
+        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{D}$'"></app-mathjax> </th>
+        <td mat-cell *matCellDef="let element"> {{element.drag}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="lift">
+        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{L}$'"></app-mathjax> </th>
+        <td mat-cell *matCellDef="let element"> {{element.lift}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="errDrag">
+        <th mat-header-cell *matHeaderCellDef> %Err <app-mathjax [content]="'$c_{D}$'"></app-mathjax> </th>
+        <td mat-cell *matCellDef="let element"> {{element.errDrag}} </td>
+      </ng-container>
+
+      <!-- doft Column -->
+      <ng-container matColumnDef="errLift">
+        <th mat-header-cell *matHeaderCellDef> %Err <app-mathjax [content]="'$c_{L}$'"></app-mathjax> </th>
+        <td mat-cell *matCellDef="let element"> {{element.errLift}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsDragLiftComp"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsDragLiftComp;"></tr>
+    </table>
+    </div>
+    <div class="text-wrapper">
+    In the second benchmark test, the flow is simulated for 8 seconds, a half period of the imposed inflow condition.
+    The simulations start with zero inflow and zero initial condition at t=0 s and finish at t=8 s
+    with zero inflow again. Due to the transient inflow condition, adaptive time stepping technique is a
+    good candidate for this problem. However, in preliminary studies with this technique,
+    numerical oscillations are observed in the results which are obtained by CFX and OpenFOAM.
+    The oscillations were nor visible in qualitative results neither in the drag coefficient results.
+    However, when the results of a sensitive variable such as cL are plotted, the numerical
+    oscillations appear. The results are obtained on a mesh with 393216 cells by OpenFOAM for
+    two different values of maximum Courant numbers, maxCo, and with different tolerance values
+    of linear solvers. Tolerance values of the velocity solver, uTol, are set to 10-5 or 10-6
+    and tolerance values of the pressure solver, pTol, are set to 10-6 or 10-7.
+    </div>
+
+    <div class="im-div">
+      <h3 class="mat-h3">Drag coefficient for the second benchmark</h3>
+      <img src="assets/fac3/Fd_Q2P1_paper.png" alt="FAC3D Geometry" width="500px">
+    </div>
+    <div class="im-div">
+      <h3 class="mat-h3">Lift coefficient for the second benchmark</h3>
+      <img src="assets/fac3/Fl_Q2P1_paper.png" alt="FAC3D Geometry" width="500px">
+    </div>
+    <div class="im-div">
+      <h3 class="mat-h3">Zoom on the drag coefficient</h3>
+      <img src="assets/fac3/zoom_Fd_Q2P1_paper.png" alt="FAC3D Geometry" width="500px">
+    </div>
+    <div class="im-div">
+      <h3 class="mat-h3">Zoom on the lift coefficient</h3>
+      <img src="assets/fac3/zoom_Fl_Q2P1_paper.png" alt="FAC3D Geometry" width="500px">
+    </div>
+
+    <div class="text-wrapper">
 The old results for <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> and <app-mathjax [content]="'$c_{Lmin}$'"></app-mathjax> had been given within the intervals, [3.2000,3.3000]
 and [0.0020,0.0040] respectively, by Turek et al., and <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> has been determined as 3.2968
 by John. These old results are not sufficient and accurate enough to establish an inclusive
@@ -176,6 +260,11 @@ due to the comparison criteria are given here and here.
 The finest level results are presented in the table below; the second table compares the relative errors. It is obvious that the results are in agreement. An interesting finding is that the FeatFlow results at level 2 are as accurate as results of CFX or OpenFOAM at the finest level.
     </div>
     <div class="table-wrapper">
+    <div class="heading-wrapper">
+      <h4>
+      FeatFlow
+      </h4>
+    </div>
     <table mat-table [dataSource]="dataSourceDragTime" class="mat-elevation-z8">
 
       <!--- Note that these columns can be defined in any order.
@@ -223,31 +312,432 @@ The finest level results are presented in the table below; the second table comp
         <td mat-cell *matCellDef="let element"> {{element.time}} </td>
       </ng-container>
 
+      <!-- Header row first group -->
+      <ng-container matColumnDef="header-row-first-group">
+        <th mat-header-cell *matHeaderCellDef
+            [style.text-align]="'center'"
+            [attr.colspan]="7">
+          FeatFlow results
+        </th>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="['header-row-first-group']"></tr>
       <tr mat-header-row *matHeaderRowDef="displayedColumnsDragTime"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumnsDragTime;"></tr>
     </table>
     </div>
 
-    <div class="im-div">
-      <h3 class="mat-h3">Drag coefficient for the second benchmark</h3>
-      <img src="assets/fac3/Fd_Q2P1_paper.png" alt="FAC3D Geometry" width="500px">
+    <div class="table-wrapper">
+    <table mat-table [dataSource]="dataSourceErrorTableFF" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Case </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <!-- cells Column -->
+      <ng-container matColumnDef="errcdmax">
+        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> </th>
+        <td mat-cell *matCellDef="let element"> {{element.errcdmax}} </td>
+      </ng-container>
+
+      <!-- dragmax Column -->
+      <ng-container matColumnDef="errclmin">
+        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Lmin}$'"></app-mathjax> </th>
+        <td mat-cell *matCellDef="let element"> {{element.errclmin}} </td>
+      </ng-container>
+
+      <!-- liftmax Column -->
+      <ng-container matColumnDef="errl2cd">
+        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{D}$'"></app-mathjax> </th>
+        <td mat-cell *matCellDef="let element"> {{element.errl2cd}} </td>
+      </ng-container>
+
+      <!-- liftmin Column -->
+      <ng-container matColumnDef="errl2cl">
+        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{L}$'"></app-mathjax> </th>
+        <td mat-cell *matCellDef="let element"> {{element.errl2cl}} </td>
+      </ng-container>
+
+      <!-- tstep Column -->
+      <ng-container matColumnDef="errlinfcd">
+        <th mat-header-cell *matHeaderCellDef><app-mathjax [content]="'$c_{D}$'"></app-mathjax></th>
+        <td mat-cell *matCellDef="let element"> {{element.errlinfcd}} </td>
+      </ng-container>
+
+      <!-- time Column -->
+      <ng-container matColumnDef="errlinfcl">
+        <th mat-header-cell *matHeaderCellDef><app-mathjax [content]="'$c_{L}$'"></app-mathjax></th>
+        <td mat-cell *matCellDef="let element"> {{element.errlinfcl}} </td>
+      </ng-container>
+
+      <!-- Header row first group -->
+      <ng-container matColumnDef="header-row-first-group">
+        <th mat-header-cell *matHeaderCellDef
+            [style.text-align]="'center'"
+            [attr.colspan]="7">
+          Error calculations for FeatFlow results
+        </th>
+      </ng-container>
+
+      <ng-container matColumnDef="header-row-21-group">
+        <th mat-header-cell *matHeaderCellDef
+            [attr.colspan]="1">
+        </th>
+      </ng-container>
+      <ng-container matColumnDef="header-row-22-group">
+        <th mat-header-cell *matHeaderCellDef
+            [attr.colspan]="2">
+            %Err
+        </th>
+      </ng-container>
+      <ng-container matColumnDef="header-row-23-group">
+        <th mat-header-cell *matHeaderCellDef
+            [attr.colspan]="2">
+            %Err<app-mathjax [content]="'$L_2$'"></app-mathjax>
+        </th>
+      </ng-container>
+      <ng-container matColumnDef="header-row-24-group">
+        <th mat-header-cell *matHeaderCellDef
+            [attr.colspan]="2">
+            %Err<app-mathjax [content]="'$L_{\inf}$'"></app-mathjax>
+        </th>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="['header-row-first-group']"></tr>
+      <tr mat-header-row *matHeaderRowDef="['header-row-21-group',
+      'header-row-22-group',
+      'header-row-23-group',
+      'header-row-24-group',
+      ]"></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsErrorTableFF"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsErrorTableFF;"></tr>
+    </table>
     </div>
-    <div class="im-div">
-      <h3 class="mat-h3">Lift coefficient for the second benchmark</h3>
-      <img src="assets/fac3/Fl_Q2P1_paper.png" alt="FAC3D Geometry" width="500px">
+    <div class="table-wrapper">
+    <div class="heading-wrapper">
+      <h4>
+      OpenFOAM
+      </h4>
     </div>
-    <div class="im-div">
-      <h3 class="mat-h3">Zoom on the drag coefficient</h3>
-      <img src="assets/fac3/zoom_Fd_Q2P1_paper.png" alt="FAC3D Geometry" width="500px">
+    <table mat-table [dataSource]="dataSourceDragTime" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Case Column -->
+      <ng-container matColumnDef="case">
+        <th mat-header-cell *matHeaderCellDef> Case </th>
+        <td mat-cell *matCellDef="let element"> {{element.case}} </td>
+      </ng-container>
+
+      <!-- cells Column -->
+      <ng-container matColumnDef="cells">
+        <th mat-header-cell *matHeaderCellDef> # of cells </th>
+        <td mat-cell *matCellDef="let element"> {{element.cells}} </td>
+      </ng-container>
+
+      <!-- dragmax Column -->
+      <ng-container matColumnDef="dragmax">
+        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> </th>
+        <td mat-cell *matCellDef="let element"> {{element.dragmax}} </td>
+      </ng-container>
+
+      <!-- liftmax Column -->
+      <ng-container matColumnDef="liftmax">
+        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Lmax}$'"></app-mathjax> </th>
+        <td mat-cell *matCellDef="let element"> {{element.liftmax}} </td>
+      </ng-container>
+
+      <!-- liftmin Column -->
+      <ng-container matColumnDef="liftmin">
+        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Lmin}$'"></app-mathjax> </th>
+        <td mat-cell *matCellDef="let element"> {{element.liftmin}} </td>
+      </ng-container>
+
+      <!-- tstep Column -->
+      <ng-container matColumnDef="tstep">
+        <th mat-header-cell *matHeaderCellDef>Tstep (s)</th>
+        <td mat-cell *matCellDef="let element"> {{element.tstep}} </td>
+      </ng-container>
+
+      <!-- time Column -->
+      <ng-container matColumnDef="time">
+        <th mat-header-cell *matHeaderCellDef>Time (s)</th>
+        <td mat-cell *matCellDef="let element"> {{element.time}} </td>
+      </ng-container>
+
+      <!-- Header row first group -->
+      <ng-container matColumnDef="header-row-first-group">
+        <th mat-header-cell *matHeaderCellDef
+            [style.text-align]="'center'"
+            [attr.colspan]="7">
+          OpenFOAM results
+        </th>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="['header-row-first-group']"></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsDragTime"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsDragTime;"></tr>
+    </table>
     </div>
-    <div class="im-div">
-      <h3 class="mat-h3">Zoom on the lift coefficient</h3>
-      <img src="assets/fac3/zoom_Fl_Q2P1_paper.png" alt="FAC3D Geometry" width="500px">
+
+    <div class="table-wrapper">
+    <table mat-table [dataSource]="dataSourceErrorTableFF" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Case </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <!-- cells Column -->
+      <ng-container matColumnDef="errcdmax">
+        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> </th>
+        <td mat-cell *matCellDef="let element"> {{element.errcdmax}} </td>
+      </ng-container>
+
+      <!-- dragmax Column -->
+      <ng-container matColumnDef="errclmin">
+        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Lmin}$'"></app-mathjax> </th>
+        <td mat-cell *matCellDef="let element"> {{element.errclmin}} </td>
+      </ng-container>
+
+      <!-- liftmax Column -->
+      <ng-container matColumnDef="errl2cd">
+        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{D}$'"></app-mathjax> </th>
+        <td mat-cell *matCellDef="let element"> {{element.errl2cd}} </td>
+      </ng-container>
+
+      <!-- liftmin Column -->
+      <ng-container matColumnDef="errl2cl">
+        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{L}$'"></app-mathjax> </th>
+        <td mat-cell *matCellDef="let element"> {{element.errl2cl}} </td>
+      </ng-container>
+
+      <!-- tstep Column -->
+      <ng-container matColumnDef="errlinfcd">
+        <th mat-header-cell *matHeaderCellDef><app-mathjax [content]="'$c_{D}$'"></app-mathjax></th>
+        <td mat-cell *matCellDef="let element"> {{element.errlinfcd}} </td>
+      </ng-container>
+
+      <!-- time Column -->
+      <ng-container matColumnDef="errlinfcl">
+        <th mat-header-cell *matHeaderCellDef><app-mathjax [content]="'$c_{L}$'"></app-mathjax></th>
+        <td mat-cell *matCellDef="let element"> {{element.errlinfcl}} </td>
+      </ng-container>
+
+      <!-- Header row first group -->
+      <ng-container matColumnDef="header-row-first-group">
+        <th mat-header-cell *matHeaderCellDef
+            [style.text-align]="'center'"
+            [attr.colspan]="7">
+          Error calculations for OpenFOAM results
+        </th>
+      </ng-container>
+
+      <ng-container matColumnDef="header-row-21-group">
+        <th mat-header-cell *matHeaderCellDef
+            [attr.colspan]="1">
+        </th>
+      </ng-container>
+      <ng-container matColumnDef="header-row-22-group">
+        <th mat-header-cell *matHeaderCellDef
+            [attr.colspan]="2">
+            %Err
+        </th>
+      </ng-container>
+      <ng-container matColumnDef="header-row-23-group">
+        <th mat-header-cell *matHeaderCellDef
+            [attr.colspan]="2">
+            %Err<app-mathjax [content]="'$L_2$'"></app-mathjax>
+        </th>
+      </ng-container>
+      <ng-container matColumnDef="header-row-24-group">
+        <th mat-header-cell *matHeaderCellDef
+            [attr.colspan]="2">
+            %Err<app-mathjax [content]="'$L_{\inf}$'"></app-mathjax>
+        </th>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="['header-row-first-group']"></tr>
+      <tr mat-header-row *matHeaderRowDef="['header-row-21-group',
+      'header-row-22-group',
+      'header-row-23-group',
+      'header-row-24-group',
+      ]"></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsErrorTableFF"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsErrorTableFF;"></tr>
+    </table>
+    </div>
+    <div class="table-wrapper">
+    <div class="heading-wrapper">
+      <h4>
+      CFX
+      </h4>
+    </div>
+    <table mat-table [dataSource]="dataSourceDragTime" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Case Column -->
+      <ng-container matColumnDef="case">
+        <th mat-header-cell *matHeaderCellDef> Case </th>
+        <td mat-cell *matCellDef="let element"> {{element.case}} </td>
+      </ng-container>
+
+      <!-- cells Column -->
+      <ng-container matColumnDef="cells">
+        <th mat-header-cell *matHeaderCellDef> # of cells </th>
+        <td mat-cell *matCellDef="let element"> {{element.cells}} </td>
+      </ng-container>
+
+      <!-- dragmax Column -->
+      <ng-container matColumnDef="dragmax">
+        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> </th>
+        <td mat-cell *matCellDef="let element"> {{element.dragmax}} </td>
+      </ng-container>
+
+      <!-- liftmax Column -->
+      <ng-container matColumnDef="liftmax">
+        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Lmax}$'"></app-mathjax> </th>
+        <td mat-cell *matCellDef="let element"> {{element.liftmax}} </td>
+      </ng-container>
+
+      <!-- liftmin Column -->
+      <ng-container matColumnDef="liftmin">
+        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Lmin}$'"></app-mathjax> </th>
+        <td mat-cell *matCellDef="let element"> {{element.liftmin}} </td>
+      </ng-container>
+
+      <!-- tstep Column -->
+      <ng-container matColumnDef="tstep">
+        <th mat-header-cell *matHeaderCellDef>Tstep (s)</th>
+        <td mat-cell *matCellDef="let element"> {{element.tstep}} </td>
+      </ng-container>
+
+      <!-- time Column -->
+      <ng-container matColumnDef="time">
+        <th mat-header-cell *matHeaderCellDef>Time (s)</th>
+        <td mat-cell *matCellDef="let element"> {{element.time}} </td>
+      </ng-container>
+
+      <!-- Header row first group -->
+      <ng-container matColumnDef="header-row-first-group">
+        <th mat-header-cell *matHeaderCellDef
+            [style.text-align]="'center'"
+            [attr.colspan]="7">
+          CFX results
+        </th>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="['header-row-first-group']"></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsDragTime"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsDragTime;"></tr>
+    </table>
+    </div>
+
+    <div class="table-wrapper">
+    <table mat-table [dataSource]="dataSourceErrorTableFF" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Case </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <!-- cells Column -->
+      <ng-container matColumnDef="errcdmax">
+        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> </th>
+        <td mat-cell *matCellDef="let element"> {{element.errcdmax}} </td>
+      </ng-container>
+
+      <!-- dragmax Column -->
+      <ng-container matColumnDef="errclmin">
+        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Lmin}$'"></app-mathjax> </th>
+        <td mat-cell *matCellDef="let element"> {{element.errclmin}} </td>
+      </ng-container>
+
+      <!-- liftmax Column -->
+      <ng-container matColumnDef="errl2cd">
+        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{D}$'"></app-mathjax> </th>
+        <td mat-cell *matCellDef="let element"> {{element.errl2cd}} </td>
+      </ng-container>
+
+      <!-- liftmin Column -->
+      <ng-container matColumnDef="errl2cl">
+        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{L}$'"></app-mathjax> </th>
+        <td mat-cell *matCellDef="let element"> {{element.errl2cl}} </td>
+      </ng-container>
+
+      <!-- tstep Column -->
+      <ng-container matColumnDef="errlinfcd">
+        <th mat-header-cell *matHeaderCellDef><app-mathjax [content]="'$c_{D}$'"></app-mathjax></th>
+        <td mat-cell *matCellDef="let element"> {{element.errlinfcd}} </td>
+      </ng-container>
+
+      <!-- time Column -->
+      <ng-container matColumnDef="errlinfcl">
+        <th mat-header-cell *matHeaderCellDef><app-mathjax [content]="'$c_{L}$'"></app-mathjax></th>
+        <td mat-cell *matCellDef="let element"> {{element.errlinfcl}} </td>
+      </ng-container>
+
+      <!-- Header row first group -->
+      <ng-container matColumnDef="header-row-first-group">
+        <th mat-header-cell *matHeaderCellDef
+            [style.text-align]="'center'"
+            [attr.colspan]="7">
+          Error calculations for CFX results
+        </th>
+      </ng-container>
+
+      <ng-container matColumnDef="header-row-21-group">
+        <th mat-header-cell *matHeaderCellDef
+            [attr.colspan]="1">
+        </th>
+      </ng-container>
+      <ng-container matColumnDef="header-row-22-group">
+        <th mat-header-cell *matHeaderCellDef
+            [attr.colspan]="2">
+            %Err
+        </th>
+      </ng-container>
+      <ng-container matColumnDef="header-row-23-group">
+        <th mat-header-cell *matHeaderCellDef
+            [attr.colspan]="2">
+            %Err<app-mathjax [content]="'$L_2$'"></app-mathjax>
+        </th>
+      </ng-container>
+      <ng-container matColumnDef="header-row-24-group">
+        <th mat-header-cell *matHeaderCellDef
+            [attr.colspan]="2">
+            %Err<app-mathjax [content]="'$L_{\inf}$'"></app-mathjax>
+        </th>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="['header-row-first-group']"></tr>
+      <tr mat-header-row *matHeaderRowDef="['header-row-21-group',
+      'header-row-22-group',
+      'header-row-23-group',
+      'header-row-24-group',
+      ]"></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsErrorTableFF"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsErrorTableFF;"></tr>
+    </table>
     </div>
 
   </mat-tab>
-
-
 
   <mat-tab label="Reference Data">
     <div class="heading-wrapper">
