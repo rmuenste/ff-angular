@@ -1,8 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ELEMENT_DATA } from './lvl_dofs_comp';
 import { dragTimeData } from './drag_time_results';
+import { dragTimeDataOF } from './drag_time_results';
+import { dragTimeDataCFX } from './drag_time_results';
+import { dragTimeDataL4 } from './drag_time_results';
 import { COMPARISON_DRAG_TIME } from './result_comp_drag';
 import { FF_ERROR_RESULTS } from './ff_error_results'
+import { VS_ERROR_RESULTS } from './ff_error_results'
+import { OF_ERROR_RESULTS } from './of_error_results'
+import { CFX_ERROR_RESULTS } from './cfx_error_results'
 
 
 export interface ReferenceElement {
@@ -53,6 +59,14 @@ export class BenchmarkFacComponent implements OnInit {
   displayedColumnsErrorTableFF: string[] = ['name', "errcdmax", "errclmin", "errl2cd", "errl2cl", "errlinfcd", "errlinfcl"];
   dataSourceErrorTableFF = FF_ERROR_RESULTS;
 
+  dataSourceOF =  dragTimeDataOF;
+  dataSourceErrorTableOF = OF_ERROR_RESULTS;
+
+  dataSourceCFX =  dragTimeDataCFX;
+  dataSourceErrorTableCFX = CFX_ERROR_RESULTS;
+
+  dataSourceVSL4 =  dragTimeDataL4;
+  dataSourceErrorTableVS = VS_ERROR_RESULTS;
 
   view: [number, number] = [700, 300];
 
