@@ -228,32 +228,21 @@ due to the buyoancy forces begins to rise in the surrounding fluid giving rise t
 surface. The dimensionless timespan of the simulation covers the time interval from t = 0 up to t = 3.
 </div>
 </mat-tab>
-<mat-tab label="Verification">
-<div class="my-video-wrapper">
-  <ngx-charts-line-chart
-    [view]="view"
-    [legend]="legend"
-    [showXAxisLabel]="showXAxisLabel"
-    [showYAxisLabel]="showYAxisLabel"
-    [xAxis]="xAxis"
-    [yAxis]="yAxis"
-    [xAxisLabel]="xAxisLabel"
-    [yAxisLabel]="yAxisLabel"
-    [autoScale]="autoScale"
-    [timeline]="timeline"
-    [results]="lineData"
-    (select)="onSelect($event)"
-    (activate)="onActivate($event)"
-    (deactivate)="onDeactivate($event)"
-    >
-  </ngx-charts-line-chart>
-</div>
+<mat-tab label="Results">
 <div class="video-wrapper">
 <plotly-plot
   [data]="graph3.data"
   [layout]="graph3.layout"
   [useResizeHandler]="false"
 ></plotly-plot>
+<div class="example-section">
+  <span>
+  <mat-checkbox id="0" class="example-margin" [(ngModel)]="showTimeStepG1[0]" (change)="g3change($event)">dt=1.0E-3</mat-checkbox>
+  <mat-checkbox id="1" class="example-margin" [(ngModel)]="showTimeStepG1[1]" (change)="g3change($event)">dt=0.25E-3</mat-checkbox>
+  <mat-checkbox id="2" class="example-margin" [(ngModel)]="showTimeStepG1[2]" (change)="g3change($event)">dt=0.0625E-3</mat-checkbox>
+  <mat-checkbox id="3" class="example-margin" [(ngModel)]="showTimeStepG1[3]" (change)="g3change($event)">dt=0.0156E-3</mat-checkbox>
+  </span>
+</div>
 </div>
 </mat-tab>
 <mat-tab label="Reference Data"> Results </mat-tab>

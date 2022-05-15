@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 import { multi } from './data';
 import { bubble, dt_1 } from './data';
 
@@ -57,13 +58,18 @@ export class BenchmarkBubble3Component implements OnInit {
     ],
     layout: {title: 'Some Data to Highlight'}
   };
-  // Line chart
-  //           plot_bgcolor: '#303030',
-//$text-dark1: #ffffffb3;
+
+  chartSpherecityData = [...dt_1.data];
   graph3 = {
-    data: dt_1.data,
+    data: this.chartSpherecityData,
     layout: {title: {
-              text: 'Some Data to Highlight',
+              text: 'Sphericity Plot',
+              font: {
+                color: '#ffffffb3'
+              }
+            },
+            showlegend: true,
+            legend: {
               font: {
                 color: '#ffffffb3'
               }
@@ -124,7 +130,12 @@ export class BenchmarkBubble3Component implements OnInit {
   timeline: boolean = true;
   autoScale: boolean = true;
 
-  constructor() { }
+  showTimeStepG1: boolean[] = [true, true, true, true];
+
+
+  constructor() {
+
+  }
 
   ngOnInit(): void {
   }
@@ -139,6 +150,25 @@ export class BenchmarkBubble3Component implements OnInit {
 
   onDeactivate(data: any): void {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
+  }
+
+  g3change(ob: MatCheckboxChange): void {
+    let idx: number = parseInt(ob.source.id);
+    //this.showTimeStepG1[idx] = ob.checked;
+    console.log(`We got ${ob.checked} from source: ${ob.source.id}`);
+    // Next we manipulate the input date by filtering
+    this.filterSphericityData();
+  }
+
+  filterSphericityData(): void {
+    // Make it so that the color of a particular dataSet with index i
+    // stays the same.
+    this.chartSpherecityData.splice(0, this.chartSpherecityData.length);
+    for(let i = 0; i < this.showTimeStepG1.length; i++) {
+      if(this.showTimeStepG1[i]) {
+        this.chartSpherecityData.push(dt_1.data[i]);
+      }
+    }
   }
 
 }

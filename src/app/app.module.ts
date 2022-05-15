@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
@@ -53,6 +54,7 @@ PlotlyModule.plotlyjs = PlotlyJS;
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    MatCheckboxModule,
     MatIconModule,
     MatTableModule,
     MatTabsModule,
