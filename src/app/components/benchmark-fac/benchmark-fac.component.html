@@ -1,7 +1,7 @@
 <mat-tab-group>
-  <mat-tab label="Benchmark Intro" class="hidden-cursor">
+  <mat-tab label="Introduction" class="hidden-cursor">
     <div class="heading-wrapper">
-      <h4>
+      <h4 class="my-h4">
       Flow Around A Cylinder
       </h4>
     </div>
@@ -23,16 +23,18 @@
         <li>Does it pay to use higher order discretization in space or time?</li>
       </ul>
     </div>
+    <!--
     <div class="video-wrapper">
-    <h4>Video Rising Bubble 3D</h4>
+    <h4>Flow Around A Cylinder Video</h4>
       <video width="624" height="351" controls>
         <source src="assets/fac3d.mp4" type="video/mp4">
       </video>
     </div>
+    -->
   </mat-tab>
-  <mat-tab label="Benchmark Definition">
+  <mat-tab label="Definition">
     <div class="heading-wrapper">
-      <h4>
+      <h4 class="my-h4">
       Geometry and flow configurations
       </h4>
     </div>
@@ -133,7 +135,9 @@ and <app-mathjax [content]="'$U_m=2.25 m/s$'"></app-mathjax> for the first and t
                                             \\mathbf{U}(0, y, z) &= 16U_m yz \\sin(\\pi t / 8) (H - y)(H - z)/H^4,\\; V = W = 0
   \\end{aligned}$$'"></app-mathjax>
 </div>
+<div class="text-wrapper">
 The drag and lift force on the cylinder we evalute as follows:
+</div>
 <div class="equation-wrapper">
   <app-mathjax [content]="'$$\\begin{aligned} \\mathbf{F}_D = \\int \\left (  \\rho \\nu \\frac{\\partial v_t}{\\partial n}n_y - pn_x\\right) dS \\\\
                                               \\mathbf{F}_L =-\\int \\left ( \\rho \\nu \\frac{\\partial v_t}{\\partial n}n_x - pn_y\\right) dS
@@ -147,7 +151,7 @@ The drag and lift force on the cylinder we evalute as follows:
   </mat-tab>
   <mat-tab label="Results">
     <div class="heading-wrapper">
-      <h4>
+      <h4 class="my-h4">
      Verification and Results
       </h4>
     </div>
@@ -900,7 +904,7 @@ The finest level results are presented in the table below; the second table comp
 
   <mat-tab label="Reference Data">
     <div class="heading-wrapper">
-      <h4>
+      <h4 class="my-h4">
      Reference Data
       </h4>
     </div>

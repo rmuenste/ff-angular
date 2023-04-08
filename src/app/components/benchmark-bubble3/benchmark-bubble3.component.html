@@ -1,7 +1,7 @@
 <mat-tab-group>
-  <mat-tab label="Benchmark Intro">
+  <mat-tab label="Introduction">
     <div class="heading-wrapper">
-      <h4>
+      <h4 class="my-h4">
       Three-dimensional rising bubbles
       </h4>
     </div>
@@ -72,6 +72,7 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumnsMesh;"></tr>
       </table>
     </div>
+    <!--
     <div class="video-wrapper">
     <h4>Video Rising Bubble 3D</h4>
       <video width="624" height="351" controls>
@@ -79,10 +80,11 @@
         <source src="assets/risingbubble2.mp4" type="video/mp4">
       </video>
     </div>
+    -->
   </mat-tab>
-  <mat-tab label="Configuration">
+  <mat-tab label="Definition">
     <div class="heading-wrapper">
-      <h4>
+      <h4 class="my-h4">
       Geometry and flow configurations
       </h4>
     </div>
@@ -229,6 +231,9 @@ surface. The dimensionless timespan of the simulation covers the time interval f
 </div>
 </mat-tab>
 <mat-tab label="Results">
+    <div class="heading-wrapper">
+     <h4 class="my-h4"> Results </h4>
+    </div>
 <div class="video-wrapper">
 <plotly-plot
   [data]="graph3.data"
