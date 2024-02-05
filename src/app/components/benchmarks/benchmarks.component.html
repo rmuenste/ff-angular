@@ -6,15 +6,30 @@
     <mat-drawer mode="side" opened class="my-drawer">
       <mat-nav-list>
         <a routerLink="fac3"
-           routerLinkActive="benchmarks-selected"
+           routerLinkActive="myA" [routerLinkActiveOptions]="{exact: true}"
            mat-list-item
            >
           <span class="nav-item-style">3D Flow Around Cylinder</span>
         </a>
         <a routerLink="bubble3"
-           routerLinkActive="benchmarks-selected"
+           routerLinkActive="myA" [routerLinkActiveOptions]="{exact: true}"
            mat-list-item>
           <span class="nav-item-style">3D Rising Bubble</span>
+        </a>
+        <a [routerLink]="['benchmark',1]"
+           routerLinkActive="myA"
+           mat-list-item>
+          <span class="nav-item-style">Benchmark 1</span>
+        </a>
+        <a [routerLink]="['benchmark',2]"
+           routerLinkActive="myA"
+           mat-list-item>
+          <span class="nav-item-style">Benchmark 2</span>
+        </a>
+        <a [routerLink]="['benchmark',3]"
+           routerLinkActive="myA"
+           mat-list-item>
+          <span class="nav-item-style">Benchmark 3</span>
         </a>
       </mat-nav-list>
       </mat-drawer>

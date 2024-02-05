@@ -6,6 +6,7 @@ import { BenchmarkBubble3Component } from './components/benchmark-bubble3/benchm
 import { MainComponent } from './components/main/main.component';
 import { BenchmarkFacComponent } from './components/benchmark-fac/benchmark-fac.component';
 import { BenchmarksMainComponent } from './components/benchmarks-main/benchmarks-main/benchmarks-main.component';
+import { BenchmarkGeneralComponent } from './components/benchmark-general/benchmark-general/benchmark-general.component';
 
 const routes: Routes = [
   {path: '', component: MainComponent},
@@ -28,6 +29,10 @@ const routes: Routes = [
       {
         path: 'fac3',
         component: BenchmarkFacComponent
+      },
+      {
+        path: 'benchmark/:benchmarkId',
+        component: BenchmarkGeneralComponent
       }
     ]
   }

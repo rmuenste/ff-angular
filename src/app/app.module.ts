@@ -32,6 +32,7 @@ import * as PlotlyJS from 'plotly.js-dist-min';
 import { PlotlyModule } from 'angular-plotly.js';
 import { PlotlyExampleComponentComponent } from './components/plotly-example-component/plotly-example-component.component';
 import { BenchmarksMainComponent } from './components/benchmarks-main/benchmarks-main/benchmarks-main.component';
+import { BenchmarkGeneralComponent } from './components/benchmark-general/benchmark-general/benchmark-general.component';
 
 PlotlyModule.plotlyjs = PlotlyJS;
 
@@ -49,7 +50,8 @@ PlotlyModule.plotlyjs = PlotlyJS;
     BenchmarkBubble3Component,
     BenchmarkFacComponent,
     PlotlyExampleComponentComponent,
-    BenchmarksMainComponent
+    BenchmarksMainComponent,
+    BenchmarkGeneralComponent
   ],
   imports: [
     BrowserModule,

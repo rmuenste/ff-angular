@@ -49,21 +49,40 @@ h1 {
   color: #ffffffa6;
 }
 
+.myA {
+background-color: #8bc34a7c !important;
+}
+
+.myA:hover {
+background-color: #c5f7517c !important;
+}
+
 /*
 a.benchmarks-selected {
 color:rgb(154, 212, 159);
 background-color: #8bc34a7c;
 }
 
+.myA:focus {
+}
+.myA:active {
+background-color: #8bc34a7c !important;
+}
+
+.mat-focus-indicator {
+  background-color: #424242;
+}
+
+
 a.benchmarks-selected:hover {
  color:rgb(154, 212, 159);
  background-color: #b3e7787c;
 }
 
-
 mat-drawer mat-list-item a.benchmark-selected {
  background-color: #b3e7787c;
 }
+/*
 */
 @media screen and (max-width: 720px) {
 
