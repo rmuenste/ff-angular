@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { multi } from './data';
 import { bubble, dt_1 } from './data';
+import { DataService } from 'src/app/services/data.service';
 
 export interface MeshTable {
   lvl: number;
@@ -59,51 +60,8 @@ export class BenchmarkBubble3Component implements OnInit {
     layout: {title: 'Some Data to Highlight'}
   };
 
-  chartSpherecityData = [...dt_1.data];
-  graph3 = {
-    data: this.chartSpherecityData,
-    layout: {title: {
-              text: 'Sphericity Plot',
-              font: {
-                color: '#ffffffb3'
-              }
-            },
-            showlegend: true,
-            legend: {
-              font: {
-                color: '#ffffffb3'
-              }
-            },
-             plot_bgcolor: '#303030',
-             paper_bgcolor: '#303030',
-             xaxis: {
-              showgrid: true,
-              tickfont: {
-                color: '#ffffffb3'
-              },
-              gridcolor: '#505050',
-              title: {
-                text: 'Time[s]',
-                font: {
-                  color: '#ffffffb3'
-                }
-               }
-             },
-             yaxis: {
-              showgrid: true,
-              tickfont: {
-                color: '#ffffffb3'
-              },
-              gridcolor: '#505050',
-              title: {
-                text: 'Sphericity',
-                font: {
-                  color: '#ffffffb3'
-                }
-              }
-             }
-            }
-  };
+  chartSpherecityData : any[] = [];
+  graph3 : any = {};
   //=============================================================================
 
   displayedColumns: string[] = ['position', 'p1', 'p2', 'mu1', 'mu2', 'g', 'sigma', 're', 'eo', 'rel', 'relmu'];
@@ -133,11 +91,15 @@ export class BenchmarkBubble3Component implements OnInit {
   showTimeStepG1: boolean[] = [true, true, true, true];
 
 
-  constructor() {
+  constructor(private dataService: DataService) {
 
   }
 
   ngOnInit(): void {
+    const {data, layout} = this.dataService.getPlotData();
+    this.chartSpherecityData = data
+    this.graph3.data = this.chartSpherecityData;
+    this.graph3.layout = layout;
   }
 
   onSelect(data: any): void {

@@ -227,7 +227,7 @@ y: [
 9.567679E-01,
 9.565307E-01,
 9.562475E-01],
-type: 'scatter', name: 'dt=1.0E-3'},
+type: 'scatter', name: 'dt=1.0E-3', marker: {color: 'dodgerblue'}},
 {
   x: [
   1.000E-03,
@@ -293,7 +293,7 @@ y: [
 9.593938E-01,
 9.592752E-01,
 9.591094E-01],
-type: 'scatter', name: 'dt=0.25E-3'},
+type: 'scatter', name: 'dt=0.25E-3', marker: {color: 'orange'}},
 {
   x: [
   1.000E-03,
@@ -359,7 +359,7 @@ y: [
 9.600651E-01,
 9.599778E-01,
 9.598417E-01],
-type: 'scatter', name: 'dt=0.0625E-3'},
+type: 'scatter', name: 'dt=0.0625E-3', marker: {color: 'green'}},
 {
   x: [
   1.000E-03,
@@ -425,7 +425,7 @@ y: [
 9.608365E-01,
 9.607900E-01,
 9.606950E-01],
-type: 'scatter', name: 'dt=0.0156E-3'},
+type: 'scatter', name: 'dt=0.0156E-3', marker: {color: 'red'}},
 ]};
 
 
