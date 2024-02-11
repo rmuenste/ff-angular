@@ -10,7 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
@@ -33,9 +33,9 @@ import { PlotlyModule } from 'angular-plotly.js';
 import { PlotlyExampleComponentComponent } from './components/plotly-example-component/plotly-example-component.component';
 import { BenchmarksMainComponent } from './components/benchmarks-main/benchmarks-main/benchmarks-main.component';
 import { BenchmarkGeneralComponent } from './components/benchmark-general/benchmark-general/benchmark-general.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 PlotlyModule.plotlyjs = PlotlyJS;
-
 
 @NgModule({
   declarations: [
@@ -57,6 +57,7 @@ PlotlyModule.plotlyjs = PlotlyJS;
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FlexLayoutModule,
     MatButtonModule,
     MatCheckboxModule,
     MatIconModule,
