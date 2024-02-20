@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { dt_1 } from '../components/benchmark-bubble3/data'; 
+import { BenchmarkData, exampleBenchmarkData } from '../models/benchmark-data';
 
 const graph2 = {
   data: [
@@ -143,6 +144,13 @@ export class DataService {
              meshData: ELEMENT_DATA,
              displayColumns: displayedColumnsPhysical
            }
+  }
+
+  //=====================================================================================
+  // The function to get the benchmarkData for the generalBenchmark template
+  //=====================================================================================
+  getBenchmarkData(benchmarkId: number) : BenchmarkData {
+    return exampleBenchmarkData[benchmarkId]; 
   }
 
 }
