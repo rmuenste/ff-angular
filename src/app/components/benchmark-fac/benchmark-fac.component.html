@@ -32,6 +32,8 @@
     </div>
     -->
   </mat-tab>
+
+  
   <mat-tab label="Definition">
     <div class="heading-wrapper">
       <h4 class="my-h4">
@@ -49,7 +51,7 @@
       <app-mathjax [content]="'$ \\nabla \\cdot \\mathbf{u} = \\mathbf{0}$'"></app-mathjax>
     </div>
      <div class="text-wrapper">
-     The Reynolds number is defined as Re=UD/ν where U is the mean velocity of the imposed parabolic profile on the inflow boundary and D is the diameter of the cylinder. The benchmark
+     The Reynolds number is defined as <app-mathjax [content]="'$Re=\\frac{UD}{ν}$ '"> </app-mathjax>where <i>U </i> is the mean velocity of the imposed parabolic profile on the inflow boundary and <i>D </i> is the diameter of the cylinder. The benchmark
      geometry and the corresponding 2D mesh at the coarsest level are shown in the figure below. The 3D mesh is obtained by extruding the 2D mesh in the z direction with 4 layers of cells,
      however the first level mesh for the computations is obtained by two successive refinements via connecting opposite midpoints of the the coarsest mesh which yields a mesh of 6144 cells.
      Our preliminary studies showed that this mesh offers a good balance between accuracy and computational cost.
@@ -65,11 +67,11 @@
        <img src="assets/meshV3_side_new.png" alt="FAC3D Geometry" width="699px">
      </div>
      <div class="text-wrapper">
-     The software tools employ different numerical approaches to the discretization in space which leads to different numbers of degrees of freedom (DOF) for the same problem. In the case
-     of OpenFOAM and CFX, the numbers of DOF are comparable while FeatFlow has a greater number of DOF for the same mesh due to a high order finite element approximation. Therefore, while
-     comparing the results, reader should keep in mind that for the same computational mesh, FeatFlow has approximately as many DOF as the others have at one level finer grid. The number
-     of DOF is always proportional to number of cells (equivalent to number of vertices for hexahedral meshes with large number of cells) in all CFD packages. The numbers of DOF are
-     presented with respect to the number of cells of the corresponding mesh levels in the table below.
+     <p>The software tools employ different numerical approaches to the discretization in space which leads to different numbers of degrees of freedom (DOF) for the same problem. In the case
+      of OpenFOAM and CFX, the numbers of DOF are comparable while FeatFlow has a greater number of DOF for the same mesh due to a high order finite element approximation. Therefore, while
+      comparing the results, reader should keep in mind that for the same computational mesh, FeatFlow has approximately as many DOF as the others have at one level finer grid. The number
+      of DOF is always proportional to number of cells (equivalent to number of vertices for hexahedral meshes with large number of cells) in all CFD packages.</p> 
+     <p>The numbers of DOF are presented with respect to the number of cells of the corresponding mesh levels in the table below.</p>
      <ul>
        <li>ndof = 3 · nvt for velocity and ndof = nvt for pressure in case of CFX</li>
        <li>ndof = 3 · nel for velocity and ndof = nel for pressure in case of OpenFOAM</li>
@@ -144,8 +146,8 @@ The drag and lift force on the cylinder we evalute as follows:
   \\end{aligned}$$'"></app-mathjax>
 </div>
 <div class="text-wrapper">
-  where S is the surface of the cylinder, <app-mathjax [content]="'$\\mathbf{n}$'"></app-mathjax> the normal on S, <app-mathjax [content]="'$\\mathbf{v}_t$'"></app-mathjax> the tangential velocity
-  on S with tangent vector <app-mathjax [content]="'$t=(n_y, -n_x, 0)$'"></app-mathjax>.
+  where <app-mathjax [content]="'$S$'"></app-mathjax> is the surface of the cylinder, <app-mathjax [content]="'$\\mathbf{n}$'"></app-mathjax> the normal on <app-mathjax [content]="'$S$'"></app-mathjax>, <app-mathjax [content]="'$\\mathbf{v}_t$'"></app-mathjax> the tangential velocity
+  on <app-mathjax [content]="'$S$'"></app-mathjax> with tangent vector <app-mathjax [content]="'$t=(n_y, -n_x, 0)$'"></app-mathjax>.
 
 </div>
   </mat-tab>
@@ -156,7 +158,7 @@ The drag and lift force on the cylinder we evalute as follows:
       </h4>
     </div>
     <div class="text-wrapper">
-    In the following table we show the accuracy of the employed CFD softwares for the benchmark case Re=20.
+    <p>The benchmark problems studied with all the codes, and while the problems were being studied, the question was not: <em>"Is the software tool capable of solving the problem?"</em> but <em>"How accurate and efficient is the given software tool?"</em>. Therefore, to show the accuracy of the employed CFD softwares, the benchmark problem at <app-mathjax [content]="'$Re=20$'"></app-mathjax> is firstly studied. The results for this case obtained for 4 different mesh levels are given here.</p>
     </div>
     <div class="table-wrapper">
 
@@ -209,17 +211,45 @@ The drag and lift force on the cylinder we evalute as follows:
     </table>
     </div>
     <div class="text-wrapper">
-    In the second benchmark test, the flow is simulated for 8 seconds, a half period of the imposed inflow condition.
-    The simulations start with zero inflow and zero initial condition at t=0 s and finish at t=8 s
+    <p>The qualitative results were indistinguishable even for the coarsest level calculations for the <app-mathjax [content]="'$Re=20$'"></app-mathjax> test case.</p>
+
+    <p>The expected agreement of the results for the first benchmark test motivated us to go on with the second 
+      benchmark problem which is the challenging part of our benchmarking studies. The second benchmark problem 
+      has a fixed simulation time, <app-mathjax [content]="'$T=8s$'"></app-mathjax>, whereas the first benchmark problem is simulated towards the steady state solution. 
+      There is no precise unique definition of the stopping criteria for all the softwares for the first case. 
+      Therefore, while the software tools are compared with respect to their accuracy in both cases, 
+      their computational performance has been tested in the later case, as well. The coarse grid computations 
+      were performed sequentially and fine grid ones were done in parallel, based on domain decomposition method. 
+      Both sequential and parallel computations were performed on identical compute nodes: Dual-core AMD Opteron™ 
+      Processor 250 2.4 GHz with 8 GB total memory. To decrease the latency time due to memory bandwidth limitation 
+      each partition is submitted to one node. The nodes were interconnected via 1GHz ethernet connection, regarding the
+      number of nodes it is a sufficiently fast connection. However, it has to be mentioned that the performance of the 
+      software packages will increase for higher number of partitions by using infiniband connected nodes.</p>
+
+    <p>In the second benchmark test, the flow is simulated for 8 seconds, a half period of the imposed inflow condition.
+    The simulations start with zero inflow and zero initial condition at <app-mathjax [content]="'$t=0s$'"></app-mathjax> and finish at <app-mathjax [content]="'$t=8s$'"></app-mathjax>
     with zero inflow again. Due to the transient inflow condition, adaptive time stepping technique is a
     good candidate for this problem. However, in preliminary studies with this technique,
     numerical oscillations are observed in the results which are obtained by CFX and OpenFOAM.
     The oscillations were nor visible in qualitative results neither in the drag coefficient results.
-    However, when the results of a sensitive variable such as cL are plotted, the numerical
+    However, when the results of a sensitive variable such as <app-mathjax [content]="'c_L'"></app-mathjax> are plotted, the numerical
     oscillations appear. The results are obtained on a mesh with 393216 cells by OpenFOAM for
     two different values of maximum Courant numbers, maxCo, and with different tolerance values
-    of linear solvers. Tolerance values of the velocity solver, uTol, are set to 10-5 or 10-6
-    and tolerance values of the pressure solver, pTol, are set to 10-6 or 10-7.
+    of linear solvers. Tolerance values of the velocity solver, uTol, are set to <app-mathjax [content]="'$10^{-5}$'"></app-mathjax> or <app-mathjax [content]="'$10^{-6}$'"></app-mathjax>
+    and tolerance values of the pressure solver, pTol, are set to <app-mathjax [content]="'$10^{-6}$'"></app-mathjax> or <app-mathjax [content]="'$10^{-7}$'"></app-mathjax>.</p>
+
+    <p>Therefore, a fixed time step size is used in the simulations although it leads to excess of computational costs. 
+      The benchmark calculations are performed on several levels of refined meshes to obtain mesh independent results 
+      and to show convergence of the solvers with respect to the mesh size. The chosen time step sizes are maximum values 
+      for which the solution is independent of the chosen time step size. The comparison criteria are maximum drag 
+      coefficient and minimum lift coefficient. Since the lift coefficient is more sensitive than the drag coefficient, 
+      the lift coefficient results are more representative in accuracy. When all the results are considered, it is clear 
+      that FeatFlow has the best convergence behavior, namely showing quadratic convergence, with respect to the mesh size. 
+      This result was foreseen by the authors due to the employed quadratic finite element functions. And converged results 
+      with respect to mesh size are already obtained on the 3rd level mesh by FeatFlow. In the plot below, it is clearly shown that 
+      level 3 and level 4 results are identical and consequently the finest level results are considered as the reference through 
+      this study. Moreover, it is worth to mention that these results are the closest to one reported by <em>John</em>.</p>
+
     </div>
 
     <div class="im-div">
@@ -240,28 +270,36 @@ The drag and lift force on the cylinder we evalute as follows:
     </div>
 
     <div class="text-wrapper">
-The old results for <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> and <app-mathjax [content]="'$c_{Lmin}$'"></app-mathjax> had been given within the intervals, [3.2000,3.3000]
-and [0.0020,0.0040] respectively, by Turek et al., and <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> has been determined as 3.2968
-by John. These old results are not sufficient and accurate enough to establish an inclusive
-benchmark study. Besides, to evaluate the results of benchmark calculations with respect to
-only <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> and <app-mathjax [content]="'$c_{Lmin}$'"></app-mathjax> is not much elucidating on the accuracy of the results. Hence,
-additional to the comparison of <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> and <app-mathjax [content]="'$c_{Lmin}$'"></app-mathjax> values, we also compare the solution
-regarding <app-mathjax [content]="'$L_{2}$'"></app-mathjax> error and <app-mathjax [content]="'$L_{\\infty}$'"></app-mathjax> error which denotes the <app-mathjax [content]="'$L_{2}$'"></app-mathjax> norm of the error normalized by <app-mathjax [content]="'$L_{2}$'"></app-mathjax> norm of the reference
-solution and the <app-mathjax [content]="'$L_{\\infty}$'"></app-mathjax> norm of error, respectively, are obtained through the following
-calculation steps:
+    <p>The old results for <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> and <app-mathjax [content]="'$c_{Lmin}$'"></app-mathjax> had been given within the intervals, <em>[3.2000,3.3000]
+      and [0.0020,0.0040]</em> respectively, by <em>Turek et al.</em>, and <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> has been determined as 3.2968
+      by <em>John</em>. These old results are not sufficient and accurate enough to establish an inclusive
+      benchmark study. Besides, to evaluate the results of benchmark calculations with respect to
+      only <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> and <app-mathjax [content]="'$c_{Lmin}$'"></app-mathjax> is not much elucidating on the accuracy of the results. Hence,
+      additional to the comparison of <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> and <app-mathjax [content]="'$c_{Lmin}$'"></app-mathjax> values, we also compare the solution
+      regarding <app-mathjax [content]="'$L_{2}$'"></app-mathjax> error and <app-mathjax [content]="'$L_{\\infty}$'"></app-mathjax> error which denotes the <app-mathjax [content]="'$L_{2}$'"></app-mathjax> norm of the error normalized by <app-mathjax [content]="'$L_{2}$'"></app-mathjax> norm of the reference
+      solution and the <app-mathjax [content]="'$L_{\\infty}$'"></app-mathjax> norm of error, respectively, are obtained through the following
+      calculation steps:</p>
+
   <ul class="fac-ul">
     <li>
     An equidistant discrete time step is specified for which <app-mathjax [content]="'$L_{2}$'"></app-mathjax> error is independent of the step
-    size. The reference solution and the other solutions are interpolated (linear interpolation) to the specified discrete time step.
+    size.
+    </li> 
+    <li>
+      The reference solution and the other solutions are interpolated (linear interpolation) to the specified discrete time step.
     </li>
     <li>
     <app-mathjax [content]="'$L_{2}$'"></app-mathjax> norm and <app-mathjax [content]="'$L_{\\infty}$'"></app-mathjax> norm of the differences between reference solution and other solutions are calculated.
     </li>
   </ul>
-Results of the benchmark calculations for FeatFlow are plotted here. Values of the comparison criteria, <app-mathjax [content]="'$L_{2}$'"></app-mathjax> error, <app-mathjax [content]="'$L_{\\infty}$'"></app-mathjax> error and relative errors
-due to the comparison criteria are given here and here.
+<p>Results of the benchmark calculations for FeatFlow are plotted here. Values of the comparison criteria, <app-mathjax [content]="'$L_{2}$'"></app-mathjax> error, <app-mathjax [content]="'$L_{\\infty}$'"></app-mathjax> error and relative errors
+due to the comparison criteria are given here and here.</p>
 
-The finest level results are presented in the table below; the second table compares the relative errors. It is obvious that the results are in agreement. An interesting finding is that the FeatFlow results at level 2 are as accurate as results of CFX or OpenFOAM at the finest level.
+<p>The finest level results are presented in the table below; the second table compares the relative errors. It is obvious 
+  that the results are in agreement. An interesting finding is that the FeatFlow results at level 2 are as accurate as 
+  results of CFX or OpenFOAM at the finest level.
+</p>
+
     </div>
     <div class="table-wrapper">
     <div class="heading-wrapper">
@@ -958,17 +996,133 @@ The finest level results are presented in the table below; the second table comp
     <h4>
     GnuPlot
     </h4>
-    The file contains the benchmarks results and can be plotted with the following gnuplot commands:
-    <pre>
-set xrange[0:8];
-set yrange [-0.5:3.5];
-plot "BenchValues.txt" using ($1):($2) with lines lt 2 t "drag"
+    <p>The file contains the benchmarks results and can be plotted with the following gnuplot commands:</p>
+    <pre style="background-color: #3e3e3e; padding: 5px;">
+      <code>
+        set xrange[0:8];
+          set yrange [-0.5:3.5];
+          plot "BenchValues.txt" using ($1):($2) with lines lt 2 t "drag"
 
-set xrange[0:8];
-set yrange [-0.015:0.005];
-plot "BenchValues.txt" using ($1):($3) with lines lt 1 t "lift"
+          set xrange[0:8];
+          set yrange [-0.015:0.005];
+          plot "BenchValues.txt" using ($1):($3) with lines lt 1 t "lift"
+      </code>
     </pre>
     </div>
   </mat-tab>
+
+
+<mat-tab label="Conclusion and Biblography">
+  <div class="heading-wrapper">
+    <h4 class="my-h4">
+   Conclusion
+    </h4>
+  </div>
+  <div class="text-wrapper">
+    <p>
+      The results obtained by this benchmark computations definitively replace the existing reference results for the 
+      second test case. FeatFlow results at mesh level 3 could be already considered as mesh independent results and 
+      regarding the results obtained at mesh level 4, we can conclude that fully converged solution of the second benchmark 
+      test is achieved, which has been the primary goal of the study. Moreover, we got an insight to answers of our questions 
+      in the beginning of the study with the obtained results.
+    </p>
+    
+    <ol>
+      <li style="margin-bottom: 10px;">We have observed that multigrid techniques slightly increase the performance of the segregated solvers in the solution of viscous Burger's equation due to the chosen small time steps. However, in the case of coupled solvers or  the solution of the pressure-Poisson problem,  there is a drastic difference between the performance of conventional (single grid) iterative methods and multigrid techniques. Consequently, it seems to be impossible to obtain efficient solvers for laminar incompressible flow problems unless suitable multigrid techniques are employed.</li>
+      <li style="margin-bottom: 10px;">Fully coupled implicit solvers (CFX) offer the advantage of using larger time step sizes, however, to be able to reach the desired accuracy, they require more nonlinear iterations. Thus, the overall computational cost has not been changed significantly. In the light of our calculations, there is not much difference between these two approaches in the solution of unsteady incompressible laminar flows; however, this question requires further investigation.</li>
+      <li style="margin-bottom: 10px;">Using higher order discretization schemes in space leads to denser linear system of equations which can be solved more efficiently on state of the art computers. And since, FeatFlow is more accurate and efficient in the test cases, we can conclude that it pays to use higher order discretization in space and time.</li>
+    </ol>
+
+    <p>Regarding the comparison of the software tools, the most prominent conclusion can be drawn from the table listing the 
+      relative errors: FF calculation at level 2 on 4 nodes has a similar accuracy as other codes at level 4 on 24 nodes.
+       While FF requires ≈5 hours of computation for these calculations, CFX and OF require much more.
+    </p>
+
+    <p>As a conclusion, in the Re=20 case, we succeeded to obtain fully converged results with all three softwares, 
+      and although the second benchmark test was particularly challenging, a reliable reference solution has been obtained. 
+      Regarding the computational performance of the employed software packages, this benchmark should be considered as still 
+      open and a motivation for CFD software developers to join. All data files and the corresponding plots of the results 
+      obtained through this study can be downloaded from the website benchmark.
+    </p>
+    
+  </div>  
+
+  <div class="heading-wrapper">
+    <h4 class="my-h4">
+      Acknowledgements
+    </h4>
+  </div>
+
+  <div>
+  <div class="text-wrapper">
+   <p>
+    The authors like to thank the <em>German Research Foundation (DFG)</em> for partially supporting the work under grants 
+    <em>Sonderforschungsbereich SFB708 (TP B7) and SPP1423 (Tu102/32-1)</em>, and Sulzer Innotec, Sulzer Markets and Technology 
+    AG for supporting Evren Bayraktar with a doctoral scholarship.
+   </p>
+   <p>
+    The support by the <em>LiDOng</em> team at the ITMC at TU Dortmund is gratefully acknowledged.
+   </p>
+  </div>
+
+  </div>
+
+
+  <div class="heading-wrapper">
+    <h4 class="my-h4">
+      Biblography
+    </h4>
+  </div>
+
+  <style>
+    table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #373636;
+    margin-left: 10px; 
+    margin-right: 10px; 
+    margin-bottom: 10px; ;
+    }
+  
+    td {
+      border: 8px;
+      padding: 8px;
+      text-align: left;
+    }
+  </style>
+  <table>
+    <tbody>
+      <tr>
+        <td>[1]</td>
+        <td>M. Schäfer and S. Turek, <em>Benchmark computations of laminar flow around a cylinder</em>, Flow Simulation with High-Performance Computers II, DFG priority research program results 1993-1995, Notes Numer. Fluid Mech., Vieweg, Weisbaden, 1996</td>
+      </tr>
+      <tr>
+        <td>[2]</td>
+        <td>M. Braack and T. Richter, <em>Solutions of 3D Navier-Stokes benchmark problems with Adaptive Finite Elements,</em> Computers and Fluids, 2006</td>
+      </tr>
+      <tr>
+        <td>[3]</td>
+        <td>V. John, <em>Higher order finite element methods and multigrid solvers in a benchmark problem for 3D Navier-Stokes equations</em>, Int. J. Numer. Math. Fluids, 2002</td>
+      </tr>
+      <tr>
+        <td>[4]</td>
+        <td>V. John, <em>On the efficiency of linearization schemes and coupled multigrid methods in the simulation of a 3D flow around a cylinder</em>, Int. J. Numer. Math. Fluids, 2006</td>
+      </tr>
+      <tr>
+        <td>[5]</td>
+        <td>J.H. Ferziger and M. Peric, <em>Computational Methods for Fluid Dynamics</em>, 3rd ed., Springer, 2002</td>
+      </tr>
+      <tr>
+        <td>[6]</td>
+        <td>OpenFOAM User's guide (version 1.6), 2009</td>
+      </tr>
+      <tr>
+        <td>[7]</td>
+        <td>ANSYS CFX-Solver, Release 10.0:Theory</td>
+      </tr>
+    </tbody>
+  </table>
+
+</mat-tab>
 </mat-tab-group>
 
