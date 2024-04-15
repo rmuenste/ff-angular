@@ -101,6 +101,7 @@ margin-top: 20px;
 
 .text-wrapper {
   padding: 20px 10px 10px 10px;
+  text-align: justify;
 }
 
 .table-wrapper {
@@ -137,4 +138,14 @@ color: $text-dark2;
 
 .heading-wrapper {
   text-align: center;
+}
+
+a {
+  color: rgb(0, 0, 165);
+  text-decoration: none;
+}
+
+a:hover {
+  color: green; 
+  text-decoration: underline;
 }
