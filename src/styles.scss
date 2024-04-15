@@ -163,8 +163,11 @@ a:hover {
 
 .left-column {
   width: 60%;
+  margin-right: 20px;
+  border-right: 1px dashed #1e1e1e;
 }
 
 .right-column {
   width: 40%;
+  margin-left: 25px;
 }
