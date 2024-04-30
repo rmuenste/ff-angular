@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { multi } from './data';
-import { bubble, dt_1 } from './data';
+import { bubble, dt_1, massConservationL2 } from './data';
 import { DataService, MeshTable, PeriodicElement } from 'src/app/services/data.service';
 
 
@@ -18,6 +18,12 @@ export class BenchmarkBubble3Component implements OnInit {
   // Line chart
   chartSpherecityData : any[] = [];
   graph3 : any = {};
+  //=============================================================================
+
+  //=============================================================================
+  // Line chart
+  chartMassData : any[] = [];
+  graphMassConservation : any = {};
   //=============================================================================
 
 
@@ -63,10 +69,32 @@ export class BenchmarkBubble3Component implements OnInit {
   }
 
   ngOnInit(): void {
-    const {data, layout} = this.dataService.getPlotData();
-    this.chartSpherecityData = data
+
+    //=====================================================================================
+    // Assign the data of the sphericity plot
+    //=====================================================================================
+    const {data: plotData, layout: plotLayout} = this.dataService.getPlotData();
+    this.chartSpherecityData = plotData
     this.graph3.data = this.chartSpherecityData;
-    this.graph3.layout = layout;
+    this.graph3.layout = plotLayout;
+
+    //=====================================================================================
+    // Assign the data of the mass conservation plot
+    //=====================================================================================
+    const {data: massData, layout: massLayout} = this.dataService.getMassPlotData();
+    this.chartMassData = massData;
+    this.graphMassConservation.data = this.chartMassData;
+    this.graphMassConservation.layout = massLayout;
+
+    //=====================================================================================
+    // Assign the data of the bubble size plot
+    //=====================================================================================
+
+    //=====================================================================================
+    // Assign the data of the surface data plot
+    //=====================================================================================
+
+
     let meshTableData = this.dataService.getMeshTableData();
     this.dataSourceMesh = meshTableData.meshData;
     this.displayedColumnsMesh = meshTableData.displayColumns;
