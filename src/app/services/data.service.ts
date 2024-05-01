@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { dt_1 } from '../components/benchmark-bubble3/data'; 
+import { dt_1, massConservationL2 } from '../components/benchmark-bubble3/data';
 import { BenchmarkData, exampleBenchmarkData } from '../models/benchmark-data';
 
 const graph2 = {
@@ -38,7 +38,7 @@ const displayedColumnsMeshTable: string[] = ['lvl', 'mx', 'my', 'mz', 'nx', 'ny'
 
 
 //=====================================================================================
-// Here we have the data of the physical parameters 
+// Here we have the data of the physical parameters
 //=====================================================================================
 export interface PeriodicElement {
   p1: number;
@@ -125,6 +125,57 @@ export class DataService {
 
 
   //=====================================================================================
+  // Here we have the data of the mass conservation plot
+  //=====================================================================================
+  getMassPlotData() {
+  const chartMassConservationData = [...massConservationL2.data];
+  return {
+    data: chartMassConservationData,
+    layout: {title: {
+              text: 'Mass Conservation Plot',
+              font: {
+                color: '#ffffffb3'
+              }
+            },
+            showlegend: true,
+            legend: {
+              font: {
+                color: '#ffffffb3'
+              }
+            },
+             plot_bgcolor: '#303030',
+             paper_bgcolor: '#303030',
+             xaxis: {
+              showgrid: true,
+              tickfont: {
+                color: '#ffffffb3'
+              },
+              gridcolor: '#505050',
+              title: {
+                text: 'Time[s]',
+                font: {
+                  color: '#ffffffb3'
+                }
+               }
+             },
+             yaxis: {
+              showgrid: true,
+              tickfont: {
+                color: '#ffffffb3'
+              },
+              gridcolor: '#505050',
+              title: {
+                text: 'Mass Conservation',
+                font: {
+                  color: '#ffffffb3'
+                }
+              }
+             }
+            }
+  };
+  }
+
+  //=====================================================================================
   // Here we have the data of the 3d bubble benchmark mesh table
   //=====================================================================================
   getMeshTableData() {
@@ -134,7 +185,7 @@ export class DataService {
            }
   }
   //=====================================================================================
-  
+
 
   //=====================================================================================
   // Here we have the data of the 3d bubble benchmark mesh table
@@ -150,7 +201,7 @@ export class DataService {
   // The function to get the benchmarkData for the generalBenchmark template
   //=====================================================================================
   getBenchmarkData(benchmarkId: number) : BenchmarkData {
-    return exampleBenchmarkData[benchmarkId]; 
+    return exampleBenchmarkData[benchmarkId];
   }
 
 }

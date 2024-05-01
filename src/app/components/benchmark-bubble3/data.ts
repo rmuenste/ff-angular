@@ -433,7 +433,7 @@ type: 'scatter', name: 'dt=0.0156E-3', marker: {color: 'red'}},
 
 // Mass Conservation Data from L2 - L4
 
-var data2 = { 
+var Mdata2 = { 
   "cols": [ 
   {"label":"x","type":"number"}, 
   {"label":"dt = 1.0000E-03" ,"type":"number"}, 
@@ -475,7 +475,7 @@ var data2 = {
   {"c": [{"v": 3.001000E+00},{"v": 9.946586E-01},{"v": 9.994614E-01},{"v": 1.000691E+00},{"v": 1.001987E+00}]}, 
   ] 
 };
-   var data3 = { 
+   var Mdata3 = { 
   "cols": [ 
   {"label":"x","type":"number"}, 
   {"label":"dt = 1.0000E-03" ,"type":"number"}, 
@@ -518,7 +518,7 @@ var data2 = {
   ] 
 };
 
-   var data4 = { 
+   var Sdata4 = { 
   "cols": [ 
   {"label":"x","type":"number"}, 
   {"label":"dt = 1.0000E-03" ,"type":"number"}, 
@@ -567,7 +567,7 @@ var data2 = {
 
 // Plot Size Data from L2 - L4
 
-var data2 = { 
+var Pdata2 = { 
   "cols": [ 
   {"label":"x","type":"number"}, 
   {"label":"dt = 1.0000E-03" ,"type":"number"}, 
@@ -613,7 +613,7 @@ var data2 = {
   {"c": [{"v": 3.001000E+00},{"v": 5.793022E-01},{"v": 3.680009E-01},{"v": 5.787496E-01},{"v": 3.670384E-01},{"v": 5.786680E-01},{"v": 3.667951E-01},{"v": 5.784080E-01},{"v": 3.666410E-01}]}, 
   ] 
 };
-   var data3 = { 
+   var Pdata3 = { 
   "cols": [ 
   {"label":"x","type":"number"}, 
   {"label":"dt = 1.0000E-03" ,"type":"number"}, 
@@ -660,7 +660,7 @@ var data2 = {
   ]  
 };
 
-   var data4 = { 
+   var Pdata4 = { 
   "cols": [ 
   {"label":"x","type":"number"}, 
   {"label":"dt = 1.0000E-03" ,"type":"number"}, 
@@ -713,7 +713,7 @@ var data2 = {
 
 // Surface Data from L2 - L4
 
-var mydataL2 = { 
+var Surfdata2 = { 
   "cols": [ 
   {"label":"x","type":"number"}, 
   {"label":"t = 0" ,"type":"number"}, 
@@ -1064,7 +1064,7 @@ var mydataL2 = {
   {"c": [{"v": -7.235800E-02},{"v": null},{"v": null},{"v": null},{"v": 8.034400E-01}]}, 
   ] 
 };
-   var mydataL3 = { 
+   var Surfdata3 = { 
   "cols": [ 
   {"label":"x","type":"number"}, 
   {"label":"t = 0" ,"type":"number"}, 
@@ -1740,7 +1740,7 @@ var mydataL2 = {
   ]  
 };
 
-   var mydataL4 = { 
+   var Surfdata4 = { 
   "cols": [ 
   {"label":"x","type":"number"}, 
   {"label":"t = 0" ,"type":"number"}, 
