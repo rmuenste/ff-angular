@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatRadioChange } from '@angular/material/radio';
 
@@ -19,7 +19,7 @@ export class PlotComponentComponent implements OnInit {
   theGraph: any = {};
   numLevels: number = 0;
 
-  constructor() {
+  constructor(private cdr: ChangeDetectorRef) {
     this.selectedLevel = 0;
 
   }
@@ -45,6 +45,10 @@ export class PlotComponentComponent implements OnInit {
 
   changeLevel(event: MatRadioChange): void {
     this.graph3.data = this.theGraph.data[this.selectedLevel];
+    for(let i = 0; i < this.showTimeStepG1.length; i++) {
+        this.showTimeStepG1[i] = true;
+      }
+      this.cdr.detectChanges();
   }
 
 }
