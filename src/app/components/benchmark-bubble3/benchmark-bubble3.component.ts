@@ -26,6 +26,12 @@ export class BenchmarkBubble3Component implements OnInit {
   graphMassConservation : any = {};
   //=============================================================================
 
+  //=============================================================================
+  // Line chart
+  chartSizeData : any[] = [];
+  graphSize : any = {};
+  //=============================================================================
+
 
   //=============================================================================
   // Mesh Table
@@ -89,6 +95,10 @@ export class BenchmarkBubble3Component implements OnInit {
     //=====================================================================================
     // Assign the data of the bubble size plot
     //=====================================================================================
+    const {data: sizeData, layout: sizeLayout} = this.dataService.getSizePlotData();
+    this.chartSizeData = sizeData;
+    this.graphSize.data = this.chartSizeData;
+    this.graphSize.layout = sizeLayout;
 
     //=====================================================================================
     // Assign the data of the surface data plot
