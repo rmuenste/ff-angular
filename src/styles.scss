@@ -171,3 +171,24 @@ a:hover {
   width: 40%;
   margin-left: 25px;
 }
+
+.plot-wrapper {
+  width: 80%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  text-align: center;
+}
+
+.plot-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.plot-margin {
+  margin: 0 10px;
+}

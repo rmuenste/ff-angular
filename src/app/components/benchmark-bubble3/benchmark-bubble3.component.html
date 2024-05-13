@@ -237,6 +237,14 @@ surface. The dimensionless timespan of the simulation covers the time interval f
     <div class="heading-wrapper">
      <h4 class="my-h4"> Results </h4>
     </div>
+
+<!-- Results Tab
+ -->
+<app-plot-component
+  [graph]="graph3"
+></app-plot-component>
+
+<!-- Results Tab
 <div class="video-wrapper">
 <plotly-plot
   [data]="graph3.data"
@@ -263,22 +271,19 @@ surface. The dimensionless timespan of the simulation covers the time interval f
 </div>
 <div fxLayout="row wrap" fxLayoutAlign="space-around space-around" fxLayoutGap="16px">
   <div fxFlex.gt-sm="40%" fxFlex.lt-lg="100%">
-    <!-- Plot 1 -->
     <plotly-plot [data]="graphMassConservation.data" [layout]="graphMassConservation.layout"></plotly-plot>
   </div>
   <div fxFlex.gt-sm="40%" fxFlex.lt-lg="100%">
-    <!-- Plot 2 -->
     <plotly-plot [data]="graphSize.data" [layout]="graphSize.layout"></plotly-plot>
   </div>
   <div fxFlex.gt-sm="40%" fxFlex.lt-lg="100%">
-    <!-- Plot 3 -->
     <plotly-plot [data]="graph3.data" [layout]="graph3.layout"></plotly-plot>
   </div>
   <div fxFlex.gt-sm="40%" fxFlex.lt-lg="100%">
-    <!-- Plot 4 -->
     <plotly-plot [data]="graph3.data" [layout]="graph3.layout"></plotly-plot>
   </div>
 </div>
+ -->
 
 </mat-tab>
 <!-- Reference Data -->

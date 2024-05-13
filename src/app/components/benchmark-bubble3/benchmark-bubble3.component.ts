@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatRadioChange } from '@angular/material/radio';
 import { multi } from './data';
-import { bubble, dt_1, massConservationL2 } from './data';
+import { bubble, sphericityL1, massConservationL2 } from './data';
 import { DataService, MeshTable, PeriodicElement } from 'src/app/services/data.service';
 
 
@@ -83,6 +83,9 @@ export class BenchmarkBubble3Component implements OnInit {
     //=====================================================================================
     const {data: plotData, layout: plotLayout} = this.dataService.getPlotData();
     this.chartSpherecityData = plotData
+    //console.log(`Plot data length: ${JSON.stringify(this.chartSpherecityData)}`)
+
+    //this.graph3 = JSON.parse(JSON.stringify(this.graph));
     this.graph3.data = this.chartSpherecityData;
     this.graph3.layout = plotLayout;
 
@@ -147,10 +150,9 @@ export class BenchmarkBubble3Component implements OnInit {
     this.chartSpherecityData.splice(0, this.chartSpherecityData.length);
     for(let i = 0; i < this.showTimeStepG1.length; i++) {
       if(this.showTimeStepG1[i]) {
-        this.chartSpherecityData.push(dt_1.data[i]);
+        this.chartSpherecityData.push(sphericityL1.data[i]);
       }
     }
   }
-
 }
 

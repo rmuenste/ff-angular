@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { dt_1, massConservationL2, dataSizeL2 } from '../components/benchmark-bubble3/data';
+import { sphericityL1, massConservationL2, dataSizeL2, sphericityL2, sphericityL3 } from '../components/benchmark-bubble3/data';
 import { BenchmarkData, exampleBenchmarkData  } from '../models/benchmark-data';
 
 const graph2 = {
@@ -74,51 +74,59 @@ export class DataService {
   // Here we have the data of the sphericity plot
   //=====================================================================================
   getPlotData() {
-  const chartSpherecityData = [...dt_1.data];
+  //const chartSpherecityData = [...sphericityL1.data, sphericityL2.data, sphericityL3.data];
+
+  const chartSpherecityData = [sphericityL1.data, sphericityL2.data, sphericityL3.data];
+
+//  console.log(`We got ${chartSpherecityData.length} data sets`);
+//  for(let i = 0; i < chartSpherecityData.length; i++) {
+//    console.log(`Data set ${i}: ${JSON.stringify(chartSpherecityData[i])}`);
+//  }
   return {
     data: chartSpherecityData,
-    layout: {title: {
-              text: 'Sphericity Plot',
-              font: {
-                color: '#ffffffb3'
-              }
-            },
-            showlegend: true,
-            legend: {
-              font: {
-                color: '#ffffffb3'
-              }
-            },
-             plot_bgcolor: '#303030',
-             paper_bgcolor: '#303030',
-             xaxis: {
-              showgrid: true,
-              tickfont: {
-                color: '#ffffffb3'
-              },
-              gridcolor: '#505050',
-              title: {
-                text: 'Time[s]',
-                font: {
-                  color: '#ffffffb3'
-                }
-               }
-             },
-             yaxis: {
-              showgrid: true,
-              tickfont: {
-                color: '#ffffffb3'
-              },
-              gridcolor: '#505050',
-              title: {
-                text: 'Sphericity',
-                font: {
-                  color: '#ffffffb3'
-                }
-              }
-             }
+      layout: {
+        title: {
+          text: 'Sphericity Plot',
+          font: {
+            color: '#ffffffb3'
+          }
+        },
+        showlegend: true,
+        legend: {
+          font: {
+            color: '#ffffffb3'
+          }
+        },
+        plot_bgcolor: '#303030',
+        paper_bgcolor: '#303030',
+        xaxis: {
+          showgrid: true,
+          tickfont: {
+            color: '#ffffffb3'
+          },
+          gridcolor: '#505050',
+          title: {
+            text: 'Time[s]',
+            font: {
+              color: '#ffffffb3'
             }
-  };
+          }
+        },
+        yaxis: {
+          showgrid: true,
+          tickfont: {
+            color: '#ffffffb3'
+          },
+          gridcolor: '#505050',
+          title: {
+            text: 'Sphericity',
+            font: {
+              color: '#ffffffb3'
+            }
+          }
+        }
+      }
+    };
 
   }
   //=====================================================================================
