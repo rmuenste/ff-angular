@@ -251,6 +251,15 @@ surface. The dimensionless timespan of the simulation covers the time interval f
   <mat-checkbox id="3" class="example-margin" [(ngModel)]="showTimeStepG1[3]" (change)="g3change($event)">dt=0.0156E-3</mat-checkbox>
   </span>
 </div>
+<div class="example-section">
+  <span>
+    <mat-radio-group [(ngModel)]="selectedLevel" (change)="changeLevel($event)">
+      <mat-radio-button class="example-margin" [value]="'Level 2'">Level 2</mat-radio-button>
+      <mat-radio-button class="example-margin" [value]="'Level 3'">Level 3</mat-radio-button>
+      <mat-radio-button class="example-margin" [value]="'Level 4'">Level 4</mat-radio-button>
+    </mat-radio-group>
+  </span>  
+  </div>
 </div>
 <div fxLayout="row wrap" fxLayoutAlign="space-around space-around" fxLayoutGap="16px">
   <div fxFlex.gt-sm="40%" fxFlex.lt-lg="100%">

@@ -1,0 +1,24 @@
+<div class="video-wrapper">
+<plotly-plot
+  [data]="graph.data"
+  [layout]="graph.layout"
+  [useResizeHandler]="false"
+></plotly-plot>
+<div class="example-section">
+  <span>
+  <mat-checkbox id="0" class="example-margin" [(ngModel)]="showTimeStepG1[0]" (change)="g3change($event)">dt=1.0E-3</mat-checkbox>
+  <mat-checkbox id="1" class="example-margin" [(ngModel)]="showTimeStepG1[1]" (change)="g3change($event)">dt=0.25E-3</mat-checkbox>
+  <mat-checkbox id="2" class="example-margin" [(ngModel)]="showTimeStepG1[2]" (change)="g3change($event)">dt=0.0625E-3</mat-checkbox>
+  <mat-checkbox id="3" class="example-margin" [(ngModel)]="showTimeStepG1[3]" (change)="g3change($event)">dt=0.0156E-3</mat-checkbox>
+  </span>
+</div>
+<div class="example-section">
+  <span>
+    <mat-radio-group [(ngModel)]="selectedLevel" (change)="changeLevel($event)">
+      <mat-radio-button class="example-margin" [value]="'Level 2'">Level 2</mat-radio-button>
+      <mat-radio-button class="example-margin" [value]="'Level 3'">Level 3</mat-radio-button>
+      <mat-radio-button class="example-margin" [value]="'Level 4'">Level 4</mat-radio-button>
+    </mat-radio-group>
+  </span>  
+  </div>
+</div>

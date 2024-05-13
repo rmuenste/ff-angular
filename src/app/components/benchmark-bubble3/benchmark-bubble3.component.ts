@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
+import { MatRadioChange } from '@angular/material/radio';
 import { multi } from './data';
 import { bubble, dt_1, massConservationL2 } from './data';
 import { DataService, MeshTable, PeriodicElement } from 'src/app/services/data.service';
@@ -68,6 +69,7 @@ export class BenchmarkBubble3Component implements OnInit {
   autoScale: boolean = true;
 
   showTimeStepG1: boolean[] = [true, true, true, true];
+  selectedLevel: string = 'Level 2';
 
 
   constructor(private dataService: DataService) {
@@ -133,6 +135,11 @@ export class BenchmarkBubble3Component implements OnInit {
     // Next we manipulate the input date by filtering
     this.filterSphericityData();
   }
+
+  changeLevel(event: MatRadioChange): void {
+    console.log("We got ", event.value);
+  }
+
 
   filterSphericityData(): void {
     // Make it so that the color of a particular dataSet with index i

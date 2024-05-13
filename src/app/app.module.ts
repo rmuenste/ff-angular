@@ -11,6 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
@@ -34,6 +35,7 @@ import { PlotlyExampleComponentComponent } from './components/plotly-example-com
 import { BenchmarksMainComponent } from './components/benchmarks-main/benchmarks-main/benchmarks-main.component';
 import { BenchmarkGeneralComponent } from './components/benchmark-general/benchmark-general/benchmark-general.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { PlotComponentComponent } from './components/plot-component/plot-component.component';
 
 PlotlyModule.plotlyjs = PlotlyJS;
 
@@ -51,7 +53,8 @@ PlotlyModule.plotlyjs = PlotlyJS;
     BenchmarkFacComponent,
     PlotlyExampleComponentComponent,
     BenchmarksMainComponent,
-    BenchmarkGeneralComponent
+    BenchmarkGeneralComponent,
+    PlotComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +62,7 @@ PlotlyModule.plotlyjs = PlotlyJS;
     BrowserAnimationsModule,
     FlexLayoutModule,
     MatButtonModule,
+    MatRadioModule,
     MatCheckboxModule,
     MatIconModule,
     MatTableModule,
