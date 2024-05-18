@@ -2772,5 +2772,17 @@ mydataL4 = {
     ]
 }
 
-converted_data = convert_data_format(mydataL4)
+
+#converted_data = convert_data_format(dataSizeL2)
+#converted_data = convert_data_format(dataSizeL3)
+#converted_data = convert_data_format(dataSizeL4)
+
+#converted_data = convert_data_format(surfaceDataL2)
+#converted_data = convert_data_format(surfaceDataL3)
+#converted_data = convert_data_format(surfaceDataL4)
+
+#converted_data = convert_data_format(massConservationL2)
+#converted_data = convert_data_format(massConservationL3)
+converted_data = convert_data_format(massConservationL4)
+
 print(converted_data)
