@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-import { sphericityL1, massConservationL2, dataSizeL2, sphericityL2, sphericityL3 } from '../components/benchmark-bubble3/data';
+import { sphericityL1, massConservationL2, massConservationL3, massConservationL4, sphericityL2, sphericityL3 } from '../components/benchmark-bubble3/data';
+import { dataSizeL2, dataSizeL3, dataSizeL4 } from '../components/benchmark-bubble3/data';
+import { surfaceDataL2, surfaceDataL3, surfaceDataL4 } from '../components/benchmark-bubble3/data';
+
 import { BenchmarkData, exampleBenchmarkData  } from '../models/benchmark-data';
 
 const graph2 = {
@@ -136,7 +139,8 @@ export class DataService {
   // Here we have the data of the mass conservation plot
   //=====================================================================================
   getMassPlotData() {
-  const chartMassConservationData = [...massConservationL2.data];
+
+  const chartMassConservationData = [massConservationL2.data, massConservationL3.data, massConservationL4.data];
   return {
     data: chartMassConservationData,
     layout: {title: {
@@ -187,7 +191,7 @@ export class DataService {
   // Here we have the data of the mass conservation plot
   //=====================================================================================
   getSizePlotData() {
-  const chartSizeData = [...dataSizeL2.data];
+  const chartSizeData = [dataSizeL2.data, dataSizeL3.data, dataSizeL4.data];
   return {
     data: chartSizeData,
     layout: {title: {
@@ -225,6 +229,57 @@ export class DataService {
               gridcolor: '#505050',
               title: {
                 text: 'Bubble Size',
+                font: {
+                  color: '#ffffffb3'
+                }
+              }
+             }
+            }
+  };
+  }
+
+  //=====================================================================================
+  // Here we have the data of the surface plot
+  //=====================================================================================
+  getSurfaceData() {
+  const chartSurface = [surfaceDataL2.data, surfaceDataL3.data, surfaceDataL4.data];
+  return {
+    data: chartSurface,
+    layout: {title: {
+              text: 'Bubble Surface Plot',
+              font: {
+                color: '#ffffffb3'
+              }
+            },
+            showlegend: true,
+            legend: {
+              font: {
+                color: '#ffffffb3'
+              }
+            },
+             plot_bgcolor: '#303030',
+             paper_bgcolor: '#303030',
+             xaxis: {
+              showgrid: true,
+              tickfont: {
+                color: '#ffffffb3'
+              },
+              gridcolor: '#505050',
+              title: {
+                text: 'Time[s]',
+                font: {
+                  color: '#ffffffb3'
+                }
+               }
+             },
+             yaxis: {
+              showgrid: true,
+              tickfont: {
+                color: '#ffffffb3'
+              },
+              gridcolor: '#505050',
+              title: {
+                text: 'Bubble Surface',
                 font: {
                   color: '#ffffffb3'
                 }

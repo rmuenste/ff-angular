@@ -33,6 +33,12 @@ export class BenchmarkBubble3Component implements OnInit {
   graphSize : any = {};
   //=============================================================================
 
+  //=============================================================================
+  // Line chart
+  chartSurfaceData : any[] = [];
+  graphSurface : any = {};
+  //=============================================================================
+
 
   //=============================================================================
   // Mesh Table
@@ -108,7 +114,12 @@ export class BenchmarkBubble3Component implements OnInit {
     //=====================================================================================
     // Assign the data of the surface data plot
     //=====================================================================================
+    const {data: surfaceData, layout: surfaceLayout} = this.dataService.getSurfaceData();
+    this.chartSurfaceData = surfaceData;
+    this.graphSurface.data = this.chartSurfaceData;
+    this.graphSurface.layout = surfaceLayout;
 
+    //=====================================================================================
 
     let meshTableData = this.dataService.getMeshTableData();
     this.dataSourceMesh = meshTableData.meshData;
