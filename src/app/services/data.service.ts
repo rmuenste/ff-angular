@@ -237,7 +237,6 @@ export class DataService {
             }
   };
   }
-
   //=====================================================================================
   // Here we have the data of the surface plot
   //=====================================================================================
@@ -260,6 +259,7 @@ export class DataService {
              plot_bgcolor: '#303030',
              paper_bgcolor: '#303030',
              xaxis: {
+              range: [-1.5, 1.5], // Define custom x-axis limits
               showgrid: true,
               tickfont: {
                 color: '#ffffffb3'
@@ -273,6 +273,7 @@ export class DataService {
                }
              },
              yaxis: {
+              range: [-0.5, 1.3], // Define custom y-axis limits
               showgrid: true,
               tickfont: {
                 color: '#ffffffb3'
@@ -284,7 +285,7 @@ export class DataService {
                   color: '#ffffffb3'
                 }
               }
-             }
+             },
             }
   };
   }

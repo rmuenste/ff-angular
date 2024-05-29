@@ -33,12 +33,25 @@ export class PlotComponentComponent implements OnInit {
 
   g3change(event: MatCheckboxChange): void {
     // Clear the graph3 array
-    this.graph3.data.splice(0, this.graph3.data.length);
-    this.theGraph = JSON.parse(JSON.stringify(this.graph));
+    if (this.graph3.layout.title.text !== "Bubble Size Plot") {
+      this.graph3.data.splice(0, this.graph3.data.length);
+      this.theGraph = JSON.parse(JSON.stringify(this.graph));
 
-    for(let i = 0; i < this.showTimeStepG1.length; i++) {
-      if(this.showTimeStepG1[i]) {
-        this.graph3.data.push(this.theGraph.data[this.selectedLevel][i]);
+      for(let i = 0; i < this.showTimeStepG1.length; i++) {
+        if(this.showTimeStepG1[i]) {
+          this.graph3.data.push(this.theGraph.data[this.selectedLevel][i]);
+        }
+      }
+    }
+    else {
+      this.graph3.data.splice(0, this.graph3.data.length);
+      this.theGraph = JSON.parse(JSON.stringify(this.graph));
+
+      for(let i = 0; i < this.showTimeStepG1.length; i++) {
+        if(this.showTimeStepG1[i]) {
+          this.graph3.data.push(this.theGraph.data[this.selectedLevel][2*i]);
+          this.graph3.data.push(this.theGraph.data[this.selectedLevel][2*i+1]);
+        }
       }
     }
   }
@@ -47,8 +60,8 @@ export class PlotComponentComponent implements OnInit {
     this.graph3.data = this.theGraph.data[this.selectedLevel];
     for(let i = 0; i < this.showTimeStepG1.length; i++) {
         this.showTimeStepG1[i] = true;
-      }
-      this.cdr.detectChanges();
+    }
+    this.cdr.detectChanges();
   }
 
 }
