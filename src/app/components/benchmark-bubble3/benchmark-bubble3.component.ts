@@ -5,16 +5,26 @@ import { multi } from './data';
 import { bubble, sphericityL1, massConservationL2 } from './data';
 import { DataService, MeshTable, PeriodicElement } from 'src/app/services/data.service';
 
-
+export interface FileDownload {
+  file: string;
+  action: string;
+  fileURL: string;
+}
+const fileData: FileDownload[] = [
+  {file: "sphericity.json", action: "Download", fileURL : "assets/files/bubble3/sphericity.json"},
+  {file: "mass_conservation.json", action: "Download", fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: "size.json", action: "Download", fileURL : "assets/files/bubble3/size.json"},
+  {file: "surface.json", action: "Download", fileURL : "assets/files/bubble3/surface.json"}
+];
 
 @Component({
   selector: 'app-benchmark-bubble3',
   templateUrl: './benchmark-bubble3.component.html',
   styleUrls: ['./benchmark-bubble3.component.scss']
 })
-
 export class BenchmarkBubble3Component implements OnInit {
-
+  displayedColumnsFiles: string[] = ['file', 'action'];
+  dataSourceFiles = fileData;
   //=============================================================================
   // Line chart
   chartSpherecityData : any[] = [];
