@@ -326,6 +326,124 @@ surface. The dimensionless timespan of the simulation covers the time interval f
 </mat-tab>
 <!-- Reference Data -->
 <mat-tab label="Reference Data"> 
+  <div class="text-wrapper">
+    <h3>Reference Data Format Description for Plotly Visualization</h3>
+    <h3>Overview</h3>
+    <p>
+        The data is structured as a JSON array where each element of the array represents a different spatial resolution of the same dataset. Each element contains four curves, representing the same dataset at different time resolutions. This hierarchical structure allows for detailed analysis of how both spatial and temporal resolutions impact the data.
+    </p>
+    <h3>Structure</h3>
+    <ol>
+        <li>
+            <strong>Top-Level Array</strong>: This contains three elements, each representing a different spatial resolution of the dataset.
+            <ul>
+                <li>The <strong>first element</strong> is the coarsest spatial resolution.</li>
+                <li>The <strong>third element</strong> is the highest spatial resolution.</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Element Structure</strong>: Each element in the top-level array is an object that contains four curves. These curves are differentiated by the time resolution of their x-components.
+<pre ngNonBindable>
+  <code>&#123;
+  "data": [
+    &#123;
+      "x": [ ... ], // x-values representing time
+      "y": [ ... ], // y-values representing the data
+      "type": "scatter", // Plot type for Plotly
+      "name": "dt=time resolution", // Curve name indicating time resolution
+      "marker": &#123;
+        "color": "color" // Color for the curve
+      &#125;
+    &#125;,
+    // Three more curves with different time resolutions
+  ]
+&#125;
+</code>
+</pre>
+        </li>
+    </ol>
+    <h3>Example</h3>
+<pre ngNonBindable>
+      <code>[
+  &#123;
+    "data": [
+      &#123;
+        "x": [0.001, 0.101, 0.201, ...],
+        "y": [1.000003, 0.9999997, 0.9999737, ...],
+        "type": "scatter",
+        "name": "dt=1.0E-3",
+        "marker": &#123;"color": "dodgerblue"&#125;
+      &#125;,
+      &#123;
+        "x": [0.001, 0.101, 0.201, ...],
+        "y": [1.000003, 1.000003, 0.9999941, ...],
+        "type": "scatter",
+        "name": "dt=0.25E-3",
+        "marker": &#123;"color": "orange"&#125;
+      &#125;,
+      &#123;
+        "x": [0.001, 0.101, 0.201, ...],
+        "y": [1.000003, 1.000003, 0.9999992, ...],
+        "type": "scatter",
+        "name": "dt=0.0625E-3",
+        "marker": &#123;"color": "green"&#125;
+      &#125;,
+      &#123;
+        "x": [0.001, 0.101, 0.201, ...],
+        "y": [1.000003, 1.000004, 1.000001, ...],
+        "type": "scatter",
+        "name": "dt=0.0156E-3",
+        "marker": &#123;"color": "red"&#125;
+      &#125;
+    ]
+  &#125;,
+  // Two more elements with higher spatial resolutions
+]</code>
+</pre>
+    <h3>Key Details</h3>
+    <ul>
+        <li>
+            <strong>Spatial Resolution</strong>: The three elements of the top-level array represent increasing spatial resolutions.
+            <ul>
+                <li>The first element has the coarsest spatial resolution.</li>
+                <li>The third element has the finest spatial resolution.</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Time Resolution</strong>: Each element contains four curves, each representing a different time resolution (<code>dt</code>). The time resolutions are indicated in the <code>name</code> field of each curve.
+            <ul>
+                <li>For example, <code>name: "dt=1.0E-3"</code> indicates a time resolution of 1.0E-3.</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Colors</strong>: Each curve has a distinct color to differentiate between the different time resolutions within the same spatial resolution.
+        </li>
+        <li>
+            <strong>Plotly Compatibility</strong>: The structure is compatible with the Plotly library for visualization. The <code>type: "scatter"</code> field ensures that the data is plotted as a scatter plot.
+        </li>
+    </ul>
+    <h3>Usage</h3>
+    <p>
+        To visualize the data using Plotly, you can iterate over the top-level array to create separate plots for each spatial resolution. Within each plot, you can include the four curves representing different time resolutions.
+    </p>
+<pre ngNonBindable>
+<code>
+  // Assuming `data` is the JSON array
+  const plotData = data[0].data; // Use the first element for the coarsest spatial resolution
+
+  Plotly.newPlot('plotDiv', plotData, &#123;
+    title: 'Data Plot',
+    xaxis: &#123; title: 'Time' &#125;,
+    yaxis: &#123; title: 'Value' &#125;
+  &#125;);
+</code>
+</pre>
+    <p>
+        This structure allows for detailed and flexible analysis of how both spatial and temporal resolutions impact the dataset, providing a comprehensive view for analysis and visualization. Below the different data sets can be downloaded:
+    </p>
+
+
+  </div>
   <div class="table-wrapper">
     <table mat-table [dataSource]="dataSourceFiles" class="mat-elevation-z8">
   
