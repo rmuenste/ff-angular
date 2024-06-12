@@ -5,6 +5,31 @@
       Geometry and flow configurations
       </h4>
     </div>
+    <div class="text-wrapper">
+      In the absence of analytical solutions, which are very hard to come by for the considered two-phase flow problem class, validation of the mathematical modeling is best accomplished 
+      with numerical benchmarking. Pure numerical benchmarks on the other hand are of limited use if they cannot be employed to make quantitative comparisons, mere visual inspection is rarely, 
+      if ever, enough to draw hard conclusions. To illustrate this, consider the bubble shapes shown in the figures below:
+    </div>
+    <div class="text-wrapper">
+      <p style="text-align: center; font-weight: bold;">
+        Numerical simulations of a two-dimensional rising bubble for six different codes with identical problem formulations
+      </p>
+    </div>
+    <div class="im-div">
+      <img src="assets/6codes.png" alt="bla">
+    </div>
+    <div class="text-wrapper">
+      <p>
+        These shapes were calculated by six different codes with identical problem formulations and should thus ideally give six identical solutions. Unfortunately this is not the case. 
+        The shapes are quite similar but it is not possible to tell which solutions, if any, are really correct. In order to be able to do this one must leave the "picture norm" behind 
+        and instead use some more rigid metrics with which convergence can be measured directly.
+      </p>
+      <p>
+        With this in mind two benchmark configurations have been proposed and rigorous benchmark quantities have been defined to measure direct topological parameters, such as interface deformation, 
+        and also indirect ones, such as velocity. The task of the proposed benchmarks is to track the evolution of a single two-dimensional bubble rising in a liquid column. 
+        This configuration is simple enough to compute accurately yet allows for very complex topology change, giving the interface capturing techniques of today an adequate challenge.
+      </p>
+    </div>
   </mat-tab>
   <mat-tab label="Definition">
     <div class="heading-wrapper">
@@ -16,7 +41,7 @@
      The initial configuration, see the figure below, is identical for both test cases and
      consists of a circular bubble of radius <app-mathjax [content]="'$r_0 = 0.25$ centered at $(x,y) = (0.5, 0.5)$'"></app-mathjax> in a
      1 by 2 rectangular domain. The density of the bubble is smaller than that of the
-     surrounding fluid <app-mathjax [content]="'$(\\rho_1 \\lt \\rho_2)$'"></app-mathjax>. The no-slip boundary condition (<app-mathjax [content]="'$\\mathbf{u}=0$'"></app-mathjax>) is used at the top and
+     surrounding fluid <app-mathjax [content]="'$(\\rho_2 \\lt \\rho_1)$'"></app-mathjax>. The no-slip boundary condition (<app-mathjax [content]="'$\\mathbf{u}=0$'"></app-mathjax>) is used at the top and
      bottom boundaries, whereas the free slip condition <app-mathjax [content]="'$ \\left ( \\mathbf{u} \\cdot \\hat{\\mathbf{n}} = 0, \\hat{\\boldsymbol{\\tau}}
      \\cdot \\left ( \\nabla \\mathbf{u} + \\nabla \\mathbf{u}^T \\right ) \\right )$'"></app-mathjax>, where <app-mathjax [content]="'$\\hat{\\boldsymbol{\\tau}}$'"></app-mathjax> is the
      tangent vector imposed on the vertical walls.
@@ -105,6 +130,35 @@
 
 
   </mat-tab>
-  <mat-tab label="Results"> Flow Parameters </mat-tab>
+  <mat-tab label="Results">
+    <div class="text-wrapper">
+      <h3><u>Verification of the results by quantitative data:</u></h3>
+      <p>Since mere visual inspection is not really enough to say anything about the accuracy of the simulations the following benchmark quantities have been defined and computed.</p>
+      <h4>Center of Mass</h4>
+      <p>The centroid or center of mass of the bubble is defined by</p>
+      <p style="text-align: center;">
+        <app-mathjax [content]="'$\\mathbf{X_c} = \\left( x_c, y_c \\right) = \\frac{\\int_{\\Omega_2} x \\ d\\mathbf{x}}{\\int_{\\Omega_2} 1 \\ d\\mathbf{x}}$'"></app-mathjax>
+      </p>
+      <p>where <app-mathjax [content]="'${\\Omega_2}$'" ></app-mathjax> denotes the region that the bubble occupies.</p>
+      <h4>Circularity</h4>
+      <p>The "degree of circularity" in <app-mathjax [content]="'${\\mathbb{R}^2}$'" ></app-mathjax> can be defined as</p> 
+      <p style="text-align: center;">
+        <app-mathjax [content]="'$\\not{c} = \\frac{P_a}{P_b} = \\frac{\\text{perimeter of area-equivalent circle}}{\\text{perimeter of bubble}} = \\frac{\\pi d_a}{P_b}$'"></app-mathjax>
+      </p>
+      <p>
+        Here, <app-mathjax [content]="'$\P_a$'" ></app-mathjax> denotes the perimeter or circumference of a circle with diameter <app-mathjax [content]="'$\d_a$'" ></app-mathjax> which has 
+        an area equal to that of a bubble with perimeter <app-mathjax [content]="'$\P_b$'" ></app-mathjax>. For a perfectly circular bubble or drop, the circularity will be equal to unity 
+        and decrease as the bubble is deformed.
+      </p>
+      <h4>Rise Velocity</h4>
+      <p>The mean velocity with which a bubble is rising or moving is a particularly interesting quantity since it does not only measure how the interface tracking algorithm behaves but 
+        also the quality of the overall solution. The mean bubble velocity is defined as</p>
+      <p style="text-align: center;">
+        <app-mathjax [content]="'$\\mathbf{U_c} = \\frac{\\int_{\\Omega_2} u \\ d\\mathbf{x}}{\\int_{\\Omega_2} 1 \\ d\\mathbf{x}}$'"></app-mathjax>
+      </p>
+      <p>where <app-mathjax [content]="'${\\Omega_2}$'" ></app-mathjax> denotes the region that the bubble occupies.</p>
+    </div>
+
+  </mat-tab>
   <mat-tab label="Reference Data"> Results </mat-tab>
 </mat-tab-group>
