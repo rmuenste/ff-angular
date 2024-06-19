@@ -184,6 +184,16 @@
          <img src="assets/bubble2d/img38.png" alt="Description of the image">
          <p class="caption">Placeholder caption</p>
      </div>      
+
+     <div class="plot-wrapper-ex">
+      <plotly-plot
+        [data]="graphData"
+        [layout]="graphLayout"
+        [useResizeHandler]="false"
+      ></plotly-plot>
+     </div>
+
+
       <h4>Rise Velocity</h4>
       <p>The mean velocity with which a bubble is rising or moving is a particularly interesting quantity since it does not only measure how the interface tracking algorithm behaves but 
         also the quality of the overall solution. The mean bubble velocity is defined as</p>
