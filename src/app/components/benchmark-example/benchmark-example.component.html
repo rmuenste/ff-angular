@@ -158,8 +158,30 @@
 
   </mat-tab>
   <mat-tab label="Results">
+    <div class="heading-wrapper">
+      Verification
+    </div>
+
     <div class="text-wrapper">
-      <h3><u>Verification of the results by quantitative data:</u></h3>
+      <h4>
+      Verification of the results by the picture norm
+      </h4>
+      To visually verify the results the following approximate bubble shapes can be used. (The raw data for the bubble shapes can be obtained from the Reference data page.)
+      <div class="im-div">
+        <h3 class="mat-h3">Initial configuration and boundary conditions for the test cases</h3>
+      </div>
+
+    <div class="picture-element">
+        <p class="title">Bubble Shapes</p>
+        <img src="assets/bubble2d/img27.png" alt="Description of the image">
+        <p class="caption">Placeholder caption</p>
+    </div>      
+
+    </div>
+    <div class="text-wrapper">
+      <h4>
+      Verification of the results by quantitative data
+      </h4>
       <p>Since mere visual inspection is not really enough to say anything about the accuracy of the simulations the following benchmark quantities have been defined and computed.</p>
       <h4>Center of Mass</h4>
       <p>The centroid or center of mass of the bubble is defined by</p>
@@ -167,6 +189,13 @@
         <app-mathjax [content]="'$\\mathbf{X_c} = \\left( x_c, y_c \\right) = \\frac{\\int_{\\Omega_2} x \\ d\\mathbf{x}}{\\int_{\\Omega_2} 1 \\ d\\mathbf{x}}$'"></app-mathjax>
       </p>
       <p>where <app-mathjax [content]="'${\\Omega_2}$'" ></app-mathjax> denotes the region that the bubble occupies.</p>
+
+     <div class="picture-element">
+         <p class="title">Center of Mass</p>
+         <img src="assets/bubble2d/img31.png" alt="Description of the image">
+         <p class="caption">Placeholder caption</p>
+     </div>      
+
       <h4>Circularity</h4>
       <p>The "degree of circularity" in <app-mathjax [content]="'${\\mathbb{R}^2}$'" ></app-mathjax> can be defined as</p> 
       <p style="text-align: center;">
@@ -177,6 +206,21 @@
         an area equal to that of a bubble with perimeter <app-mathjax [content]="'$\P_b$'" ></app-mathjax>. For a perfectly circular bubble or drop, the circularity will be equal to unity 
         and decrease as the bubble is deformed.
       </p>
+     <div class="picture-element">
+         <p class="title">Circularity</p>
+         <img src="assets/bubble2d/img38.png" alt="Description of the image">
+         <p class="caption">Placeholder caption</p>
+     </div>      
+
+     <div class="plot-wrapper-ex">
+      <plotly-plot
+        [data]="graphData"
+        [layout]="graphLayout"
+        [useResizeHandler]="false"
+      ></plotly-plot>
+     </div>
+
+
       <h4>Rise Velocity</h4>
       <p>The mean velocity with which a bubble is rising or moving is a particularly interesting quantity since it does not only measure how the interface tracking algorithm behaves but 
         also the quality of the overall solution. The mean bubble velocity is defined as</p>
@@ -184,6 +228,11 @@
         <app-mathjax [content]="'$\\mathbf{U_c} = \\frac{\\int_{\\Omega_2} u \\ d\\mathbf{x}}{\\int_{\\Omega_2} 1 \\ d\\mathbf{x}}$'"></app-mathjax>
       </p>
       <p>where <app-mathjax [content]="'${\\Omega_2}$'" ></app-mathjax> denotes the region that the bubble occupies.</p>
+      <div class="picture-element">
+          <p class="title">Rise Velocity</p>
+          <img src="assets/bubble2d/img42.png" alt="Description of the image">
+          <p class="caption">Placeholder caption</p>
+      </div>      
     </div>
 
   </mat-tab>

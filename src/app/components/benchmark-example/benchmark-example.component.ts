@@ -64,6 +64,12 @@ export class BenchmarkExampleComponent implements OnInit {
   
   mathEq = `When $ a \\ne 0 $`;
 
+  graphData: any[] = [
+    { x: [1, 2, 3, 4], y: [10, 15, 13, 17], type: 'scatter', mode: 'lines+points', marker: { color: 'blue' } }
+  ];
+
+  graphLayout: any = { title: 'Line Chart' };
+
   constructor() { }
 
   ngOnInit(): void {
