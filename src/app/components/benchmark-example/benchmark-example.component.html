@@ -196,6 +196,14 @@
          <p class="caption">Placeholder caption</p>
      </div>      
 
+     <div class="plot-wrapper-ex">
+      <plotly-plot
+        [data]="graphcomData"
+        [layout]="graphcomLayout"
+        [useResizeHandler]="false"
+      ></plotly-plot>
+     </div>
+
       <h4>Circularity</h4>
       <p>The "degree of circularity" in <app-mathjax [content]="'${\\mathbb{R}^2}$'" ></app-mathjax> can be defined as</p> 
       <p style="text-align: center;">
@@ -211,7 +219,7 @@
          <img src="assets/bubble2d/img38.png" alt="Description of the image">
          <p class="caption">Placeholder caption</p>
      </div>      
-
+      
      <div class="plot-wrapper-ex">
       <plotly-plot
         [data]="graphData"
@@ -219,7 +227,7 @@
         [useResizeHandler]="false"
       ></plotly-plot>
      </div>
-
+     
 
       <h4>Rise Velocity</h4>
       <p>The mean velocity with which a bubble is rising or moving is a particularly interesting quantity since it does not only measure how the interface tracking algorithm behaves but 
@@ -234,6 +242,22 @@
           <p class="caption">Placeholder caption</p>
       </div>      
     </div>
+
+    <div class="plot-wrapper-ex">
+      <plotly-plot
+        [data]="graphRiseVelocityData"
+        [layout]="graphRiseVelocityLayout"
+        [useResizeHandler]="false"
+      ></plotly-plot>
+     </div>
+
+     <div class="plot-wrapper-ex">
+      <plotly-plot
+        [data]="graphBubbleMassData"
+        [layout]="graphbubbleMassLayout"
+        [useResizeHandler]="false"
+      ></plotly-plot>
+     </div>
 
   </mat-tab>
   <mat-tab label="Reference Data"> 

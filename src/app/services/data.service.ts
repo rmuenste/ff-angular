@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { sphericityL1, massConservationL2, massConservationL3, massConservationL4, sphericityL2, sphericityL3 } from '../components/benchmark-bubble3/data';
 import { dataSizeL2, dataSizeL3, dataSizeL4 } from '../components/benchmark-bubble3/data';
 import { surfaceDataL2, surfaceDataL3, surfaceDataL4 } from '../components/benchmark-bubble3/data';
+import { circularity, comData, massData, riseVelocityData } from '../components/benchmark-example/data_bubble2';
 
 import { BenchmarkData, exampleBenchmarkData  } from '../models/benchmark-data';
 
@@ -317,6 +318,231 @@ export class DataService {
   //=====================================================================================
   getBenchmarkData(benchmarkId: number) : BenchmarkData {
     return exampleBenchmarkData[benchmarkId];
-  }
+  };
 
+  getBubble2circularityData() {
+    //const bubble2Shape_data = [circularity];
+  
+    const bubble2circularityDatadata = [circularity];
+  
+  //  console.log(`We got ${chartSpherecityData.length} data sets`);
+  //  for(let i = 0; i < chartSpherecityData.length; i++) {
+  //    console.log(`Data set ${i}: ${JSON.stringify(chartSpherecityData[i])}`);
+  //  }
+    return {
+      data: bubble2circularityDatadata,
+        layout: {
+          title: {
+            text: 'Circularity',
+            font: {
+              color: '#ffffffb3'
+            }
+          },
+          showlegend: true,
+          legend: {
+            font: {
+              color: '#ffffffb3'
+            }
+          },
+          plot_bgcolor: '#303030',
+          paper_bgcolor: '#303030',
+          xaxis: {
+            showgrid: true,
+            tickfont: {
+              color: '#ffffffb3'
+            },
+            gridcolor: '#505050',
+            title: {
+              text: 'Time[s]',
+              font: {
+                color: '#ffffffb3'
+              }
+            }
+          },
+          yaxis: {
+            showgrid: true,
+            tickfont: {
+              color: '#ffffffb3'
+            },
+            gridcolor: '#505050',
+            title: {
+              text: 'Circularity',
+              font: {
+                color: '#ffffffb3'
+              }
+            }
+          }
+        }
+    }
+  };
+
+  getBubble2comData() {
+    //const bubble2Shape_data = [bubbleShape];
+  
+    const bubble2com_data = [comData];
+  
+  //  console.log(`We got ${chartSpherecityData.length} data sets`);
+  //  for(let i = 0; i < chartSpherecityData.length; i++) {
+  //    console.log(`Data set ${i}: ${JSON.stringify(chartSpherecityData[i])}`);
+  //  }
+    return {
+      data: bubble2com_data,
+        layout: {
+          title: {
+            text: 'Center of Mass',
+            font: {
+              color: '#ffffffb3'
+            }
+          },
+          showlegend: true,
+          legend: {
+            font: {
+              color: '#ffffffb3'
+            }
+          },
+          plot_bgcolor: '#303030',
+          paper_bgcolor: '#303030',
+          xaxis: {
+            showgrid: true,
+            tickfont: {
+              color: '#ffffffb3'
+            },
+            gridcolor: '#505050',
+            title: {
+              text: 'Time[s]',
+              font: {
+                color: '#ffffffb3'
+              }
+            }
+          },
+          yaxis: {
+            showgrid: true,
+            tickfont: {
+              color: '#ffffffb3'
+            },
+            gridcolor: '#505050',
+            title: {
+              text: 'Center of Mass',
+              font: {
+                color: '#ffffffb3'
+              }
+            }
+          }
+        }
+    }
+  };
+
+  getBubble2MassData() {
+    //const bubble2Shape_data = [bubbleShape];
+  
+    const bubble2Mass_data = [massData];
+  
+  //  console.log(`We got ${chartSpherecityData.length} data sets`);
+  //  for(let i = 0; i < chartSpherecityData.length; i++) {
+  //    console.log(`Data set ${i}: ${JSON.stringify(chartSpherecityData[i])}`);
+  //  }
+    return {
+      data: bubble2Mass_data,
+        layout: {
+          title: {
+            text: 'Bubble Mass/Area',
+            font: {
+              color: '#ffffffb3'
+            }
+          },
+          showlegend: true,
+          legend: {
+            font: {
+              color: '#ffffffb3'
+            }
+          },
+          plot_bgcolor: '#303030',
+          paper_bgcolor: '#303030',
+          xaxis: {
+            showgrid: true,
+            tickfont: {
+              color: '#ffffffb3'
+            },
+            gridcolor: '#505050',
+            title: {
+              text: 'Time[s]',
+              font: {
+                color: '#ffffffb3'
+              }
+            }
+          },
+          yaxis: {
+            showgrid: true,
+            tickfont: {
+              color: '#ffffffb3'
+            },
+            gridcolor: '#505050',
+            title: {
+              text: 'Center of Mass',
+              font: {
+                color: '#ffffffb3'
+              }
+            },
+            range: [99, 101],  // Adding the range property here
+            tickvals: [99, 100, 101]  // Specifying the tick values
+          }
+        }
+    }
+  };
+
+  getBubble2VelocityData() {
+    //const bubble2Velocity_data = [];
+  
+    const bubble2Velocity_data = [riseVelocityData];
+  
+  //  console.log(`We got ${chartSpherecityData.length} data sets`);
+  //  for(let i = 0; i < chartSpherecityData.length; i++) {
+  //    console.log(`Data set ${i}: ${JSON.stringify(chartSpherecityData[i])}`);
+  //  }
+    return {
+      data: bubble2Velocity_data,
+        layout: {
+          title: {
+            text: 'Rise Velocity',
+            font: {
+              color: '#ffffffb3'
+            }
+          },
+          showlegend: true,
+          legend: {
+            font: {
+              color: '#ffffffb3'
+            }
+          },
+          plot_bgcolor: '#303030',
+          paper_bgcolor: '#303030',
+          xaxis: {
+            showgrid: true,
+            tickfont: {
+              color: '#ffffffb3'
+            },
+            gridcolor: '#505050',
+            title: {
+              text: 'Time[s]',
+              font: {
+                color: '#ffffffb3'
+              }
+            }
+          },
+          yaxis: {
+            showgrid: true,
+            tickfont: {
+              color: '#ffffffb3'
+            },
+            gridcolor: '#505050',
+            title: {
+              text: 'Center of Mass',
+              font: {
+                color: '#ffffffb3'
+              }
+            }
+          }
+        }
+    }
+  };
 }

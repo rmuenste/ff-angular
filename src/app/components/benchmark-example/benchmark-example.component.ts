@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 
 export interface PeriodicElement {
   p1: number;
@@ -63,16 +64,55 @@ export class BenchmarkExampleComponent implements OnInit {
   dataSource_R = REFERENCE_DATA;
   
   mathEq = `When $ a \\ne 0 $`;
+  graphData: any[] = [];
+  graphLayout: any = {title: 'Line Chart'
+  }
+  graphcomData: any[] = [];
+  graphcomLayout: any = {title: 'Line Chart'
+  }
 
-  graphData: any[] = [
-    { x: [1, 2, 3, 4], y: [10, 15, 13, 17], type: 'scatter', mode: 'lines+points', marker: { color: 'blue' } }
-  ];
+  graphBubbleMassData: any[] = [];
+  graphbubbleMassLayout: any = {title: 'Line Chart'
+  }
 
-  graphLayout: any = { title: 'Line Chart' };
+  graphRiseVelocityData: any[] = [];
+  graphRiseVelocityLayout: any = {title: 'Line Chart'
+  }
 
-  constructor() { }
+  constructor(private dataService: DataService) {
+
+  }
 
   ngOnInit(): void {
+        //=====================================================================================
+    // Assign the data of the circularity plot
+    //=====================================================================================
+    const {data: plotData, layout: plotLayout} = this.dataService.getBubble2circularityData();
+    this.graphData = plotData;
+    this.graphLayout = plotLayout;
+    //console.log(`Plot data length: ${JSON.stringify(this.chartSpherecityData)}`)
+
+      // Assign the data of the circularity plot
+    //=====================================================================================
+    const {data: comData, layout: comLayout} = this.dataService.getBubble2comData();
+    this.graphcomData = comData;
+    this.graphcomLayout = comLayout;
+    //console.log(`Plot data length: ${JSON.stringify(this.chartSpherecityData)}`)
+
+        // Assign the data of the circularity plot
+    //=====================================================================================
+    const {data: bubble2MassData, layout: bubble2MassLayout} = this.dataService.getBubble2MassData();
+    this.graphBubbleMassData = bubble2MassData;
+    this.graphbubbleMassLayout = bubble2MassLayout;
+    //console.log(`Plot data length: ${JSON.stringify(this.chartSpherecityData)}`)
+
+        // Assign the data of the circularity plot
+    //=====================================================================================
+    const {data: riseVelocityData, layout: riseVelocityLayout} = this.dataService.getBubble2VelocityData();
+    this.graphRiseVelocityData = riseVelocityData;
+    this.graphRiseVelocityLayout = riseVelocityLayout;
+    //console.log(`Plot data length: ${JSON.stringify(this.chartSpherecityData)}`)
+
   }
 
 }
