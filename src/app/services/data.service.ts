@@ -3,6 +3,8 @@ import { sphericityL1, massConservationL2, massConservationL3, massConservationL
 import { dataSizeL2, dataSizeL3, dataSizeL4 } from '../components/benchmark-bubble3/data';
 import { surfaceDataL2, surfaceDataL3, surfaceDataL4 } from '../components/benchmark-bubble3/data';
 import { circularity, comData, massData, riseVelocityData } from '../components/benchmark-example/data_bubble2';
+import { c1g2l1_COM_data } from '../components/benchmark-example/data_bubble2';
+
 
 import { BenchmarkData, exampleBenchmarkData  } from '../models/benchmark-data';
 
@@ -379,7 +381,32 @@ export class DataService {
   getBubble2comData() {
     //const bubble2Shape_data = [bubbleShape];
   
-    const bubble2com_data = [comData];
+    const markerTraceTP2D = {
+      x: comData.x.filter((_, index) => index % 90 === 0),
+      y: comData.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'blue',
+        symbol: 'circle'
+      },
+      showlegend: false
+    };
+
+    const markerTraceFreeLIFE = {
+      x: c1g2l1_COM_data.x.filter((_, index) => index % 20 === 0),
+      y: c1g2l1_COM_data.y.filter((_, index) => index % 20 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'green',
+        symbol: 'square'
+      },
+      showlegend: false
+    };
+    
+    const bubble2com_data = [comData, markerTraceTP2D,
+                             c1g2l1_COM_data, markerTraceFreeLIFE];
   
   //  console.log(`We got ${chartSpherecityData.length} data sets`);
   //  for(let i = 0; i < chartSpherecityData.length; i++) {
