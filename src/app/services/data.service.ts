@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { sphericityL1, massConservationL2, massConservationL3, massConservationL4, sphericityL2, sphericityL3 } from '../components/benchmark-bubble3/data';
 import { dataSizeL2, dataSizeL3, dataSizeL4 } from '../components/benchmark-bubble3/data';
 import { surfaceDataL2, surfaceDataL3, surfaceDataL4 } from '../components/benchmark-bubble3/data';
-import { circularity, comData, massData, riseVelocityData } from '../components/benchmark-example/data_bubble2';
-import { c1g2l1_COM_data } from '../components/benchmark-example/data_bubble2';
-
+import { circularity, comData, massData, riseVelocityData, c1g2l1_COM_data, c1g2l1_circularity_data, c1g2l1_velocity_data, c1g3l1_COM_data, c1g3l1_Circularity_data, c1g3l1_Velocity_data, c1g3l1_com_data } from '../components/benchmark-example/data_bubble2';
 
 import { BenchmarkData, exampleBenchmarkData  } from '../models/benchmark-data';
 
@@ -323,9 +321,46 @@ export class DataService {
   };
 
   getBubble2circularityData() {
+
+    const markerTraceTP2D = {
+      x: circularity.x.filter((_, index) => index % 90 === 0),
+      y: circularity.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'blue',
+        symbol: 'circle'
+      },
+      showlegend: false
+    };
+
+    const markerTraceFreeLIFE = {
+      x: c1g2l1_circularity_data.x.filter((_, index) => index % 20 === 0),
+      y: c1g2l1_circularity_data.y.filter((_, index) => index % 20 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'green',
+        symbol: 'square'
+      },
+      showlegend: false
+    };
+    
+    const markerTraceMooNMD = {
+      x: c1g3l1_Circularity_data.x.filter((_, index) => index % 60 === 0),
+      y: c1g3l1_Circularity_data.y.filter((_, index) => index % 60 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'red',
+        symbol: 'x'
+      },
+      showlegend: false
+    };
+    
     //const bubble2Shape_data = [circularity];
   
-    const bubble2circularityDatadata = [circularity];
+    const bubble2circularityDatadata = [circularity, c1g2l1_circularity_data,c1g3l1_Circularity_data, markerTraceTP2D, markerTraceFreeLIFE, markerTraceMooNMD];
   
   //  console.log(`We got ${chartSpherecityData.length} data sets`);
   //  for(let i = 0; i < chartSpherecityData.length; i++) {
@@ -405,8 +440,23 @@ export class DataService {
       showlegend: false
     };
     
+    const markerTraceMooNMD = {
+      x: c1g2l1_COM_data.x.filter((_, index) => index % 20 === 0),
+      y: c1g2l1_COM_data.y.filter((_, index) => index % 20 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'red',
+        symbol: 'x'
+      },
+      showlegend: false
+    };
+
+  
     const bubble2com_data = [comData, markerTraceTP2D,
-                             c1g2l1_COM_data, markerTraceFreeLIFE];
+                             c1g2l1_COM_data, markerTraceFreeLIFE,
+                            c1g3l1_com_data, markerTraceMooNMD];
+
   
   //  console.log(`We got ${chartSpherecityData.length} data sets`);
   //  for(let i = 0; i < chartSpherecityData.length; i++) {
@@ -519,8 +569,44 @@ export class DataService {
 
   getBubble2VelocityData() {
     //const bubble2Velocity_data = [];
+
+    const markerTraceTP2D = {
+      x: riseVelocityData.x.filter((_, index) => index % 90 === 0),
+      y: riseVelocityData.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'blue',
+        symbol: 'circle'
+      },
+      showlegend: false
+    };
+
+    const markerTraceFreeLIFE = {
+      x: c1g2l1_velocity_data.x.filter((_, index) => index % 20 === 0),
+      y: c1g2l1_velocity_data.y.filter((_, index) => index % 20 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'green',
+        symbol: 'square'
+      },
+      showlegend: false
+    };
   
-    const bubble2Velocity_data = [riseVelocityData];
+    const markerTraceMooNMD = {
+      x: c1g3l1_Velocity_data.x.filter((_, index) => index % 60 === 0),
+      y: c1g3l1_Velocity_data.y.filter((_, index) => index % 60 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'red',
+        symbol: 'x'
+      },
+      showlegend: false
+    };
+
+    const bubble2Velocity_data = [riseVelocityData, c1g2l1_velocity_data, c1g3l1_Velocity_data, markerTraceTP2D, markerTraceFreeLIFE, markerTraceMooNMD];
   
   //  console.log(`We got ${chartSpherecityData.length} data sets`);
   //  for(let i = 0; i < chartSpherecityData.length; i++) {
