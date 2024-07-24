@@ -13,7 +13,7 @@ def read_data(file_path, y_col):
     with open(file_path, 'r') as file:
         for line in file:
             values = line.split()
-            values[y_col] = (float(values[y_col]) / (math.pi * 0.25 * 0.25)) * 100  # normalize the y values between 99-101
+            values[y_col] = (float(values[y_col]) / (math.pi * 0.25 * 0.25)) * 100  # normalize the y values
             x_values.append(float(values[0]))
             y_values.append(float(values[y_col]))
 

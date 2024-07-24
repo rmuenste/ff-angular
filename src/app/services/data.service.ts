@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { sphericityL1, massConservationL2, massConservationL3, massConservationL4, sphericityL2, sphericityL3 } from '../components/benchmark-bubble3/data';
 import { dataSizeL2, dataSizeL3, dataSizeL4 } from '../components/benchmark-bubble3/data';
 import { surfaceDataL2, surfaceDataL3, surfaceDataL4 } from '../components/benchmark-bubble3/data';
-import { circularity, comData, massData, riseVelocityData, c1g2l1_COM_data, c1g2l1_circularity_data, c1g2l1_velocity_data, c1g3l1_COM_data, c1g3l1_Circularity_data, c1g3l1_Velocity_data, c1g3l1_com_data } from '../components/benchmark-example/data_bubble2';
+import { circularity, comData, massData, riseVelocityData, c1g2l1_COM_data, c1g2l1_circularity_data, c1g2l1_velocity_data, c1g3l1_COM_data, c1g3l1_Circularity_data, c1g3l1_Velocity_data, c1g3l1_com_data, c1g1l4s_data } from '../components/benchmark-example/data_bubble2';
 
 import { BenchmarkData, exampleBenchmarkData  } from '../models/benchmark-data';
 
@@ -658,4 +658,160 @@ export class DataService {
         }
     }
   };
+
+  getBubble2Data() {
+    //const bubble2Velocity_data = [];
+
+    const markerTraceTP2D = {
+      x: riseVelocityData.x.filter((_, index) => index % 90 === 0),
+      y: riseVelocityData.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'blue',
+        symbol: 'circle'
+      },
+      showlegend: false
+    };
+
+    const markerTraceFreeLIFE = {
+      x: c1g2l1_velocity_data.x.filter((_, index) => index % 20 === 0),
+      y: c1g2l1_velocity_data.y.filter((_, index) => index % 20 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'green',
+        symbol: 'square'
+      },
+      showlegend: false
+    };
+  
+    const markerTraceMooNMD = {
+      x: c1g3l1_Velocity_data.x.filter((_, index) => index % 60 === 0),
+      y: c1g3l1_Velocity_data.y.filter((_, index) => index % 60 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'red',
+        symbol: 'x'
+      },
+      showlegend: false
+    };
+
+    const bubble2Velocity_data = [riseVelocityData, c1g2l1_velocity_data, c1g3l1_Velocity_data, markerTraceTP2D, markerTraceFreeLIFE, markerTraceMooNMD];
+  
+  //  console.log(`We got ${chartSpherecityData.length} data sets`);
+  //  for(let i = 0; i < chartSpherecityData.length; i++) {
+  //    console.log(`Data set ${i}: ${JSON.stringify(chartSpherecityData[i])}`);
+  //  }
+    return {
+      data: bubble2Velocity_data,
+        layout: {
+          title: {
+            text: 'Rise Velocity',
+            font: {
+              color: '#ffffffb3'
+            }
+          },
+          showlegend: true,
+          legend: {
+            font: {
+              color: '#ffffffb3'
+            }
+          },
+          plot_bgcolor: '#303030',
+          paper_bgcolor: '#303030',
+          xaxis: {
+            showgrid: true,
+            tickfont: {
+              color: '#ffffffb3'
+            },
+            gridcolor: '#505050',
+            title: {
+              text: 'Time[s]',
+              font: {
+                color: '#ffffffb3'
+              }
+            }
+          },
+          yaxis: {
+            showgrid: true,
+            tickfont: {
+              color: '#ffffffb3'
+            },
+            gridcolor: '#505050',
+            title: {
+              text: 'Center of Mass',
+              font: {
+                color: '#ffffffb3'
+              }
+            }
+          }
+        }
+    }
+  };
+
+  getBubble2Shape_data() {
+
+    const markerTraceTP2D = {
+      x: c1g1l4s_data.x,
+      y: c1g1l4s_data.y,
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'blue',
+        dash: 'dash'
+      },
+      showlegend: false
+    };
+
+    const c1g1l4shape_data = [markerTraceTP2D];
+
+    return {
+      data: c1g1l4shape_data,
+      layout: {
+        title: {
+          text: 'Bubble Shape',
+          font: {
+            color: '#ffffffb3'
+          }
+        },
+        showlegend: true,
+        legend: {
+          font: {
+            color: '#ffffffb3'
+          }
+        },
+        plot_bgcolor: '#303030',
+        paper_bgcolor: '#303030',
+        xaxis: {
+          range: [0.1, 0.9],
+          showgrid: true,
+          tickfont: {
+            color: '#ffffffb3'
+          },
+          gridcolor: '#505050',
+          title: {
+            text: 'X-Coordinate',
+            font: {
+              color: '#ffffffb3'
+            }
+          }
+        },
+        yaxis: {
+          showgrid: true,
+          tickfont: {
+            color: '#ffffffb3'
+          },
+          gridcolor: '#505050',
+          title: {
+            text: 'Y-Coordinate',
+            font: {
+              color: '#ffffffb3'
+            }
+          }
+        }
+      }
+    };
+  }
 }

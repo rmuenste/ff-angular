@@ -26,6 +26,17 @@ export interface Reference{
   fileURL: string;
 }
 
+export interface benchFormat{
+  Column: string,
+  Quantity: string
+}
+
+export interface ReferenceBubbleS{
+  file: string;
+  action: string;
+  fileURL: string;
+}
+
 
 
 const ELEMENT_DATA: PeriodicElement[] = [
@@ -44,8 +55,59 @@ const NOTATION_DATA: Notation[] = [
 const REFERENCE_DATA: Reference[] = [
   {file: 'All in one zip file', action: 'Download', fileURL: "assets/files/bubble3/sphericity.json"},
   {file: 'c1g1l4.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c1g1l5.txt', action: 'Download', fileURL: "assets/files/bubble3/sphericity.json"},
+  {file: 'c1g1l6.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c1g1l7.txt', action: 'Download', fileURL: "assets/files/bubble3/sphericity.json"},
+  {file: 'c1g2l1.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c1g2l2.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c1g2l3.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c1g3l1.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c1g3l2.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c1g3l3.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c1g3l4.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c2g1l4.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c2g1l5.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c2g1l6.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c2g1l7.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c2g1l8.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c2g2l1.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c2g2l2.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c2g2l3.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c2g3l2.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c2g3l3.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c2g3l4.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  ];
 
-]
+const BENCHMARK_FORMAT: benchFormat[] = [
+  {Column: '1',  Quantity: 'Time'},
+  {Column: '2',  Quantity: 'Bubble Mass or Area'},
+  {Column: '3',  Quantity: 'Circularity'},
+  {Column: '4',  Quantity: 'Center of Mass (y-coordinate)'},
+  {Column: '5',  Quantity: 'Rise Velocity'},
+
+  ];
+
+const REFERENCE_BubbleS: ReferenceBubbleS[] = [
+  {file: 'All in one zip file', action: 'Download', fileURL: "assets/files/bubble3/sphericity.json"},
+  {file: 'c1g1l4s.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c1g1l5s.txt', action: 'Download', fileURL: "assets/files/bubble3/sphericity.json"},
+  {file: 'c1g1l6s.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c1g1l7s.txt', action: 'Download', fileURL: "assets/files/bubble3/sphericity.json"},
+  {file: 'c1g2l1s.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c1g2l2s.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c1g2l3s.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c1g3l4s.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c2g1l4s.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c2g1l5s.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c2g1l6s.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c2g1l7s.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c2g1l8s.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c2g2l1s.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c2g2l2s.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c2g2l3s.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  {file: 'c2g3l4s.txt', action: 'Download', fileURL : "assets/files/bubble3/mass_conservation.json"},
+  ];
+
 
 @Component({
   selector: 'app-benchmark-example',
@@ -63,6 +125,13 @@ export class BenchmarkExampleComponent implements OnInit {
   displayedReferences: string[] = ['file', 'action'];
   dataSource_R = REFERENCE_DATA;
   
+  displayedBenchFormat: string[] = ['Column', 'Quantity'];
+  dataSource_B = BENCHMARK_FORMAT;
+  
+  displayedReferenceBubbleS: string[] = ['file', 'action'];
+  dataSourceBubbleS = REFERENCE_BubbleS;
+  
+
   mathEq = `When $ a \\ne 0 $`;
   graphData: any[] = [];
   graphLayout: any = {title: 'Line Chart'
@@ -77,6 +146,10 @@ export class BenchmarkExampleComponent implements OnInit {
 
   graphRiseVelocityData: any[] = [];
   graphRiseVelocityLayout: any = {title: 'Line Chart'
+  }
+
+  graphBubble2ShapeData: any[] = [];
+  graphBubble2Shapelayout: any = {title: 'Line Chart'
   }
 
   constructor(private dataService: DataService) {
@@ -112,6 +185,15 @@ export class BenchmarkExampleComponent implements OnInit {
     this.graphRiseVelocityData = riseVelocityData;
     this.graphRiseVelocityLayout = riseVelocityLayout;
     //console.log(`Plot data length: ${JSON.stringify(this.chartSpherecityData)}`)
+
+
+    // Bubble Shape Data
+    //=====================================================================================
+    const {data: c1g1l4shape_data, layout: c1g1l4shape_Layout} = this.dataService.getBubble2Shape_data();
+    this.graphBubble2ShapeData = c1g1l4shape_data;
+    this.graphBubble2Shapelayout = c1g1l4shape_Layout;
+    //console.log(`Plot data length: ${JSON.stringify(this.chartSpherecityData)}`)
+
 
   }
 
