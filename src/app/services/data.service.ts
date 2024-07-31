@@ -630,6 +630,7 @@ export class DataService {
           plot_bgcolor: '#303030',
           paper_bgcolor: '#303030',
           xaxis: {
+            range: [0.0, 3.0], // Define custom x-axis limits
             showgrid: true,
             tickfont: {
               color: '#ffffffb3'
@@ -659,97 +660,6 @@ export class DataService {
     }
   };
 
-  getBubble2Data() {
-    //const bubble2Velocity_data = [];
-
-    const markerTraceTP2D = {
-      x: riseVelocityData.x.filter((_, index) => index % 90 === 0),
-      y: riseVelocityData.y.filter((_, index) => index % 90 === 0),
-      type: 'scatter',
-      mode: 'markers',
-      marker: {
-        color: 'blue',
-        symbol: 'circle'
-      },
-      showlegend: false
-    };
-
-    const markerTraceFreeLIFE = {
-      x: c1g2l1_velocity_data.x.filter((_, index) => index % 20 === 0),
-      y: c1g2l1_velocity_data.y.filter((_, index) => index % 20 === 0),
-      type: 'scatter',
-      mode: 'markers',
-      marker: {
-        color: 'green',
-        symbol: 'square'
-      },
-      showlegend: false
-    };
-  
-    const markerTraceMooNMD = {
-      x: c1g3l1_Velocity_data.x.filter((_, index) => index % 60 === 0),
-      y: c1g3l1_Velocity_data.y.filter((_, index) => index % 60 === 0),
-      type: 'scatter',
-      mode: 'markers',
-      marker: {
-        color: 'red',
-        symbol: 'x'
-      },
-      showlegend: false
-    };
-
-    const bubble2Velocity_data = [riseVelocityData, c1g2l1_velocity_data, c1g3l1_Velocity_data, markerTraceTP2D, markerTraceFreeLIFE, markerTraceMooNMD];
-  
-  //  console.log(`We got ${chartSpherecityData.length} data sets`);
-  //  for(let i = 0; i < chartSpherecityData.length; i++) {
-  //    console.log(`Data set ${i}: ${JSON.stringify(chartSpherecityData[i])}`);
-  //  }
-    return {
-      data: bubble2Velocity_data,
-        layout: {
-          title: {
-            text: 'Rise Velocity',
-            font: {
-              color: '#ffffffb3'
-            }
-          },
-          showlegend: true,
-          legend: {
-            font: {
-              color: '#ffffffb3'
-            }
-          },
-          plot_bgcolor: '#303030',
-          paper_bgcolor: '#303030',
-          xaxis: {
-            showgrid: true,
-            tickfont: {
-              color: '#ffffffb3'
-            },
-            gridcolor: '#505050',
-            title: {
-              text: 'Time[s]',
-              font: {
-                color: '#ffffffb3'
-              }
-            }
-          },
-          yaxis: {
-            showgrid: true,
-            tickfont: {
-              color: '#ffffffb3'
-            },
-            gridcolor: '#505050',
-            title: {
-              text: 'Center of Mass',
-              font: {
-                color: '#ffffffb3'
-              }
-            }
-          }
-        }
-    }
-  };
 
   getBubble2Shape_data() {
 
