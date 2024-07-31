@@ -384,6 +384,7 @@ export class DataService {
           plot_bgcolor: '#303030',
           paper_bgcolor: '#303030',
           xaxis: {
+            range: [0.0, 3.0], // Define custom x-axis limits
             showgrid: true,
             tickfont: {
               color: '#ffffffb3'
@@ -480,6 +481,7 @@ export class DataService {
           plot_bgcolor: '#303030',
           paper_bgcolor: '#303030',
           xaxis: {
+            range: [0.0, 3.0], // Define custom x-axis limits
             showgrid: true,
             tickfont: {
               color: '#ffffffb3'
@@ -536,6 +538,7 @@ export class DataService {
           plot_bgcolor: '#303030',
           paper_bgcolor: '#303030',
           xaxis: {
+            range: [0.0, 3.0], // Define custom x-axis limits
             showgrid: true,
             tickfont: {
               color: '#ffffffb3'
@@ -555,7 +558,7 @@ export class DataService {
             },
             gridcolor: '#505050',
             title: {
-              text: 'Center of Mass',
+              text: 'Mass/Area',
               font: {
                 color: '#ffffffb3'
               }
@@ -650,7 +653,7 @@ export class DataService {
             },
             gridcolor: '#505050',
             title: {
-              text: 'Center of Mass',
+              text: 'Velocity',
               font: {
                 color: '#ffffffb3'
               }
