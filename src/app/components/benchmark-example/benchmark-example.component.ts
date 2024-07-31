@@ -53,7 +53,8 @@ const NOTATION_DATA: Notation[] = [
 ];
 
 const REFERENCE_DATA: Reference[] = [
-  {file: 'All in one zip file', action: 'Download', fileURL: "assets/files/bubble3/sphericity.json"},
+  {file: 'All in one zip file', action: 'Download', fileURL: "assets/files/bubble2/quantities.zip"},
+  /*
   {file: 'c1g1l4.txt', action: 'Download', fileURL : "assets/files/bubble2/quantities/c1g1l4.txt"},
   {file: 'c1g1l5.txt', action: 'Download', fileURL : "assets/files/bubble2/quantities/c1g1l5.txt"},
   {file: 'c1g1l6.txt', action: 'Download', fileURL : "assets/files/bubble2/quantities/c1g1l6.txt"},
@@ -76,6 +77,7 @@ const REFERENCE_DATA: Reference[] = [
   {file: 'c2g3l2.txt', action: 'Download', fileURL : "assets/files/bubble2/quantities/c2g3l2.txt"},
   {file: 'c2g3l3.txt', action: 'Download', fileURL : "assets/files/bubble2/quantities/c2g3l3.txt"},
   {file: 'c2g3l4.txt', action: 'Download', fileURL : "assets/files/bubble2/quantities/c2g3l4.txt"},
+  */
   ];
 
 const BENCHMARK_FORMAT: benchFormat[] = [
@@ -88,7 +90,8 @@ const BENCHMARK_FORMAT: benchFormat[] = [
   ];
 
 const REFERENCE_BubbleS: ReferenceBubbleS[] = [
-  {file: 'All in one zip file', action: 'Download', fileURL : "assets/files/bubble2/sphericity.json"},
+  {file: 'All in one zip file', action: 'Download', fileURL : "assets/files/bubble2/shapes.zip"},
+  /*
   {file: 'c1g1l4s.txt', action: 'Download', fileURL : "assets/files/bubble2/shape/c1g1l4s.txt"},
   {file: 'c1g1l5s.txt', action: 'Download', fileURL : "assets/files/bubble2/shape/c1g1l5s.txt"},
   {file: 'c1g1l6s.txt', action: 'Download', fileURL : "assets/files/bubble2/shape/c1g1l6s.txt"},
@@ -106,6 +109,7 @@ const REFERENCE_BubbleS: ReferenceBubbleS[] = [
   {file: 'c2g2l2s.txt', action: 'Download', fileURL : "assets/files/bubble2/shape/c2g2l2s.txt"},
   {file: 'c2g2l3s.txt', action: 'Download', fileURL : "assets/files/bubble2/shape/c2g2l3s.txt"},
   {file: 'c2g3l4s.txt', action: 'Download', fileURL : "assets/files/bubble2/shape/c2g3l4s.txt"},
+  */
   ];
 
 

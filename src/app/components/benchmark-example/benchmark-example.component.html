@@ -269,12 +269,17 @@
 
   </mat-tab>
   <mat-tab label="Reference Data"> 
+  <div class="text-wrapper">
     <h2>
       Reference Data
     </h2>
+  </div>
+  <div class="text-wrapper">
     <p>
-      The benchmark data is provided in the following ascii text files. File names use the notation c#g#l# with c# indicating the test case, g# the group and l# the refinement level:
+      The benchmark data is provided in the following ascii text files. File names use the notation c#g#l# with c# indicating the test case, g# the group and l# the refinement level. For example 
+      c1g1l4.txt represents the 4th refinement level of the 1st group of the 1st test case.
     </p>
+  </div>
     <div class="table-wrapper">
     <table mat-table [dataSource]="dataSource_N" class="mat-elevation-z8">
        <!-- Number Column -->
@@ -295,6 +300,38 @@
     </table>
     </div>
 
+  <div class="text-wrapper">
+    <h3> Benchmark File Formats </h3>
+    <p>
+      Each of the c*g*l*.txt files contains a series of columns that represents the following information:
+    </p>
+  </div>
+    <div class="table-wrapper">
+      <table mat-table [dataSource]="dataSource_B" class="mat-elevation-z8">
+         <!-- Number Column -->
+      <ng-container matColumnDef="Column">
+        <th mat-header-cell *matHeaderCellDef> Column </th>
+        <td mat-cell *matCellDef="let element"> {{element.Column}} </td>
+      </ng-container>
+  
+        <!-- Quantity Column -->
+        <ng-container matColumnDef="Quantity">
+          <th mat-header-cell *matHeaderCellDef> Quantity </th>
+          <td mat-cell *matCellDef="let element"> {{element.Quantity}} </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedBenchFormat"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedBenchFormat;"></tr>
+  
+      </table>
+      </div>
+
+  <div class="text-wrapper">
+    <h3> Zip File Download </h3>
+    <p>
+      The .zip file contains the c*g*l*.txt files with the simulation results for the different groups. 
+    </p>
+  </div>
     <div class="table-wrapper">
     <table mat-table [dataSource]="dataSource_R" class="mat-elevation-z8">
          <!-- file Column -->
@@ -316,39 +353,44 @@
     </table>
     </div>
 
-    <p>This file is given in JSON format with columns corresponding to the following quantities </p>
-    <h4> Benchmark File Formats </h4>
+  <div class="text-wrapper">
+    <h3>Usage</h3>
+    <p>The benchmark curves can the be plotted with standard postprocessing tools Gnuplot:</p>
+    <pre ngNonBindable>
+      <code>
+        plot "c1g1l4.txt" using 1:2 with \
+        lines linestyle 1 title 'Bubble mass/area'; set xlabel 'Time'
+        plot "c1g1l4.txt" using 1:3 with \
+        lines linestyle 1 title 'Circularity'; set xlabel 'Time'
+        plot "c1g1l4.txt" using 1:4 with \
+        lines linestyle 1 title 'Center of mass'; set xlabel 'Time'
+        plot "c1g1l4.txt" using 1:5 with \
+        lines linestyle 1 title 'Rise velocity'; set xlabel 'Time'
+      </code>
+    </pre>
+    <p> Or with Matlab:</p>
+    <pre ngNonBindable>
+      <code>
+        load c1g1l4.txt, plot(c1g1l4(:,1),c1g1l4(:,2)), ...
+        title('Bubble mass/area'), xlabel('Time')
+        load c1g1l4.txt, plot(c1g1l4(:,1),c1g1l4(:,3)), ...
+        title('Circularity'), xlabel('Time')
+        load c1g1l4.txt, plot(c1g1l4(:,1),c1g1l4(:,4)), ...
+        title('Center of mass'), xlabel('Time')
+        load c1g1l4.txt, plot(c1g1l4(:,1),c1g1l4(:,5)), ...
+        title('Rise velocity'), xlabel('Time')
+      </code>
+    </pre>
+  </div>
 
-    <div class="table-wrapper">
-      <table mat-table [dataSource]="dataSource_B" class="mat-elevation-z8">
-         <!-- Number Column -->
-      <ng-container matColumnDef="Column">
-        <th mat-header-cell *matHeaderCellDef> Column </th>
-        <td mat-cell *matCellDef="let element"> {{element.Column}} </td>
-      </ng-container>
-  
-        <!-- Quantity Column -->
-        <ng-container matColumnDef="Quantity">
-          <th mat-header-cell *matHeaderCellDef> Quantity </th>
-          <td mat-cell *matCellDef="let element"> {{element.Quantity}} </td>
-        </ng-container>
-    
-        <tr mat-header-row *matHeaderRowDef="displayedBenchFormat"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedBenchFormat;"></tr>
-  
-      </table>
-      </div>
-
-    <p>The benchmark curves can the be plotted with standard postprocessing tools like Matlab or Gnuplot:</p>
-
+  <div class="text-wrapper">
+    <h3> Bubble Shape Data </h3>
     <p>The data for the bubble shapes can be found in the files that end with a s character, for example c1g1l4s.txt.
        The shapes are stored as line segments with x-coordinates in the first column and y-coordinates in the second in 
        consecutive line pairs (that is the first line end point is stored at odd numbered lines and the other end points 
-       on the following lines). The shapes can for example be plotted in Gnuplot or Matlab with the following code:
+       on the following lines). The files can be downloaded in one .zip archive:
     </p>
-
-    <h4>Bubble Shape Data</h4>
-
+  </div>
     <div class="table-wrapper">
       <table mat-table [dataSource]="dataSourceBubbleS" class="mat-elevation-z8">
            <!-- file Column -->
@@ -368,7 +410,31 @@
         <tr mat-row *matRowDef="let row; columns: displayedReferenceBubbleS;"></tr>
     
       </table>
-      </div>
+    </div>
+
+  <div class="text-wrapper">
+    <h3>Usage</h3>
+    <p>The shapes can the be plotted with Gnuplot:</p>
+    <pre ngNonBindable>
+      <code>
+        plot "c1g1l4s.txt" with lines linestyle 1; \
+        unset key; set size ratio -1
+      </code>
+    </pre>
+    <p> Or with Matlab:</p>
+    <pre ngNonBindable>
+      <code>
+        load c1g1l4s.txt
+        data = c1g1l4s;
+        hold on
+        nSegments = size(data,1)/2;
+        for i=1:nSegments
+          plot(data(2*(i-1)+1:2*i,1),data(2*(i-1)+1:2*i,2))
+        end
+        axis equal
+      </code>
+    </pre>
+  </div>
     
   </mat-tab>
 </mat-tab-group>
