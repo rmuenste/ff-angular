@@ -753,22 +753,26 @@ export class DataService {
 
   getBubble2Shape_data() {
 
-    const markerTraceTP2D = {
-      x: c1g1l4s_data.x,
-      y: c1g1l4s_data.y,
-      type: 'scatter',
-      mode: 'markers',
-      marker: {
-        color: 'blue',
-        dash: 'dash'
-      },
-      showlegend: false
-    };
+    const nSegments = c1g1l4s_data.x.length / 2;
+    const plotData = [];
 
-    const c1g1l4shape_data = [markerTraceTP2D];
+    for (let i = 0; i < nSegments; i++) {
+      const segmentX = c1g1l4s_data.x.slice(2 * i, 2 * (i + 1));
+      const segmentY = c1g1l4s_data.y.slice(2 * i, 2 * (i + 1));
+
+
+      plotData.push({
+        x: segmentX,
+        y: segmentY,
+        type: 'scatter',
+        mode: 'lines',
+        line: { color: 'blue' },
+        showlegend: false
+      });
+    }
 
     return {
-      data: c1g1l4shape_data,
+      data: plotData,
       layout: {
         title: {
           text: 'Bubble Shape',
