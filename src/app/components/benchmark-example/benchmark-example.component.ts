@@ -152,6 +152,10 @@ export class BenchmarkExampleComponent implements OnInit {
   graphBubble2Shapelayout: any = {title: 'Line Chart'
   }
 
+  graphBubble2MassData: any[] = []; 
+  graphBubble2Masslayout: any = {title: 'Line Chart' 
+  }
+
   constructor(private dataService: DataService) {
 
   }
@@ -192,6 +196,13 @@ export class BenchmarkExampleComponent implements OnInit {
     const {data: c1g1l4shape_data, layout: c1g1l4shape_Layout} = this.dataService.getBubble2Shape_data();
     this.graphBubble2ShapeData = c1g1l4shape_data;
     this.graphBubble2Shapelayout = c1g1l4shape_Layout;
+    //console.log(`Plot data length: ${JSON.stringify(this.chartSpherecityData)}`)
+
+        // Bubble Shape Data
+    //=====================================================================================
+    const {data: c1g1l4_bubbleMass_data, layout: c1g1l4_bubbleMass_Layout} = this.dataService.getBubble2MassDataN();
+    this.graphBubble2MassData = c1g1l4_bubbleMass_data;
+    this.graphBubble2Masslayout = c1g1l4_bubbleMass_Layout;
     //console.log(`Plot data length: ${JSON.stringify(this.chartSpherecityData)}`)
 
 
