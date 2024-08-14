@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { sphericityL1, massConservationL2, massConservationL3, massConservationL4, sphericityL2, sphericityL3 } from '../components/benchmark-bubble3/data';
 import { dataSizeL2, dataSizeL3, dataSizeL4 } from '../components/benchmark-bubble3/data';
 import { surfaceDataL2, surfaceDataL3, surfaceDataL4 } from '../components/benchmark-bubble3/data';
-import { circularity, comData, massData, riseVelocityData, c1g2l1_COM_data, c1g2l1_circularity_data, c1g2l1_velocity_data, 
+import { c1g1l1_circularity_data, c1g1l1_com_data, c1g1l1_mass_Data, c1g1l1_riseVelocity_Data, c1g2l1_COM_data, c1g2l1_circularity_data, c1g2l1_velocity_data, 
   c1g3l1_COM_data, c1g3l1_Circularity_data, c1g3l1_Velocity_data, c1g3l1_com_data, c1g1l4s_data, c1g1l7_bubbleMass_data,
   c1g2l3_bubbleMass_data, c1g3l4_bubbleMass_data } from '../components/benchmark-example/data_bubble2';
 
@@ -325,8 +325,8 @@ export class DataService {
   getBubble2circularityData() {
 
     const markerTraceTP2D = {
-      x: circularity.x.filter((_, index) => index % 90 === 0),
-      y: circularity.y.filter((_, index) => index % 90 === 0),
+      x: c1g1l1_circularity_data.x.filter((_, index) => index % 90 === 0),
+      y: c1g1l1_circularity_data.y.filter((_, index) => index % 90 === 0),
       type: 'scatter',
       mode: 'markers',
       marker: {
@@ -362,7 +362,7 @@ export class DataService {
     
     //const bubble2Shape_data = [circularity];
   
-    const bubble2circularityDatadata = [circularity, c1g2l1_circularity_data,c1g3l1_Circularity_data, markerTraceTP2D, markerTraceFreeLIFE, markerTraceMooNMD];
+    const bubble2circularityDatadata = [c1g1l1_circularity_data, c1g2l1_circularity_data, c1g3l1_Circularity_data, markerTraceTP2D, markerTraceFreeLIFE, markerTraceMooNMD];
   
   //  console.log(`We got ${chartSpherecityData.length} data sets`);
   //  for(let i = 0; i < chartSpherecityData.length; i++) {
@@ -420,8 +420,8 @@ export class DataService {
     //const bubble2Shape_data = [bubbleShape];
   
     const markerTraceTP2D = {
-      x: comData.x.filter((_, index) => index % 90 === 0),
-      y: comData.y.filter((_, index) => index % 90 === 0),
+      x: c1g1l1_com_data.x.filter((_, index) => index % 90 === 0),
+      y: c1g1l1_com_data.y.filter((_, index) => index % 90 === 0),
       type: 'scatter',
       mode: 'markers',
       marker: {
@@ -456,7 +456,7 @@ export class DataService {
     };
 
   
-    const bubble2com_data = [comData, markerTraceTP2D,
+    const bubble2com_data = [c1g1l1_com_data, markerTraceTP2D,
                              c1g2l1_COM_data, markerTraceFreeLIFE,
                             c1g3l1_com_data, markerTraceMooNMD];
 
@@ -513,71 +513,12 @@ export class DataService {
     }
   };
 
-  getBubble2MassData() {
-    //const bubble2Shape_data = [bubbleShape];
-  
-    const bubble2Mass_data = [massData];
-  
-  //  console.log(`We got ${chartSpherecityData.length} data sets`);
-  //  for(let i = 0; i < chartSpherecityData.length; i++) {
-  //    console.log(`Data set ${i}: ${JSON.stringify(chartSpherecityData[i])}`);
-  //  }
-    return {
-      data: bubble2Mass_data,
-        layout: {
-          title: {
-            text: 'Bubble Mass/Area',
-            font: {
-              color: '#ffffffb3'
-            }
-          },
-          showlegend: true,
-          legend: {
-            font: {
-              color: '#ffffffb3'
-            }
-          },
-          plot_bgcolor: '#303030',
-          paper_bgcolor: '#303030',
-          xaxis: {
-            range: [0.0, 3.0], // Define custom x-axis limits
-            showgrid: true,
-            tickfont: {
-              color: '#ffffffb3'
-            },
-            gridcolor: '#505050',
-            title: {
-              text: 'Time[s]',
-              font: {
-                color: '#ffffffb3'
-              }
-            }
-          },
-          yaxis: {
-            showgrid: true,
-            tickfont: {
-              color: '#ffffffb3'
-            },
-            gridcolor: '#505050',
-            title: {
-              text: 'Mass/Area',
-              font: {
-                color: '#ffffffb3'
-              }
-            },
-            range: [99, 101],  // Adding the range property here
-            tickvals: [99, 100, 101]  // Specifying the tick values
-          }
-        }
-    }
-  };
-
   getBubble2VelocityData() {
     //const bubble2Velocity_data = [];
 
     const markerTraceTP2D = {
-      x: riseVelocityData.x.filter((_, index) => index % 90 === 0),
-      y: riseVelocityData.y.filter((_, index) => index % 90 === 0),
+      x: c1g1l1_riseVelocity_Data.x.filter((_, index) => index % 90 === 0),
+      y: c1g1l1_riseVelocity_Data.y.filter((_, index) => index % 90 === 0),
       type: 'scatter',
       mode: 'markers',
       marker: {
@@ -611,7 +552,7 @@ export class DataService {
       showlegend: false
     };
 
-    const bubble2Velocity_data = [riseVelocityData, c1g2l1_velocity_data, c1g3l1_Velocity_data, markerTraceTP2D, markerTraceFreeLIFE, markerTraceMooNMD];
+    const bubble2Velocity_data = [c1g1l1_riseVelocity_Data, c1g2l1_velocity_data, c1g3l1_Velocity_data, markerTraceTP2D, markerTraceFreeLIFE, markerTraceMooNMD];
   
   //  console.log(`We got ${chartSpherecityData.length} data sets`);
   //  for(let i = 0; i < chartSpherecityData.length; i++) {

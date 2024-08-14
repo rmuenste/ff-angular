@@ -182,13 +182,6 @@ export class BenchmarkExampleComponent implements OnInit {
 
         // Assign the data of the circularity plot
     //=====================================================================================
-    const {data: bubble2MassData, layout: bubble2MassLayout} = this.dataService.getBubble2MassData();
-    this.graphBubbleMassData = bubble2MassData;
-    this.graphbubbleMassLayout = bubble2MassLayout;
-    //console.log(`Plot data length: ${JSON.stringify(this.chartSpherecityData)}`)
-
-        // Assign the data of the circularity plot
-    //=====================================================================================
     const {data: riseVelocityData, layout: riseVelocityLayout} = this.dataService.getBubble2VelocityData();
     this.graphRiseVelocityData = riseVelocityData;
     this.graphRiseVelocityLayout = riseVelocityLayout;
