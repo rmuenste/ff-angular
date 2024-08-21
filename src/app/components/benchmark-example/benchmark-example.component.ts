@@ -171,36 +171,30 @@ export class BenchmarkExampleComponent implements OnInit {
     const {data: plotData, layout: plotLayout} = this.dataService.getBubble2circularityData();
     this.graphData = plotData;
     this.graphLayout = plotLayout;
-    //console.log(`Plot data length: ${JSON.stringify(this.chartSpherecityData)}`)
 
       // Assign the data of the circularity plot
     //=====================================================================================
     const {data: comData, layout: comLayout} = this.dataService.getBubble2comData();
     this.graphcomData = comData;
     this.graphcomLayout = comLayout;
-    //console.log(`Plot data length: ${JSON.stringify(this.chartSpherecityData)}`)
 
         // Assign the data of the circularity plot
     //=====================================================================================
     const {data: riseVelocityData, layout: riseVelocityLayout} = this.dataService.getBubble2VelocityData();
     this.graphRiseVelocityData = riseVelocityData;
     this.graphRiseVelocityLayout = riseVelocityLayout;
-    //console.log(`Plot data length: ${JSON.stringify(this.chartSpherecityData)}`)
-
 
     // Bubble Shape Data
     //=====================================================================================
     const {data: c1g1l4shape_data, layout: c1g1l4shape_Layout} = this.dataService.getBubble2Shape_data();
     this.graphBubble2ShapeData = c1g1l4shape_data;
     this.graphBubble2Shapelayout = c1g1l4shape_Layout;
-    //console.log(`Plot data length: ${JSON.stringify(this.chartSpherecityData)}`)
 
         // Bubble Shape Data
     //=====================================================================================
     const {data: c1g1l4_bubbleMass_data, layout: c1g1l4_bubbleMass_Layout} = this.dataService.getBubble2MassDataN();
     this.graphBubble2MassData = c1g1l4_bubbleMass_data;
     this.graphBubble2Masslayout = c1g1l4_bubbleMass_Layout;
-    //console.log(`Plot data length: ${JSON.stringify(this.chartSpherecityData)}`)
 
 
   }

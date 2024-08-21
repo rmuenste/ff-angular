@@ -139,7 +139,7 @@ export class DataService {
 
 
   //=====================================================================================
-  // Here we have the data of the mass conservation plot
+  // Here we have the data of the mass conservation plot (Bubble 3D)
   //=====================================================================================
   getMassPlotData() {
 
@@ -322,6 +322,9 @@ export class DataService {
     return exampleBenchmarkData[benchmarkId];
   };
 
+  //=====================================================================================
+  // Here we have the data of the circularity (Bubble 2D)
+  //=====================================================================================
   getBubble2circularityData() {
 
     const markerTraceTP2D = {
@@ -359,15 +362,24 @@ export class DataService {
       },
       showlegend: false
     };
-    
-    //const bubble2Shape_data = [circularity];
   
-    const bubble2circularityDatadata = [c1g1l1_circularity_data, c1g2l1_circularity_data, c1g3l1_Circularity_data, markerTraceTP2D, markerTraceFreeLIFE, markerTraceMooNMD];
+//  getMassPlotData() {
+//
+//  const chartMassConservationData = [massConservationL2.data, massConservationL3.data, massConservationL4.data];
+//  return {
+//    data: chartMassConservationData,
+
+    // This data structure contains raw circularity data and
+    // filtered (reduced) marker traces to be plotted
+    // The reduced data is created to not plot too many markers
+    const bubble2circularityDatadata = [
+      c1g1l1_circularity_data, 
+      c1g2l1_circularity_data, 
+      c1g3l1_Circularity_data, 
+      markerTraceTP2D, 
+      markerTraceFreeLIFE, 
+      markerTraceMooNMD];
   
-  //  console.log(`We got ${chartSpherecityData.length} data sets`);
-  //  for(let i = 0; i < chartSpherecityData.length; i++) {
-  //    console.log(`Data set ${i}: ${JSON.stringify(chartSpherecityData[i])}`);
-  //  }
     return {
       data: bubble2circularityDatadata,
         layout: {
