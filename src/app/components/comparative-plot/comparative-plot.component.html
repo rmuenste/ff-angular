@@ -4,4 +4,11 @@
   [layout]="graph.layout"
   [useResizeHandler]="false"
 ></plotly-plot>
+<div class="plot-section">
+  <span>
+    <mat-radio-group [(ngModel)]="selectedLevel">
+      <mat-radio-button *ngFor="let level of theGraph.data; let i = index" class="plot-margin" [value]="i">Level {{i + 1}}</mat-radio-button>
+    </mat-radio-group>
+  </span>  
+</div>
 </div>
