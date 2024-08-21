@@ -140,6 +140,8 @@ export class BenchmarkExampleComponent implements OnInit {
   graphData: any[] = [];
   graphLayout: any = {title: 'Line Chart'
   }
+
+  graphcomPack: {} = {};
   graphcomData: any[] = [];
   graphcomLayout: any = {title: 'Line Chart'
   }
@@ -177,6 +179,7 @@ export class BenchmarkExampleComponent implements OnInit {
     const {data: comData, layout: comLayout} = this.dataService.getBubble2comData();
     this.graphcomData = comData;
     this.graphcomLayout = comLayout;
+    this.graphcomPack = {data: this.graphcomData, layout: this.graphcomLayout};
 
         // Assign the data of the circularity plot
     //=====================================================================================
