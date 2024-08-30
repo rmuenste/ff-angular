@@ -175,7 +175,7 @@ export class BenchmarkExampleComponent implements OnInit {
     const {data: plotData, layout: plotLayout} = this.dataService.getBubble2circularityData();
     this.graphData = plotData;
     this.graphLayout = plotLayout;
-    this.graphCircularityPack = {data: this.graphData, layout: this.graphcomLayout};
+    this.graphCircularityPack = {data: this.graphData, layout: this.graphLayout};
 
 
       // Assign the data of the circularity plot

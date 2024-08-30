@@ -426,8 +426,8 @@ export class DataService {
     };
     
     const marker3TraceMooNMD = {
-      x: c1g3l3_com_data.x.filter((_, index) => index % 60 === 0),
-      y: c1g3l3_com_data.y.filter((_, index) => index % 60 === 0),
+      x: c1g3l3_circularity_data.x.filter((_, index) => index % 60 === 0),
+      y: c1g3l3_circularity_data.y.filter((_, index) => index % 60 === 0),
       type: 'scatter',
       mode: 'markers',
       marker: {

@@ -20,7 +20,7 @@ export class ComparativePlotComponent implements OnInit {
 
   ngOnInit(): void {
     this.theGraph = JSON.parse(JSON.stringify(this.inputGraph));
-    this.graph.data = this.theGraph.data[1];
+    this.graph.data = this.theGraph.data[this.selectedLevel];
     this.graph.layout = this.theGraph.layout;
     console.log(this.inputGraph);
     //let val = `Level ${this.selectedLevel + 1}`;
