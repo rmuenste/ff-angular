@@ -213,13 +213,13 @@
         and decrease as the bubble is deformed.
       </p>     
       
-     <div class="plot-wrapper-ex">
-      <plotly-plot
-        [data]="graphData"
-        [layout]="graphLayout"
-        [useResizeHandler]="false"
-      ></plotly-plot>
-     </div>
+      <div class="plot-wrapper-ex">
+
+        <app-comparative-plot
+          [inputGraph]="graphCircularityPack"
+        >
+        </app-comparative-plot>
+        </div>
      
 
       <h4>Rise Velocity</h4>
