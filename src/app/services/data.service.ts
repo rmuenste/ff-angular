@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { sphericityL1, massConservationL2, massConservationL3, massConservationL4, sphericityL2, sphericityL3 } from '../components/benchmark-bubble3/data';
 import { dataSizeL2, dataSizeL3, dataSizeL4 } from '../components/benchmark-bubble3/data';
 import { surfaceDataL2, surfaceDataL3, surfaceDataL4 } from '../components/benchmark-bubble3/data';
-import { c1g1l1_circularity_data, c1g1l1_com_data, c1g1l1_mass_Data, c1g1l1_riseVelocity_Data, c1g2l1_COM_data, c1g2l1_circularity_data, c1g2l1_velocity_data, 
+import { c1g1l1_circularity_data, c1g1l1_com_data, c1g1l1_riseVelocity_Data, c1g2l1_COM_data, c1g2l1_circularity_data, c1g2l1_velocity_data, 
   c1g3l1_COM_data, c1g3l1_Circularity_data, c1g3l1_Velocity_data, c1g3l1_com_data, c1g1l4s_data, c1g1l7_bubbleMass_data, c1g1l2_com_Data, c1g2l2_com_data, c1g3l2_com_data, 
   c1g1l3_com_data, c1g2l3_com_data, c1g3l3_com_data, c1g1l3_circularity_data, c1g2l3_circularity_data, c1g3l3_circularity_data, c1g1l2_circularity_data,
   c1g2l2_circularity_data, c1g3l2_circularity_data,c1g1l2_riseVelocity_data, c1g2l2_riseVelocity_data, c1g3l2_riseVelocity_data, 
-  c1g2l3_riseVelocity_data, c1g3l3_riseVelocity_data, c1g2l3_bubbleMass_data, c1g3l4_bubbleMass_data, 
-  c1g1l3_riseVelocity_data,
-  c1g2l1_riseVelocity_data} from '../components/benchmark-example/data_bubble2';
+  c1g2l3_riseVelocity_data, c1g3l3_riseVelocity_data,  
+  c1g1l1_mass_Data, c1g1l2_bubbleMass_data, c1g1l3_bubbleMass_data, c1g1l4_bubbleMass_data,
+  c1g2l1_bubbleMass_data, c1g2l2_bubbleMass_data, c1g2l3_bubbleMass_data, 
+  c1g3l1_bubbleMass_data, c1g3l2_bubbleMass_data, c1g3l3_bubbleMass_data, c1g3l4_bubbleMass_data,
+  c1g1l3_riseVelocity_data, c1g2l1_riseVelocity_data} from '../components/benchmark-example/data_bubble2';
 
 import { BenchmarkData, exampleBenchmarkData  } from '../models/benchmark-data';
 
@@ -937,10 +939,13 @@ export class DataService {
 
   getBubble2MassDataN() { 
     //const bubble2Velocity_data = []; N for normalized
-
+    for(let val=0; val < c1g1l1_mass_Data.y.length; val++) {
+      c1g1l1_mass_Data.y[val] = c1g1l1_mass_Data.y[val] / (3.14 * 0.25 * 0.25) * 100;
+    }
+     
     const markerTraceTP2D = {
-      x: c1g1l7_bubbleMass_data.x.filter((_, index) => index % 90 === 0),
-      y: c1g1l7_bubbleMass_data.y.filter((_, index) => index % 90 === 0),
+      x: c1g1l1_mass_Data.x.filter((_, index) => index % 90 === 0),
+      y: c1g1l1_mass_Data.y.filter((_, index) => index % 90 === 0),
       type: 'scatter',
       mode: 'markers',
       marker: {
@@ -951,6 +956,78 @@ export class DataService {
     };
 
     const markerTraceFreeLIFE = {
+      x: c1g2l1_bubbleMass_data.x.filter((_, index) => index % 90 === 0),
+      y: c1g2l1_bubbleMass_data.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'green',
+        symbol: 'square'
+      },
+      showlegend: false
+    };
+  
+    const markerTraceMooNMD = {
+      x: c1g3l1_bubbleMass_data.x.filter((_, index) => index % 90 === 0),
+      y: c1g3l1_bubbleMass_data.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'red',
+        symbol: 'x'
+      },
+      showlegend: false
+    };
+
+    const marker2TraceTP2D = {
+      x: c1g1l2_bubbleMass_data.x.filter((_, index) => index % 90 === 0),
+      y: c1g1l2_bubbleMass_data.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'blue',
+        symbol: 'circle'
+      },
+      showlegend: false
+    };
+
+    const marker2TraceFreeLIFE = {
+      x: c1g2l2_bubbleMass_data.x.filter((_, index) => index % 90 === 0),
+      y: c1g2l2_bubbleMass_data.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'green',
+        symbol: 'square'
+      },
+      showlegend: false
+    };
+  
+    const marker2TraceMooNMD = {
+      x: c1g3l2_bubbleMass_data.x.filter((_, index) => index % 90 === 0),
+      y: c1g3l2_bubbleMass_data.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'red',
+        symbol: 'x'
+      },
+      showlegend: false
+    };
+
+    const marker3TraceTP2D = {
+      x: c1g1l3_bubbleMass_data.x.filter((_, index) => index % 90 === 0),
+      y: c1g1l3_bubbleMass_data.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'blue',
+        symbol: 'circle'
+      },
+      showlegend: false
+    };
+
+    const marker3TraceFreeLIFE = {
       x: c1g2l3_bubbleMass_data.x.filter((_, index) => index % 90 === 0),
       y: c1g2l3_bubbleMass_data.y.filter((_, index) => index % 90 === 0),
       type: 'scatter',
@@ -962,9 +1039,9 @@ export class DataService {
       showlegend: false
     };
   
-    const markerTraceMooNMD = {
-      x: c1g3l4_bubbleMass_data.x.filter((_, index) => index % 90 === 0),
-      y: c1g3l4_bubbleMass_data.y.filter((_, index) => index % 90 === 0),
+    const marker3TraceMooNMD = {
+      x: c1g3l3_bubbleMass_data.x.filter((_, index) => index % 90 === 0),
+      y: c1g3l3_bubbleMass_data.y.filter((_, index) => index % 90 === 0),
       type: 'scatter',
       mode: 'markers',
       marker: {
@@ -973,9 +1050,21 @@ export class DataService {
       },
       showlegend: false
     };
-
-    const bubble2Mass_data = [c1g1l7_bubbleMass_data, c1g2l3_bubbleMass_data, c1g3l4_bubbleMass_data, markerTraceTP2D, markerTraceFreeLIFE, markerTraceMooNMD];
-  
+    
+    const bubble2Mass_data = [
+      [c1g1l3_bubbleMass_data,
+        c1g1l7_bubbleMass_data,
+        c1g3l3_bubbleMass_data,markerTraceMooNMD
+      ],
+      [c1g1l7_bubbleMass_data,
+        c1g1l7_bubbleMass_data,
+        c1g3l3_bubbleMass_data, marker2TraceMooNMD
+      ],
+      [c1g1l7_bubbleMass_data,
+        c1g1l7_bubbleMass_data,
+        c1g3l3_bubbleMass_data, marker3TraceMooNMD
+       ]       
+      ]
   //  console.log(`We got ${chartSpherecityData.length} data sets`);
   //  for(let i = 0; i < chartSpherecityData.length; i++) {
   //    console.log(`Data set ${i}: ${JSON.stringify(chartSpherecityData[i])}`);

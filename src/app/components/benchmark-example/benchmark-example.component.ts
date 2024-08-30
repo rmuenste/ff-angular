@@ -148,13 +148,14 @@ export class BenchmarkExampleComponent implements OnInit {
   graphcomLayout: any = {title: 'Line Chart'
   }
 
-  graphBubbleMassData: any[] = [];
-  graphbubbleMassLayout: any = {title: 'Line Chart'
-  }
-
   graphRiseVelocityPack: {} = {};
   graphRiseVelocityData: any[] = [];
   graphRiseVelocityLayout: any = {title: 'Line Chart'
+  }
+
+  graphMassPack: {} = {};
+  graphBubbleMassData: any[] = [];
+  graphbubbleMassLayout: any = {title: 'Line Chart'
   }
 
   graphBubble2ShapeData: any[] = [];
@@ -201,6 +202,8 @@ export class BenchmarkExampleComponent implements OnInit {
     const {data: c1g1l4_bubbleMass_data, layout: c1g1l4_bubbleMass_Layout} = this.dataService.getBubble2MassDataN();
     this.graphBubble2MassData = c1g1l4_bubbleMass_data;
     this.graphBubble2Masslayout = c1g1l4_bubbleMass_Layout;
+    this.graphMassPack = {data: this.graphBubble2MassData, layout: this.graphBubble2Masslayout};
+
 
 
   }

@@ -241,13 +241,13 @@
 
 
 
-     <div class="plot-wrapper-ex">
-      <plotly-plot
-        [data]="graphBubble2MassData"
-        [layout]="graphBubble2Masslayout"
-        [useResizeHandler]="false"
-      ></plotly-plot>
-     </div>
+    <div class="plot-wrapper-ex">
+
+      <app-comparative-plot
+        [inputGraph]="graphMassPack"
+      >
+      </app-comparative-plot>
+    </div>
 
   </mat-tab>
   <mat-tab label="Reference Data"> 
