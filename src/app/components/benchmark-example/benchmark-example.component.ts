@@ -152,6 +152,7 @@ export class BenchmarkExampleComponent implements OnInit {
   graphbubbleMassLayout: any = {title: 'Line Chart'
   }
 
+  graphRiseVelocityPack: {} = {};
   graphRiseVelocityData: any[] = [];
   graphRiseVelocityLayout: any = {title: 'Line Chart'
   }
@@ -178,18 +179,17 @@ export class BenchmarkExampleComponent implements OnInit {
     this.graphCircularityPack = {data: this.graphData, layout: this.graphLayout};
 
 
-      // Assign the data of the circularity plot
     //=====================================================================================
     const {data: comData, layout: comLayout} = this.dataService.getBubble2comData();
     this.graphcomData = comData;
     this.graphcomLayout = comLayout;
     this.graphcomPack = {data: this.graphcomData, layout: this.graphcomLayout};
 
-        // Assign the data of the circularity plot
     //=====================================================================================
     const {data: riseVelocityData, layout: riseVelocityLayout} = this.dataService.getBubble2VelocityData();
     this.graphRiseVelocityData = riseVelocityData;
     this.graphRiseVelocityLayout = riseVelocityLayout;
+    this.graphRiseVelocityPack = {data: this.graphRiseVelocityData, layout: this.graphRiseVelocityLayout};
 
     // Bubble Shape Data
     //=====================================================================================
@@ -197,7 +197,6 @@ export class BenchmarkExampleComponent implements OnInit {
     this.graphBubble2ShapeData = c1g1l4shape_data;
     this.graphBubble2Shapelayout = c1g1l4shape_Layout;
 
-        // Bubble Shape Data
     //=====================================================================================
     const {data: c1g1l4_bubbleMass_data, layout: c1g1l4_bubbleMass_Layout} = this.dataService.getBubble2MassDataN();
     this.graphBubble2MassData = c1g1l4_bubbleMass_data;
