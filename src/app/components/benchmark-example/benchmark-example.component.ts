@@ -1,3 +1,4 @@
+import { useAnimation } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 
@@ -166,9 +167,14 @@ export class BenchmarkExampleComponent implements OnInit {
   graphBubble2Masslayout: any = {title: 'Line Chart' 
   }
 
+  selectedCase: number = 1;
+  case1Data: string = 'Data for Case 1';
+  case2Data: string = 'Data for Case 2';
+
   constructor(private dataService: DataService) {
 
   }
+
 
   ngOnInit(): void {
         //=====================================================================================
@@ -206,6 +212,24 @@ export class BenchmarkExampleComponent implements OnInit {
 
 
 
+  };
+
+  loadSelection(userCase: number) {
+    console.log(userCase);
+
+    if (userCase = 1){
+      this.loadCase1Data();
+    } 
+    else if (userCase = 2){
+      this.loadCase2Data()
+    }
+  };
+  loadCase1Data() {
+    this.case1Data = 'Data for Case 1 has been loaded.';
+  }
+
+  loadCase2Data() {
+    this.case2Data = 'Data for Case 2 has been loaded.';
   }
 
 }

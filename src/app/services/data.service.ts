@@ -15,14 +15,18 @@ import { c1g1l1_circularity_data, c1g1l1_com_data, c1g1l1_riseVelocity_Data, c1g
   c2g1l2_bubbleMass_data,
   c2g1l3_bubbleMass_data,
   c2g2l3_bubbleMass_data} from '../components/benchmark-example/data_bubble2';
+/*  
 import { c2g1l4_bubble_mass, c2g1l4_circularity, c2g1l4_com, c2g1l4_rise_vel, c2g1l5_bubble_mass, c2g1l5_circularity, c2g1l5_com, c2g1l7_com,
          c2g1l5_rise_vel, c2g1l6_bubble_mass, c2g1l6_circularity, c2g1l6_com, c2g1l6_rise_vel, c2g1l7_bubble_mass, c2g1l7_circularity, c2g1l7_rise_vel,
          c2g2l1_bubble_mass, c2g2l1_circularity, c2g2l1_com, c2g2l1_rise_vel, c2g2l2_bubble_mass, c2g2l2_circularity, c2g2l2_com, c2g2l2_rise_vel,
          c2g2l3_bubble_mass, c2g2l3_circularity, c2g2l3_com, c2g2l3_rise_vel, c2g3l2_bubble_mass, c2g3l2_circularity, c2g3l2_com, c2g3l2_rise_vel,
          c2g3l3_bubble_mass, c2g3l3_circularity, c2g3l3_com, c2g3l3_rise_vel, c2g3l4_bubble_mass, c2g3l4_circularity, c2g3l4_com, c2g3l4_rise_vel
 } from '../components/benchmark-example/case2_data';
+*/
 
 import { BenchmarkData, exampleBenchmarkData  } from '../models/benchmark-data';
+
+
 
 const graph2 = {
   data: [
@@ -1127,7 +1131,7 @@ export class DataService {
   //=====================================================================================
   // Here we have the data of the circularity (Bubble 2D Case 2)
   //=====================================================================================
-
+/*
   getCase2Bubble2circularityData() {
     const markerTraceTP2D = {
       x: c2g1l4_circularity.x.filter((_, index) => index % 90 === 0),
@@ -1817,5 +1821,5 @@ export class DataService {
         }
     }
   };
-
+*/
 }

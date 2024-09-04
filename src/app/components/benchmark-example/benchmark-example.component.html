@@ -161,7 +161,29 @@
     <div class="heading-wrapper">
      <h4 class="my-h4"> Results </h4>
     </div>
+    
+    <div class="heading-wrapper">
+    <div>
+      <!-- mat-select dropdown for selecting between cases -->
+      <mat-form-field appearance="fill">
+      <mat-label>Select Case</mat-label>
+      <mat-select [(value)]="selectedCase"
+     (selectionChange)="loadSelection($event.value)">
+      <mat-option [value]="1">Case 1</mat-option>
+      <mat-option [value]="2">Case 2</mat-option>
+      </mat-select>
+      </mat-form-field>
 
+    </div>
+    </div>
+ 
+
+    <div *ngIf="selectedCase === 2">
+    <!-- Case 2 Data -->
+    <p>{{ case2Data }}</p>
+    </div> 
+
+    <div *ngIf="selectedCase === 1">
     <div class="text-wrapper">
       <h4>
       Verification of the results by the picture norm
@@ -247,6 +269,7 @@
         [inputGraph]="graphMassPack"
       >
       </app-comparative-plot>
+    </div>
     </div>
 
   </mat-tab>
