@@ -7,7 +7,7 @@ import { c1g1l1_circularity_data, c1g1l1_com_data, c1g1l1_riseVelocity_Data, c1g
   c1g1l3_com_data, c1g2l3_com_data, c1g3l3_com_data, c1g1l3_circularity_data, c1g2l3_circularity_data, c1g3l3_circularity_data, c1g1l2_circularity_data,
   c1g2l2_circularity_data, c1g3l2_circularity_data,c1g1l2_riseVelocity_data, c1g2l2_riseVelocity_data, c1g3l2_riseVelocity_data, 
   c1g2l3_riseVelocity_data, c1g3l3_riseVelocity_data,  
-  c1g1l1_mass_Data, c1g1l2_bubbleMass_data, c1g1l3_bubbleMass_data, c1g1l4_bubbleMass_data,
+  c1g1l1_mass_data, c1g1l2_bubbleMass_data, c1g1l3_bubbleMass_data, c1g1l4_bubbleMass_data,
   c1g2l1_bubbleMass_data, c1g2l2_bubbleMass_data, c1g2l3_bubbleMass_data, 
   c1g3l1_bubbleMass_data, c1g3l2_bubbleMass_data, c1g3l3_bubbleMass_data, c1g3l4_bubbleMass_data,
   c1g1l3_riseVelocity_data, c1g2l1_riseVelocity_data} from '../components/benchmark-example/data_bubble2';
@@ -939,13 +939,10 @@ export class DataService {
 
   getBubble2MassDataN() { 
     //const bubble2Velocity_data = []; N for normalized
-    for(let val=0; val < c1g1l1_mass_Data.y.length; val++) {
-      c1g1l1_mass_Data.y[val] = c1g1l1_mass_Data.y[val] / (3.14 * 0.25 * 0.25) * 100;
-    }
-     
+    
     const markerTraceTP2D = {
-      x: c1g1l1_mass_Data.x.filter((_, index) => index % 90 === 0),
-      y: c1g1l1_mass_Data.y.filter((_, index) => index % 90 === 0),
+      x: c1g1l1_mass_data.x.filter((_, index) => index % 90 === 0),
+      y: c1g1l1_mass_data.y.filter((_, index) => index % 90 === 0),
       type: 'scatter',
       mode: 'markers',
       marker: {
@@ -1052,17 +1049,17 @@ export class DataService {
     };
     
     const bubble2Mass_data = [
-      [c1g1l3_bubbleMass_data,
-        c1g1l7_bubbleMass_data,
-        c1g3l3_bubbleMass_data,markerTraceMooNMD
+      [c1g1l1_mass_data, markerTraceTP2D,
+       c1g1l1_mass_data,markerTraceTP2D,
+       c1g3l1_bubbleMass_data,markerTraceMooNMD
       ],
-      [c1g1l7_bubbleMass_data,
-        c1g1l7_bubbleMass_data,
-        c1g3l3_bubbleMass_data, marker2TraceMooNMD
+      [c1g1l2_bubbleMass_data, marker2TraceTP2D,
+       c1g1l2_bubbleMass_data, marker2TraceTP2D,
+       c1g3l2_bubbleMass_data, marker2TraceMooNMD
       ],
-      [c1g1l7_bubbleMass_data,
-        c1g1l7_bubbleMass_data,
-        c1g3l3_bubbleMass_data, marker3TraceMooNMD
+      [c1g1l3_bubbleMass_data,marker3TraceTP2D,
+       c1g1l3_bubbleMass_data,marker3TraceTP2D,
+       c1g3l3_bubbleMass_data, marker3TraceMooNMD
        ]       
       ]
   //  console.log(`We got ${chartSpherecityData.length} data sets`);
