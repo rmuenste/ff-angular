@@ -10,7 +10,17 @@ import { c1g1l1_circularity_data, c1g1l1_com_data, c1g1l1_riseVelocity_Data, c1g
   c1g1l1_mass_data, c1g1l2_bubbleMass_data, c1g1l3_bubbleMass_data, c1g1l4_bubbleMass_data,
   c1g2l1_bubbleMass_data, c1g2l2_bubbleMass_data, c1g2l3_bubbleMass_data, 
   c1g3l1_bubbleMass_data, c1g3l2_bubbleMass_data, c1g3l3_bubbleMass_data, c1g3l4_bubbleMass_data,
-  c1g1l3_riseVelocity_data, c1g2l1_riseVelocity_data} from '../components/benchmark-example/data_bubble2';
+  c1g1l3_riseVelocity_data, c1g2l1_riseVelocity_data,
+  c2g3l1_bubbleMass_data,
+  c2g1l2_bubbleMass_data,
+  c2g1l3_bubbleMass_data,
+  c2g2l3_bubbleMass_data} from '../components/benchmark-example/data_bubble2';
+import { c2g1l4_bubble_mass, c2g1l4_circularity, c2g1l4_com, c2g1l4_rise_vel, c2g1l5_bubble_mass, c2g1l5_circularity, c2g1l5_com, c2g1l7_com,
+         c2g1l5_rise_vel, c2g1l6_bubble_mass, c2g1l6_circularity, c2g1l6_com, c2g1l6_rise_vel, c2g1l7_bubble_mass, c2g1l7_circularity, c2g1l7_rise_vel,
+         c2g2l1_bubble_mass, c2g2l1_circularity, c2g2l1_com, c2g2l1_rise_vel, c2g2l2_bubble_mass, c2g2l2_circularity, c2g2l2_com, c2g2l2_rise_vel,
+         c2g2l3_bubble_mass, c2g2l3_circularity, c2g2l3_com, c2g2l3_rise_vel, c2g3l2_bubble_mass, c2g3l2_circularity, c2g3l2_com, c2g3l2_rise_vel,
+         c2g3l3_bubble_mass, c2g3l3_circularity, c2g3l3_com, c2g3l3_rise_vel, c2g3l4_bubble_mass, c2g3l4_circularity, c2g3l4_com, c2g3l4_rise_vel
+} from '../components/benchmark-example/case2_data';
 
 import { BenchmarkData, exampleBenchmarkData  } from '../models/benchmark-data';
 
@@ -329,7 +339,7 @@ export class DataService {
   };
 
   //=====================================================================================
-  // Here we have the data of the circularity (Bubble 2D)
+  // Here we have the data of the circularity (Bubble 2D Case 1)
   //=====================================================================================
   getBubble2circularityData() {
 
@@ -965,7 +975,7 @@ export class DataService {
     };
   
     const markerTraceMooNMD = {
-      x: c1g3l1_bubbleMass_data.x.filter((_, index) => index % 90 === 0),
+      x: c1g3l2_bubbleMass_data.x.filter((_, index) => index % 90 === 0),
       y: c1g3l1_bubbleMass_data.y.filter((_, index) => index % 90 === 0),
       type: 'scatter',
       mode: 'markers',
@@ -1050,15 +1060,15 @@ export class DataService {
     
     const bubble2Mass_data = [
       [c1g1l1_mass_data, markerTraceTP2D,
-       c1g1l1_mass_data,markerTraceTP2D,
+       c1g2l1_bubbleMass_data,markerTraceFreeLIFE,
        c1g3l1_bubbleMass_data,markerTraceMooNMD
       ],
       [c1g1l2_bubbleMass_data, marker2TraceTP2D,
-       c1g1l2_bubbleMass_data, marker2TraceTP2D,
+       c1g2l2_bubbleMass_data, marker2TraceFreeLIFE,
        c1g3l2_bubbleMass_data, marker2TraceMooNMD
       ],
       [c1g1l3_bubbleMass_data,marker3TraceTP2D,
-       c1g1l3_bubbleMass_data,marker3TraceTP2D,
+       c1g2l3_bubbleMass_data,marker3TraceTP2D,
        c1g3l3_bubbleMass_data, marker3TraceMooNMD
        ]       
       ]
@@ -1113,4 +1123,699 @@ export class DataService {
         }
     }
   };
+
+  //=====================================================================================
+  // Here we have the data of the circularity (Bubble 2D Case 2)
+  //=====================================================================================
+
+  getCase2Bubble2circularityData() {
+    const markerTraceTP2D = {
+      x: c2g1l4_circularity.x.filter((_, index) => index % 90 === 0),
+      y: c2g1l4_circularity.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'blue',
+        symbol: 'circle'
+      },
+      showlegend: false
+    };
+
+    const markerTraceFreeLIFE = {
+      x: c2g2l1_circularity.x.filter((_, index) => index % 90 === 0),
+      y: c2g2l1_circularity.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'green',
+        symbol: 'square'
+      },
+      showlegend: false
+    };
+  
+    const markerTraceMooNMD = {
+      x: c2g3l2_circularity.x.filter((_, index) => index % 90 === 0),
+      y: c2g3l2_circularity.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'red',
+        symbol: 'x'
+      },
+      showlegend: false
+    };
+
+    const marker2TraceTP2D = {
+      x: c2g1l5_circularity.x.filter((_, index) => index % 90 === 0),
+      y: c2g1l5_circularity.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'blue',
+        symbol: 'circle'
+      },
+      showlegend: false
+    };
+
+    const marker2TraceFreeLIFE = {
+      x: c2g2l2_circularity.x.filter((_, index) => index % 90 === 0),
+      y: c2g2l2_circularity.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'green',
+        symbol: 'square'
+      },
+      showlegend: false
+    };
+  
+    const marker2TraceMooNMD = {
+      x: c2g3l3_circularity.x.filter((_, index) => index % 90 === 0),
+      y: c2g3l3_circularity.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'red',
+        symbol: 'x'
+      },
+      showlegend: false
+    };
+
+    const marker3TraceTP2D = {
+      x: c2g1l6_circularity.x.filter((_, index) => index % 90 === 0),
+      y: c2g1l6_circularity.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'blue',
+        symbol: 'circle'
+      },
+      showlegend: false
+    };
+
+    const marker3TraceFreeLIFE = {
+      x: c2g2l3_circularity.x.filter((_, index) => index % 90 === 0),
+      y: c2g2l3_circularity.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'green',
+        symbol: 'square'
+      },
+      showlegend: false
+    };
+  
+    const marker3TraceMooNMD = {
+      x: c2g3l4_circularity.x.filter((_, index) => index % 90 === 0),
+      y: c2g3l4_circularity.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'red',
+        symbol: 'x'
+      },
+      showlegend: false
+    };
+    
+    const case2bubble2Circularity_data = [
+      [c2g1l4_circularity, markerTraceTP2D,
+        c2g2l1_circularity,markerTraceFreeLIFE,
+        c2g3l2_circularity,markerTraceMooNMD
+      ],
+      [c2g1l5_circularity, marker2TraceTP2D,
+       c2g2l2_circularity, marker2TraceFreeLIFE,
+       c2g3l3_circularity, marker2TraceMooNMD
+      ],
+      [c2g1l6_circularity,marker3TraceTP2D,
+       c2g2l3_circularity,marker3TraceTP2D,
+       c2g3l4_circularity, marker3TraceMooNMD
+       ]       
+      ]
+
+    return {
+      data: case2bubble2Circularity_data,
+        layout: {
+          title: {
+            text: 'Mass/Area',
+            font: {
+              color: '#ffffffb3'
+            }
+          },
+          showlegend: true,
+          legend: {
+            font: {
+              color: '#ffffffb3'
+            }
+          },
+          plot_bgcolor: '#303030',
+          paper_bgcolor: '#303030',
+          xaxis: {
+            range: [0.0, 3.0], // Define custom x-axis limits
+            showgrid: true,
+            tickfont: {
+              color: '#ffffffb3'
+            },
+            gridcolor: '#505050',
+            title: {
+              text: 'Time[s]',
+              font: {
+                color: '#ffffffb3'
+              }
+            }
+          },
+          yaxis: {
+            showgrid: true,
+            tickfont: {
+              color: '#ffffffb3'
+            },
+            gridcolor: '#505050',
+            title: {
+              text: 'Mass/Area',
+              font: {
+                color: '#ffffffb3'
+              }
+            }
+          }
+        }
+    }
+  };
+
+
+  getCase2Bubble2comData() {
+    const markerTraceTP2D = {
+      x: c2g1l4_com.x.filter((_, index) => index % 90 === 0),
+      y: c2g1l4_com.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'blue',
+        symbol: 'circle'
+      },
+      showlegend: false
+    };
+
+    const markerTraceFreeLIFE = {
+      x: c2g2l1_com.x.filter((_, index) => index % 90 === 0),
+      y: c2g2l1_com.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'green',
+        symbol: 'square'
+      },
+      showlegend: false
+    };
+  
+    const markerTraceMooNMD = {
+      x: c2g3l2_com.x.filter((_, index) => index % 90 === 0),
+      y: c2g3l2_com.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'red',
+        symbol: 'x'
+      },
+      showlegend: false
+    };
+
+    const marker2TraceTP2D = {
+      x: c2g1l5_com.x.filter((_, index) => index % 90 === 0),
+      y: c2g1l5_com.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'blue',
+        symbol: 'circle'
+      },
+      showlegend: false
+    };
+
+    const marker2TraceFreeLIFE = {
+      x: c2g2l2_com.x.filter((_, index) => index % 90 === 0),
+      y: c2g2l2_com.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'green',
+        symbol: 'square'
+      },
+      showlegend: false
+    };
+  
+    const marker2TraceMooNMD = {
+      x: c2g3l3_com.x.filter((_, index) => index % 90 === 0),
+      y: c2g3l3_com.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'red',
+        symbol: 'x'
+      },
+      showlegend: false
+    };
+
+    const marker3TraceTP2D = {
+      x: c2g1l6_com.x.filter((_, index) => index % 90 === 0),
+      y: c2g1l6_com.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'blue',
+        symbol: 'circle'
+      },
+      showlegend: false
+    };
+
+    const marker3TraceFreeLIFE = {
+      x: c2g2l3_com.x.filter((_, index) => index % 90 === 0),
+      y: c2g2l3_com.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'green',
+        symbol: 'square'
+      },
+      showlegend: false
+    };
+  
+    const marker3TraceMooNMD = {
+      x: c2g3l4_com.x.filter((_, index) => index % 90 === 0),
+      y: c2g3l4_com.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'red',
+        symbol: 'x'
+      },
+      showlegend: false
+    };
+    
+    const case2bubble2com_data = [
+      [c2g1l4_com, markerTraceTP2D,
+        c2g2l1_com,markerTraceFreeLIFE,
+        c2g3l2_com,markerTraceMooNMD
+      ],
+      [c2g1l5_com, marker2TraceTP2D,
+       c2g2l2_com, marker2TraceFreeLIFE,
+       c2g3l3_com, marker2TraceMooNMD
+      ],
+      [c2g1l6_com,marker3TraceTP2D,
+       c2g2l3_com,marker3TraceTP2D,
+       c2g3l4_com, marker3TraceMooNMD
+       ]       
+      ]
+
+    return {
+      data: case2bubble2com_data,
+        layout: {
+          title: {
+            text: 'Mass/Area',
+            font: {
+              color: '#ffffffb3'
+            }
+          },
+          showlegend: true,
+          legend: {
+            font: {
+              color: '#ffffffb3'
+            }
+          },
+          plot_bgcolor: '#303030',
+          paper_bgcolor: '#303030',
+          xaxis: {
+            range: [0.0, 3.0], // Define custom x-axis limits
+            showgrid: true,
+            tickfont: {
+              color: '#ffffffb3'
+            },
+            gridcolor: '#505050',
+            title: {
+              text: 'Time[s]',
+              font: {
+                color: '#ffffffb3'
+              }
+            }
+          },
+          yaxis: {
+            showgrid: true,
+            tickfont: {
+              color: '#ffffffb3'
+            },
+            gridcolor: '#505050',
+            title: {
+              text: 'Mass/Area',
+              font: {
+                color: '#ffffffb3'
+              }
+            }
+          }
+        }
+    }
+  };
+
+
+  getCase2Bubble2VelocityData() {
+    const markerTraceTP2D = {
+      x: c2g1l4_rise_vel.x.filter((_, index) => index % 90 === 0),
+      y: c2g1l4_rise_vel.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'blue',
+        symbol: 'circle'
+      },
+      showlegend: false
+    };
+
+    const markerTraceFreeLIFE = {
+      x: c2g2l1_rise_vel.x.filter((_, index) => index % 90 === 0),
+      y: c2g2l1_rise_vel.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'green',
+        symbol: 'square'
+      },
+      showlegend: false
+    };
+  
+    const markerTraceMooNMD = {
+      x: c2g3l2_rise_vel.x.filter((_, index) => index % 90 === 0),
+      y: c2g3l2_rise_vel.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'red',
+        symbol: 'x'
+      },
+      showlegend: false
+    };
+
+    const marker2TraceTP2D = {
+      x: c2g1l5_rise_vel.x.filter((_, index) => index % 90 === 0),
+      y: c2g1l5_rise_vel.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'blue',
+        symbol: 'circle'
+      },
+      showlegend: false
+    };
+
+    const marker2TraceFreeLIFE = {
+      x: c2g2l2_rise_vel.x.filter((_, index) => index % 90 === 0),
+      y: c2g2l2_rise_vel.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'green',
+        symbol: 'square'
+      },
+      showlegend: false
+    };
+  
+    const marker2TraceMooNMD = {
+      x: c2g3l3_rise_vel.x.filter((_, index) => index % 90 === 0),
+      y: c2g3l3_rise_vel.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'red',
+        symbol: 'x'
+      },
+      showlegend: false
+    };
+
+    const marker3TraceTP2D = {
+      x: c2g1l6_rise_vel.x.filter((_, index) => index % 90 === 0),
+      y: c2g1l6_rise_vel.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'blue',
+        symbol: 'circle'
+      },
+      showlegend: false
+    };
+
+    const marker3TraceFreeLIFE = {
+      x: c2g2l3_rise_vel.x.filter((_, index) => index % 90 === 0),
+      y: c2g2l3_rise_vel.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'green',
+        symbol: 'square'
+      },
+      showlegend: false
+    };
+  
+    const marker3TraceMooNMD = {
+      x: c2g3l4_rise_vel.x.filter((_, index) => index % 90 === 0),
+      y: c2g3l4_rise_vel.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'red',
+        symbol: 'x'
+      },
+      showlegend: false
+    };
+    
+    const case2bubble2RiseVelocity_data = [
+      [c2g1l4_rise_vel, markerTraceTP2D,
+        c2g2l1_rise_vel,markerTraceFreeLIFE,
+        c2g3l2_rise_vel,markerTraceMooNMD
+      ],
+      [c2g1l5_rise_vel, marker2TraceTP2D,
+       c2g2l2_rise_vel, marker2TraceFreeLIFE,
+       c2g3l3_rise_vel, marker2TraceMooNMD
+      ],
+      [c2g1l6_rise_vel,marker3TraceTP2D,
+       c2g2l3_com,marker3TraceTP2D,
+       c2g3l4_com, marker3TraceMooNMD
+       ]       
+      ]
+
+    return {
+      data: case2bubble2RiseVelocity_data,
+        layout: {
+          title: {
+            text: 'Mass/Area',
+            font: {
+              color: '#ffffffb3'
+            }
+          },
+          showlegend: true,
+          legend: {
+            font: {
+              color: '#ffffffb3'
+            }
+          },
+          plot_bgcolor: '#303030',
+          paper_bgcolor: '#303030',
+          xaxis: {
+            range: [0.0, 3.0], // Define custom x-axis limits
+            showgrid: true,
+            tickfont: {
+              color: '#ffffffb3'
+            },
+            gridcolor: '#505050',
+            title: {
+              text: 'Time[s]',
+              font: {
+                color: '#ffffffb3'
+              }
+            }
+          },
+          yaxis: {
+            showgrid: true,
+            tickfont: {
+              color: '#ffffffb3'
+            },
+            gridcolor: '#505050',
+            title: {
+              text: 'Mass/Area',
+              font: {
+                color: '#ffffffb3'
+              }
+            }
+          }
+        }
+    }
+  };
+
+  getCase2Bubble2MassData() { 
+    const markerTraceTP2D = {
+      x: c2g1l4_bubble_mass.x.filter((_, index) => index % 90 === 0),
+      y: c2g1l4_bubble_mass.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'blue',
+        symbol: 'circle'
+      },
+      showlegend: false
+    };
+
+    const markerTraceFreeLIFE = {
+      x: c2g2l1_bubble_mass.x.filter((_, index) => index % 90 === 0),
+      y: c2g2l1_bubble_mass.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'green',
+        symbol: 'square'
+      },
+      showlegend: false
+    };
+  
+    const markerTraceMooNMD = {
+      x: c2g3l2_bubble_mass.x.filter((_, index) => index % 90 === 0),
+      y: c2g3l2_bubble_mass.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'red',
+        symbol: 'x'
+      },
+      showlegend: false
+    };
+
+    const marker2TraceTP2D = {
+      x: c2g1l5_bubble_mass.x.filter((_, index) => index % 90 === 0),
+      y: c2g1l5_bubble_mass.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'blue',
+        symbol: 'circle'
+      },
+      showlegend: false
+    };
+
+    const marker2TraceFreeLIFE = {
+      x: c2g2l2_bubble_mass.x.filter((_, index) => index % 90 === 0),
+      y: c2g2l2_bubble_mass.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'green',
+        symbol: 'square'
+      },
+      showlegend: false
+    };
+  
+    const marker2TraceMooNMD = {
+      x: c2g3l3_bubble_mass.x.filter((_, index) => index % 90 === 0),
+      y: c2g3l3_bubble_mass.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'red',
+        symbol: 'x'
+      },
+      showlegend: false
+    };
+
+    const marker3TraceTP2D = {
+      x: c2g1l6_bubble_mass.x.filter((_, index) => index % 90 === 0),
+      y: c2g1l6_bubble_mass.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'blue',
+        symbol: 'circle'
+      },
+      showlegend: false
+    };
+
+    const marker3TraceFreeLIFE = {
+      x: c2g2l3_bubble_mass.x.filter((_, index) => index % 90 === 0),
+      y: c2g2l3_bubble_mass.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'green',
+        symbol: 'square'
+      },
+      showlegend: false
+    };
+  
+    const marker3TraceMooNMD = {
+      x: c2g3l4_bubble_mass.x.filter((_, index) => index % 90 === 0),
+      y: c2g3l4_bubble_mass.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'red',
+        symbol: 'x'
+      },
+      showlegend: false
+    };
+    
+    const case2bubble2Mass_data = [
+      [c2g1l4_bubble_mass, markerTraceTP2D,
+        c2g2l1_bubble_mass,markerTraceFreeLIFE,
+        c2g3l2_bubble_mass,markerTraceMooNMD
+      ],
+      [c2g1l5_bubble_mass, marker2TraceTP2D,
+       c2g2l2_bubble_mass, marker2TraceFreeLIFE,
+       c2g3l3_bubble_mass, marker2TraceMooNMD
+      ],
+      [c2g1l6_bubble_mass,marker3TraceTP2D,
+       c2g2l3_bubble_mass,marker3TraceTP2D,
+       c2g3l4_bubble_mass, marker3TraceMooNMD
+       ]       
+      ]
+
+    return {
+      data: case2bubble2Mass_data,
+        layout: {
+          title: {
+            text: 'Mass/Area',
+            font: {
+              color: '#ffffffb3'
+            }
+          },
+          showlegend: true,
+          legend: {
+            font: {
+              color: '#ffffffb3'
+            }
+          },
+          plot_bgcolor: '#303030',
+          paper_bgcolor: '#303030',
+          xaxis: {
+            range: [0.0, 3.0], // Define custom x-axis limits
+            showgrid: true,
+            tickfont: {
+              color: '#ffffffb3'
+            },
+            gridcolor: '#505050',
+            title: {
+              text: 'Time[s]',
+              font: {
+                color: '#ffffffb3'
+              }
+            }
+          },
+          yaxis: {
+            showgrid: true,
+            tickfont: {
+              color: '#ffffffb3'
+            },
+            gridcolor: '#505050',
+            title: {
+              text: 'Mass/Area',
+              font: {
+                color: '#ffffffb3'
+              }
+            }
+          }
+        }
+    }
+  };
+
 }
