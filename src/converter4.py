@@ -1,6 +1,5 @@
 ## convert data to json format. 
-
-
+import math
 import json
 import argparse
 import subprocess
@@ -31,7 +30,8 @@ def convert_to_plotly_format(x_values, y_values, marker_name, marker_color):
 def main(file_path, y_col, marker_name, marker_color):
     for y in range(4): 
         x_values, y_values = read_data(file_path, y)
-        plotly_data = convert_to_plotly_format(x_values, y_values, marker_name, marker_color)
+        convY = [float(y0) /(math.pi * 0.25**2.) * 100. for y0 in y_values]
+        plotly_data = convert_to_plotly_format(x_values, convY, marker_name, marker_color)
         outputString = "var myVar = " + json.dumps(plotly_data)
         #print(outputString)
         input_file  = "myVar" + str(y) + ".js"
