@@ -15,6 +15,8 @@ import { c1g1l1_circularity_data, c1g1l1_com_data, c1g1l1_riseVelocity_Data, c1g
   c2g1l2_bubbleMass_data,
   c2g1l3_bubbleMass_data,
   c2g2l3_bubbleMass_data} from '../components/benchmark-example/data_bubble2';
+  import { c2g3l4s, c2g1l4s, c2g2l1s } from '../components/benchmark-example/case2_data';
+
 /*  
 import { c2g1l4_bubble_mass, c2g1l4_circularity, c2g1l4_com, c2g1l4_rise_vel, c2g1l5_bubble_mass, c2g1l5_circularity, c2g1l5_com, c2g1l7_com,
          c2g1l5_rise_vel, c2g1l6_bubble_mass, c2g1l6_circularity, c2g1l6_com, c2g1l6_rise_vel, c2g1l7_bubble_mass, c2g1l7_circularity, c2g1l7_rise_vel,
@@ -883,6 +885,7 @@ export class DataService {
   };
 
 
+  //case 1 bubble shape
   getBubble2Shape_data() {
 
     const nSegments = c1g1l4s_data.x.length / 2;
@@ -891,6 +894,75 @@ export class DataService {
     for (let i = 0; i < nSegments; i++) {
       const segmentX = c1g1l4s_data.x.slice(2 * i, 2 * (i + 1));
       const segmentY = c1g1l4s_data.y.slice(2 * i, 2 * (i + 1));
+
+
+      plotData.push({
+        x: segmentX,
+        y: segmentY,
+        type: 'scatter',
+        mode: 'lines',
+        line: { color: 'blue' },
+        showlegend: false
+      });
+    }
+
+    return {
+      data: plotData,
+      layout: {
+        title: {
+          text: 'Bubble Shape',
+          font: {
+            color: '#ffffffb3'
+          }
+        },
+        showlegend: true,
+        legend: {
+          font: {
+            color: '#ffffffb3'
+          }
+        },
+        plot_bgcolor: '#303030',
+        paper_bgcolor: '#303030',
+        xaxis: {
+          range: [0.1, 0.9],
+          showgrid: true,
+          tickfont: {
+            color: '#ffffffb3'
+          },
+          gridcolor: '#505050',
+          title: {
+            text: 'X-Coordinate',
+            font: {
+              color: '#ffffffb3'
+            }
+          }
+        },
+        yaxis: {
+          showgrid: true,
+          tickfont: {
+            color: '#ffffffb3'
+          },
+          gridcolor: '#505050',
+          title: {
+            text: 'Y-Coordinate',
+            font: {
+              color: '#ffffffb3'
+            }
+          }
+        }
+      }
+    }
+  };
+
+  //case2 bubble shape
+  getBubble2Shape_data2() {
+
+    const nSegments = c2g3l4s.x.length / 2;
+    const plotData = [];
+
+    for (let i = 0; i < nSegments; i++) {
+      const segmentX = c2g3l4s.x.slice(2 * i, 2 * (i + 1));
+      const segmentY = c2g3l4s.y.slice(2 * i, 2 * (i + 1));
 
 
       plotData.push({

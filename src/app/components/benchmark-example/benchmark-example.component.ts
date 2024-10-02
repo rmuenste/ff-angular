@@ -167,6 +167,12 @@ export class BenchmarkExampleComponent implements OnInit {
   graphBubble2Masslayout: any = {title: 'Line Chart' 
   }
 
+  //case 2 data
+  graphBubble2ShapeData2: any[] = [];
+  graphBubble2Shapelayout2: any = {title: 'Line Chart'
+  }
+
+
   selectedCase: number = 1;
   case1Data: string = 'Data for Case 1';
   case2Data: string = 'Data for Case 2';
@@ -209,6 +215,13 @@ export class BenchmarkExampleComponent implements OnInit {
     this.graphBubble2MassData = c1g1l4_bubbleMass_data;
     this.graphBubble2Masslayout = c1g1l4_bubbleMass_Layout;
     this.graphMassPack = {data: this.graphBubble2MassData, layout: this.graphBubble2Masslayout};
+    
+    //case 2 data
+      // Bubble Shape Data
+    //=====================================================================================
+    const {data: c2g3l4s_data, layout: c2g3l4s_Layout} = this.dataService.getBubble2Shape_data2();
+    this.graphBubble2ShapeData2 = [c2g3l4s_data, ]
+    this.graphBubble2Shapelayout2 = c2g3l4s_Layout;
 
 
 
