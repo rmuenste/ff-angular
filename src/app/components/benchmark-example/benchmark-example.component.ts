@@ -183,7 +183,7 @@ export class BenchmarkExampleComponent implements OnInit {
 
 
   ngOnInit(): void {
-        //=====================================================================================
+    //=====================================================================================
     // Assign the data of the circularity plot
     //=====================================================================================
     const {data: plotData, layout: plotLayout} = this.dataService.getBubble2circularityData();
@@ -215,34 +215,92 @@ export class BenchmarkExampleComponent implements OnInit {
     this.graphBubble2MassData = c1g1l4_bubbleMass_data;
     this.graphBubble2Masslayout = c1g1l4_bubbleMass_Layout;
     this.graphMassPack = {data: this.graphBubble2MassData, layout: this.graphBubble2Masslayout};
-    
-    //case 2 data
-      // Bubble Shape Data
-    //=====================================================================================
-    const {data: c2g3l4s_data, layout: c2g3l4s_Layout} = this.dataService.getBubble2Shape_data2();
-    this.graphBubble2ShapeData2 = [c2g3l4s_data, ]
-    this.graphBubble2Shapelayout2 = c2g3l4s_Layout;
-
-
 
   };
 
   loadSelection(userCase: number) {
     console.log(userCase);
 
-    if (userCase = 1){
+    if (userCase == 1){
       this.loadCase1Data();
     } 
-    else if (userCase = 2){
+    else if (userCase == 2){
       this.loadCase2Data()
     }
   };
   loadCase1Data() {
     this.case1Data = 'Data for Case 1 has been loaded.';
+    //=====================================================================================
+    // Assign the data of the circularity plot
+    //=====================================================================================
+    const {data: plotData, layout: plotLayout} = this.dataService.getBubble2circularityData();
+    this.graphData = plotData;
+    this.graphLayout = plotLayout;
+    this.graphCircularityPack = {data: this.graphData, layout: this.graphLayout};
+
+
+    //=====================================================================================
+    const {data: comData, layout: comLayout} = this.dataService.getBubble2comData();
+    this.graphcomData = comData;
+    this.graphcomLayout = comLayout;
+    this.graphcomPack = {data: this.graphcomData, layout: this.graphcomLayout};
+
+    //=====================================================================================
+    const {data: riseVelocityData, layout: riseVelocityLayout} = this.dataService.getBubble2VelocityData();
+    this.graphRiseVelocityData = riseVelocityData;
+    this.graphRiseVelocityLayout = riseVelocityLayout;
+    this.graphRiseVelocityPack = {data: this.graphRiseVelocityData, layout: this.graphRiseVelocityLayout};
+
+    // Bubble Shape Data
+    //=====================================================================================
+    const {data: c1g1l4shape_data, layout: c1g1l4shape_Layout} = this.dataService.getBubble2Shape_data();
+    this.graphBubble2ShapeData = c1g1l4shape_data;
+    this.graphBubble2Shapelayout = c1g1l4shape_Layout;
+
+    //=====================================================================================
+    const {data: c1g1l4_bubbleMass_data, layout: c1g1l4_bubbleMass_Layout} = this.dataService.getBubble2MassDataN();
+    this.graphBubble2MassData = c1g1l4_bubbleMass_data;
+    this.graphBubble2Masslayout = c1g1l4_bubbleMass_Layout;
+    this.graphMassPack = {data: this.graphBubble2MassData, layout: this.graphBubble2Masslayout};
   }
 
   loadCase2Data() {
     this.case2Data = 'Data for Case 2 has been loaded.';
+    console.log(`Level 2 data loaded`);
+    //=====================================================================================
+    // Assign the data of the circularity plot
+    //=====================================================================================
+    const {data: plotData, layout: plotLayout} = this.dataService.getBubble2circularityData();
+    this.graphData = plotData;
+    this.graphLayout = plotLayout;
+    this.graphCircularityPack = {data: this.graphData, layout: this.graphLayout};
+
+
+    //=====================================================================================
+    const {data: comData, layout: comLayout} = this.dataService.getBubble2comData();
+    this.graphcomData = comData;
+    this.graphcomLayout = comLayout;
+    this.graphcomPack = {data: this.graphcomData, layout: this.graphcomLayout};
+
+    //=====================================================================================
+    const {data: riseVelocityData, layout: riseVelocityLayout} = this.dataService.getBubble2VelocityData();
+    this.graphRiseVelocityData = riseVelocityData;
+    this.graphRiseVelocityLayout = riseVelocityLayout;
+    this.graphRiseVelocityPack = {data: this.graphRiseVelocityData, layout: this.graphRiseVelocityLayout};
+
+    //=====================================================================================
+    const {data: c1g1l4_bubbleMass_data, layout: c1g1l4_bubbleMass_Layout} = this.dataService.getBubble2MassDataN();
+    this.graphBubble2MassData = c1g1l4_bubbleMass_data;
+    this.graphBubble2Masslayout = c1g1l4_bubbleMass_Layout;
+    this.graphMassPack = {data: this.graphBubble2MassData, layout: this.graphBubble2Masslayout};
+
+    //case 2 data
+      // Bubble Shape Data
+    //=====================================================================================
+    const {data: c2g3l4s_data, layout: c2g3l4s_Layout} = this.dataService.getBubble2Shape_data2();
+    this.graphBubble2ShapeData = c2g3l4s_data;
+    this.graphBubble2Shapelayout = c2g3l4s_Layout;
+
   }
 
 }
