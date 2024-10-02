@@ -2,17 +2,21 @@
   <mat-tab label="Introduction">
     <div class="heading-wrapper">
       <h4>
-      Geometry and flow configurations
+        Geometry and flow configurations
       </h4>
     </div>
     <div class="text-wrapper">
-      In the absence of analytical solutions, which are very hard to come by for the considered two-phase flow problem class, validation of the mathematical modeling is best accomplished 
-      with numerical benchmarking. Pure numerical benchmarks on the other hand are of limited use if they cannot be employed to make quantitative comparisons, mere visual inspection is rarely, 
-      if ever, enough to draw hard conclusions. To illustrate this, consider the bubble shapes shown in the figures below:
+      In the absence of analytical solutions, which are very hard to come by for the considered two-phase flow problem
+      class, validation of the mathematical modeling is best accomplished
+      with numerical benchmarking. Pure numerical benchmarks on the other hand are of limited use if they cannot be
+      employed to make quantitative comparisons, mere visual inspection is rarely,
+      if ever, enough to draw hard conclusions. To illustrate this, consider the bubble shapes shown in the figures
+      below:
     </div>
     <div class="text-wrapper">
       <p style="text-align: center; font-weight: bold;">
-        Numerical simulations of a two-dimensional rising bubble for six different codes with identical problem formulations
+        Numerical simulations of a two-dimensional rising bubble for six different codes with identical problem
+        formulations
       </p>
     </div>
     <div class="im-div">
@@ -20,348 +24,444 @@
     </div>
     <div class="text-wrapper">
       <p>
-        These shapes were calculated by six different codes with identical problem formulations and should thus ideally give six identical solutions. Unfortunately this is not the case. 
-        The shapes are quite similar but it is not possible to tell which solutions, if any, are really correct. In order to be able to do this one must leave the "picture norm" behind 
+        These shapes were calculated by six different codes with identical problem formulations and should thus ideally
+        give six identical solutions. Unfortunately this is not the case.
+        The shapes are quite similar but it is not possible to tell which solutions, if any, are really correct. In
+        order to be able to do this one must leave the "picture norm" behind
         and instead use some more rigid metrics with which convergence can be measured directly.
       </p>
       <p>
-        With this in mind two benchmark configurations have been proposed and rigorous benchmark quantities have been defined to measure direct topological parameters, such as interface deformation, 
-        and also indirect ones, such as velocity. The task of the proposed benchmarks is to track the evolution of a single two-dimensional bubble rising in a liquid column. 
-        This configuration is simple enough to compute accurately yet allows for very complex topology change, giving the interface capturing techniques of today an adequate challenge.
+        With this in mind two benchmark configurations have been proposed and rigorous benchmark quantities have been
+        defined to measure direct topological parameters, such as interface deformation,
+        and also indirect ones, such as velocity. The task of the proposed benchmarks is to track the evolution of a
+        single two-dimensional bubble rising in a liquid column.
+        This configuration is simple enough to compute accurately yet allows for very complex topology change, giving
+        the interface capturing techniques of today an adequate challenge.
       </p>
 
       <h4>References</h4>
-  <table>
-    <thead>
-      <tr>
-        <th>Number</th>
-        <th>Reference</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>[1]</td>
-        <td>Hysing, S.; Turek, S.; Kuzmin, D.; Parolini, N.; Burman, E.; Ganesan, S.; Tobiska, L.: Quantitative benchmark computations of two-dimensional bubble dynamics, International Journal for 
-          Numerical Methods in Fluids, Volume 60 Issue 11, Pages 1259-1288, DOI: 10.1002/fld.1934, 2009.</td>
-      </tr>
-      <tr>
-        <td>[2]</td>
-        <td>Hysing, S.; Turek, S.; Kuzmin, D.; Parolini, N.; Burman, E.; Ganesan, S.; Tobiska, L.: Proposal for quantitative benchmark computations of bubble dynamics, Ergebnisberichte des Instituts 
-          für Angewandte Mathematik, Nummer 351, Fakultät für Mathematik, TU Dortmund, 2007.</td>
-      </tr>
-      <tr>
-        <td>[3]</td>
-        <td>Hysing, S.; Turek, S.: Benchmark proposals for incompressible two-phase flows, 80, ICMF 2007 Programme and Abstracts of the 6th International Conference on Multiphase Flow, Wiley-VCH, 2007</td>
-      </tr>
-    </tbody>
-  </table>
+      <table>
+        <thead>
+          <tr>
+            <th>Number</th>
+            <th>Reference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>[1]</td>
+            <td>Hysing, S.; Turek, S.; Kuzmin, D.; Parolini, N.; Burman, E.; Ganesan, S.; Tobiska, L.: Quantitative
+              benchmark computations of two-dimensional bubble dynamics, International Journal for
+              Numerical Methods in Fluids, Volume 60 Issue 11, Pages 1259-1288, DOI: 10.1002/fld.1934, 2009.</td>
+          </tr>
+          <tr>
+            <td>[2]</td>
+            <td>Hysing, S.; Turek, S.; Kuzmin, D.; Parolini, N.; Burman, E.; Ganesan, S.; Tobiska, L.: Proposal for
+              quantitative benchmark computations of bubble dynamics, Ergebnisberichte des Instituts
+              für Angewandte Mathematik, Nummer 351, Fakultät für Mathematik, TU Dortmund, 2007.</td>
+          </tr>
+          <tr>
+            <td>[3]</td>
+            <td>Hysing, S.; Turek, S.: Benchmark proposals for incompressible two-phase flows, 80, ICMF 2007 Programme
+              and Abstracts of the 6th International Conference on Multiphase Flow, Wiley-VCH, 2007</td>
+          </tr>
+        </tbody>
+      </table>
 
     </div>
   </mat-tab>
   <mat-tab label="Definition">
     <div class="heading-wrapper">
       <h4>
-      Geometry and flow configurations
+        Geometry and flow configurations
       </h4>
     </div>
     <div class="text-wrapper">
-     The initial configuration, see the figure below, is identical for both test cases and
-     consists of a circular bubble of radius <app-mathjax [content]="'$r_0 = 0.25$ centered at $(x,y) = (0.5, 0.5)$'"></app-mathjax> in a
-     1 by 2 rectangular domain. The density of the bubble is smaller than that of the
-     surrounding fluid <app-mathjax [content]="'$(\\rho_2 \\lt \\rho_1)$'"></app-mathjax>. The no-slip boundary condition (<app-mathjax [content]="'$\\mathbf{u}=0$'"></app-mathjax>) is used at the top and
-     bottom boundaries, whereas the free slip condition <app-mathjax [content]="'$ \\left ( \\mathbf{u} \\cdot \\hat{\\mathbf{n}} = 0, \\hat{\\boldsymbol{\\tau}}
-     \\cdot \\left ( \\nabla \\mathbf{u} + \\nabla \\mathbf{u}^T \\right ) \\right )$'"></app-mathjax>, where <app-mathjax [content]="'$\\hat{\\boldsymbol{\\tau}}$'"></app-mathjax> is the
-     tangent vector imposed on the vertical walls.
+      The initial configuration, see the figure below, is identical for both test cases and
+      consists of a circular bubble of radius <app-mathjax
+        [content]="'$r_0 = 0.25$ centered at $(x,y) = (0.5, 0.5)$'"></app-mathjax> in a
+      1 by 2 rectangular domain. The density of the bubble is smaller than that of the
+      surrounding fluid <app-mathjax [content]="'$(\\rho_2 \\lt \\rho_1)$'"></app-mathjax>. The no-slip boundary
+      condition (<app-mathjax [content]="'$\\mathbf{u}=0$'"></app-mathjax>) is used at the top and
+      bottom boundaries, whereas the free slip condition <app-mathjax [content]="'$ \\left ( \\mathbf{u} \\cdot \\hat{\\mathbf{n}} = 0, \\hat{\\boldsymbol{\\tau}}
+     \\cdot \\left ( \\nabla \\mathbf{u} + \\nabla \\mathbf{u}^T \\right ) \\right )$'"></app-mathjax>, where
+      <app-mathjax [content]="'$\\hat{\\boldsymbol{\\tau}}$'"></app-mathjax> is the
+      tangent vector imposed on the vertical walls.
     </div>
-     <div class="im-div">
-       <h3 class="mat-h3">Initial configuration and boundary conditions for the test cases</h3>
-       <img src="assets/img16.png" alt="bla">
-     </div>
-     <div class="text-wrapper">
-     The table below lists the fluid and physical parameters which specify the test cases. The
-     evolution of the bubbles should be tracked for 3 time units during which the defined
-     benchmark quantities should be measured. The first test case models a rising bubble with Reynolds
-     number <app-mathjax [content]="'$Re=35$'"></app-mathjax>, Eötvös number <app-mathjax [content]="'$Eo=10$'"></app-mathjax>, and both density and viscosity ratios equal to 10.
-     The second and more challenging test case models a rising bubble with <app-mathjax [content]="'$Re=35$, $Eo=125$'"></app-mathjax>,
-     and with large density and viscosity ratios (1000 and 100).
-     </div>
-<div class="table-wrapper">
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <div class="im-div">
+      <h3 class="mat-h3">Initial configuration and boundary conditions for the test cases</h3>
+      <img src="assets/img16.png" alt="bla">
+    </div>
+    <div class="text-wrapper">
+      The table below lists the fluid and physical parameters which specify the test cases. The
+      evolution of the bubbles should be tracked for 3 time units during which the defined
+      benchmark quantities should be measured. The first test case models a rising bubble with Reynolds
+      number <app-mathjax [content]="'$Re=35$'"></app-mathjax>, Eötvös number <app-mathjax
+        [content]="'$Eo=10$'"></app-mathjax>, and both density and viscosity ratios equal to 10.
+      The second and more challenging test case models a rising bubble with <app-mathjax
+        [content]="'$Re=35$, $Eo=125$'"></app-mathjax>,
+      and with large density and viscosity ratios (1000 and 100).
+    </div>
+    <div class="table-wrapper">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-  <!--- Note that these columns can be defined in any order.
+        <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
 
-  <!-- Position Column -->
-  <ng-container matColumnDef="position">
-    <th mat-header-cell *matHeaderCellDef> TestCase </th>
-    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-  </ng-container>
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> TestCase </th>
+          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        </ng-container>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="p1">
-    <th mat-header-cell *matHeaderCellDef> ρ<sub>1</sub> </th>
-    <td mat-cell *matCellDef="let element"> {{element.p1}} </td>
-  </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="p1">
+          <th mat-header-cell *matHeaderCellDef> ρ<sub>1</sub> </th>
+          <td mat-cell *matCellDef="let element"> {{element.p1}} </td>
+        </ng-container>
 
-  <!-- Weight Column -->
-  <ng-container matColumnDef="p2">
-    <th mat-header-cell *matHeaderCellDef> ρ<sub>2</sub> </th>
-    <td mat-cell *matCellDef="let element"> {{element.p2}} </td>
-  </ng-container>
+        <!-- Weight Column -->
+        <ng-container matColumnDef="p2">
+          <th mat-header-cell *matHeaderCellDef> ρ<sub>2</sub> </th>
+          <td mat-cell *matCellDef="let element"> {{element.p2}} </td>
+        </ng-container>
 
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="mu1">
-    <th mat-header-cell *matHeaderCellDef> μ<sub>1</sub> </th>
-    <td mat-cell *matCellDef="let element"> {{element.mu1}} </td>
-  </ng-container>
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="mu1">
+          <th mat-header-cell *matHeaderCellDef> μ<sub>1</sub> </th>
+          <td mat-cell *matCellDef="let element"> {{element.mu1}} </td>
+        </ng-container>
 
-  <ng-container matColumnDef="mu2">
-    <th mat-header-cell *matHeaderCellDef> μ<sub>2</sub> </th>
-    <td mat-cell *matCellDef="let element"> {{element.mu2}} </td>
-  </ng-container>
+        <ng-container matColumnDef="mu2">
+          <th mat-header-cell *matHeaderCellDef> μ<sub>2</sub> </th>
+          <td mat-cell *matCellDef="let element"> {{element.mu2}} </td>
+        </ng-container>
 
-  <ng-container matColumnDef="g">
-    <th mat-header-cell *matHeaderCellDef> g </th>
-    <td mat-cell *matCellDef="let element"> {{element.g}} </td>
-  </ng-container>
+        <ng-container matColumnDef="g">
+          <th mat-header-cell *matHeaderCellDef> g </th>
+          <td mat-cell *matCellDef="let element"> {{element.g}} </td>
+        </ng-container>
 
-  <ng-container matColumnDef="sigma">
-    <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$\\sigma$'"></app-mathjax> </th>
-    <td mat-cell *matCellDef="let element"> {{element.sigma}} </td>
-  </ng-container>
+        <ng-container matColumnDef="sigma">
+          <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$\\sigma$'"></app-mathjax> </th>
+          <td mat-cell *matCellDef="let element"> {{element.sigma}} </td>
+        </ng-container>
 
-  <ng-container matColumnDef="re">
-    <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$Re$'"></app-mathjax> </th>
-    <td mat-cell *matCellDef="let element"> {{element.re}} </td>
-  </ng-container>
+        <ng-container matColumnDef="re">
+          <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$Re$'"></app-mathjax> </th>
+          <td mat-cell *matCellDef="let element"> {{element.re}} </td>
+        </ng-container>
 
-  <ng-container matColumnDef="eo">
-    <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$Eo$'"></app-mathjax> </th>
-    <td mat-cell *matCellDef="let element"> {{element.eo}} </td>
-  </ng-container>
+        <ng-container matColumnDef="eo">
+          <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$Eo$'"></app-mathjax> </th>
+          <td mat-cell *matCellDef="let element"> {{element.eo}} </td>
+        </ng-container>
 
-  <ng-container matColumnDef="rel">
-    <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$\\rho_1 / \\rho_2$'"></app-mathjax> </th>
-    <td mat-cell *matCellDef="let element"> {{element.rel}} </td>
-  </ng-container>
+        <ng-container matColumnDef="rel">
+          <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$\\rho_1 / \\rho_2$'"></app-mathjax> </th>
+          <td mat-cell *matCellDef="let element"> {{element.rel}} </td>
+        </ng-container>
 
-  <ng-container matColumnDef="relmu">
-    <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$\\mu_1 / \\mu_2$'"></app-mathjax> </th>
-    <td mat-cell *matCellDef="let element"> {{element.relmu}} </td>
-  </ng-container>
+        <ng-container matColumnDef="relmu">
+          <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$\\mu_1 / \\mu_2$'"></app-mathjax> </th>
+          <td mat-cell *matCellDef="let element"> {{element.relmu}} </td>
+        </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-</div>
-
-
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
   </mat-tab>
   <mat-tab label="Results">
     <div class="heading-wrapper">
-     <h4 class="my-h4"> Results </h4>
+      <h4 class="my-h4"> Results </h4>
     </div>
-    
-    <div class="heading-wrapper">
-    <div>
-      <!-- mat-select dropdown for selecting between cases -->
-      <mat-form-field appearance="fill">
-      <mat-label>Select Case</mat-label>
-      <mat-select [(value)]="selectedCase"
-     (selectionChange)="loadSelection($event.value)">
-      <mat-option [value]="1">Case 1</mat-option>
-      <mat-option [value]="2">Case 2</mat-option>
-      </mat-select>
-      </mat-form-field>
 
+    <div class="heading-wrapper">
+      <div>
+        <!-- mat-select dropdown for selecting between cases -->
+        <mat-form-field appearance="fill">
+          <mat-label>Select Case</mat-label>
+          <mat-select [(value)]="selectedCase" (selectionChange)="loadSelection($event.value)">
+            <mat-option [value]="1">Case 1</mat-option>
+            <mat-option [value]="2">Case 2</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
     </div>
-    </div>
- 
+
 
     <div *ngIf="selectedCase === 2">
-    <!-- Case 2 Data -->
-    <p>{{ case2Data }}</p>
-    </div> 
+      <!-- Case 2 Data -->
+      <div class="text-wrapper">
+        <h4>
+          Verification of the results by the picture norm
+        </h4>
+        To visually verify the results the following approximate bubble shapes can be used. (The raw data for the bubble
+        shapes can be obtained from the Reference data page.)
+        <div class="im-div">
+          <h3 class="mat-h3">Initial configuration and boundary conditions for the test cases</h3>
+        </div>
 
-    <div *ngIf="selectedCase === 1">
-    <div class="text-wrapper">
-      <h4>
-      Verification of the results by the picture norm
-      </h4>
-      To visually verify the results the following approximate bubble shapes can be used. (The raw data for the bubble shapes can be obtained from the Reference data page.)
-      <div class="im-div">
-        <h3 class="mat-h3">Initial configuration and boundary conditions for the test cases</h3>
-    </div>
-    
 
-    <div class="plot-wrapper-ex">
-      <plotly-plot
-        [data]="graphBubble2ShapeData"
-        [layout]="graphBubble2Shapelayout"
-        [useResizeHandler]="false"
-      ></plotly-plot>
-     </div>
+        <div class="plot-wrapper-ex">
+          <plotly-plot [data]="graphBubble2ShapeData" [layout]="graphBubble2Shapelayout"
+            [useResizeHandler]="false"></plotly-plot>
+        </div>
 
-    </div>
-    <div class="text-wrapper">
-      <h4>
-      Verification of the results by quantitative data
-      </h4>
-      <p>Since mere visual inspection is not really enough to say anything about the accuracy of the simulations the following benchmark quantities have been defined and computed.</p>
-      <h4>Center of Mass</h4>
-      <p>The centroid or center of mass of the bubble is defined by</p>
-      <p style="text-align: center;">
-        <app-mathjax [content]="'$\\mathbf{X_c} = \\left( x_c, y_c \\right) = \\frac{\\int_{\\Omega_2} x \\ d\\mathbf{x}}{\\int_{\\Omega_2} 1 \\ d\\mathbf{x}}$'"></app-mathjax>
-      </p>
-      <p>where <app-mathjax [content]="'${\\Omega_2}$'" ></app-mathjax> denotes the region that the bubble occupies.</p>
-     
+      </div>
+      <div class="text-wrapper">
+        <h4>
+          Verification of the results by quantitative data
+        </h4>
+        <p>Since mere visual inspection is not really enough to say anything about the accuracy of the simulations the
+          following benchmark quantities have been defined and computed.</p>
+        <h4>Center of Mass</h4>
+        <p>The centroid or center of mass of the bubble is defined by</p>
+        <p style="text-align: center;">
+          <app-mathjax
+            [content]="'$\\mathbf{X_c} = \\left( x_c, y_c \\right) = \\frac{\\int_{\\Omega_2} x \\ d\\mathbf{x}}{\\int_{\\Omega_2} 1 \\ d\\mathbf{x}}$'"></app-mathjax>
+        </p>
+        <p>where <app-mathjax [content]="'${\\Omega_2}$'"></app-mathjax> denotes the region that the bubble occupies.
+        </p>
 
-     <div class="plot-wrapper-ex">
 
-     <app-comparative-plot
-       [inputGraph]="graphcomPack"
-     >
-     </app-comparative-plot>
-     </div>
+        <div class="plot-wrapper-ex">
 
-      <h4>Circularity</h4>
-      <p>The "degree of circularity" in <app-mathjax [content]="'${\\mathbb{R}^2}$'" ></app-mathjax> can be defined as</p> 
-      <p style="text-align: center;">
-        <app-mathjax [content]="'$\\not{c} = \\frac{P_a}{P_b} = \\frac{\\text{perimeter of area-equivalent circle}}{\\text{perimeter of bubble}} = \\frac{\\pi d_a}{P_b}$'"></app-mathjax>
-      </p>
-      <p>
-        Here, <app-mathjax [content]="'$\P_a$'" ></app-mathjax> denotes the perimeter or circumference of a circle with diameter <app-mathjax [content]="'$\d_a$'" ></app-mathjax> which has 
-        an area equal to that of a bubble with perimeter <app-mathjax [content]="'$\P_b$'" ></app-mathjax>. For a perfectly circular bubble or drop, the circularity will be equal to unity 
-        and decrease as the bubble is deformed.
-      </p>     
-      
+          <app-comparative-plot [inputGraph]="graphcomPack">
+          </app-comparative-plot>
+        </div>
+
+        <h4>Circularity</h4>
+        <p>The "degree of circularity" in <app-mathjax [content]="'${\\mathbb{R}^2}$'"></app-mathjax> can be defined as
+        </p>
+        <p style="text-align: center;">
+          <app-mathjax
+            [content]="'$\\not{c} = \\frac{P_a}{P_b} = \\frac{\\text{perimeter of area-equivalent circle}}{\\text{perimeter of bubble}} = \\frac{\\pi d_a}{P_b}$'"></app-mathjax>
+        </p>
+        <p>
+          Here, <app-mathjax [content]="'$\P_a$'"></app-mathjax> denotes the perimeter or circumference of a circle with
+          diameter <app-mathjax [content]="'$\d_a$'"></app-mathjax> which has
+          an area equal to that of a bubble with perimeter <app-mathjax [content]="'$\P_b$'"></app-mathjax>. For a
+          perfectly circular bubble or drop, the circularity will be equal to unity
+          and decrease as the bubble is deformed.
+        </p>
+
+        <div class="plot-wrapper-ex">
+
+          <app-comparative-plot [inputGraph]="graphCircularityPack">
+          </app-comparative-plot>
+        </div>
+
+
+        <h4>Rise Velocity</h4>
+        <p>The mean velocity with which a bubble is rising or moving is a particularly interesting quantity since it
+          does not only measure how the interface tracking algorithm behaves but
+          also the quality of the overall solution. The mean bubble velocity is defined as</p>
+        <p style="text-align: center;">
+          <app-mathjax
+            [content]="'$\\mathbf{U_c} = \\frac{\\int_{\\Omega_2} u \\ d\\mathbf{x}}{\\int_{\\Omega_2} 1 \\ d\\mathbf{x}}$'"></app-mathjax>
+        </p>
+        <p>where <app-mathjax [content]="'${\\Omega_2}$'"></app-mathjax> denotes the region that the bubble occupies.
+        </p>
+      </div>
+
       <div class="plot-wrapper-ex">
 
-        <app-comparative-plot
-          [inputGraph]="graphCircularityPack"
-        >
+        <app-comparative-plot [inputGraph]="graphRiseVelocityPack">
         </app-comparative-plot>
       </div>
-     
 
-      <h4>Rise Velocity</h4>
-      <p>The mean velocity with which a bubble is rising or moving is a particularly interesting quantity since it does not only measure how the interface tracking algorithm behaves but 
-        also the quality of the overall solution. The mean bubble velocity is defined as</p>
-      <p style="text-align: center;">
-        <app-mathjax [content]="'$\\mathbf{U_c} = \\frac{\\int_{\\Omega_2} u \\ d\\mathbf{x}}{\\int_{\\Omega_2} 1 \\ d\\mathbf{x}}$'"></app-mathjax>
-      </p>
-      <p>where <app-mathjax [content]="'${\\Omega_2}$'" ></app-mathjax> denotes the region that the bubble occupies.</p>    
+
+
+      <div class="plot-wrapper-ex">
+
+        <app-comparative-plot [inputGraph]="graphMassPack">
+        </app-comparative-plot>
+      </div>
     </div>
 
-     <div class="plot-wrapper-ex">
+    <div *ngIf="selectedCase === 1">
+      <div class="text-wrapper">
+        <h4>
+          Verification of the results by the picture norm
+        </h4>
+        To visually verify the results the following approximate bubble shapes can be used. (The raw data for the bubble
+        shapes can be obtained from the Reference data page.)
+        <div class="im-div">
+          <h3 class="mat-h3">Initial configuration and boundary conditions for the test cases</h3>
+        </div>
 
-      <app-comparative-plot
-        [inputGraph]="graphRiseVelocityPack"
-      >
-      </app-comparative-plot>
-    </div>
+
+        <div class="plot-wrapper-ex">
+          <plotly-plot [data]="graphBubble2ShapeData" [layout]="graphBubble2Shapelayout"
+            [useResizeHandler]="false"></plotly-plot>
+        </div>
+
+      </div>
+      <div class="text-wrapper">
+        <h4>
+          Verification of the results by quantitative data
+        </h4>
+        <p>Since mere visual inspection is not really enough to say anything about the accuracy of the simulations the
+          following benchmark quantities have been defined and computed.</p>
+        <h4>Center of Mass</h4>
+        <p>The centroid or center of mass of the bubble is defined by</p>
+        <p style="text-align: center;">
+          <app-mathjax
+            [content]="'$\\mathbf{X_c} = \\left( x_c, y_c \\right) = \\frac{\\int_{\\Omega_2} x \\ d\\mathbf{x}}{\\int_{\\Omega_2} 1 \\ d\\mathbf{x}}$'"></app-mathjax>
+        </p>
+        <p>where <app-mathjax [content]="'${\\Omega_2}$'"></app-mathjax> denotes the region that the bubble occupies.
+        </p>
+
+
+        <div class="plot-wrapper-ex">
+
+          <app-comparative-plot [inputGraph]="graphcomPack">
+          </app-comparative-plot>
+        </div>
+
+        <h4>Circularity</h4>
+        <p>The "degree of circularity" in <app-mathjax [content]="'${\\mathbb{R}^2}$'"></app-mathjax> can be defined as
+        </p>
+        <p style="text-align: center;">
+          <app-mathjax
+            [content]="'$\\not{c} = \\frac{P_a}{P_b} = \\frac{\\text{perimeter of area-equivalent circle}}{\\text{perimeter of bubble}} = \\frac{\\pi d_a}{P_b}$'"></app-mathjax>
+        </p>
+        <p>
+          Here, <app-mathjax [content]="'$\P_a$'"></app-mathjax> denotes the perimeter or circumference of a circle with
+          diameter <app-mathjax [content]="'$\d_a$'"></app-mathjax> which has
+          an area equal to that of a bubble with perimeter <app-mathjax [content]="'$\P_b$'"></app-mathjax>. For a
+          perfectly circular bubble or drop, the circularity will be equal to unity
+          and decrease as the bubble is deformed.
+        </p>
+
+        <div class="plot-wrapper-ex">
+
+          <app-comparative-plot [inputGraph]="graphCircularityPack">
+          </app-comparative-plot>
+        </div>
+
+
+        <h4>Rise Velocity</h4>
+        <p>The mean velocity with which a bubble is rising or moving is a particularly interesting quantity since it
+          does not only measure how the interface tracking algorithm behaves but
+          also the quality of the overall solution. The mean bubble velocity is defined as</p>
+        <p style="text-align: center;">
+          <app-mathjax
+            [content]="'$\\mathbf{U_c} = \\frac{\\int_{\\Omega_2} u \\ d\\mathbf{x}}{\\int_{\\Omega_2} 1 \\ d\\mathbf{x}}$'"></app-mathjax>
+        </p>
+        <p>where <app-mathjax [content]="'${\\Omega_2}$'"></app-mathjax> denotes the region that the bubble occupies.
+        </p>
+      </div>
+
+      <div class="plot-wrapper-ex">
+
+        <app-comparative-plot [inputGraph]="graphRiseVelocityPack">
+        </app-comparative-plot>
+      </div>
 
 
 
-    <div class="plot-wrapper-ex">
+      <div class="plot-wrapper-ex">
 
-      <app-comparative-plot
-        [inputGraph]="graphMassPack"
-      >
-      </app-comparative-plot>
-    </div>
+        <app-comparative-plot [inputGraph]="graphMassPack">
+        </app-comparative-plot>
+      </div>
     </div>
 
   </mat-tab>
-  <mat-tab label="Reference Data"> 
-  <div class="text-wrapper">
-    <h2>
-      Reference Data
-    </h2>
-  </div>
-  <div class="text-wrapper">
-    <p>
-      The benchmark data is provided in the following ascii text files. File names use the notation c#g#l# with c# indicating the test case, g# the group and l# the refinement level. For example 
-      c1g1l4.txt represents the 4th refinement level of the 1st group of the 1st test case.
-    </p>
-  </div>
+  <mat-tab label="Reference Data">
+    <div class="text-wrapper">
+      <h2>
+        Reference Data
+      </h2>
+    </div>
+    <div class="text-wrapper">
+      <p>
+        The benchmark data is provided in the following ascii text files. File names use the notation c#g#l# with c#
+        indicating the test case, g# the group and l# the refinement level. For example
+        c1g1l4.txt represents the 4th refinement level of the 1st group of the 1st test case.
+      </p>
+    </div>
     <div class="table-wrapper">
-    <table mat-table [dataSource]="dataSource_N" class="mat-elevation-z8">
-       <!-- Number Column -->
-    <ng-container matColumnDef="abbreviation">
-      <th mat-header-cell *matHeaderCellDef> abbreviation </th>
-      <td mat-cell *matCellDef="let element"> {{element.abbreviation}} </td>
-    </ng-container>
+      <table mat-table [dataSource]="dataSource_N" class="mat-elevation-z8">
+        <!-- Number Column -->
+        <ng-container matColumnDef="abbreviation">
+          <th mat-header-cell *matHeaderCellDef> abbreviation </th>
+          <td mat-cell *matCellDef="let element"> {{element.abbreviation}} </td>
+        </ng-container>
 
-      <!-- Reference Column -->
-      <ng-container matColumnDef="description">
-        <th mat-header-cell *matHeaderCellDef> description </th>
-        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
-      </ng-container>
-  
-      <tr mat-header-row *matHeaderRowDef="displayedNotations"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedNotations;"></tr>
+        <!-- Reference Column -->
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef> description </th>
+          <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+        </ng-container>
 
-    </table>
+        <tr mat-header-row *matHeaderRowDef="displayedNotations"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedNotations;"></tr>
+
+      </table>
     </div>
 
-  <div class="text-wrapper">
-    <h3> Benchmark File Formats </h3>
-    <p>
-      Each of the c*g*l*.txt files contains a series of columns that represents the following information:
-    </p>
-  </div>
+    <div class="text-wrapper">
+      <h3> Benchmark File Formats </h3>
+      <p>
+        Each of the c*g*l*.txt files contains a series of columns that represents the following information:
+      </p>
+    </div>
     <div class="table-wrapper">
       <table mat-table [dataSource]="dataSource_B" class="mat-elevation-z8">
-         <!-- Number Column -->
-      <ng-container matColumnDef="Column">
-        <th mat-header-cell *matHeaderCellDef> Column </th>
-        <td mat-cell *matCellDef="let element"> {{element.Column}} </td>
-      </ng-container>
-  
+        <!-- Number Column -->
+        <ng-container matColumnDef="Column">
+          <th mat-header-cell *matHeaderCellDef> Column </th>
+          <td mat-cell *matCellDef="let element"> {{element.Column}} </td>
+        </ng-container>
+
         <!-- Quantity Column -->
         <ng-container matColumnDef="Quantity">
           <th mat-header-cell *matHeaderCellDef> Quantity </th>
           <td mat-cell *matCellDef="let element"> {{element.Quantity}} </td>
         </ng-container>
-    
+
         <tr mat-header-row *matHeaderRowDef="displayedBenchFormat"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedBenchFormat;"></tr>
-  
-      </table>
-      </div>
 
-  <div class="text-wrapper">
-    <h3> Zip File Download </h3>
-    <p>
-      The .zip file contains the c*g*l*.txt files with the simulation results for the different groups. 
-    </p>
-  </div>
-    <div class="table-wrapper">
-    <table mat-table [dataSource]="dataSource_R" class="mat-elevation-z8">
-         <!-- file Column -->
-      <ng-container matColumnDef="file">
-        <th mat-header-cell *matHeaderCellDef> File </th>
-        <td mat-cell *matCellDef="let element"> {{element.file}} </td>
-      </ng-container>
-  
-        <!-- action Column -->
-      <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef> Action </th>
-        <td mat-cell *matCellDef="let element">
-          <a [href]="element.fileURL">{{element.action}}</a>
-      </ng-container>
-    
-      <tr mat-header-row *matHeaderRowDef="displayedReferences"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedReferences;"></tr>
-  
-    </table>
+      </table>
     </div>
 
-  <div class="text-wrapper">
-    <h3>Usage</h3>
-    <p>The benchmark curves can the be plotted with standard postprocessing tools Gnuplot:</p>
-    <pre ngNonBindable>
+    <div class="text-wrapper">
+      <h3> Zip File Download </h3>
+      <p>
+        The .zip file contains the c*g*l*.txt files with the simulation results for the different groups.
+      </p>
+    </div>
+    <div class="table-wrapper">
+      <table mat-table [dataSource]="dataSource_R" class="mat-elevation-z8">
+        <!-- file Column -->
+        <ng-container matColumnDef="file">
+          <th mat-header-cell *matHeaderCellDef> File </th>
+          <td mat-cell *matCellDef="let element"> {{element.file}} </td>
+        </ng-container>
+
+        <!-- action Column -->
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef> Action </th>
+          <td mat-cell *matCellDef="let element">
+            <a [href]="element.fileURL">{{element.action}}</a>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedReferences"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedReferences;"></tr>
+
+      </table>
+    </div>
+
+    <div class="text-wrapper">
+      <h3>Usage</h3>
+      <p>The benchmark curves can the be plotted with standard postprocessing tools Gnuplot:</p>
+      <pre ngNonBindable>
       <code>
         plot "c1g1l4.txt" using 1:2 with \
         lines linestyle 1 title 'Bubble mass/area'; set xlabel 'Time'
@@ -373,8 +473,8 @@
         lines linestyle 1 title 'Rise velocity'; set xlabel 'Time'
       </code>
     </pre>
-    <p> Or with Matlab:</p>
-    <pre ngNonBindable>
+      <p> Or with Matlab:</p>
+      <pre ngNonBindable>
       <code>
         load c1g1l4.txt, plot(c1g1l4(:,1),c1g1l4(:,2)), ...
         title('Bubble mass/area'), xlabel('Time')
@@ -386,48 +486,49 @@
         title('Rise velocity'), xlabel('Time')
       </code>
     </pre>
-  </div>
+    </div>
 
-  <div class="text-wrapper">
-    <h3> Bubble Shape Data </h3>
-    <p>The data for the bubble shapes can be found in the files that end with a s character, for example c1g1l4s.txt.
-       The shapes are stored as line segments with x-coordinates in the first column and y-coordinates in the second in 
-       consecutive line pairs (that is the first line end point is stored at odd numbered lines and the other end points 
-       on the following lines). The files can be downloaded in one .zip archive:
-    </p>
-  </div>
+    <div class="text-wrapper">
+      <h3> Bubble Shape Data </h3>
+      <p>The data for the bubble shapes can be found in the files that end with a s character, for example c1g1l4s.txt.
+        The shapes are stored as line segments with x-coordinates in the first column and y-coordinates in the second in
+        consecutive line pairs (that is the first line end point is stored at odd numbered lines and the other end
+        points
+        on the following lines). The files can be downloaded in one .zip archive:
+      </p>
+    </div>
     <div class="table-wrapper">
       <table mat-table [dataSource]="dataSourceBubbleS" class="mat-elevation-z8">
-           <!-- file Column -->
+        <!-- file Column -->
         <ng-container matColumnDef="file">
           <th mat-header-cell *matHeaderCellDef> File </th>
           <td mat-cell *matCellDef="let element"> {{element.file}} </td>
         </ng-container>
-    
-          <!-- action Column -->
+
+        <!-- action Column -->
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef> Action </th>
           <td mat-cell *matCellDef="let element">
             <a [href]="element.fileURL">{{element.action}}</a>
         </ng-container>
-      
+
         <tr mat-header-row *matHeaderRowDef="displayedReferenceBubbleS"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedReferenceBubbleS;"></tr>
-    
+
       </table>
     </div>
 
-  <div class="text-wrapper">
-    <h3>Usage</h3>
-    <p>The shapes can the be plotted with Gnuplot:</p>
-    <pre ngNonBindable>
+    <div class="text-wrapper">
+      <h3>Usage</h3>
+      <p>The shapes can the be plotted with Gnuplot:</p>
+      <pre ngNonBindable>
       <code>
         plot "c1g1l4s.txt" with lines linestyle 1; \
         unset key; set size ratio -1
       </code>
     </pre>
-    <p> Or with Matlab:</p>
-    <pre ngNonBindable>
+      <p> Or with Matlab:</p>
+      <pre ngNonBindable>
       <code>
         load c1g1l4s.txt
         data = c1g1l4s;
@@ -439,7 +540,7 @@
         axis equal
       </code>
     </pre>
-  </div>
-    
+    </div>
+
   </mat-tab>
 </mat-tab-group>
