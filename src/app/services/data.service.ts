@@ -15,7 +15,7 @@ import { c1g1l1_circularity_data, c1g1l1_com_data, c1g1l1_riseVelocity_Data, c1g
   c2g1l2_bubbleMass_data,
   c2g1l3_bubbleMass_data,
   c2g2l3_bubbleMass_data} from '../components/benchmark-example/data_bubble2';
-  import { c2g3l4s, c2g1l4s, c2g2l1s } from '../components/benchmark-example/case2_data';
+  import { c2g3l4s, c2g1l4s, c2g2l1s, c2g1l5s, c2g2l2s, c2g2l3s } from '../components/benchmark-example/case2_data';
 
 /*  
 import { c2g1l4_bubble_mass, c2g1l4_circularity, c2g1l4_com, c2g1l4_rise_vel, c2g1l5_bubble_mass, c2g1l5_circularity, c2g1l5_com, c2g1l7_com,
@@ -961,18 +961,35 @@ export class DataService {
     const plotData = [];
 
     for (let i = 0; i < nSegments; i++) {
-      const segmentX = c2g3l4s.x.slice(2 * i, 2 * (i + 1));
-      const segmentY = c2g3l4s.y.slice(2 * i, 2 * (i + 1));
+      const segmentX = [c2g3l4s.x.slice(2 * i, 2 * (i + 1)), c2g2l3s.x.slice(2 * i, 2 * (i + 1)), c2g1l5s.x.slice(2 * i, 2 * (i + 1))];
+      const segmentY = [c2g3l4s.y.slice(2 * i, 2 * (i + 1)), c2g2l3s.y.slice(2 * i, 2 * (i + 1)), c2g1l5s.y.slice(2 * i, 2 * (i + 1))];
 
 
       plotData.push({
-        x: segmentX,
-        y: segmentY,
+        x: segmentX[0],
+        y: segmentY[0],
         type: 'scatter',
         mode: 'lines',
         line: { color: 'blue' },
         showlegend: false
       });
+      plotData.push({
+        x: segmentX[1],
+        y: segmentY[1],
+        type: 'scatter',
+        mode: 'lines',
+        line: { color: 'green' },
+        showlegend: false
+      });
+      plotData.push({
+        x: segmentX[2],
+        y: segmentY[2],
+        type: 'scatter',
+        mode: 'lines',
+        line: { color: 'red' },
+        showlegend: false
+      });
+
     }
 
     return {
