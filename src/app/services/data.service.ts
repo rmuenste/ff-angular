@@ -971,7 +971,7 @@ export class DataService {
         type: 'scatter',
         mode: 'lines',
         line: { color: 'blue' },
-        showlegend: false
+        showlegend: false,
       });
       plotData.push({
         x: segmentX[1],
