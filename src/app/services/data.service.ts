@@ -964,31 +964,67 @@ export class DataService {
       const segmentX = [c2g3l4s.x.slice(2 * i, 2 * (i + 1)), c2g2l3s.x.slice(2 * i, 2 * (i + 1)), c2g1l5s.x.slice(2 * i, 2 * (i + 1))];
       const segmentY = [c2g3l4s.y.slice(2 * i, 2 * (i + 1)), c2g2l3s.y.slice(2 * i, 2 * (i + 1)), c2g1l5s.y.slice(2 * i, 2 * (i + 1))];
 
+      if (i === 0) {
 
-      plotData.push({
-        x: segmentX[0],
-        y: segmentY[0],
-        type: 'scatter',
-        mode: 'lines',
-        line: { color: 'blue' },
-        showlegend: false,
-      });
-      plotData.push({
-        x: segmentX[1],
-        y: segmentY[1],
-        type: 'scatter',
-        mode: 'lines',
-        line: { color: 'green' },
-        showlegend: false
-      });
-      plotData.push({
-        x: segmentX[2],
-        y: segmentY[2],
-        type: 'scatter',
-        mode: 'lines',
-        line: { color: 'red' },
-        showlegend: false
-      });
+        plotData.push({
+          x: segmentX[0],
+          y: segmentY[0],
+          type: 'scatter',
+          mode: 'lines',
+          line: { color: 'blue' },
+          name: 'TP2D',
+          showlegend: true,
+        });
+        plotData.push({
+          x: segmentX[1],
+          y: segmentY[1],
+          type: 'scatter',
+          mode: 'lines',
+          line: { color: 'green' },
+          name: 'FreeLife',
+          showlegend: true
+        });
+        plotData.push({
+          x: segmentX[2],
+          y: segmentY[2],
+          type: 'scatter',
+          mode: 'lines',
+          line: { color: 'red' },
+          name: 'MoonMD',
+          showlegend: true
+        });
+
+      } else {
+
+        plotData.push({
+          x: segmentX[0],
+          y: segmentY[0],
+          type: 'scatter',
+          mode: 'lines',
+          line: { color: 'blue' },
+          name: 'TP2D',
+          showlegend: false,
+        });
+        plotData.push({
+          x: segmentX[1],
+          y: segmentY[1],
+          type: 'scatter',
+          mode: 'lines',
+          line: { color: 'green' },
+          name: 'FreeLife',
+          showlegend: false
+        });
+        plotData.push({
+          x: segmentX[2],
+          y: segmentY[2],
+          type: 'scatter',
+          mode: 'lines',
+          line: { color: 'red' },
+          name: 'MoonMD',
+          showlegend: false
+        });
+
+      }
 
     }
 
