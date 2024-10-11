@@ -434,7 +434,7 @@
     <div class="text-wrapper">
       <h3> Zip File Download </h3>
       <p>
-        The .zip file contains the c*g*l*.txt files with the simulation results for the different groups.
+        The .zip file contains the c*g*l*.txt files with the simulation results for the different groups. Also from Case 1 and Case 2. prefix c1 indicates Case 1 while c2 indicates Case2.
       </p>
     </div>
     <div class="table-wrapper">
@@ -450,10 +450,14 @@
           <th mat-header-cell *matHeaderCellDef> Action </th>
           <td mat-cell *matCellDef="let element">
             <a [href]="element.fileURL">{{element.action}}</a>
+                    <th mat-header-cell *matHeaderCellDef> Action </th>
+          <td mat-cell *matCellDef="let element">
+            <a [href]="element.fileURL">{{element.action}}</a>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedReferences"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedReferences;"></tr>
+        
 
       </table>
     </div>
@@ -494,7 +498,8 @@
         The shapes are stored as line segments with x-coordinates in the first column and y-coordinates in the second in
         consecutive line pairs (that is the first line end point is stored at odd numbered lines and the other end
         points
-        on the following lines). The files can be downloaded in one .zip archive:
+        on the following lines). 
+        Also the data contains Case 1 and Case 2. prefix c1 indicates Case 1 while c2 indicates Case2.The files can be downloaded in one .zip archive:
       </p>
     </div>
     <div class="table-wrapper">
