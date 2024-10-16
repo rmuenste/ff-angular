@@ -97,7 +97,7 @@ export class BenchmarkBubble3Component implements OnInit {
     //=====================================================================================
     // Assign the data of the sphericity plot
     //=====================================================================================
-    const {data: plotData, layout: plotLayout} = this.dataService.getPlotData();
+    const {data: plotData, layout: plotLayout} = this.dataService.get_bubble_sphericity_3d();
     this.chartSpherecityData = plotData
     //console.log(`Plot data length: ${JSON.stringify(this.chartSpherecityData)}`)
 
@@ -108,7 +108,7 @@ export class BenchmarkBubble3Component implements OnInit {
     //=====================================================================================
     // Assign the data of the mass conservation plot
     //=====================================================================================
-    const {data: massData, layout: massLayout} = this.dataService.getMassPlotData();
+    const {data: massData, layout: massLayout} = this.dataService.get_bubble_mass_3d();
     this.chartMassData = massData;
     this.graphMassConservation.data = this.chartMassData;
     this.graphMassConservation.layout = massLayout;
@@ -116,7 +116,7 @@ export class BenchmarkBubble3Component implements OnInit {
     //=====================================================================================
     // Assign the data of the bubble size plot
     //=====================================================================================
-    const {data: sizeData, layout: sizeLayout} = this.dataService.getSizePlotData();
+    const {data: sizeData, layout: sizeLayout} = this.dataService.get_bubble_size_3d();
     this.chartSizeData = sizeData;
     this.graphSize.data = this.chartSizeData;
     this.graphSize.layout = sizeLayout;
@@ -124,7 +124,7 @@ export class BenchmarkBubble3Component implements OnInit {
     //=====================================================================================
     // Assign the data of the surface data plot
     //=====================================================================================
-    const {data: surfaceData, layout: surfaceLayout} = this.dataService.getSurfaceData();
+    const {data: surfaceData, layout: surfaceLayout} = this.dataService.get_bubble_surface_3d();
     this.chartSurfaceData = surfaceData;
     this.graphSurface.data = this.chartSurfaceData;
     this.graphSurface.layout = surfaceLayout;
