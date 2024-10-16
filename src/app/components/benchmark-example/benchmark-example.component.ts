@@ -187,32 +187,32 @@ export class BenchmarkExampleComponent implements OnInit {
     //=====================================================================================
     // Assign the data of the circularity plot
     //=====================================================================================
-    const {data: plotData, layout: plotLayout} = this.dataService.getBubble2circularityData();
+    const {data: plotData, layout: plotLayout} = this.dataService.get_case1_bubble_circularity_2d();
     this.graphData = plotData;
     this.graphLayout = plotLayout;
     this.graphCircularityPack = {data: this.graphData, layout: this.graphLayout};
 
 
     //=====================================================================================
-    const {data: comData, layout: comLayout} = this.dataService.getBubble2comData();
+    const {data: comData, layout: comLayout} = this.dataService.get_case1_bubble_com_2d();
     this.graphcomData = comData;
     this.graphcomLayout = comLayout;
     this.graphcomPack = {data: this.graphcomData, layout: this.graphcomLayout};
 
     //=====================================================================================
-    const {data: riseVelocityData, layout: riseVelocityLayout} = this.dataService.getBubble2VelocityData();
+    const {data: riseVelocityData, layout: riseVelocityLayout} = this.dataService.get_case1_bubble_vel_2d();
     this.graphRiseVelocityData = riseVelocityData;
     this.graphRiseVelocityLayout = riseVelocityLayout;
     this.graphRiseVelocityPack = {data: this.graphRiseVelocityData, layout: this.graphRiseVelocityLayout};
 
     // Bubble Shape Data
     //=====================================================================================
-    const {data: c1g1l4shape_data, layout: c1g1l4shape_Layout} = this.dataService.getBubble2Shape_data();
+    const {data: c1g1l4shape_data, layout: c1g1l4shape_Layout} = this.dataService.get_case1_bubble_shape_2d();
     this.graphBubble2ShapeData = c1g1l4shape_data;
     this.graphBubble2Shapelayout = c1g1l4shape_Layout;
 
     //=====================================================================================
-    const {data: c1g1l4_bubbleMass_data, layout: c1g1l4_bubbleMass_Layout} = this.dataService.getBubble2MassDataN();
+    const {data: c1g1l4_bubbleMass_data, layout: c1g1l4_bubbleMass_Layout} = this.dataService.get_case1_bubble_mass_2d();
     this.graphBubble2MassData = c1g1l4_bubbleMass_data;
     this.graphBubble2Masslayout = c1g1l4_bubbleMass_Layout;
     this.graphMassPack = {data: this.graphBubble2MassData, layout: this.graphBubble2Masslayout};
@@ -234,32 +234,32 @@ export class BenchmarkExampleComponent implements OnInit {
     //=====================================================================================
     // Assign the data of the circularity plot
     //=====================================================================================
-    const {data: plotData, layout: plotLayout} = this.dataService.getBubble2circularityData();
+    const {data: plotData, layout: plotLayout} = this.dataService.get_case1_bubble_circularity_2d();
     this.graphData = plotData;
     this.graphLayout = plotLayout;
     this.graphCircularityPack = {data: this.graphData, layout: this.graphLayout};
 
 
     //=====================================================================================
-    const {data: comData, layout: comLayout} = this.dataService.getBubble2comData();
+    const {data: comData, layout: comLayout} = this.dataService.get_case1_bubble_com_2d();
     this.graphcomData = comData;
     this.graphcomLayout = comLayout;
     this.graphcomPack = {data: this.graphcomData, layout: this.graphcomLayout};
 
     //=====================================================================================
-    const {data: riseVelocityData, layout: riseVelocityLayout} = this.dataService.getBubble2VelocityData();
+    const {data: riseVelocityData, layout: riseVelocityLayout} = this.dataService.get_case1_bubble_vel_2d();
     this.graphRiseVelocityData = riseVelocityData;
     this.graphRiseVelocityLayout = riseVelocityLayout;
     this.graphRiseVelocityPack = {data: this.graphRiseVelocityData, layout: this.graphRiseVelocityLayout};
 
     // Bubble Shape Data
     //=====================================================================================
-    const {data: c1g1l4shape_data, layout: c1g1l4shape_Layout} = this.dataService.getBubble2Shape_data();
+    const {data: c1g1l4shape_data, layout: c1g1l4shape_Layout} = this.dataService.get_case1_bubble_shape_2d();
     this.graphBubble2ShapeData = c1g1l4shape_data;
     this.graphBubble2Shapelayout = c1g1l4shape_Layout;
 
     //=====================================================================================
-    const {data: c1g1l4_bubbleMass_data, layout: c1g1l4_bubbleMass_Layout} = this.dataService.getBubble2MassDataN();
+    const {data: c1g1l4_bubbleMass_data, layout: c1g1l4_bubbleMass_Layout} = this.dataService.get_case1_bubble_mass_2d();
     this.graphBubble2MassData = c1g1l4_bubbleMass_data;
     this.graphBubble2Masslayout = c1g1l4_bubbleMass_Layout;
     this.graphMassPack = {data: this.graphBubble2MassData, layout: this.graphBubble2Masslayout};
@@ -271,26 +271,26 @@ export class BenchmarkExampleComponent implements OnInit {
     //=====================================================================================
     // Assign the data of the circularity plot
     //=====================================================================================
-    const {data: plotData, layout: plotLayout} = this.dataService.getBubble2circularityData();
+    const {data: plotData, layout: plotLayout} = this.dataService.get_case1_bubble_circularity_2d();
     this.graphData = plotData;
     this.graphLayout = plotLayout;
     this.graphCircularityPack = {data: this.graphData, layout: this.graphLayout};
 
 
     //=====================================================================================
-    const {data: comData, layout: comLayout} = this.dataService.getBubble2comData();
+    const {data: comData, layout: comLayout} = this.dataService.get_case1_bubble_com_2d();
     this.graphcomData = comData;
     this.graphcomLayout = comLayout;
     this.graphcomPack = {data: this.graphcomData, layout: this.graphcomLayout};
 
     //=====================================================================================
-    const {data: riseVelocityData, layout: riseVelocityLayout} = this.dataService.getBubble2VelocityData();
+    const {data: riseVelocityData, layout: riseVelocityLayout} = this.dataService.get_case1_bubble_vel_2d();
     this.graphRiseVelocityData = riseVelocityData;
     this.graphRiseVelocityLayout = riseVelocityLayout;
     this.graphRiseVelocityPack = {data: this.graphRiseVelocityData, layout: this.graphRiseVelocityLayout};
 
     //=====================================================================================
-    const {data: c1g1l4_bubbleMass_data, layout: c1g1l4_bubbleMass_Layout} = this.dataService.getBubble2MassDataN();
+    const {data: c1g1l4_bubbleMass_data, layout: c1g1l4_bubbleMass_Layout} = this.dataService.get_case1_bubble_mass_2d();
     this.graphBubble2MassData = c1g1l4_bubbleMass_data;
     this.graphBubble2Masslayout = c1g1l4_bubbleMass_Layout;
     this.graphMassPack = {data: this.graphBubble2MassData, layout: this.graphBubble2Masslayout};
@@ -298,7 +298,7 @@ export class BenchmarkExampleComponent implements OnInit {
     //case 2 data
       // Bubble Shape Data
     //=====================================================================================
-    const {data: c2g3l4s_data, layout: c2g3l4s_Layout} = this.dataService.getBubble2Shape_data2();
+    const {data: c2g3l4s_data, layout: c2g3l4s_Layout} = this.dataService.get_case2_bubble_shape_2d();
     this.graphBubble2ShapeData = c2g3l4s_data;
     this.graphBubble2Shapelayout = c2g3l4s_Layout;
 
