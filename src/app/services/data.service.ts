@@ -16,6 +16,7 @@ import { c1g1l1_circularity_data, c1g1l1_com_data, c1g1l1_riseVelocity_Data, c1g
   c2g1l3_bubbleMass_data,
   c2g2l3_bubbleMass_data} from '../components/benchmark-example/data_bubble2';
   import { c2g3l4s, c2g1l4s, c2g2l1s, c2g1l5s, c2g2l2s, c2g2l3s } from '../components/benchmark-example/case2_data';
+  import { PostService } from 'src/services/post.service';
 
 /*  
 import { c2g1l4_bubble_mass, c2g1l4_circularity, c2g1l4_com, c2g1l4_rise_vel, c2g1l5_bubble_mass, c2g1l5_circularity, c2g1l5_com, c2g1l7_com,
@@ -96,7 +97,7 @@ const displayedColumnsPhysical: string[] = ['position', 'p1', 'p2', 'mu1', 'mu2'
 })
 export class DataService {
 
-  constructor() { }
+  constructor(private postService: PostService) { }
 
   //=====================================================================================
   // Here we have the data of the sphericity plot
@@ -954,8 +955,30 @@ export class DataService {
     }
   };
 
+  load_case2_bubble_shape_2d() {
+
+    let jsonData = "";
+
+  }
+
   //case2 bubble shape
   get_case2_bubble_shape_2d() {
+
+//    let jsonData = "";
+//    this.postService.postFileRequest("bubble_shape_case2").subscribe(
+//    {
+//        next: (data) => {
+//          //this.posts = data; // Handle emitted data
+//          jsonData = data;
+//        },
+//        error: (error) => {
+//          console.error('Error fetching posts:', error); // Handle error
+//        },
+//        complete: () => {
+//          console.log('Observable completed'); // Handle completion if needed
+//          console.log('Server response:', jsonData);
+//        },
+//    });
 
     const nSegments = c2g3l4s.x.length / 2;
     const plotData = [];

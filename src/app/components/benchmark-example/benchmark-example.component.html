@@ -211,6 +211,17 @@
         </div>
 
       </div>
+
+      <div *ngIf="posts">
+        <h1>Posts</h1>
+        <ul>
+          <li *ngFor="let post of posts">
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.body }}</p>
+          </li>
+        </ul>
+      </div>
+
       <div class="text-wrapper">
         <h4>
           Verification of the results by quantitative data
@@ -225,7 +236,6 @@
         </p>
         <p>where <app-mathjax [content]="'${\\Omega_2}$'"></app-mathjax> denotes the region that the bubble occupies.
         </p>
-
 
         <div class="plot-wrapper-ex">
 
