@@ -6,6 +6,7 @@ import { PeriodicElement, Notation, Reference, benchFormat,
          ReferenceBubbleS, ELEMENT_DATA, NOTATION_DATA, 
          REFERENCE_DATA, BENCHMARK_FORMAT, REFERENCE_BubbleS
          } from './benchmark-interfaces';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-benchmark-example',
@@ -64,6 +65,8 @@ export class BenchmarkExampleComponent implements OnInit {
   graphBubble2ShapeData2: any[] = [];
   graphBubble2Shapelayout2: any = {title: 'Line Chart'
   }
+
+  data: any;
 
 
   selectedCase: number = 1;
@@ -159,7 +162,7 @@ export class BenchmarkExampleComponent implements OnInit {
     this.graphMassPack = {data: this.graphBubble2MassData, layout: this.graphBubble2Masslayout};
   }
 
-  loadCase2Data() {
+  async loadCase2Data() {
 
 
     this.case2Data = 'Data for Case 2 has been loaded.';
@@ -194,6 +197,24 @@ export class BenchmarkExampleComponent implements OnInit {
     //case 2 data
       // Bubble Shape Data
     //=====================================================================================
+    try {
+      //const observable$ = this.postService.postFileRequest("c2g1l5s");
+      const observable$ = this.postService.postMultiFileRequest(["c2g1l5s", "c2g2l3s", "c2g3l4s"])
+
+      this.data = await firstValueFrom(observable$);
+      const {data: d0, layout: l0} = this.processData(this.data[0]);
+      const {data: d1} = this.processData(this.data[1]);
+      const {data: d2} = this.processData(this.data[2]);
+
+      d0.push(...d1);
+      d0.push(...d2);
+
+      this.graphBubble2ShapeData = d0;
+      this.graphBubble2Shapelayout = l0;
+    } catch (error) {
+      console.log("Got error: ", error);
+    }
+
 //    this.postService.postFileRequest("bubble_shape_case2").subscribe(
 //    {
 //        next: (data) => {
@@ -209,10 +230,94 @@ export class BenchmarkExampleComponent implements OnInit {
 //        },
 //    });
 
-    const {data: c2g3l4s_data, layout: c2g3l4s_Layout} = this.dataService.get_case2_bubble_shape_2d();
-    this.graphBubble2ShapeData = c2g3l4s_data;
-    this.graphBubble2Shapelayout = c2g3l4s_Layout;
+//    const {data: c2g3l4s_data, layout: c2g3l4s_Layout} = this.dataService.get_case2_bubble_shape_2d();
+//    this.graphBubble2ShapeData = c2g3l4s_data;
+//    this.graphBubble2Shapelayout = c2g3l4s_Layout;
 
+  }
+
+
+  processData(dataFile : any) {
+    const nSegments = dataFile.x.length / 2;
+    const plotData = [];
+
+    for (let i = 0; i < nSegments; i++) {
+      const segmentX = [dataFile.x.slice(2 * i, 2 * (i + 1))];
+      const segmentY = [dataFile.y.slice(2 * i, 2 * (i + 1))];
+
+      if (i === 0) {
+
+        plotData.push({
+          x: segmentX[0],
+          y: segmentY[0],
+          type: 'scatter',
+          mode: 'lines',
+          line: { color: dataFile.marker.color },
+          name: dataFile.name,
+          showlegend: true,
+        });
+
+      } else {
+
+        plotData.push({
+          x: segmentX[0],
+          y: segmentY[0],
+          type: 'scatter',
+          mode: 'lines',
+          line: { color: dataFile.marker.color },
+          name: dataFile.name,
+          showlegend: false,
+        });
+      }
+
+    }
+
+    return {
+      data: plotData,
+      layout: {
+        title: {
+          text: 'Bubble Shape',
+          font: {
+            color: '#ffffffb3'
+          }
+        },
+        showlegend: true,
+        legend: {
+          font: {
+            color: '#ffffffb3'
+          }
+        },
+        plot_bgcolor: '#303030',
+        paper_bgcolor: '#303030',
+        xaxis: {
+          range: [0.1, 0.9],
+          showgrid: true,
+          tickfont: {
+            color: '#ffffffb3'
+          },
+          gridcolor: '#505050',
+          title: {
+            text: 'X-Coordinate',
+            font: {
+              color: '#ffffffb3'
+            }
+          }
+        },
+        yaxis: {
+          showgrid: true,
+          tickfont: {
+            color: '#ffffffb3'
+          },
+          gridcolor: '#505050',
+          title: {
+            text: 'Y-Coordinate',
+            font: {
+              color: '#ffffffb3'
+            }
+          }
+        }
+      }
+    }
   }
 
 }

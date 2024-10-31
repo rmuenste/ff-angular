@@ -23,4 +23,12 @@ export class PostService {
 
     return this.http.post<any>(url, payload, { headers });
   }
+
+  postMultiFileRequest(fileNames: Array<String>): Observable<any> {
+    const url = `${this.apiUrl2}/get-multiple-json`;
+    const payload = { fileNames };
+    const headers = new HttpHeaders({'Content-Type' : 'application/json'});
+
+    return this.http.post<any>(url, payload, { headers });
+  }
 }
