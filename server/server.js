@@ -2,9 +2,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
+const cors = require('cors');
 
 const app = express();
 const PORT = 3000;
+
+app.use(cors({origin: 'http://localhost:4200'}));
 
 // Middleware to parse JSON body
 app.use(bodyParser.json());

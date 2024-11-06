@@ -35,3 +35,7 @@ a:hover {
 .mat-active {
   background: rgba(0,0,0,0.2);
 }
+
+a[routerlink] {
+  display: flex;
+}
