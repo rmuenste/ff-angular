@@ -39,6 +39,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { PlotComponentComponent } from './components/plot-component/plot-component.component';
 import { BenchmarkBubble2Component } from './components/benchmark-bubble2/benchmark-bubble2.component';
 import { ComparativePlotComponent } from './components/comparative-plot/comparative-plot.component';
+import { ServerComponent } from './components/server/server.component';
 
 PlotlyModule.plotlyjs = PlotlyJS;
 
@@ -60,6 +61,7 @@ PlotlyModule.plotlyjs = PlotlyJS;
     PlotComponentComponent,
     BenchmarkBubble2Component,
     ComparativePlotComponent,
+    ServerComponent,
   ],
   imports: [
     BrowserModule,
