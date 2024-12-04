@@ -35,6 +35,30 @@ export interface ReferenceBubbleS{
   fileURL: string;
 }
 
+export interface Marker {
+  color: string;
+}
+
+export interface PlotData {
+  x: number[];
+  y: number[];
+  type: string; // could use a union type, e.g., 'scatter' | 'bar' | etc.
+  mode: string; // could use a union type, e.g., 'lines' | 'points' | 'lines+points'
+  name: string;
+  marker: Marker;
+}
+
+//// Example usage:
+//const data: PlotData = {
+//  x: [1, 2, 3, 4],
+//  y: [1, 2, 3, 4],
+//  type: "scatter",
+//  mode: "lines+points",
+//  name: "FreeLife",
+//  marker: { color: "green" },
+//};
+
+
 export const ELEMENT_DATA: PeriodicElement[] = [
   {position: 1, p1: 1000, p2: 100, mu1: 10, mu2: 1, g: 0.98, sigma: 24.5, re: 35, eo: 10, rel: 10, relmu: 10},
   {position: 2, p1: 1000, p2: 1, mu1: 10, mu2: 0.1, g: 0.98, sigma: 1.96, re: 35, eo: 125, rel: 1000, relmu: 100},];
@@ -64,3 +88,4 @@ export const BENCHMARK_FORMAT: benchFormat[] = [
 export const REFERENCE_BubbleS: ReferenceBubbleS[] = [
   {file: 'All in one zip file', action: 'Download', fileURL : "assets/files/bubble2/shapes.zip"},
   ];
+

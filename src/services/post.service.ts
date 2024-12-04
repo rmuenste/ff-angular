@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class PostService {
   private apiUrl = 'https://jsonplaceholder.typicode.com/posts';
-  private apiUrl2 = 'http://localhost:3000';
+  private apiUrl2 = 'http://localhost:8000';
 
   constructor(private http: HttpClient) { }
 

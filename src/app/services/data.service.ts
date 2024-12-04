@@ -28,6 +28,7 @@ import { c2g1l4_bubble_mass, c2g1l4_circularity, c2g1l4_com, c2g1l4_rise_vel, c2
 */
 
 import { BenchmarkData, exampleBenchmarkData  } from '../models/benchmark-data';
+import { PlotData } from '../components/benchmark-example/benchmark-interfaces';
 
 
 
@@ -1279,47 +1280,32 @@ export class DataService {
   //=====================================================================================
   // Here we have the data of the circularity (Bubble 2D Case 2)
   //=====================================================================================
-/*
-  getCase2Bubble2circularityData() {
+  getCase2Bubble2circularityData(
+        c2g1l4_circularityIn: PlotData, 
+        c2g2l1_circularityIn: PlotData,
+        c2g3l2_circularityIn: PlotData,
+        c2g1l5_circularityIn: PlotData,
+        c2g2l2_circularityIn: PlotData,
+        c2g3l3_circularityIn: PlotData,
+        c2g1l6_circularityIn: PlotData,
+        c2g2l3_circularityIn: PlotData,
+        c2g3l4_circularityIn: PlotData) {
+
     const markerTraceTP2D = {
-      x: c2g1l4_circularity.x.filter((_, index) => index % 90 === 0),
-      y: c2g1l4_circularity.y.filter((_, index) => index % 90 === 0),
+      x: c2g1l4_circularityIn.x.filter((_, index) => index % 90 === 0),
+      y: c2g1l4_circularityIn.y.filter((_, index) => index % 90 === 0),
       type: 'scatter',
       mode: 'markers',
       marker: {
         color: 'blue',
         symbol: 'circle'
-      },
-      showlegend: false
-    };
-
-    const markerTraceFreeLIFE = {
-      x: c2g2l1_circularity.x.filter((_, index) => index % 90 === 0),
-      y: c2g2l1_circularity.y.filter((_, index) => index % 90 === 0),
-      type: 'scatter',
-      mode: 'markers',
-      marker: {
-        color: 'green',
-        symbol: 'square'
-      },
-      showlegend: false
-    };
-  
-    const markerTraceMooNMD = {
-      x: c2g3l2_circularity.x.filter((_, index) => index % 90 === 0),
-      y: c2g3l2_circularity.y.filter((_, index) => index % 90 === 0),
-      type: 'scatter',
-      mode: 'markers',
-      marker: {
-        color: 'red',
-        symbol: 'x'
       },
       showlegend: false
     };
 
     const marker2TraceTP2D = {
-      x: c2g1l5_circularity.x.filter((_, index) => index % 90 === 0),
-      y: c2g1l5_circularity.y.filter((_, index) => index % 90 === 0),
+      x: c2g1l5_circularityIn.x.filter((_: any, index: any) => index % 90 === 0),
+      y: c2g1l5_circularityIn.y.filter((_: any, index: any) => index % 90 === 0),
       type: 'scatter',
       mode: 'markers',
       marker: {
@@ -1329,9 +1315,22 @@ export class DataService {
       showlegend: false
     };
 
-    const marker2TraceFreeLIFE = {
-      x: c2g2l2_circularity.x.filter((_, index) => index % 90 === 0),
-      y: c2g2l2_circularity.y.filter((_, index) => index % 90 === 0),
+    const marker3TraceTP2D = {
+      x: c2g1l6_circularityIn.x.filter((_: any, index: any) => index % 90 === 0),
+      y: c2g1l6_circularityIn.y.filter((_: any, index: any) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'blue',
+        symbol: 'circle'
+      },
+      showlegend: false
+    };
+
+
+    const markerTraceFreeLIFE = {
+      x: c2g2l1_circularityIn.x.filter((_: any, index: any) => index % 90 === 0),
+      y: c2g2l1_circularityIn.y.filter((_: any, index: any) => index % 90 === 0),
       type: 'scatter',
       mode: 'markers',
       marker: {
@@ -1340,10 +1339,34 @@ export class DataService {
       },
       showlegend: false
     };
-  
-    const marker2TraceMooNMD = {
-      x: c2g3l3_circularity.x.filter((_, index) => index % 90 === 0),
-      y: c2g3l3_circularity.y.filter((_, index) => index % 90 === 0),
+
+     const marker2TraceFreeLIFE = {
+      x: c2g2l2_circularityIn.x.filter((_: any, index: any) => index % 90 === 0),
+      y: c2g2l2_circularityIn.y.filter((_: any, index: any) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'green',
+        symbol: 'square'
+      },
+      showlegend: false
+    };
+
+    const marker3TraceFreeLIFE = {
+      x: c2g2l3_circularityIn.x.filter((_: any, index: any) => index % 90 === 0),
+      y: c2g2l3_circularityIn.y.filter((_: any, index: any) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'green',
+        symbol: 'square'
+      },
+      showlegend: false
+    };
+
+    const markerTraceMooNMD = {
+      x: c2g3l2_circularityIn.x.filter((_: any, index: any) => index % 90 === 0),
+      y: c2g3l2_circularityIn.y.filter((_: any, index: any) => index % 90 === 0),
       type: 'scatter',
       mode: 'markers',
       marker: {
@@ -1353,33 +1376,24 @@ export class DataService {
       showlegend: false
     };
 
-    const marker3TraceTP2D = {
-      x: c2g1l6_circularity.x.filter((_, index) => index % 90 === 0),
-      y: c2g1l6_circularity.y.filter((_, index) => index % 90 === 0),
+
+ 
+    const marker2TraceMooNMD = {
+      x: c2g3l3_circularityIn.x.filter((_: any, index: any) => index % 90 === 0),
+      y: c2g3l3_circularityIn.y.filter((_: any, index: any) => index % 90 === 0),
       type: 'scatter',
       mode: 'markers',
       marker: {
-        color: 'blue',
-        symbol: 'circle'
+        color: 'red',
+        symbol: 'x'
       },
       showlegend: false
     };
 
-    const marker3TraceFreeLIFE = {
-      x: c2g2l3_circularity.x.filter((_, index) => index % 90 === 0),
-      y: c2g2l3_circularity.y.filter((_, index) => index % 90 === 0),
-      type: 'scatter',
-      mode: 'markers',
-      marker: {
-        color: 'green',
-        symbol: 'square'
-      },
-      showlegend: false
-    };
-  
+ 
     const marker3TraceMooNMD = {
-      x: c2g3l4_circularity.x.filter((_, index) => index % 90 === 0),
-      y: c2g3l4_circularity.y.filter((_, index) => index % 90 === 0),
+      x: c2g3l4_circularityIn.x.filter((_: any, index: any) => index % 90 === 0),
+      y: c2g3l4_circularityIn.y.filter((_: any, index: any) => index % 90 === 0),
       type: 'scatter',
       mode: 'markers',
       marker: {
@@ -1390,17 +1404,17 @@ export class DataService {
     };
     
     const case2bubble2Circularity_data = [
-      [c2g1l4_circularity, markerTraceTP2D,
-        c2g2l1_circularity,markerTraceFreeLIFE,
-        c2g3l2_circularity,markerTraceMooNMD
+      [c2g1l4_circularityIn, markerTraceTP2D,
+       c2g2l1_circularityIn,markerTraceFreeLIFE,
+       c2g3l2_circularityIn,markerTraceMooNMD
       ],
-      [c2g1l5_circularity, marker2TraceTP2D,
-       c2g2l2_circularity, marker2TraceFreeLIFE,
-       c2g3l3_circularity, marker2TraceMooNMD
+      [c2g1l5_circularityIn, marker2TraceTP2D,
+       c2g2l2_circularityIn, marker2TraceFreeLIFE,
+       c2g3l3_circularityIn, marker2TraceMooNMD
       ],
-      [c2g1l6_circularity,marker3TraceTP2D,
-       c2g2l3_circularity,marker3TraceTP2D,
-       c2g3l4_circularity, marker3TraceMooNMD
+      [c2g1l6_circularityIn,marker3TraceTP2D,
+       c2g2l3_circularityIn,marker3TraceFreeLIFE,
+       c2g3l4_circularityIn, marker3TraceMooNMD
        ]       
       ]
 
@@ -1408,7 +1422,7 @@ export class DataService {
       data: case2bubble2Circularity_data,
         layout: {
           title: {
-            text: 'Mass/Area',
+            text: 'Circularity',
             font: {
               color: '#ffffffb3'
             }
@@ -1442,7 +1456,7 @@ export class DataService {
             },
             gridcolor: '#505050',
             title: {
-              text: 'Mass/Area',
+              text: 'Circularity',
               font: {
                 color: '#ffffffb3'
               }
@@ -1452,8 +1466,17 @@ export class DataService {
     }
   };
 
+  getCase2Bubble2comData(
+        c2g1l4_com: PlotData, 
+        c2g2l1_com: PlotData,
+        c2g3l2_com: PlotData,
+        c2g1l5_com: PlotData,
+        c2g2l2_com: PlotData,
+        c2g3l3_com: PlotData,
+        c2g1l6_com: PlotData,
+        c2g2l3_com: PlotData,
+        c2g3l4_com: PlotData) {
 
-  getCase2Bubble2comData() {
     const markerTraceTP2D = {
       x: c2g1l4_com.x.filter((_, index) => index % 90 === 0),
       y: c2g1l4_com.y.filter((_, index) => index % 90 === 0),
@@ -1581,7 +1604,7 @@ export class DataService {
       data: case2bubble2com_data,
         layout: {
           title: {
-            text: 'Mass/Area',
+            text: 'Center of Mass',
             font: {
               color: '#ffffffb3'
             }
@@ -1615,7 +1638,7 @@ export class DataService {
             },
             gridcolor: '#505050',
             title: {
-              text: 'Mass/Area',
+              text: 'Center of Mass',
               font: {
                 color: '#ffffffb3'
               }
@@ -1626,7 +1649,15 @@ export class DataService {
   };
 
 
-  getCase2Bubble2VelocityData() {
+  getCase2Bubble2VelocityData(c2g1l4_rise_vel: PlotData,
+                              c2g2l1_rise_vel: PlotData, 
+                              c2g3l2_rise_vel: PlotData, 
+                              c2g1l5_rise_vel: PlotData, 
+                              c2g2l2_rise_vel: PlotData, 
+                              c2g3l3_rise_vel: PlotData, 
+                              c2g1l6_rise_vel: PlotData,
+                              c2g2l3_rise_vel: PlotData,
+                              c2g3l4_rise_vel: PlotData) {
     const markerTraceTP2D = {
       x: c2g1l4_rise_vel.x.filter((_, index) => index % 90 === 0),
       y: c2g1l4_rise_vel.y.filter((_, index) => index % 90 === 0),
@@ -1736,17 +1767,17 @@ export class DataService {
     };
     
     const case2bubble2RiseVelocity_data = [
-      [c2g1l4_rise_vel, markerTraceTP2D,
-        c2g2l1_rise_vel,markerTraceFreeLIFE,
-        c2g3l2_rise_vel,markerTraceMooNMD
+      [c2g1l4_rise_vel,markerTraceTP2D,
+       c2g2l1_rise_vel,markerTraceFreeLIFE,
+       c2g3l2_rise_vel,markerTraceMooNMD
       ],
       [c2g1l5_rise_vel, marker2TraceTP2D,
        c2g2l2_rise_vel, marker2TraceFreeLIFE,
        c2g3l3_rise_vel, marker2TraceMooNMD
       ],
       [c2g1l6_rise_vel,marker3TraceTP2D,
-       c2g2l3_com,marker3TraceTP2D,
-       c2g3l4_com, marker3TraceMooNMD
+       c2g2l3_rise_vel,marker3TraceFreeLIFE,
+       c2g3l4_rise_vel,marker3TraceMooNMD
        ]       
       ]
 
@@ -1754,7 +1785,7 @@ export class DataService {
       data: case2bubble2RiseVelocity_data,
         layout: {
           title: {
-            text: 'Mass/Area',
+            text: 'Rise Velocity',
             font: {
               color: '#ffffffb3'
             }
@@ -1788,7 +1819,7 @@ export class DataService {
             },
             gridcolor: '#505050',
             title: {
-              text: 'Mass/Area',
+              text: 'Velocity',
               font: {
                 color: '#ffffffb3'
               }
@@ -1798,7 +1829,16 @@ export class DataService {
     }
   };
 
-  getCase2Bubble2MassData() { 
+  getCase2Bubble2MassData(c2g1l4_bubble_mass: PlotData,
+                          c2g2l1_bubble_mass: PlotData, 
+                          c2g3l2_bubble_mass: PlotData, 
+                          c2g1l5_bubble_mass: PlotData, 
+                          c2g2l2_bubble_mass: PlotData, 
+                          c2g3l3_bubble_mass: PlotData, 
+                          c2g1l6_bubble_mass: PlotData,
+                          c2g2l3_bubble_mass: PlotData,
+                          c2g3l4_bubble_mass: PlotData) {
+
     const markerTraceTP2D = {
       x: c2g1l4_bubble_mass.x.filter((_, index) => index % 90 === 0),
       y: c2g1l4_bubble_mass.y.filter((_, index) => index % 90 === 0),
@@ -1969,5 +2009,4 @@ export class DataService {
         }
     }
   };
-*/
 }

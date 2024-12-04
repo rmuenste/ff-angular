@@ -66,14 +66,23 @@ export class BenchmarkExampleComponent implements OnInit {
   graphBubble2Shapelayout2: any = {title: 'Line Chart'
   }
 
+  graph2ComPack: {} | null = null;
+
+  graphCase2CircularityPack: {} | null = null;
+  graphCase2Data: any[] = [];
+  graphCase2Layout: any = {title: 'Line Chart'
+  }
+
+  graphCase2RiseVelocityPack: {} | null = null;
+
+  graphCase2MassPack: {} | null = null;
+
   data: any;
 
 
   selectedCase: number = 1;
   case1Data: string = 'Data for Case 1';
   case2Data: string = 'Data for Case 2';
-
-  posts: any[] = [];
 
   constructor(private dataService: DataService, private postService: PostService) {
 
@@ -167,39 +176,27 @@ export class BenchmarkExampleComponent implements OnInit {
 
     this.case2Data = 'Data for Case 2 has been loaded.';
     console.log(`Level 2 data loaded`);
-    //=====================================================================================
-    // Assign the data of the circularity plot
-    //=====================================================================================
-    const {data: plotData, layout: plotLayout} = this.dataService.get_case1_bubble_circularity_2d();
-    this.graphData = plotData;
-    this.graphLayout = plotLayout;
-    this.graphCircularityPack = {data: this.graphData, layout: this.graphLayout};
 
-
-    //=====================================================================================
-    const {data: comData, layout: comLayout} = this.dataService.get_case1_bubble_com_2d();
-    this.graphcomData = comData;
-    this.graphcomLayout = comLayout;
-    this.graphcomPack = {data: this.graphcomData, layout: this.graphcomLayout};
-
-    //=====================================================================================
-    const {data: riseVelocityData, layout: riseVelocityLayout} = this.dataService.get_case1_bubble_vel_2d();
-    this.graphRiseVelocityData = riseVelocityData;
-    this.graphRiseVelocityLayout = riseVelocityLayout;
-    this.graphRiseVelocityPack = {data: this.graphRiseVelocityData, layout: this.graphRiseVelocityLayout};
-
-    //=====================================================================================
-    const {data: c1g1l4_bubbleMass_data, layout: c1g1l4_bubbleMass_Layout} = this.dataService.get_case1_bubble_mass_2d();
-    this.graphBubble2MassData = c1g1l4_bubbleMass_data;
-    this.graphBubble2Masslayout = c1g1l4_bubbleMass_Layout;
-    this.graphMassPack = {data: this.graphBubble2MassData, layout: this.graphBubble2Masslayout};
 
     //case 2 data
       // Bubble Shape Data
     //=====================================================================================
     try {
       //const observable$ = this.postService.postFileRequest("c2g1l5s");
-      const observable$ = this.postService.postMultiFileRequest(["c2g1l5s", "c2g2l3s", "c2g3l4s"])
+      const observable$ = this.postService.postMultiFileRequest(["c2g1l5s", "c2g2l3s", "c2g3l4s",
+                                                                 "c2g1l4_circularity", "c2g1l5_circularity", "c2g1l6_circularity",
+                                                                 "c2g2l1_circularity", "c2g2l2_circularity", "c2g2l3_circularity",
+                                                                 "c2g3l2_circularity", "c2g3l3_circularity", "c2g3l4_circularity",
+                                                                 "c2g1l4_com", "c2g1l5_com", "c2g1l6_com",
+                                                                 "c2g2l1_com", "c2g2l2_com", "c2g2l3_com",
+                                                                 "c2g3l2_com", "c2g3l3_com", "c2g3l4_com", //riseVel
+                                                                 "c2g1l4_rise_vel", "c2g1l5_rise_vel", "c2g1l6_rise_vel",
+                                                                 "c2g2l1_rise_vel", "c2g2l2_rise_vel", "c2g2l3_rise_vel",
+                                                                 "c2g3l2_rise_vel", "c2g3l3_rise_vel", "c2g3l3_rise_vel", //bubble_mass
+                                                                 "c2g1l4_bubble_mass", "c2g1l5_bubble_mass", "c2g1l6_bubble_mass",
+                                                                 "c2g2l1_bubble_mass", "c2g2l2_bubble_mass", "c2g2l3_bubble_mass",
+                                                                 "c2g3l2_bubble_mass", "c2g3l3_bubble_mass", "c2g3l3_bubble_mass"
+                                                                ])
 
       this.data = await firstValueFrom(observable$);
       const {data: d0, layout: l0} = this.processData(this.data[0]);
@@ -211,9 +208,146 @@ export class BenchmarkExampleComponent implements OnInit {
 
       this.graphBubble2ShapeData = d0;
       this.graphBubble2Shapelayout = l0;
+
+      //=====================================================================================
+      // Assign the data of the circularity plot
+      //=====================================================================================
+     //"c2g1l4_circularity", "c2g1l5_circularity", "c2g1l6_circularity",
+     //"c2g2l1_circularity", "c2g2l2_circularity", "c2g2l3_circularity",
+     //"c2g3l2_circularity", "c2g3l3_circularity", "c2g3l3_circularity",
+
+//      console.log(this.data[3]);
+//      console.log(this.data[4]);
+//      console.log(this.data[5]);
+//      console.log(this.data[6]);
+//      console.log(this.data[7]);
+//      console.log(this.data[8]);
+//      console.log(this.data[9]);
+//      console.log(this.data[10]);
+//      console.log(this.data[11]);
+//      console.log(this.data[12]);
+//      console.log(this.data[13]);
+//      console.log(this.data[14]);
+//      console.log(this.data[15]);
+//      console.log(this.data[16]);
+//      console.log(this.data[17]);
+//      console.log(this.data[18]);
+//      console.log(this.data[19]);
+//      console.log(this.data[20]);
+      const {data: plotData, layout: plotLayout} = this.dataService.getCase2Bubble2circularityData(
+        this.data[3],
+        this.data[6],
+        this.data[9],
+        this.data[4],
+        this.data[7],
+        this.data[10],
+        this.data[5],
+        this.data[8],
+        this.data[11],
+      );
+
+      this.graphCase2Data = plotData;
+      this.graphCase2Layout = plotLayout; 
+      this.graphCase2CircularityPack = {data: this.graphCase2Data, layout: this.graphCase2Layout};
+      console.log("Data:", this.graphCase2Data);
+
+      //=====================================================================================
+      // Assign the data of the com plot
+      //=====================================================================================
+      const {data: comData, layout: comLayout} = this.dataService.getCase2Bubble2comData(
+          this.data[12],
+          this.data[15],
+          this.data[18],
+          this.data[13],
+          this.data[16],
+          this.data[19],
+          this.data[14],
+          this.data[17],
+          this.data[20],
+        );
+
+      this.graph2ComPack = {data: comData, layout: comLayout};
+
+      //=====================================================================================
+      // Assign the data of the rise velocity plot
+      //=====================================================================================
+      const {data: riseVelocityData, layout: riseVelocityLayout} = this.dataService.getCase2Bubble2VelocityData(
+          this.data[21],
+          this.data[24],
+          this.data[27],
+          this.data[22],
+          this.data[25],
+          this.data[28],
+          this.data[23],
+          this.data[26],
+          this.data[29]
+      );
+      this.graphCase2RiseVelocityPack = {data: riseVelocityData, layout: riseVelocityLayout};
+
+    const {data: bubbleMass_data, layout: bubbleMass_Layout} = this.dataService.getCase2Bubble2MassData(
+          this.data[30],
+          this.data[33],
+          this.data[36],
+          this.data[31],
+          this.data[34],
+          this.data[37],
+          this.data[32],
+          this.data[35],
+          this.data[38]
+    );
+    this.graphCase2MassPack = {data: bubbleMass_data, layout: bubbleMass_Layout};
+    console.log("MassPack: ", this.graphCase2MassPack);
+
     } catch (error) {
       console.log("Got error: ", error);
     }
+
+//    //=====================================================================================
+//    // Assign the data of the circularity plot
+//    //=====================================================================================
+//    const {data: plotData, layout: plotLayout} = this.dataService.get_case1_bubble_circularity_2d();
+//    this.graphData = plotData;
+//    this.graphLayout = plotLayout;
+//    this.graphCircularityPack = {data: this.graphData, layout: this.graphLayout};
+//
+//
+//    //=====================================================================================
+//    // Assign the data of the com plot
+//    //=====================================================================================
+//    const {data: comData, layout: comLayout} = this.dataService.get_case1_bubble_com_2d();
+//    this.graphcomData = comData;
+//    this.graphcomLayout = comLayout;
+//    this.graphcomPack = {data: this.graphcomData, layout: this.graphcomLayout};
+
+    //=====================================================================================
+    // Assign the data of the com plot
+    //=====================================================================================
+//    const {data: comData, layout: comLayout} = this.dataService.getCase2Bubble2comData(
+//        this.data[12],
+//        this.data[15],
+//        this.data[18],
+//        this.data[13],
+//        this.data[16],
+//        this.data[19],
+//        this.data[14],
+//        this.data[17],
+//        this.data[20],
+//      );
+//    this.graphcomData = comData;
+//    this.graphcomLayout = comLayout;
+//    this.graphcomPack = {data: this.graphcomData, layout: this.graphcomLayout};
+
+//    //=====================================================================================
+//    const {data: riseVelocityData, layout: riseVelocityLayout} = this.dataService.get_case1_bubble_vel_2d();
+//    this.graphRiseVelocityData = riseVelocityData;
+//    this.graphRiseVelocityLayout = riseVelocityLayout;
+//    this.graphRiseVelocityPack = {data: this.graphRiseVelocityData, layout: this.graphRiseVelocityLayout};
+//
+//    //=====================================================================================
+//    const {data: c1g1l4_bubbleMass_data, layout: c1g1l4_bubbleMass_Layout} = this.dataService.get_case1_bubble_mass_2d();
+//    this.graphBubble2MassData = c1g1l4_bubbleMass_data;
+//    this.graphBubble2Masslayout = c1g1l4_bubbleMass_Layout;
+//    this.graphMassPack = {data: this.graphBubble2MassData, layout: this.graphBubble2Masslayout};
 
 //    this.postService.postFileRequest("bubble_shape_case2").subscribe(
 //    {
