@@ -33,7 +33,7 @@ export class BenchmarkExampleComponent implements OnInit {
 
   mathEq = `When $ a \\ne 0 $`;
 
-  graphCircularityPack: {} = {};
+  graphCircularityPack: {} |  null = null;
   graphData: any[] = [];
   graphLayout: any = {title: 'Line Chart'
   }
@@ -82,6 +82,7 @@ export class BenchmarkExampleComponent implements OnInit {
 
   selectedCase: number = 1;
   case1Data: string = 'Data for Case 1';
+  case11Data: string = 'Data for Case 1';
   case2Data: string = 'Data for Case 2';
 
   constructor(private dataService: DataService, private postService: PostService) {
@@ -90,6 +91,8 @@ export class BenchmarkExampleComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.loadCase11Data();
+    return;
     //=====================================================================================
     // Assign the data of the circularity plot
     //=====================================================================================
@@ -125,25 +128,28 @@ export class BenchmarkExampleComponent implements OnInit {
 
   };
 
+  //case button is handled here
   loadSelection(userCase: number) {
     console.log(userCase);
 
     if (userCase == 1){
-      this.loadCase1Data();
+      this.loadCase11Data();
     } 
     else if (userCase == 2){
       this.loadCase2Data()
     }
   };
+
+    //handles case one data
   loadCase1Data() {
     this.case1Data = 'Data for Case 1 has been loaded.';
     //=====================================================================================
     // Assign the data of the circularity plot
     //=====================================================================================
-    const {data: plotData, layout: plotLayout} = this.dataService.get_case1_bubble_circularity_2d();
-    this.graphData = plotData;
-    this.graphLayout = plotLayout;
-    this.graphCircularityPack = {data: this.graphData, layout: this.graphLayout};
+    //const {data: plotData, layout: plotLayout} = this.dataService.get_case1_bubble_circularity_2d();
+    //this.graphData = plotData;
+    //this.graphLayout = plotLayout;
+    //this.graphCircularityPack = {data: this.graphData, layout: this.graphLayout};
 
 
     //=====================================================================================
@@ -169,8 +175,50 @@ export class BenchmarkExampleComponent implements OnInit {
     this.graphBubble2MassData = c1g1l4_bubbleMass_data;
     this.graphBubble2Masslayout = c1g1l4_bubbleMass_Layout;
     this.graphMassPack = {data: this.graphBubble2MassData, layout: this.graphBubble2Masslayout};
-  }
+  };
 
+  async loadCase11Data () {
+
+
+    this.case11Data = 'Data for Case 11 has been loaded.';
+    console.log(`Level 11 data loaded`);
+
+    try {
+      const observable$ = this.postService.postMultiFileRequest(["c1g1l1_circularity", "c1g2l1_circularity", "c1g3l1_circularity",
+                                                                 "c1g1l2_circularity", "c1g2l2_circularity", "c1g3l2_circularity", 
+                                                                 "c1g1l3_circularity", "c1g2l3_circularity", "c1g3l3_circularity"])
+
+                                                              
+      this.data = await firstValueFrom(observable$)
+
+            //=====================================================================================
+      // Assign the data of the circularity plot
+      //=====================================================================================
+      const {data: plotData, layout: plotLayout} = this.dataService.getcircularityData(
+        this.data[0],
+        this.data[1],
+        this.data[2],
+        this.data[3],
+        this.data[4],
+        this.data[5],
+        this.data[6],
+        this.data[7],
+        this.data[8],
+      );
+
+      this.graphData = plotData;
+      this.graphLayout = plotLayout; 
+      this.graphCircularityPack = {data: plotData, layout: plotLayout};
+      console.log("Data:", this.graphData);
+    
+      } catch (error: any) {
+        console.log("Got error: ", error);
+      }
+  };
+
+
+
+    //handles case 2 data
   async loadCase2Data() {
 
 
@@ -203,6 +251,7 @@ export class BenchmarkExampleComponent implements OnInit {
       const {data: d1} = this.processData(this.data[1]);
       const {data: d2} = this.processData(this.data[2]);
 
+      //append d1 and d2 to d0
       d0.push(...d1);
       d0.push(...d2);
 

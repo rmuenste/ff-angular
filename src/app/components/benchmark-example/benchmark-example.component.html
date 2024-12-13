@@ -282,7 +282,7 @@
     <div *ngIf="selectedCase === 1">
       <div class="text-wrapper">
         <h4>
-          Verification of the results by the picture norm
+          Case 1 Verification of the results by the picture norm
         </h4>
         To visually verify the results the following approximate bubble shapes can be used. (The raw data for the bubble
         shapes can be obtained from the Reference data page.)
@@ -334,7 +334,7 @@
           and decrease as the bubble is deformed.
         </p>
 
-        <div class="plot-wrapper-ex">
+        <div *ngIf="graphCircularityPack" class="plot-wrapper-ex">
 
           <app-comparative-plot [inputGraph]="graphCircularityPack">
           </app-comparative-plot>
