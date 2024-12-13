@@ -212,28 +212,6 @@ export class BenchmarkExampleComponent implements OnInit {
       //=====================================================================================
       // Assign the data of the circularity plot
       //=====================================================================================
-     //"c2g1l4_circularity", "c2g1l5_circularity", "c2g1l6_circularity",
-     //"c2g2l1_circularity", "c2g2l2_circularity", "c2g2l3_circularity",
-     //"c2g3l2_circularity", "c2g3l3_circularity", "c2g3l3_circularity",
-
-//      console.log(this.data[3]);
-//      console.log(this.data[4]);
-//      console.log(this.data[5]);
-//      console.log(this.data[6]);
-//      console.log(this.data[7]);
-//      console.log(this.data[8]);
-//      console.log(this.data[9]);
-//      console.log(this.data[10]);
-//      console.log(this.data[11]);
-//      console.log(this.data[12]);
-//      console.log(this.data[13]);
-//      console.log(this.data[14]);
-//      console.log(this.data[15]);
-//      console.log(this.data[16]);
-//      console.log(this.data[17]);
-//      console.log(this.data[18]);
-//      console.log(this.data[19]);
-//      console.log(this.data[20]);
       const {data: plotData, layout: plotLayout} = this.dataService.getCase2Bubble2circularityData(
         this.data[3],
         this.data[6],
