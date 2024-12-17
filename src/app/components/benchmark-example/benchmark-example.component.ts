@@ -43,7 +43,7 @@ export class BenchmarkExampleComponent implements OnInit {
   graphcomLayout: any = {title: 'Line Chart'
   }
 
-  graphRiseVelocityPack: {} = {};
+  graphRiseVelocityPack: {} | null = null;
   graphRiseVelocityData: any[] = [];
   graphRiseVelocityLayout: any = {title: 'Line Chart'
   }
@@ -189,7 +189,10 @@ export class BenchmarkExampleComponent implements OnInit {
                                                                  "c1g1l3_circularity", "c1g2l3_circularity", "c1g3l3_circularity",
                                                                  "c1g1l1_com", "c1g2l1_com", "c1g3l1_com",
                                                                  "c1g1l2_com", "c1g2l2_com", "c1g3l2_com",
-                                                                 "c1g1l3_com", "c1g2l3_com", "c1g3l3_com",])
+                                                                 "c1g1l3_com", "c1g2l3_com", "c1g3l3_com",
+                                                                 "c1g1l1_rise_velocity", "c1g2l1_rise_velocity", "c1g3l1_rise_velocity",
+                                                                 "c1g1l2_rise_velocity", "c1g2l2_rise_velocity", "c1g3l2_rise_velocity",
+                                                                 "c1g1l3_rise_velocity", "c1g2l3_rise_velocity", "c1g3l3_rise_velocity"])
 
                                                               
       this.data = await firstValueFrom(observable$)
@@ -231,6 +234,25 @@ export class BenchmarkExampleComponent implements OnInit {
       );
 
     this.graphComPack = {data: comData, layout: comLayout};
+
+
+      //=====================================================================================
+      // Assign the data of the rise velocity plot
+      //=====================================================================================
+      const {data: riseVelocityData, layout: riseVelocityLayout} = this.dataService.getriseVelocityData(
+        this.data[18],
+        this.data[19],
+        this.data[20],
+        this.data[21],
+        this.data[22],
+        this.data[23],
+        this.data[24],
+        this.data[25],
+        this.data[26],
+      );
+
+    this.graphRiseVelocityPack = {data: riseVelocityData, layout: riseVelocityLayout};
+
     
       } catch (error: any) {
         console.log("Got error: ", error);

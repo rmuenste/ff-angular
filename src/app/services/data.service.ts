@@ -716,7 +716,7 @@ export class DataService {
 
 
   //=====================================================================================
-  // Here we have the data of the circularity (Bubble 2D Case 1)
+  // Here we have the data of the com (Bubble 2D Case 1)
   //=====================================================================================
   getcomData(
     c1g1l1_comIn: PlotData,
@@ -893,7 +893,7 @@ return {
         },
         gridcolor: '#505050',
         title: {
-          text: 'Circularity',
+          text: 'Center of Mass',
           font: {
             color: '#ffffffb3'
           }
@@ -904,7 +904,193 @@ return {
 };
 
 
+ //=====================================================================================
+  // Here we have the data of the Rise Velocity (Bubble 2D Case 1)
+  //=====================================================================================
+  getriseVelocityData(
+    c1g1l1_risevelocityIn: PlotData,
+    c1g2l1_risevelocityIn: PlotData,
+    c1g3l1_risevelocityIn: PlotData,
+    c1g1l2_risevelocityIn: PlotData,
+    c1g2l2_risevelocityIn: PlotData,
+    c1g3l2_risevelocityIn: PlotData,
+    c1g1l3_risevelocityIn: PlotData,
+    c1g2l3_risevelocityIn: PlotData,
+    c1g3l3_risevelocityIn: PlotData) {
 
+const markerTraceTP2D = {
+  x: c1g1l1_risevelocityIn.x.filter((_, index) => index % 100 === 0),
+  y: c1g1l1_risevelocityIn.y.filter((_, index) => index % 100 === 0),
+  type: 'scatter',
+  mode: 'markers',
+  marker: {
+    color: 'blue',
+    symbol: 'circle'
+  },
+  showlegend: false
+};
+
+const markerTraceFreeLIFE = {
+  x: c1g2l1_risevelocityIn.x.filter((_: any, index: any) => index % 50 === 0),
+  y: c1g2l1_risevelocityIn.y.filter((_: any, index: any) => index % 50 === 0),
+  type: 'scatter',
+  mode: 'markers',
+  marker: {
+    color: 'green',
+    symbol: 'square'
+  },
+  showlegend: false
+};
+
+
+const markerTraceMooNMD = {
+  x: c1g3l1_risevelocityIn.x.filter((_: any, index: any) => index % 100 === 0),
+  y: c1g3l1_risevelocityIn.y.filter((_: any, index: any) => index % 100 === 0),
+  type: 'scatter',
+  mode: 'markers',
+  marker: {
+    color: 'red',
+    symbol: 'x'
+  },
+  showlegend: false
+};
+
+
+const marker2TraceTP2D = {
+  x: c1g1l2_risevelocityIn.x.filter((_: any, index: any) => index % 90 === 0),
+  y: c1g1l2_risevelocityIn.y.filter((_: any, index: any) => index % 90 === 0),
+  type: 'scatter',
+  mode: 'markers',
+  marker: {
+    color: 'blue',
+    symbol: 'circle'
+  },
+  showlegend: false
+};
+
+const marker2TraceFreeLIFE = {
+  x: c1g2l2_risevelocityIn.x.filter((_: any, index: any) => index % 50 === 0),
+  y: c1g2l2_risevelocityIn.y.filter((_: any, index: any) => index % 50 === 0),
+  type: 'scatter',
+  mode: 'markers',
+  marker: {
+    color: 'green',
+    symbol: 'square'
+  },
+  showlegend: false
+};
+
+const marker2TraceMooNMD = {
+  x: c1g3l2_risevelocityIn.x.filter((_: any, index: any) => index % 90 === 0),
+  y: c1g3l2_risevelocityIn.y.filter((_: any, index: any) => index % 90 === 0),
+  type: 'scatter',
+  mode: 'markers',
+  marker: {
+    color: 'red',
+    symbol: 'x'
+  },
+  showlegend: false
+};
+
+const marker3TraceTP2D = {
+  x: c1g1l3_risevelocityIn.x.filter((_: any, index: any) => index % 300 === 0),
+  y: c1g1l3_risevelocityIn.y.filter((_: any, index: any) => index % 300 === 0),
+  type: 'scatter',
+  mode: 'markers',
+  marker: {
+    color: 'blue',
+    symbol: 'circle'
+  },
+  showlegend: false
+};
+
+const marker3TraceFreeLIFE = {
+  x: c1g2l3_risevelocityIn.x.filter((_: any, index: any) => index % 50 === 0),
+  y: c1g2l3_risevelocityIn.y.filter((_: any, index: any) => index % 50 === 0),
+  type: 'scatter',
+  mode: 'markers',
+  marker: {
+    color: 'green',
+    symbol: 'square'
+  },
+  showlegend: false
+};
+
+
+const marker3TraceMooNMD = {
+  x: c1g3l3_risevelocityIn.x.filter((_: any, index: any) => index % 90 === 0),
+  y: c1g3l3_risevelocityIn.y.filter((_: any, index: any) => index % 90 === 0),
+  type: 'scatter',
+  mode: 'markers',
+  marker: {
+    color: 'red',
+    symbol: 'x'
+  },
+  showlegend: false
+};
+
+const case1bubble2Com_data = [
+  [c1g1l1_risevelocityIn, markerTraceTP2D,
+   c1g2l1_risevelocityIn,markerTraceFreeLIFE,
+   c1g3l1_risevelocityIn,markerTraceMooNMD
+  ],
+  [c1g1l2_risevelocityIn, marker2TraceTP2D,
+   c1g2l2_risevelocityIn, marker2TraceFreeLIFE,
+   c1g3l2_risevelocityIn, marker2TraceMooNMD
+  ],
+  [c1g1l3_risevelocityIn,marker3TraceTP2D,
+   c1g2l3_risevelocityIn,marker3TraceFreeLIFE,
+   c1g3l3_risevelocityIn, marker3TraceMooNMD
+   ]       
+  ]
+
+return {
+  data: case1bubble2Com_data,
+    layout: {
+      title: {
+        text: 'Rise Velocity',
+        font: {
+          color: '#ffffffb3'
+        }
+      },
+      showlegend: true,
+      legend: {
+        font: {
+          color: '#ffffffb3'
+        }
+      },
+      plot_bgcolor: '#303030',
+      paper_bgcolor: '#303030',
+      xaxis: {
+        range: [0.0, 3.0], // Define custom x-axis limits
+        showgrid: true,
+        tickfont: {
+          color: '#ffffffb3'
+        },
+        gridcolor: '#505050',
+        title: {
+          text: 'Time[s]',
+          font: {
+            color: '#ffffffb3'
+          }
+        }
+      },
+      yaxis: {
+        showgrid: true,
+        tickfont: {
+          color: '#ffffffb3'
+        },
+        gridcolor: '#505050',
+        title: {
+          text: 'Rise Velocity',
+          font: {
+            color: '#ffffffb3'
+          }
+        }
+      }
+    }
+}
+};
 
 
   get_case1_bubble_com_2d() {

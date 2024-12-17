@@ -354,7 +354,7 @@
         </p>
       </div>
 
-      <div class="plot-wrapper-ex">
+      <div *ngIf="graphRiseVelocityPack" class="plot-wrapper-ex">
 
         <app-comparative-plot [inputGraph]="graphRiseVelocityPack">
         </app-comparative-plot>
