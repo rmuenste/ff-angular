@@ -48,7 +48,7 @@ export class BenchmarkExampleComponent implements OnInit {
   graphRiseVelocityLayout: any = {title: 'Line Chart'
   }
 
-  graphMassPack: {} = {};
+  graphMassPack: {} | null = null;
   graphBubbleMassData: any[] = [];
   graphbubbleMassLayout: any = {title: 'Line Chart'
   }
@@ -192,7 +192,10 @@ export class BenchmarkExampleComponent implements OnInit {
                                                                  "c1g1l3_com", "c1g2l3_com", "c1g3l3_com",
                                                                  "c1g1l1_rise_velocity", "c1g2l1_rise_velocity", "c1g3l1_rise_velocity",
                                                                  "c1g1l2_rise_velocity", "c1g2l2_rise_velocity", "c1g3l2_rise_velocity",
-                                                                 "c1g1l3_rise_velocity", "c1g2l3_rise_velocity", "c1g3l3_rise_velocity"])
+                                                                 "c1g1l3_rise_velocity", "c1g2l3_rise_velocity", "c1g3l3_rise_velocity",
+                                                                 "c1g1l1_mass", "c1g2l1_mass", "c1g3l1_mass",
+                                                                 "c1g1l2_mass", "c1g2l2_mass", "c1g3l2_mass",
+                                                                 "c1g1l3_mass", "c1g2l3_mass", "c1g3l3_mass",])
 
                                                               
       this.data = await firstValueFrom(observable$)
@@ -252,6 +255,24 @@ export class BenchmarkExampleComponent implements OnInit {
       );
 
     this.graphRiseVelocityPack = {data: riseVelocityData, layout: riseVelocityLayout};
+
+
+      //=====================================================================================
+      // Assign the data of the Bubble Mass plot
+      //=====================================================================================
+      const {data: MassData, layout: MassLayout} = this.dataService.getmassData(
+        this.data[27],
+        this.data[28],
+        this.data[29],
+        this.data[30],
+        this.data[31],
+        this.data[32],
+        this.data[33],
+        this.data[34],
+        this.data[35],
+      );
+
+    this.graphMassPack = {data: MassData, layout: MassLayout};
 
     
       } catch (error: any) {
