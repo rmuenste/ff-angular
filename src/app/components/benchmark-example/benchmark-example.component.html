@@ -313,11 +313,12 @@
         </p>
 
 
-        <div class="plot-wrapper-ex">
+        <div *ngIf="graphComPack" class="plot-wrapper-ex">
 
-          <app-comparative-plot [inputGraph]="graphcomPack">
+          <app-comparative-plot [inputGraph]="graphComPack">
           </app-comparative-plot>
         </div>
+
 
         <h4>Circularity</h4>
         <p>The "degree of circularity" in <app-mathjax [content]="'${\\mathbb{R}^2}$'"></app-mathjax> can be defined as

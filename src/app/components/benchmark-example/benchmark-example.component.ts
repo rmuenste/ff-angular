@@ -38,7 +38,7 @@ export class BenchmarkExampleComponent implements OnInit {
   graphLayout: any = {title: 'Line Chart'
   }
 
-  graphcomPack: {} = {};
+  graphComPack: {} | null = null;
   graphcomData: any[] = [];
   graphcomLayout: any = {title: 'Line Chart'
   }
@@ -106,7 +106,7 @@ export class BenchmarkExampleComponent implements OnInit {
     const {data: comData, layout: comLayout} = this.dataService.get_case1_bubble_com_2d();
     this.graphcomData = comData;
     this.graphcomLayout = comLayout;
-    this.graphcomPack = {data: this.graphcomData, layout: this.graphcomLayout};
+    this.graphComPack = {data: this.graphcomData, layout: this.graphcomLayout};
 
     //=====================================================================================
     const {data: riseVelocityData, layout: riseVelocityLayout} = this.dataService.get_case1_bubble_vel_2d();
@@ -156,7 +156,7 @@ export class BenchmarkExampleComponent implements OnInit {
     const {data: comData, layout: comLayout} = this.dataService.get_case1_bubble_com_2d();
     this.graphcomData = comData;
     this.graphcomLayout = comLayout;
-    this.graphcomPack = {data: this.graphcomData, layout: this.graphcomLayout};
+    this.graphComPack = {data: this.graphcomData, layout: this.graphcomLayout};
 
     //=====================================================================================
     const {data: riseVelocityData, layout: riseVelocityLayout} = this.dataService.get_case1_bubble_vel_2d();
@@ -186,7 +186,10 @@ export class BenchmarkExampleComponent implements OnInit {
     try {
       const observable$ = this.postService.postMultiFileRequest(["c1g1l1_circularity", "c1g2l1_circularity", "c1g3l1_circularity",
                                                                  "c1g1l2_circularity", "c1g2l2_circularity", "c1g3l2_circularity", 
-                                                                 "c1g1l3_circularity", "c1g2l3_circularity", "c1g3l3_circularity"])
+                                                                 "c1g1l3_circularity", "c1g2l3_circularity", "c1g3l3_circularity",
+                                                                 "c1g1l1_com", "c1g2l1_com", "c1g3l1_com",
+                                                                 "c1g1l2_com", "c1g2l2_com", "c1g3l2_com",
+                                                                 "c1g1l3_com", "c1g2l3_com", "c1g3l3_com",])
 
                                                               
       this.data = await firstValueFrom(observable$)
@@ -210,6 +213,24 @@ export class BenchmarkExampleComponent implements OnInit {
       this.graphLayout = plotLayout; 
       this.graphCircularityPack = {data: plotData, layout: plotLayout};
       console.log("Data:", this.graphData);
+
+
+      //=====================================================================================
+      // Assign the data of the com plot
+      //=====================================================================================
+      const {data: comData, layout: comLayout} = this.dataService.getcomData(
+        this.data[9],
+        this.data[10],
+        this.data[11],
+        this.data[12],
+        this.data[13],
+        this.data[14],
+        this.data[15],
+        this.data[16],
+        this.data[17],
+      );
+
+    this.graphComPack = {data: comData, layout: comLayout};
     
       } catch (error: any) {
         console.log("Got error: ", error);

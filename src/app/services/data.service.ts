@@ -715,6 +715,195 @@ export class DataService {
   };
 
 
+  //=====================================================================================
+  // Here we have the data of the circularity (Bubble 2D Case 1)
+  //=====================================================================================
+  getcomData(
+    c1g1l1_comIn: PlotData,
+    c1g2l1_comIn: PlotData,
+    c1g3l1_comIn: PlotData,
+    c1g1l2_comIn: PlotData,
+    c1g2l2_comIn: PlotData,
+    c1g3l2_comIn: PlotData,
+    c1g1l3_comIn: PlotData,
+    c1g2l3_comIn: PlotData,
+    c1g3l3_comIn: PlotData) {
+
+const markerTraceTP2D = {
+  x: c1g1l1_comIn.x.filter((_, index) => index % 100 === 0),
+  y: c1g1l1_comIn.y.filter((_, index) => index % 100 === 0),
+  type: 'scatter',
+  mode: 'markers',
+  marker: {
+    color: 'blue',
+    symbol: 'circle'
+  },
+  showlegend: false
+};
+
+const markerTraceFreeLIFE = {
+  x: c1g2l1_comIn.x.filter((_: any, index: any) => index % 100 === 0),
+  y: c1g2l1_comIn.y.filter((_: any, index: any) => index % 100 === 0),
+  type: 'scatter',
+  mode: 'markers',
+  marker: {
+    color: 'green',
+    symbol: 'square'
+  },
+  showlegend: false
+};
+
+
+const markerTraceMooNMD = {
+  x: c1g3l1_comIn.x.filter((_: any, index: any) => index % 100 === 0),
+  y: c1g3l1_comIn.y.filter((_: any, index: any) => index % 100 === 0),
+  type: 'scatter',
+  mode: 'markers',
+  marker: {
+    color: 'red',
+    symbol: 'x'
+  },
+  showlegend: false
+};
+
+
+const marker2TraceTP2D = {
+  x: c1g1l2_comIn.x.filter((_: any, index: any) => index % 90 === 0),
+  y: c1g1l2_comIn.y.filter((_: any, index: any) => index % 90 === 0),
+  type: 'scatter',
+  mode: 'markers',
+  marker: {
+    color: 'blue',
+    symbol: 'circle'
+  },
+  showlegend: false
+};
+
+const marker2TraceFreeLIFE = {
+  x: c1g2l2_comIn.x.filter((_: any, index: any) => index % 50 === 0),
+  y: c1g2l2_comIn.y.filter((_: any, index: any) => index % 50 === 0),
+  type: 'scatter',
+  mode: 'markers',
+  marker: {
+    color: 'green',
+    symbol: 'square'
+  },
+  showlegend: false
+};
+
+const marker2TraceMooNMD = {
+  x: c1g3l2_comIn.x.filter((_: any, index: any) => index % 90 === 0),
+  y: c1g3l2_comIn.y.filter((_: any, index: any) => index % 90 === 0),
+  type: 'scatter',
+  mode: 'markers',
+  marker: {
+    color: 'red',
+    symbol: 'x'
+  },
+  showlegend: false
+};
+
+const marker3TraceTP2D = {
+  x: c1g1l3_comIn.x.filter((_: any, index: any) => index % 300 === 0),
+  y: c1g1l3_comIn.y.filter((_: any, index: any) => index % 300 === 0),
+  type: 'scatter',
+  mode: 'markers',
+  marker: {
+    color: 'blue',
+    symbol: 'circle'
+  },
+  showlegend: false
+};
+
+const marker3TraceFreeLIFE = {
+  x: c1g2l3_comIn.x.filter((_: any, index: any) => index % 90 === 0),
+  y: c1g2l3_comIn.y.filter((_: any, index: any) => index % 90 === 0),
+  type: 'scatter',
+  mode: 'markers',
+  marker: {
+    color: 'green',
+    symbol: 'square'
+  },
+  showlegend: false
+};
+
+
+const marker3TraceMooNMD = {
+  x: c1g3l3_comIn.x.filter((_: any, index: any) => index % 90 === 0),
+  y: c1g3l3_comIn.y.filter((_: any, index: any) => index % 90 === 0),
+  type: 'scatter',
+  mode: 'markers',
+  marker: {
+    color: 'red',
+    symbol: 'x'
+  },
+  showlegend: false
+};
+
+const case1bubble2Com_data = [
+  [c1g1l1_comIn, markerTraceTP2D,
+   c1g2l1_comIn,markerTraceFreeLIFE,
+   c1g3l1_comIn,markerTraceMooNMD
+  ],
+  [c1g1l2_comIn, marker2TraceTP2D,
+   c1g2l2_comIn, marker2TraceFreeLIFE,
+   c1g3l2_comIn, marker2TraceMooNMD
+  ],
+  [c1g1l3_comIn,marker3TraceTP2D,
+   c1g2l3_comIn,marker3TraceFreeLIFE,
+   c1g3l3_comIn, marker3TraceMooNMD
+   ]       
+  ]
+
+return {
+  data: case1bubble2Com_data,
+    layout: {
+      title: {
+        text: 'Center of Mass',
+        font: {
+          color: '#ffffffb3'
+        }
+      },
+      showlegend: true,
+      legend: {
+        font: {
+          color: '#ffffffb3'
+        }
+      },
+      plot_bgcolor: '#303030',
+      paper_bgcolor: '#303030',
+      xaxis: {
+        range: [0.0, 3.0], // Define custom x-axis limits
+        showgrid: true,
+        tickfont: {
+          color: '#ffffffb3'
+        },
+        gridcolor: '#505050',
+        title: {
+          text: 'Time[s]',
+          font: {
+            color: '#ffffffb3'
+          }
+        }
+      },
+      yaxis: {
+        showgrid: true,
+        tickfont: {
+          color: '#ffffffb3'
+        },
+        gridcolor: '#505050',
+        title: {
+          text: 'Circularity',
+          font: {
+            color: '#ffffffb3'
+          }
+        }
+      }
+    }
+}
+};
+
+
 
 
 
