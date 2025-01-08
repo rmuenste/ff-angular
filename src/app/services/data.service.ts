@@ -17,6 +17,7 @@ import { c1g1l1_circularity_data, c1g1l1_com_data, c1g1l1_riseVelocity_Data, c1g
   c2g2l3_bubbleMass_data} from '../components/benchmark-example/data_bubble2';
   import { c2g3l4s, c2g1l4s, c2g2l1s, c2g1l5s, c2g2l2s, c2g2l3s } from '../components/benchmark-example/case2_data';
   import { PostService } from 'src/services/post.service';
+  
 
 /*  
 import { c2g1l4_bubble_mass, c2g1l4_circularity, c2g1l4_com, c2g1l4_rise_vel, c2g1l5_bubble_mass, c2g1l5_circularity, c2g1l5_com, c2g1l7_com,
@@ -103,17 +104,22 @@ export class DataService {
   //=====================================================================================
   // Here we have the data of the sphericity plot
   //=====================================================================================
-  get_bubble_sphericity_3d() {
+  get_bubble_sphericity_3d(
+    RB3sphericityL1In: PlotData,
+    RB3sphericityL2In: PlotData,
+    RB3sphericityL3In: PlotData
+  ) {
   //const chartSpherecityData = [...sphericityL1.data, sphericityL2.data, sphericityL3.data];
 
   const chartSpherecityData = [sphericityL1.data, sphericityL2.data, sphericityL3.data];
-
 //  console.log(`We got ${chartSpherecityData.length} data sets`);
 //  for(let i = 0; i < chartSpherecityData.length; i++) {
 //    console.log(`Data set ${i}: ${JSON.stringify(chartSpherecityData[i])}`);
 //  }
+
+  const RB3sphericityData = [RB3sphericityL1In, RB3sphericityL2In, RB3sphericityL3In]
   return {
-    data: chartSpherecityData,
+    data: RB3sphericityData,
       layout: {
         title: {
           text: 'Sphericity Plot',

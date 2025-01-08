@@ -254,8 +254,9 @@ export class BenchmarkExampleComponent implements OnInit {
 
     this.graphMassPack = {data: MassData, layout: MassLayout};
 
-    
-      } catch (error: any) {
+    } 
+      
+      catch (error: any) {
         console.log("Got error: ", error);
       }
   };

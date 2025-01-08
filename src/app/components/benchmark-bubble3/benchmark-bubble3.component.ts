@@ -4,6 +4,9 @@ import { MatRadioChange } from '@angular/material/radio';
 import { multi } from './data';
 import { bubble, sphericityL1, massConservationL2 } from './data';
 import { DataService, MeshTable, PeriodicElement } from 'src/app/services/data.service';
+import { PostService } from 'src/services/post.service'; 
+import { firstValueFrom } from 'rxjs';
+
 
 export interface FileDownload {
   file: string;
@@ -28,7 +31,8 @@ export class BenchmarkBubble3Component implements OnInit {
   //=============================================================================
   // Line chart
   chartSpherecityData : any[] = [];
-  graph3 : any = {};
+  graph3: {} | null = null;
+  
   //=============================================================================
 
   //=============================================================================
@@ -63,6 +67,7 @@ export class BenchmarkBubble3Component implements OnInit {
   dataSource: PeriodicElement[] = [];
   //=============================================================================
 
+  data: any;
 
   //=============================================================================
 
@@ -88,15 +93,50 @@ export class BenchmarkBubble3Component implements OnInit {
   selectedLevel: string = 'Level 2';
 
 
-  constructor(private dataService: DataService) {
+
+  constructor(private dataService: DataService, private postService: PostService) {
 
   }
 
+ 
+  async loadData () {
+
+    try {
+      const observable$ = this.postService.postMultiFileRequest([
+                                                                  "RB3sphericityL1", "RB3sphericityL2", "RB3sphericityL3"
+                                                                ])
+
+      this.data = await firstValueFrom(observable$);
+      console.log("data: ", this.data)
+      const {data: plotData, layout: plotLayout} = this.dataService.get_bubble_sphericity_3d(
+        this.data[0],
+        this.data[1],
+        this.data[2],
+      );
+      this.graph3 ={data: plotData, layout: plotLayout};
+     
+
+
+    }
+
+   catch (error) {
+    console.log("Got error: ", error);
+  }
+
+  }
+
+
+  
   ngOnInit(): void {
+
+    this.loadData();
+
+
 
     //=====================================================================================
     // Assign the data of the sphericity plot
     //=====================================================================================
+    /*
     const {data: plotData, layout: plotLayout} = this.dataService.get_bubble_sphericity_3d();
     this.chartSpherecityData = plotData
     //console.log(`Plot data length: ${JSON.stringify(this.chartSpherecityData)}`)
@@ -104,7 +144,7 @@ export class BenchmarkBubble3Component implements OnInit {
     //this.graph3 = JSON.parse(JSON.stringify(this.graph));
     this.graph3.data = this.chartSpherecityData;
     this.graph3.layout = plotLayout;
-
+    */
     //=====================================================================================
     // Assign the data of the mass conservation plot
     //=====================================================================================
