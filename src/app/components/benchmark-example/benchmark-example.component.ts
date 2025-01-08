@@ -144,43 +144,6 @@ export class BenchmarkExampleComponent implements OnInit {
     }
   };
 
-    //handles case one data
-  loadCase1Data() {
-    this.case1Data = 'Data for Case 1 has been loaded.';
-    //=====================================================================================
-    // Assign the data of the circularity plot
-    //=====================================================================================
-    //const {data: plotData, layout: plotLayout} = this.dataService.get_case1_bubble_circularity_2d();
-    //this.graphData = plotData;
-    //this.graphLayout = plotLayout;
-    //this.graphCircularityPack = {data: this.graphData, layout: this.graphLayout};
-
-
-    //=====================================================================================
-    const {data: comData, layout: comLayout} = this.dataService.get_case1_bubble_com_2d();
-    this.graphcomData = comData;
-    this.graphcomLayout = comLayout;
-    this.graphComPack = {data: this.graphcomData, layout: this.graphcomLayout};
-
-    //=====================================================================================
-    const {data: riseVelocityData, layout: riseVelocityLayout} = this.dataService.get_case1_bubble_vel_2d();
-    this.graphRiseVelocityData = riseVelocityData;
-    this.graphRiseVelocityLayout = riseVelocityLayout;
-    this.graphRiseVelocityPack = {data: this.graphRiseVelocityData, layout: this.graphRiseVelocityLayout};
-
-    // Bubble Shape Data
-    //=====================================================================================
-    const {data: c1g1l4shape_data, layout: c1g1l4shape_Layout} = this.dataService.get_case1_bubble_shape_2d();
-    this.graphBubble2ShapeData = c1g1l4shape_data;
-    this.graphBubble2Shapelayout = c1g1l4shape_Layout;
-
-    //=====================================================================================
-    const {data: c1g1l4_bubbleMass_data, layout: c1g1l4_bubbleMass_Layout} = this.dataService.get_case1_bubble_mass_2d();
-    this.graphBubble2MassData = c1g1l4_bubbleMass_data;
-    this.graphBubble2Masslayout = c1g1l4_bubbleMass_Layout;
-    this.graphMassPack = {data: this.graphBubble2MassData, layout: this.graphBubble2Masslayout};
-  };
-
   async loadCase11Data () {
 
 
@@ -204,7 +167,6 @@ export class BenchmarkExampleComponent implements OnInit {
 
                                                               
       this.data = await firstValueFrom(observable$);
-      console.log("MyData: ",this.data[36])
       const {data: d0, layout: l0} = this.processData(this.data[36]);
       const {data: d1} = this.processData(this.data[37]);
       const {data: d2} = this.processData(this.data[38])
@@ -237,7 +199,6 @@ export class BenchmarkExampleComponent implements OnInit {
       this.graphData = plotData;
       this.graphLayout = plotLayout; 
       this.graphCircularityPack = {data: plotData, layout: plotLayout};
-      console.log("Data:", this.graphData);
 
 
       //=====================================================================================
@@ -411,72 +372,6 @@ export class BenchmarkExampleComponent implements OnInit {
     } catch (error) {
       console.log("Got error: ", error);
     }
-
-//    //=====================================================================================
-//    // Assign the data of the circularity plot
-//    //=====================================================================================
-//    const {data: plotData, layout: plotLayout} = this.dataService.get_case1_bubble_circularity_2d();
-//    this.graphData = plotData;
-//    this.graphLayout = plotLayout;
-//    this.graphCircularityPack = {data: this.graphData, layout: this.graphLayout};
-//
-//
-//    //=====================================================================================
-//    // Assign the data of the com plot
-//    //=====================================================================================
-//    const {data: comData, layout: comLayout} = this.dataService.get_case1_bubble_com_2d();
-//    this.graphcomData = comData;
-//    this.graphcomLayout = comLayout;
-//    this.graphcomPack = {data: this.graphcomData, layout: this.graphcomLayout};
-
-    //=====================================================================================
-    // Assign the data of the com plot
-    //=====================================================================================
-//    const {data: comData, layout: comLayout} = this.dataService.getCase2Bubble2comData(
-//        this.data[12],
-//        this.data[15],
-//        this.data[18],
-//        this.data[13],
-//        this.data[16],
-//        this.data[19],
-//        this.data[14],
-//        this.data[17],
-//        this.data[20],
-//      );
-//    this.graphcomData = comData;
-//    this.graphcomLayout = comLayout;
-//    this.graphcomPack = {data: this.graphcomData, layout: this.graphcomLayout};
-
-//    //=====================================================================================
-//    const {data: riseVelocityData, layout: riseVelocityLayout} = this.dataService.get_case1_bubble_vel_2d();
-//    this.graphRiseVelocityData = riseVelocityData;
-//    this.graphRiseVelocityLayout = riseVelocityLayout;
-//    this.graphRiseVelocityPack = {data: this.graphRiseVelocityData, layout: this.graphRiseVelocityLayout};
-//
-//    //=====================================================================================
-//    const {data: c1g1l4_bubbleMass_data, layout: c1g1l4_bubbleMass_Layout} = this.dataService.get_case1_bubble_mass_2d();
-//    this.graphBubble2MassData = c1g1l4_bubbleMass_data;
-//    this.graphBubble2Masslayout = c1g1l4_bubbleMass_Layout;
-//    this.graphMassPack = {data: this.graphBubble2MassData, layout: this.graphBubble2Masslayout};
-
-//    this.postService.postFileRequest("bubble_shape_case2").subscribe(
-//    {
-//        next: (data) => {
-//          //this.posts = data; // Handle emitted data
-//          //console.log('Server response:', data);
-//          jsonData = data;
-//        },
-//        error: (error) => {
-//          console.error('Error fetching posts:', error); // Handle error
-//        },
-//        complete: () => {
-//          console.log('Observable completed'); // Handle completion if needed
-//        },
-//    });
-
-//    const {data: c2g3l4s_data, layout: c2g3l4s_Layout} = this.dataService.get_case2_bubble_shape_2d();
-//    this.graphBubble2ShapeData = c2g3l4s_data;
-//    this.graphBubble2Shapelayout = c2g3l4s_Layout;
 
   }
 
