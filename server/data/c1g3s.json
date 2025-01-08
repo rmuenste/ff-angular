@@ -1303,9 +1303,10 @@
       1.28444,
       1.28449
     ],
+    "name": "MooNMD",
     "type": "scatter",
     "mode": "lines+points",
     "marker": {
-      "color": "blue"
+      "color": "red"
     }
 }

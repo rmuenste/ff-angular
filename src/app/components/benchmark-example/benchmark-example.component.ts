@@ -200,13 +200,15 @@ export class BenchmarkExampleComponent implements OnInit {
                                                                  "c1g1l1_mass", "c1g2l1_mass", "c1g3l1_mass",
                                                                  "c1g1l2_mass", "c1g2l2_mass", "c1g3l2_mass",
                                                                  "c1g1l3_mass", "c1g2l3_mass", "c1g3l3_mass",
-                                                                 "c1g1s.json", "c1g2s.json", "c1g3s.json" ])
+                                                                 "c1g1s", "c1g2s", "c1g3s" ])
 
                                                               
       this.data = await firstValueFrom(observable$);
-      const {data: d0, layout: l0} = this.processData(this.data[0]);
-      const {data: d1} = this.processData(this.data[1]);
-      const {data: d2} = this.processData(this.data[2])
+      console.log("MyData: ",this.data[36])
+      const {data: d0, layout: l0} = this.processData(this.data[36]);
+      const {data: d1} = this.processData(this.data[37]);
+      const {data: d2} = this.processData(this.data[38])
+      
 
       //append d1 and d2 to d0
       d0.push(...d1);
@@ -214,6 +216,7 @@ export class BenchmarkExampleComponent implements OnInit {
 
       this.graphBubble2ShapeData = d0;
       this.graphBubble2Shapelayout = l0;
+    
 
 
       //=====================================================================================
