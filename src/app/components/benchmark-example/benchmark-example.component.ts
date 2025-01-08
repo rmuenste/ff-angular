@@ -57,6 +57,10 @@ export class BenchmarkExampleComponent implements OnInit {
   graphBubble2Shapelayout: any = {title: 'Line Chart'
   }
 
+  graphBubble2ShapeData11: any[] = [];
+  graphBubble2Shapelayout11: any = {title: 'Line Chart'
+  }
+
   graphBubble2MassData: any[] = []; 
   graphBubble2Masslayout: any = {title: 'Line Chart' 
   }
@@ -195,12 +199,24 @@ export class BenchmarkExampleComponent implements OnInit {
                                                                  "c1g1l3_rise_velocity", "c1g2l3_rise_velocity", "c1g3l3_rise_velocity",
                                                                  "c1g1l1_mass", "c1g2l1_mass", "c1g3l1_mass",
                                                                  "c1g1l2_mass", "c1g2l2_mass", "c1g3l2_mass",
-                                                                 "c1g1l3_mass", "c1g2l3_mass", "c1g3l3_mass",])
+                                                                 "c1g1l3_mass", "c1g2l3_mass", "c1g3l3_mass",
+                                                                 "c1g1s.json", "c1g2s.json", "c1g3s.json" ])
 
                                                               
-      this.data = await firstValueFrom(observable$)
+      this.data = await firstValueFrom(observable$);
+      const {data: d0, layout: l0} = this.processData(this.data[0]);
+      const {data: d1} = this.processData(this.data[1]);
+      const {data: d2} = this.processData(this.data[2])
 
-            //=====================================================================================
+      //append d1 and d2 to d0
+      d0.push(...d1);
+      d0.push(...d2);
+
+      this.graphBubble2ShapeData = d0;
+      this.graphBubble2Shapelayout = l0;
+
+
+      //=====================================================================================
       // Assign the data of the circularity plot
       //=====================================================================================
       const {data: plotData, layout: plotLayout} = this.dataService.getcircularityData(
