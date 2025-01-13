@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { sphericityL1, massConservationL2, massConservationL3, massConservationL4, sphericityL2, sphericityL3 } from '../components/benchmark-bubble3/data';
+import { massConservationL2, massConservationL3, massConservationL4} from '../components/benchmark-bubble3/data';
 import { dataSizeL2, dataSizeL3, dataSizeL4 } from '../components/benchmark-bubble3/data';
 import { surfaceDataL2, surfaceDataL3, surfaceDataL4 } from '../components/benchmark-bubble3/data';
 import { c1g1l1_circularity_data, c1g1l1_com_data, c1g1l1_riseVelocity_Data, c1g2l1_COM_data, c1g2l1_circularity_data, c1g2l1_velocity_data, 
@@ -105,63 +105,56 @@ export class DataService {
   // Here we have the data of the sphericity plot
   //=====================================================================================
   get_bubble_sphericity_3d(
-    RB3sphericityL1In: PlotData,
-    RB3sphericityL2In: PlotData,
-    RB3sphericityL3In: PlotData
+    RB3sphericityL1In: PlotData[],
+    RB3sphericityL2In: PlotData[],
+    RB3sphericityL3In: PlotData[]
   ) {
-  //const chartSpherecityData = [...sphericityL1.data, sphericityL2.data, sphericityL3.data];
-
-  const chartSpherecityData = [sphericityL1.data, sphericityL2.data, sphericityL3.data];
-//  console.log(`We got ${chartSpherecityData.length} data sets`);
-//  for(let i = 0; i < chartSpherecityData.length; i++) {
-//    console.log(`Data set ${i}: ${JSON.stringify(chartSpherecityData[i])}`);
-//  }
 
   const RB3sphericityData = [RB3sphericityL1In, RB3sphericityL2In, RB3sphericityL3In]
   return {
     data: RB3sphericityData,
-      layout: {
+    layout: {
+      title: {
+        text: 'Sphericity Plot',
+        font: {
+          color: '#ffffffb3'
+        }
+      },
+      showlegend: true,
+      legend: {
+        font: {
+          color: '#ffffffb3'
+        }
+      },
+      plot_bgcolor: '#303030',
+      paper_bgcolor: '#303030',
+      xaxis: {
+        showgrid: true,
+        tickfont: {
+          color: '#ffffffb3'
+        },
+        gridcolor: '#505050',
         title: {
-          text: 'Sphericity Plot',
+          text: 'Time[s]',
           font: {
             color: '#ffffffb3'
           }
+        }
+      },
+      yaxis: {
+        showgrid: true,
+        tickfont: {
+          color: '#ffffffb3'
         },
-        showlegend: true,
-        legend: {
+        gridcolor: '#505050',
+        title: {
+          text: 'Sphericity',
           font: {
             color: '#ffffffb3'
-          }
-        },
-        plot_bgcolor: '#303030',
-        paper_bgcolor: '#303030',
-        xaxis: {
-          showgrid: true,
-          tickfont: {
-            color: '#ffffffb3'
-          },
-          gridcolor: '#505050',
-          title: {
-            text: 'Time[s]',
-            font: {
-              color: '#ffffffb3'
-            }
-          }
-        },
-        yaxis: {
-          showgrid: true,
-          tickfont: {
-            color: '#ffffffb3'
-          },
-          gridcolor: '#505050',
-          title: {
-            text: 'Sphericity',
-            font: {
-              color: '#ffffffb3'
-            }
           }
         }
       }
+    }
     };
 
   }
@@ -171,9 +164,13 @@ export class DataService {
   //=====================================================================================
   // Here we have the data of the mass conservation plot (Bubble 3D)
   //=====================================================================================
-  get_bubble_mass_3d() {
+  get_bubble_mass_3d(
+    RB3bubble_massL1: PlotData[],
+    RB3bubble_massL2: PlotData[],
+    RB3bubble_massL3: PlotData[]
+  ) {
 
-  const chartMassConservationData = [massConservationL2.data, massConservationL3.data, massConservationL4.data];
+  const chartMassConservationData = [RB3bubble_massL1, RB3bubble_massL2, RB3bubble_massL3];
   return {
     data: chartMassConservationData,
     layout: {title: {

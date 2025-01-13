@@ -38,7 +38,8 @@ export class BenchmarkBubble3Component implements OnInit {
   //=============================================================================
   // Line chart
   chartMassData : any[] = [];
-  graphMassConservation : any = {};
+  graphMassConservation : {} | null = null
+
   //=============================================================================
 
   //=============================================================================
@@ -103,19 +104,28 @@ export class BenchmarkBubble3Component implements OnInit {
 
     try {
       const observable$ = this.postService.postMultiFileRequest([
-                                                                  "RB3sphericityL1", "RB3sphericityL2", "RB3sphericityL3"
+                                                                  "RB3sphericityL1", "RB3sphericityL2", "RB3sphericityL3",
+                                                                  "RB3bubble_massL1", "RB3bubble_massL2", "RB3bubble_massL3"
                                                                 ])
 
       this.data = await firstValueFrom(observable$);
-      console.log("data: ", this.data)
       const {data: plotData, layout: plotLayout} = this.dataService.get_bubble_sphericity_3d(
         this.data[0],
         this.data[1],
         this.data[2],
       );
       this.graph3 ={data: plotData, layout: plotLayout};
-     
 
+      //=====================================================================================
+      // Assign the data of the mass conservation plot
+      //=====================================================================================
+      const {data: massData, layout: massLayout} = this.dataService.get_bubble_mass_3d(
+        this.data[3],
+        this.data[4],
+        this.data[5]
+      );
+      this.chartMassData = massData;
+      this.graphMassConservation = {data: massData, layout: massLayout};
 
     }
 
@@ -148,10 +158,10 @@ export class BenchmarkBubble3Component implements OnInit {
     //=====================================================================================
     // Assign the data of the mass conservation plot
     //=====================================================================================
-    const {data: massData, layout: massLayout} = this.dataService.get_bubble_mass_3d();
-    this.chartMassData = massData;
-    this.graphMassConservation.data = this.chartMassData;
-    this.graphMassConservation.layout = massLayout;
+    //const {data: massData, layout: massLayout} = this.dataService.get_bubble_mass_3d();
+    //this.chartMassData = massData;
+    //this.graphMassConservation.data = this.chartMassData;
+    //this.graphMassConservation.layout = massLayout;
 
     //=====================================================================================
     // Assign the data of the bubble size plot

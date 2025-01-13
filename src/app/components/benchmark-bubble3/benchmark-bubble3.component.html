@@ -241,15 +241,22 @@ surface. The dimensionless timespan of the simulation covers the time interval f
 <!-- Results Tab
  -->
 <div fxLayout="row wrap" fxLayoutAlign="space-around space-around" fxLayoutGap="16px">
+
   <div fxFlex.gt-sm="40%" fxFlex.lt-lg="100%">
-    <app-plot-component
-      [graph]="graph3"
-    ></app-plot-component>
+    <div *ngIf="graph3; else loading">
+      <app-plot-component
+        [graph]="graph3"
+      ></app-plot-component>
+    </div>
   </div>
+
+
   <div fxFlex.gt-sm="40%" fxFlex.lt-lg="100%">
-    <app-plot-component
-      [graph]="graphMassConservation"
-    ></app-plot-component>
+    <div *ngIf="graphMassConservation; else loading">
+      <app-plot-component
+        [graph]="graphMassConservation"
+      ></app-plot-component>
+    </div>
   </div>
   <div fxFlex.gt-sm="40%" fxFlex.lt-lg="100%">
     <app-plot-component
@@ -472,3 +479,6 @@ surface. The dimensionless timespan of the simulation covers the time interval f
 </mat-tab-group>
 
 
+<ng-template #loading>
+  <p>Loading data...</p>
+</ng-template>
