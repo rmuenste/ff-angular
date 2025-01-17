@@ -218,10 +218,15 @@ export class DataService {
   }
 
   //=====================================================================================
-  // Here we have the data of the mass conservation plot
+  // Here we have the data of the size plot
   //=====================================================================================
-  get_bubble_size_3d() {
-  const chartSizeData = [dataSizeL2.data, dataSizeL3.data, dataSizeL4.data];
+  get_bubble_size_3d(
+    RB3sizeL1: PlotData[],
+    RB3sizeL2: PlotData[],
+    RB3sizeL3: PlotData[]
+  ) {
+    
+  const chartSizeData = [RB3sizeL1, RB3sizeL2, RB3sizeL3];
   return {
     data: chartSizeData,
     layout: {title: {
@@ -270,8 +275,12 @@ export class DataService {
   //=====================================================================================
   // Here we have the data of the surface plot
   //=====================================================================================
-  get_bubble_surface_3d() {
-  const chartSurface = [surfaceDataL2.data, surfaceDataL3.data, surfaceDataL4.data];
+  get_bubble_surface_3d(
+    RB3surfaceL1: PlotData[],
+    RB3surfaceL2: PlotData[],
+    RB3surfaceL3: PlotData[]
+  ) {
+  const chartSurface = [RB3surfaceL1, RB3surfaceL2, RB3surfaceL3];
   return {
     data: chartSurface,
     layout: {title: {

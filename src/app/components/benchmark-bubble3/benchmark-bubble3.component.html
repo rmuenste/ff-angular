@@ -258,15 +258,21 @@ surface. The dimensionless timespan of the simulation covers the time interval f
       ></app-plot-component>
     </div>
   </div>
+
   <div fxFlex.gt-sm="40%" fxFlex.lt-lg="100%">
-    <app-plot-component
-      [graph]="graphSize"
-    ></app-plot-component>
+    <div *ngIf="graphSize; else loading">
+      <app-plot-component
+        [graph]="graphSize"
+      ></app-plot-component>
+    </div>
   </div>
+
   <div fxFlex.gt-sm="40%" fxFlex.lt-lg="100%">
-    <app-plot-component
-      [graph]="graphSurface"
-    ></app-plot-component>
+    <div *ngIf="graphSurface; else loading">
+      <app-plot-component
+        [graph]="graphSurface"
+      ></app-plot-component>
+    </div>
   </div>
 </div>
 
