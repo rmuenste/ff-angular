@@ -288,7 +288,8 @@ export class BenchmarkExampleComponent implements OnInit {
                                                                  "c2g3l2_rise_vel", "c2g3l3_rise_vel", "c2g3l3_rise_vel", //bubble_mass
                                                                  "c2g1l4_bubble_mass", "c2g1l5_bubble_mass", "c2g1l6_bubble_mass",
                                                                  "c2g2l1_bubble_mass", "c2g2l2_bubble_mass", "c2g2l3_bubble_mass",
-                                                                 "c2g3l2_bubble_mass", "c2g3l3_bubble_mass", "c2g3l3_bubble_mass"
+                                                                 "c2g3l2_bubble_mass", "c2g3l3_bubble_mass", "c2g3l3_bubble_mass",
+                                                                 "ff_circularityL1", "ff_circularityL2", "ff_circularityL3", //featflower
                                                                 ])
 
       this.data = await firstValueFrom(observable$);
@@ -316,6 +317,9 @@ export class BenchmarkExampleComponent implements OnInit {
         this.data[5],
         this.data[8],
         this.data[11],
+        this.data[39],
+        this.data[40],
+        this.data[41]
       );
 
       this.graphCase2Data = plotData;

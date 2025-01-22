@@ -2062,7 +2062,10 @@ return {
         c2g3l3_circularityIn: PlotData,
         c2g1l6_circularityIn: PlotData,
         c2g2l3_circularityIn: PlotData,
-        c2g3l4_circularityIn: PlotData) {
+        c2g3l4_circularityIn: PlotData,
+        ff_circularityL1In: PlotData,
+        ff_circularityL2In: PlotData,
+        ff_circularityL3In: PlotData) {
 
     const markerTraceTP2D = {
       x: c2g1l4_circularityIn.x.filter((_, index) => index % 90 === 0),
@@ -2176,18 +2179,59 @@ return {
       showlegend: false
     };
     
+    const marker1TraceFeatFloWer = {
+      x: ff_circularityL1In.x.filter((_: any, index: any) => index % 90 === 0),
+      y: ff_circularityL1In.y.filter((_: any, index: any) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'orange',
+        symbol: 'x'
+      },
+      showlegend: false
+    };
+
+    const marker2TraceFeatFloWer = {
+      x: ff_circularityL2In.x.filter((_: any, index: any) => index % 200 === 0),
+      y: ff_circularityL2In.y.filter((_: any, index: any) => index % 200 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'orange',
+        symbol: 'x'
+      },
+      showlegend: false
+    };
+
+    const marker3TraceFeatFloWer = {
+      x: ff_circularityL3In.x.filter((_: any, index: any) => index % 200 === 0),
+      y: ff_circularityL3In.y.filter((_: any, index: any) => index % 200 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'orange',
+        symbol: 'x'
+      },
+      showlegend: false
+    };
+
+
+
     const case2bubble2Circularity_data = [
       [c2g1l4_circularityIn, markerTraceTP2D,
        c2g2l1_circularityIn,markerTraceFreeLIFE,
-       c2g3l2_circularityIn,markerTraceMooNMD
+       c2g3l2_circularityIn,markerTraceMooNMD,
+       ff_circularityL1In, marker1TraceFeatFloWer
       ],
       [c2g1l5_circularityIn, marker2TraceTP2D,
        c2g2l2_circularityIn, marker2TraceFreeLIFE,
-       c2g3l3_circularityIn, marker2TraceMooNMD
+       c2g3l3_circularityIn, marker2TraceMooNMD,
+       ff_circularityL2In, marker2TraceFeatFloWer
       ],
       [c2g1l6_circularityIn,marker3TraceTP2D,
        c2g2l3_circularityIn,marker3TraceFreeLIFE,
-       c2g3l4_circularityIn, marker3TraceMooNMD
+       c2g3l4_circularityIn, marker3TraceMooNMD,
+       ff_circularityL3In, marker3TraceFeatFloWer
        ]       
       ]
 
