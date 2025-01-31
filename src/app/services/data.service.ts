@@ -2181,8 +2181,8 @@ return {
     };
     
     const marker1TraceFeatFloWer = {
-      x: ff_circularityL1In.x.filter((_: any, index: any) => index % 90 === 0),
-      y: ff_circularityL1In.y.filter((_: any, index: any) => index % 90 === 0),
+      x: ff_circularityL1In.x.filter((_: any, index: any) => index % 3500 === 0),
+      y: ff_circularityL1In.y.filter((_: any, index: any) => index % 3500 === 0),
       type: 'scatter',
       mode: 'markers',
       marker: {
@@ -2193,8 +2193,8 @@ return {
     };
 
     const marker2TraceFeatFloWer = {
-      x: ff_circularityL2In.x.filter((_: any, index: any) => index % 200 === 0),
-      y: ff_circularityL2In.y.filter((_: any, index: any) => index % 200 === 0),
+      x: ff_circularityL2In.x.filter((_: any, index: any) => index % 3500 === 0),
+      y: ff_circularityL2In.y.filter((_: any, index: any) => index % 3500 === 0),
       type: 'scatter',
       mode: 'markers',
       marker: {
@@ -2205,8 +2205,8 @@ return {
     };
 
     const marker3TraceFeatFloWer = {
-      x: ff_circularityL3In.x.filter((_: any, index: any) => index % 200 === 0),
-      y: ff_circularityL3In.y.filter((_: any, index: any) => index % 200 === 0),
+      x: ff_circularityL3In.x.filter((_: any, index: any) => index % 4000 === 0),
+      y: ff_circularityL3In.y.filter((_: any, index: any) => index % 4000 === 0),
       type: 'scatter',
       mode: 'markers',
       marker: {
@@ -2661,8 +2661,8 @@ return {
                           ff_bubbleMassL3: PlotData) {
 
     const markerTraceTP2D = {
-      x: c2g1l4_bubble_mass.x.filter((_, index) => index % 90 === 0),
-      y: c2g1l4_bubble_mass.y.filter((_, index) => index % 90 === 0),
+      x: c2g1l4_bubble_mass.x.filter((_, index) => index % 1000 === 0),
+      y: c2g1l4_bubble_mass.y.filter((_, index) => index % 1000 === 0),
       type: 'scatter',
       mode: 'markers',
       marker: {
@@ -2673,8 +2673,8 @@ return {
     };
 
     const markerTraceFreeLIFE = {
-      x: c2g2l1_bubble_mass.x.filter((_, index) => index % 90 === 0),
-      y: c2g2l1_bubble_mass.y.filter((_, index) => index % 90 === 0),
+      x: c2g2l1_bubble_mass.x.filter((_, index) => index % 10 === 0),
+      y: c2g2l1_bubble_mass.y.filter((_, index) => index % 10 === 0),
       type: 'scatter',
       mode: 'markers',
       marker: {
@@ -2697,8 +2697,8 @@ return {
     };
 
     const markerTraceFeatFloWer = {
-      x: ff_bubbleMassL1.x.filter((_, index) => index % 90 === 0),
-      y: ff_bubbleMassL1.y.filter((_, index) => index % 90 === 0),
+      x: ff_bubbleMassL1.x.filter((_, index) => index % 3500 === 0),
+      y: ff_bubbleMassL1.y.filter((_, index) => index % 3500 === 0),
       type: 'scatter',
       mode: 'markers',
       marker: {
@@ -2709,8 +2709,8 @@ return {
     };
 
     const marker2TraceTP2D = {
-      x: c2g1l5_bubble_mass.x.filter((_, index) => index % 90 === 0),
-      y: c2g1l5_bubble_mass.y.filter((_, index) => index % 90 === 0),
+      x: c2g1l5_bubble_mass.x.filter((_, index) => index % 1000 === 0),
+      y: c2g1l5_bubble_mass.y.filter((_, index) => index % 1000 === 0),
       type: 'scatter',
       mode: 'markers',
       marker: {
@@ -2721,8 +2721,8 @@ return {
     };
 
     const marker2TraceFreeLIFE = {
-      x: c2g2l2_bubble_mass.x.filter((_, index) => index % 90 === 0),
-      y: c2g2l2_bubble_mass.y.filter((_, index) => index % 90 === 0),
+      x: c2g2l2_bubble_mass.x.filter((_, index) => index % 40 === 0),
+      y: c2g2l2_bubble_mass.y.filter((_, index) => index % 40 === 0),
       type: 'scatter',
       mode: 'markers',
       marker: {
@@ -2745,8 +2745,8 @@ return {
     };
 
     const marker2TraceFeatFloWer = {
-      x: ff_bubbleMassL2.x.filter((_, index) => index % 90 === 0),
-      y: ff_bubbleMassL2.y.filter((_, index) => index % 90 === 0),
+      x: ff_bubbleMassL2.x.filter((_, index) => index % 3500 === 0),
+      y: ff_bubbleMassL2.y.filter((_, index) => index % 3500 === 0),
       type: 'scatter',
       mode: 'markers',
       marker: {
@@ -2757,8 +2757,8 @@ return {
     };
 
     const marker3TraceTP2D = {
-      x: c2g1l6_bubble_mass.x.filter((_, index) => index % 90 === 0),
-      y: c2g1l6_bubble_mass.y.filter((_, index) => index % 90 === 0),
+      x: c2g1l6_bubble_mass.x.filter((_, index) => index % 1000 === 0),
+      y: c2g1l6_bubble_mass.y.filter((_, index) => index % 1000 === 0),
       type: 'scatter',
       mode: 'markers',
       marker: {
@@ -2793,8 +2793,8 @@ return {
     };
 
     const marker3TraceFeatFloWer = {
-      x: ff_bubbleMassL3.x.filter((_, index) => index % 90 === 0),
-      y: ff_bubbleMassL3.y.filter((_, index) => index % 90 === 0),
+      x: ff_bubbleMassL3.x.filter((_, index) => index % 3500 === 0),
+      y: ff_bubbleMassL3.y.filter((_, index) => index % 3500 === 0),
       type: 'scatter',
       mode: 'markers',
       marker: {
