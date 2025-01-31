@@ -30,6 +30,7 @@ import { c2g1l4_bubble_mass, c2g1l4_circularity, c2g1l4_com, c2g1l4_rise_vel, c2
 
 import { BenchmarkData, exampleBenchmarkData  } from '../models/benchmark-data';
 import { PlotData } from '../components/benchmark-example/benchmark-interfaces';
+import { PlotMarker } from 'plotly.js-dist-min';
 
 
 
@@ -2654,7 +2655,10 @@ return {
                           c2g3l3_bubble_mass: PlotData, 
                           c2g1l6_bubble_mass: PlotData,
                           c2g2l3_bubble_mass: PlotData,
-                          c2g3l4_bubble_mass: PlotData) {
+                          c2g3l4_bubble_mass: PlotData,
+                          ff_bubbleMassL1: PlotData,
+                          ff_bubbleMassL2: PlotData,
+                          ff_bubbleMassL3: PlotData) {
 
     const markerTraceTP2D = {
       x: c2g1l4_bubble_mass.x.filter((_, index) => index % 90 === 0),
@@ -2687,6 +2691,18 @@ return {
       mode: 'markers',
       marker: {
         color: 'red',
+        symbol: 'x'
+      },
+      showlegend: false
+    };
+
+    const markerTraceFeatFloWer = {
+      x: ff_bubbleMassL1.x.filter((_, index) => index % 90 === 0),
+      y: ff_bubbleMassL1.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'orange',
         symbol: 'x'
       },
       showlegend: false
@@ -2728,6 +2744,18 @@ return {
       showlegend: false
     };
 
+    const marker2TraceFeatFloWer = {
+      x: ff_bubbleMassL2.x.filter((_, index) => index % 90 === 0),
+      y: ff_bubbleMassL2.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'orange',
+        symbol: 'x'
+      },
+      showlegend: false
+    };
+
     const marker3TraceTP2D = {
       x: c2g1l6_bubble_mass.x.filter((_, index) => index % 90 === 0),
       y: c2g1l6_bubble_mass.y.filter((_, index) => index % 90 === 0),
@@ -2763,19 +2791,34 @@ return {
       },
       showlegend: false
     };
+
+    const marker3TraceFeatFloWer = {
+      x: ff_bubbleMassL3.x.filter((_, index) => index % 90 === 0),
+      y: ff_bubbleMassL3.y.filter((_, index) => index % 90 === 0),
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: 'orange',
+        symbol: 'x'
+      },
+      showlegend: false
+    };
     
     const case2bubble2Mass_data = [
       [c2g1l4_bubble_mass, markerTraceTP2D,
         c2g2l1_bubble_mass,markerTraceFreeLIFE,
-        c2g3l2_bubble_mass,markerTraceMooNMD
+        c2g3l2_bubble_mass,markerTraceMooNMD,
+        ff_bubbleMassL1, markerTraceFeatFloWer
       ],
       [c2g1l5_bubble_mass, marker2TraceTP2D,
        c2g2l2_bubble_mass, marker2TraceFreeLIFE,
-       c2g3l3_bubble_mass, marker2TraceMooNMD
+       c2g3l3_bubble_mass, marker2TraceMooNMD,
+       ff_bubbleMassL2, marker2TraceFeatFloWer
       ],
       [c2g1l6_bubble_mass,marker3TraceTP2D,
-       c2g2l3_bubble_mass,marker3TraceTP2D,
-       c2g3l4_bubble_mass, marker3TraceMooNMD
+       c2g2l3_bubble_mass,marker3TraceFreeLIFE,
+       c2g3l4_bubble_mass, marker3TraceMooNMD,
+       ff_bubbleMassL3, marker3TraceFeatFloWer
        ]       
       ]
 

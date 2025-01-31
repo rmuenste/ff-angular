@@ -288,8 +288,9 @@ export class BenchmarkExampleComponent implements OnInit {
                                                                  "c2g3l2_rise_vel", "c2g3l3_rise_vel", "c2g3l3_rise_vel", //bubble_mass
                                                                  "c2g1l4_bubble_mass", "c2g1l5_bubble_mass", "c2g1l6_bubble_mass",
                                                                  "c2g2l1_bubble_mass", "c2g2l2_bubble_mass", "c2g2l3_bubble_mass",
-                                                                 "c2g3l2_bubble_mass", "c2g3l3_bubble_mass", "c2g3l3_bubble_mass",
-                                                                 "ff_circularityL1", "ff_circularityL2", "ff_circularityL3", //featflower
+                                                                 "c2g3l2_bubble_mass", "c2g3l3_bubble_mass", "c2g3l3_bubble_mass", //featflower
+                                                                 "ff_circularityL1", "ff_circularityL2", "ff_circularityL3",
+                                                                 "ff_bubbleMassL1", "ff_bubbleMassL2", "ff_bubbleMassL3"
                                                                 ])
 
       this.data = await firstValueFrom(observable$);
@@ -369,7 +370,10 @@ export class BenchmarkExampleComponent implements OnInit {
           this.data[37],
           this.data[32],
           this.data[35],
-          this.data[38]
+          this.data[38],
+          this.data[42],
+          this.data[43],
+          this.data[44]
     );
     this.graphCase2MassPack = {data: bubbleMass_data, layout: bubbleMass_Layout};
     console.log("MassPack: ", this.graphCase2MassPack);
