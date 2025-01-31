@@ -53,10 +53,12 @@ export class BenchmarkExampleComponent implements OnInit {
   graphbubbleMassLayout: any = {title: 'Line Chart'
   }
 
+  graphCase2ShapePack: {} | null = null;
   graphBubble2ShapeData: any[] = [];
   graphBubble2Shapelayout: any = {title: 'Line Chart'
   }
 
+  graphCase1ShapePack: {} | null = null;
   graphBubble2ShapeData11: any[] = [];
   graphBubble2Shapelayout11: any = {title: 'Line Chart'
   }
@@ -276,7 +278,7 @@ export class BenchmarkExampleComponent implements OnInit {
     //=====================================================================================
     try {
       //const observable$ = this.postService.postFileRequest("c2g1l5s");
-      const observable$ = this.postService.postMultiFileRequest(["c2g1l5s", "c2g2l3s", "c2g3l4s",
+      const observable$ = this.postService.postMultiFileRequest(["c2g1l5s", "c2g2l1s", "c2g3l4s",
                                                                  "c2g1l4_circularity", "c2g1l5_circularity", "c2g1l6_circularity",
                                                                  "c2g2l1_circularity", "c2g2l2_circularity", "c2g2l3_circularity",
                                                                  "c2g3l2_circularity", "c2g3l3_circularity", "c2g3l4_circularity",
@@ -290,8 +292,11 @@ export class BenchmarkExampleComponent implements OnInit {
                                                                  "c2g2l1_bubble_mass", "c2g2l2_bubble_mass", "c2g2l3_bubble_mass",
                                                                  "c2g3l2_bubble_mass", "c2g3l3_bubble_mass", "c2g3l3_bubble_mass", //featflower
                                                                  "ff_circularityL1", "ff_circularityL2", "ff_circularityL3",
-                                                                 "ff_bubbleMassL1", "ff_bubbleMassL2", "ff_bubbleMassL3"
+                                                                 "ff_bubbleMassL1", "ff_bubbleMassL2", "ff_bubbleMassL3",
+                                                                 "c2g1l6s", "c2g2l2s"
                                                                 ])
+
+
 
       this.data = await firstValueFrom(observable$);
       const {data: d0, layout: l0} = this.processData(this.data[0]);
@@ -301,6 +306,8 @@ export class BenchmarkExampleComponent implements OnInit {
       //append d1 and d2 to d0
       d0.push(...d1);
       d0.push(...d2);
+
+
 
       this.graphBubble2ShapeData = d0;
       this.graphBubble2Shapelayout = l0;
