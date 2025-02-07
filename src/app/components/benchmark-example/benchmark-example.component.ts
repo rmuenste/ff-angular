@@ -303,22 +303,27 @@ export class BenchmarkExampleComponent implements OnInit {
       const {data: d2} = this.processData(this.data[2]);
 
       const {data: dc2g1l6s} = this.processData(this.data[45]); // c2g1l6s
-      const {data: dc2g2l2s} = this.processData(this.data[46]); // c2g2l2s
+      const {data: dc2g2l1s} = this.processData(this.data[46]); // c2g2l1s
 
       let d0_orig = [...d0];
+      let dL1 = [...d0];
       let dL2 = [...d0];
 
       //append d1 and d2 to d0
       d0.push(...d1);
       d0.push(...d2);
 
+      // append level1 for g2 and g3
+      dL1.push(...dc2g2l1s);
+      dL1.push(...d2);
+
       // append level2 for g2 and g3
-      dL2.push(...dc2g2l2s);
+      dL2.push(...d1);
       dL2.push(...d2);
 
       this.graphBubble2ShapeData = d0;
       this.graphBubble2Shapelayout = l0;
-      this.graphCase2ShapePack = {data: [d0, dL2, d0], layout: l0};
+      this.graphCase2ShapePack = {data: [dL1, dL2, d0], layout: l0};
       console.log(this.data.length)
 
       //=====================================================================================
