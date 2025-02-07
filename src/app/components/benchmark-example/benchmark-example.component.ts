@@ -165,7 +165,7 @@ export class BenchmarkExampleComponent implements OnInit {
                                                                  "c1g1l1_mass", "c1g2l1_mass", "c1g3l1_mass",
                                                                  "c1g1l2_mass", "c1g2l2_mass", "c1g3l2_mass",
                                                                  "c1g1l3_mass", "c1g2l3_mass", "c1g3l3_mass",
-                                                                 "c1g1s", "c1g2s", "c1g3s" ])
+                                                                 "c1g1l5s", "c1g2s", "c1g3s" ])
 
                                                               
       this.data = await firstValueFrom(observable$);
