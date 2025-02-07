@@ -172,7 +172,6 @@ export class BenchmarkExampleComponent implements OnInit {
       const {data: d0, layout: l0} = this.processData(this.data[36]);
       const {data: d1} = this.processData(this.data[37]);
       const {data: d2} = this.processData(this.data[38])
-      
 
       //append d1 and d2 to d0
       d0.push(...d1);
@@ -293,7 +292,7 @@ export class BenchmarkExampleComponent implements OnInit {
                                                                  "c2g3l2_bubble_mass", "c2g3l3_bubble_mass", "c2g3l3_bubble_mass", //featflower
                                                                  "ff_circularityL1", "ff_circularityL2", "ff_circularityL3",
                                                                  "ff_bubbleMassL1", "ff_bubbleMassL2", "ff_bubbleMassL3",
-                                                                 "c2g1l6s", "c2g2l2s"
+                                                                 "c2g1l6s", "c2g2l1s"
                                                                 ])
 
 
@@ -303,14 +302,24 @@ export class BenchmarkExampleComponent implements OnInit {
       const {data: d1} = this.processData(this.data[1]);
       const {data: d2} = this.processData(this.data[2]);
 
+      const {data: dc2g1l6s} = this.processData(this.data[45]); // c2g1l6s
+      const {data: dc2g2l2s} = this.processData(this.data[46]); // c2g2l2s
+
+      let d0_orig = [...d0];
+      let dL2 = [...d0];
+
       //append d1 and d2 to d0
       d0.push(...d1);
       d0.push(...d2);
 
-
+      // append level2 for g2 and g3
+      dL2.push(...dc2g2l2s);
+      dL2.push(...d2);
 
       this.graphBubble2ShapeData = d0;
       this.graphBubble2Shapelayout = l0;
+      this.graphCase2ShapePack = {data: [d0, dL2, d0], layout: l0};
+      console.log(this.data.length)
 
       //=====================================================================================
       // Assign the data of the circularity plot
@@ -333,7 +342,6 @@ export class BenchmarkExampleComponent implements OnInit {
       this.graphCase2Data = plotData;
       this.graphCase2Layout = plotLayout; 
       this.graphCase2CircularityPack = {data: this.graphCase2Data, layout: this.graphCase2Layout};
-      console.log("Data:", this.graphCase2Data);
 
       //=====================================================================================
       // Assign the data of the com plot
