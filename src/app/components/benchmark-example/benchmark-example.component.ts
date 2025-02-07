@@ -278,7 +278,7 @@ export class BenchmarkExampleComponent implements OnInit {
     //=====================================================================================
     try {
       //const observable$ = this.postService.postFileRequest("c2g1l5s");
-      const observable$ = this.postService.postMultiFileRequest(["c2g1l5s", "c2g2l1s", "c2g3l4s",
+      const observable$ = this.postService.postMultiFileRequest(["c2g1l5s", "c2g2l2s", "c2g3l4s",
                                                                  "c2g1l4_circularity", "c2g1l5_circularity", "c2g1l6_circularity",
                                                                  "c2g2l1_circularity", "c2g2l2_circularity", "c2g2l3_circularity",
                                                                  "c2g3l2_circularity", "c2g3l3_circularity", "c2g3l4_circularity",
