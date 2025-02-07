@@ -1,4 +1,4 @@
-[
+
   {
     "x": [
       0.20073112,
@@ -4454,8 +4454,8 @@
     ],
     "type": "scatter",
     "mode": "lines+points",
+    "name":"TP2D",
     "marker": {
       "color": "blue"
     }
   }
-]
