@@ -316,11 +316,11 @@ export class BenchmarkExampleComponent implements OnInit {
       let dL2 = [...dc2g1l8s];
 
       //append d1 and d2 to d0
-      d0.push(...d1);
+      d0.push(...dc2g2l1s);
       d0.push(...d2);
 
       // append level1 for g2 and g3
-      dL1.push(...dc2g2l1s);
+      dL1.push(...d1);
       dL1.push(...d2);
 
       // append level2 for g2 and g3
