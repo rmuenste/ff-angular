@@ -292,22 +292,28 @@ export class BenchmarkExampleComponent implements OnInit {
                                                                  "c2g3l2_bubble_mass", "c2g3l3_bubble_mass", "c2g3l3_bubble_mass", //featflower
                                                                  "ff_circularityL1", "ff_circularityL2", "ff_circularityL3",
                                                                  "ff_bubbleMassL1", "ff_bubbleMassL2", "ff_bubbleMassL3",
-                                                                 "c2g1l6s", "c2g2l1s"
+                                                                 "c2g1l6s", "c2g2l1s", "c2g1l7s", "c2g2l3s", 
                                                                 ])
 
 
 
       this.data = await firstValueFrom(observable$);
-      const {data: d0, layout: l0} = this.processData(this.data[0]);
-      const {data: d1} = this.processData(this.data[1]);
-      const {data: d2} = this.processData(this.data[2]);
+      //const {data: d0, layout: l0} = this.processData(this.data[0]);
+      const {data: d0, layout: l0} = this.processData(this.data[45]); // c2g1l6s
+      const {data: dc2g2l1s} = this.processData(this.data[46]);       // c2g2l1s
+      const {data: d2} = this.processData(this.data[2]);              // c2g3l4s
 
-      const {data: dc2g1l6s} = this.processData(this.data[45]); // c2g1l6s
-      const {data: dc2g2l1s} = this.processData(this.data[46]); // c2g2l1s
+      const {data: dc2g1l6s} = this.processData(this.data[47]);       // c2g1l6s
+      const {data: d1} = this.processData(this.data[1]);              // c2g2l2s
+
+
+      const {data: dc2g1l8s} = this.processData(this.data[0]);        // c2g1l8s
+      const {data: dc2g2l3s} = this.processData(this.data[48]);       // c2g2l3s
+
 
       let d0_orig = [...d0];
-      let dL1 = [...d0];
-      let dL2 = [...d0];
+      let dL1 = [...dc2g1l6s];
+      let dL2 = [...dc2g1l8s];
 
       //append d1 and d2 to d0
       d0.push(...d1);
@@ -318,12 +324,12 @@ export class BenchmarkExampleComponent implements OnInit {
       dL1.push(...d2);
 
       // append level2 for g2 and g3
-      dL2.push(...d1);
+      dL2.push(...dc2g2l3s);
       dL2.push(...d2);
 
       this.graphBubble2ShapeData = d0;
       this.graphBubble2Shapelayout = l0;
-      this.graphCase2ShapePack = {data: [dL1, dL2, d0], layout: l0};
+      this.graphCase2ShapePack = {data: [d0, dL1, dL2], layout: l0};
       console.log(this.data.length)
 
       //=====================================================================================
