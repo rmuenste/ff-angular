@@ -292,7 +292,8 @@ export class BenchmarkExampleComponent implements OnInit {
                                                                  "c2g3l2_bubble_mass", "c2g3l3_bubble_mass", "c2g3l3_bubble_mass", //featflower
                                                                  "ff_circularityL1", "ff_circularityL2", "ff_circularityL3",
                                                                  "ff_bubbleMassL1", "ff_bubbleMassL2", "ff_bubbleMassL3",
-                                                                 "c2g1l6s", "c2g2l1s", "c2g1l7s", "c2g2l3s", 
+                                                                 "c2g1l6s", "c2g2l1s", "c2g1l7s", "c2g2l3s",
+                                                                 "ff_bubbleShapeL1", "ff_bubbleShapeL2", "ff_bubbleShapeL3" 
                                                                 ])
 
 
@@ -302,35 +303,44 @@ export class BenchmarkExampleComponent implements OnInit {
       const {data: d0, layout: l0} = this.processData(this.data[45]); // c2g1l6s
       const {data: dc2g2l1s} = this.processData(this.data[46]);       // c2g2l1s
       const {data: d2} = this.processData(this.data[2]);              // c2g3l4s
+      const {data: dcffL1} = this.data[49];              // 
 
-      const {data: dc2g1l6s} = this.processData(this.data[47]);       // c2g1l6s
+      const {data: dc2g1l7s} = this.processData(this.data[47]);       // c2g1l7s
       const {data: d1} = this.processData(this.data[1]);              // c2g2l2s
+      const {data: dcffL2} = this.data[50];              // 
+
 
 
       const {data: dc2g1l8s} = this.processData(this.data[0]);        // c2g1l8s
       const {data: dc2g2l3s} = this.processData(this.data[48]);       // c2g2l3s
+      const {data: dcffL3} = this.data[51];              // 
+
 
 
       let d0_orig = [...d0];
-      let dL1 = [...dc2g1l6s];
+      let dL1 = [...dc2g1l7s];
       let dL2 = [...dc2g1l8s];
 
       //append d1 and d2 to d0
       d0.push(...dc2g2l1s);
       d0.push(...d2);
-
-      // append level1 for g2 and g3
-      dL1.push(...d1);
-      dL1.push(...d2);
+      //d0.push(...[dcffL1]);
 
       // append level2 for g2 and g3
+      dL1.push(...d1);
+      dL1.push(...d2);
+      //dL1.push(...[dcffL2]);
+
+      // append level3 for g2 and g3
       dL2.push(...dc2g2l3s);
       dL2.push(...d2);
+      //dL2.push(...[dcffL3]);
 
       this.graphBubble2ShapeData = d0;
       this.graphBubble2Shapelayout = l0;
       this.graphCase2ShapePack = {data: [d0, dL1, dL2], layout: l0};
       console.log(this.data.length)
+      
 
       //=====================================================================================
       // Assign the data of the circularity plot
