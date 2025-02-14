@@ -273,10 +273,9 @@ export class BenchmarkExampleComponent implements OnInit {
 
 
     //case 2 data
-      // Bubble Shape Data
+    // Bubble Shape Data
     //=====================================================================================
     try {
-      //const observable$ = this.postService.postFileRequest("c2g1l5s");
       const observable$ = this.postService.postMultiFileRequest(["c2g1l8s", "c2g2l2s", "c2g3l4s",
                                                                  "c2g1l4_circularity", "c2g1l5_circularity", "c2g1l6_circularity",
                                                                  "c2g2l1_circularity", "c2g2l2_circularity", "c2g2l3_circularity",
@@ -302,7 +301,7 @@ export class BenchmarkExampleComponent implements OnInit {
       //const {data: d0, layout: l0} = this.processData(this.data[0]);
       const {data: d0, layout: l0} = this.processData(this.data[45]); // c2g1l6s
       const {data: dc2g2l1s} = this.processData(this.data[46]);       // c2g2l1s
-      const {data: d2} = this.processData(this.data[2]);              // c2g3l4s
+      const {data: d2} = this.processData(this.data[2], "dot", 8);              // c2g3l4s
       const {data: dcffL1} = this.data[49];              // 
 
       const {data: dc2g1l7s} = this.processData(this.data[47]);       // c2g1l7s
@@ -421,37 +420,75 @@ export class BenchmarkExampleComponent implements OnInit {
   }
 
 
-  processData(dataFile : any) {
-    const nSegments = dataFile.x.length / 2;
+  // First, define the type for the style parameter
+  // type LineStyle = "solid" | "dot" | "dash" | "longdash" | "dashdot" | "longdashdot";
+  processData(dataFile : any, style?: string, s_max: number = 2) {
+
+    //  x: c1g1l1_mass_data.x.filter((_, index) => index % 90 === 0),
+    //  y: c1g1l1_mass_data.y.filter((_, index) => index % 90 === 0),
+
+    let nSegments = dataFile.x.length / 2;
     const plotData = [];
 
+    if (s_max !== undefined) {
+      // s_max was provided
+      nSegments = dataFile.x.length / s_max;
+    }
+
+
     for (let i = 0; i < nSegments; i++) {
-      const segmentX = [dataFile.x.slice(2 * i, 2 * (i + 1))];
-      const segmentY = [dataFile.y.slice(2 * i, 2 * (i + 1))];
+      const segmentX = [dataFile.x.slice(s_max * i, s_max * (i + 1))];
+      const segmentY = [dataFile.y.slice(s_max * i, s_max * (i + 1))];
 
       if (i === 0) {
 
-        plotData.push({
-          x: segmentX[0],
-          y: segmentY[0],
-          type: 'scatter',
-          mode: 'lines',
-          line: { color: dataFile.marker.color },
-          name: dataFile.name,
-          showlegend: true,
-        });
+        if (style !== undefined) {
+          plotData.push({
+            x: segmentX[0],
+            y: segmentY[0],
+            type: 'scatter',
+            mode: 'lines',
+            line: { color: dataFile.marker.color, dash: style },
+            name: dataFile.name,
+            showlegend: true,
+          });
+        } else {
+          plotData.push({
+            x: segmentX[0],
+            y: segmentY[0],
+            type: 'scatter',
+            mode: 'lines',
+            name: dataFile.name,
+            line: { color: dataFile.marker.color},
+            showlegend: true,
+          });
+        }
 
       } else {
 
-        plotData.push({
-          x: segmentX[0],
-          y: segmentY[0],
-          type: 'scatter',
-          mode: 'lines',
-          line: { color: dataFile.marker.color },
-          name: dataFile.name,
-          showlegend: false,
-        });
+
+        if (style !== undefined) {
+          plotData.push({
+            x: segmentX[0],
+            y: segmentY[0],
+            type: 'scatter',
+            mode: 'lines',
+            line: { color: dataFile.marker.color, dash: style },
+            name: dataFile.name,
+            showlegend: false,
+          });
+        } else {
+          plotData.push({
+            x: segmentX[0],
+            y: segmentY[0],
+            type: 'scatter',
+            mode: 'lines',
+            name: dataFile.name,
+            line: { color: dataFile.marker.color},
+            showlegend: false,
+          });
+        }
+
       }
 
     }
