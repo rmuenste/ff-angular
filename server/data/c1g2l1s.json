@@ -622,7 +622,7 @@
     ],
     "type": "scatter",
     "mode": "lines+points",
-    "name":"FreeLIFE",
+    "name": "FreeLIFE",
     "marker": {
       "color": "green"
     }

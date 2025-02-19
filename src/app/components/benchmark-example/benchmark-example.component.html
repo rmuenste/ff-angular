@@ -292,9 +292,10 @@
           <h3 class="mat-h3">Initial configuration and boundary conditions for the test cases</h3>
         </div>
 
-        <div class="plot-wrapper-ex">
-          <plotly-plot [data]="graphBubble2ShapeData" [layout]="graphBubble2Shapelayout"
-            [useResizeHandler]="false"></plotly-plot>
+        <div *ngIf="graphCase1ShapePack" class="plot-wrapper-ex">
+
+          <app-comparative-plot [inputGraph]="graphCase1ShapePack">
+          </app-comparative-plot>
         </div>
 
       </div>
