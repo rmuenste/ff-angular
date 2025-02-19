@@ -212,13 +212,7 @@ export class BenchmarkExampleComponent implements OnInit {
       console.log(this.data.length)
 
 
-
-
-
-
-
-
-
+      
       //=====================================================================================
       // Assign the data of the circularity plot
       //=====================================================================================
