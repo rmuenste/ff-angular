@@ -298,23 +298,20 @@ export class BenchmarkExampleComponent implements OnInit {
 
 
       this.data = await firstValueFrom(observable$);
-      //const {data: d0, layout: l0} = this.processData(this.data[0]);
       const {data: d0, layout: l0} = this.processData(this.data[45]); // c2g1l6s
       const {data: dc2g2l1s} = this.processData(this.data[46]);       // c2g2l1s
       const {data: d2} = this.processData(this.data[2], "dot", 8);              // c2g3l4s
-      const {data: dcffL1} = this.data[49];              // 
+      const {data: dcffL1} = this.processData(this.data[49], "dash");              // 
 
       const {data: dc2g1l7s} = this.processData(this.data[47]);       // c2g1l7s
       const {data: d1} = this.processData(this.data[1]);              // c2g2l2s
-      const {data: dcffL2} = this.data[50];              // 
+      const {data: dcffL2} = this.processData(this.data[50], "dash");              // 
 
 
 
       const {data: dc2g1l8s} = this.processData(this.data[0]);        // c2g1l8s
       const {data: dc2g2l3s} = this.processData(this.data[48]);       // c2g2l3s
-      const {data: dcffL3} = this.data[51];              // 
-
-
+      const {data: dcffL3} = this.processData(this.data[51], "dash");              // 
 
       let d0_orig = [...d0];
       let dL1 = [...dc2g1l7s];
@@ -323,16 +320,18 @@ export class BenchmarkExampleComponent implements OnInit {
       //append d1 and d2 to d0
       d0.push(...dc2g2l1s);
       d0.push(...d2);
-      d0.push(...d2);
+      d0.push(...dcffL1);
 
       // append level2 for g2 and g3
       dL1.push(...d1);
       dL1.push(...d2);
+      dL1.push(...dcffL2);
       //dL1.push(...[dcffL2]);
 
       // append level3 for g2 and g3
       dL2.push(...dc2g2l3s);
       dL2.push(...d2);
+      dL2.push(...dcffL3);
       //dL2.push(...[dcffL3]);
 
       this.graphBubble2ShapeData = d0;
@@ -420,8 +419,6 @@ export class BenchmarkExampleComponent implements OnInit {
   }
 
 
-  // First, define the type for the style parameter
-  // type LineStyle = "solid" | "dot" | "dash" | "longdash" | "dashdot" | "longdashdot";
   processData(dataFile : any, style?: string, s_max: number = 2) {
 
     //  x: c1g1l1_mass_data.x.filter((_, index) => index % 90 === 0),
