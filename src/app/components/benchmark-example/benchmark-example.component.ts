@@ -165,26 +165,33 @@ export class BenchmarkExampleComponent implements OnInit {
                                                                  "c1g1l1_mass", "c1g2l1_mass", "c1g3l1_mass",
                                                                  "c1g1l2_mass", "c1g2l2_mass", "c1g3l2_mass",
                                                                  "c1g1l3_mass", "c1g2l3_mass", "c1g3l3_mass",
-                                                                 "c1g1l5s", "c1g2l1s", "c1g3s",
-                                                                 "c1g1l6s", "c1g2l2s", "c1g3s", 
-                                                                 "c1g1l7s", "c1g2l3s","c1g3s"])
+                                                                 "c1g1l5s", "c1g2l1s", "c1g3s", //36, 37, 38
+                                                                 "c1g1l6s", "c1g2l2s", "c1g3s", //39, 40, 41
+                                                                 "c1g1l6s", "c1g2l3s","c1g3s"])  //42, 43, 44 / no level 7 file in server/data
 
                                                               
       this.data = await firstValueFrom(observable$);
 
       const {data: d0, layout: l0} = this.processData(this.data[36]); // c1g1l5s
+//      console.log("Data 37");
       const {data: dc1g2l1s} = this.processData(this.data[37]);       // c2g2l1s
+
+//      console.log("Data 38");
       const {data: d2} = this.processData(this.data[38], "dot", 8);              // c2g3l4s
       //const {data: dcffL1} = this.processData(this.data[49], "dash");              // 
 
+//      console.log("Data 39");
       const {data: dc1g1l6s} = this.processData(this.data[39]);       // c1g1l6s
+//      console.log("Data 40");
       const {data: d1} = this.processData(this.data[40]);              // c1g2l2s
      // const {data: dcffL2} = this.processData(this.data[50], "dash");              // 
 
 
 
-      const {data: dc1g1l7s} = this.processData(this.data[42]);        // c1g1l7s
-      const {data: dc1g2l3s} = this.processData(this.data[43]);       // c2g2l3s
+//      console.log("Data 41");
+      const {data: dc1g1l7s} = this.processData(this.data[39]);        // c1g1l7s
+//      console.log("Data 42");
+      const {data: dc1g2l3s} = this.processData(this.data[40]);       // c2g2l3s
      // const {data: dcffL3} = this.processData(this.data[51], "dash");              // 
 
       let d0_orig = [...d0];
@@ -209,7 +216,6 @@ export class BenchmarkExampleComponent implements OnInit {
       this.graphBubble2ShapeData = d0;
       this.graphBubble2Shapelayout = l0;
       this.graphCase1ShapePack = {data: [d0, dL1, dL2], layout: l0};
-      console.log(this.data.length)
 
 
       
@@ -323,7 +329,7 @@ export class BenchmarkExampleComponent implements OnInit {
                                                                  "ff_circularityL1", "ff_circularityL2", "ff_circularityL3",
                                                                  "ff_bubbleMassL1", "ff_bubbleMassL2", "ff_bubbleMassL3",
                                                                  "c2g1l6s", "c2g2l1s", "c2g1l7s", "c2g2l3s",
-                                                                 "ff_bubbleShapeL1", "ff_bubbleShapeL2", "ff_bubbleShapeL3" 
+                                                                 "down_bubbleShapeL1", "down_bubbleShapeL2", "down_bubbleShapeL3" 
                                                                 ])
 
 
