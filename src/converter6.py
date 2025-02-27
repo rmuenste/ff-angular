@@ -2,7 +2,8 @@ import numpy as np
 import json
 
 # File names for input and corresponding output
-files = ["shape_120.txt", "shape_240.txt", "shape_480.txt"]
+#files = ["downsampled_shape_120.txt", "downsampled_shape_240.txt", "downsampled_shape_480.txt"]
+files = ["downsampled_shape_120.txt", "downsampled_shape_240.txt", "downsampled_shape_480.txt"]
 output_names = ["ff_bubbleShapeL1.json", "ff_bubbleShapeL2.json", "ff_bubbleShapeL3.json"]
 
 # Loop through each file and process it
