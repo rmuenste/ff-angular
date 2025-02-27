@@ -1,3 +1,6 @@
+"""
+This script reorderes the segements of a line so that they are continuous
+"""
 import numpy as np
 
 def distance(p1, p2):
