@@ -165,11 +165,60 @@ export class BenchmarkExampleComponent implements OnInit {
                                                                  "c1g1l1_mass", "c1g2l1_mass", "c1g3l1_mass",
                                                                  "c1g1l2_mass", "c1g2l2_mass", "c1g3l2_mass",
                                                                  "c1g1l3_mass", "c1g2l3_mass", "c1g3l3_mass",
-                                                                 "c1g1l5s", "c1g2l1s", "c1g3s", //36, 37, 38
-                                                                 "c1g1l6s", "c1g2l2s", "c1g3s", //39, 40, 41
-                                                                 "c1g1l6s", "c1g2l3s","c1g3s"])  //42, 43, 44 / no level 7 file in server/data
-
+                                                                 "c1g1l5s", "c1g2l1s", "c1g3s", 
+                                                                 "c1g1l6s", "c1g2l2s", "c1g3s", 
+                                                                 "c1g1l6s", "c1g2l3s","c1g3s"])  
                                                               
+      /**
+       * Dataset Identifier to Index Mapping:
+       * 
+       * [0] "c1g1l1_circularity"
+       * [1] "c1g2l1_circularity"
+       * [2] "c1g3l1_circularity"
+       * [3] "c1g1l2_circularity"
+       * [4] "c1g2l2_circularity"
+       * [5] "c1g3l2_circularity"
+       * [6] "c1g1l3_circularity"
+       * [7] "c1g2l3_circularity"
+       * [8] "c1g3l3_circularity"
+       * [9] "c1g1l1_com"
+       * [10] "c1g2l1_com"
+       * [11] "c1g3l1_com"
+       * [12] "c1g1l2_com"
+       * [13] "c1g2l2_com"
+       * [14] "c1g3l2_com"
+       * [15] "c1g1l3_com"
+       * [16] "c1g2l3_com"
+       * [17] "c1g3l3_com"
+       * [18] "c1g1l1_rise_velocity"
+       * [19] "c1g2l1_rise_velocity"
+       * [20] "c1g3l1_rise_velocity"
+       * [21] "c1g1l2_rise_velocity"
+       * [22] "c1g2l2_rise_velocity"
+       * [23] "c1g3l2_rise_velocity"
+       * [24] "c1g1l3_rise_velocity"
+       * [25] "c1g2l3_rise_velocity"
+       * [26] "c1g3l3_rise_velocity"
+       * [27] "c1g1l1_mass"
+       * [28] "c1g2l1_mass"
+       * [29] "c1g3l1_mass"
+       * [30] "c1g1l2_mass"
+       * [31] "c1g2l2_mass"
+       * [32] "c1g3l2_mass"
+       * [33] "c1g1l3_mass"
+       * [34] "c1g2l3_mass"
+       * [35] "c1g3l3_mass"
+       * [36] "c1g1l5s"
+       * [37] "c1g2l1s"
+       * [38] "c1g3s"
+       * [39] "c1g1l6s"
+       * [40] "c1g2l2s"
+       * [41] "c1g3s" // Note: Duplicate with index 38
+       * [42] "c1g1l6s" // Note: Duplicate with index 39
+       * [43] "c1g2l3s"
+       * [44] "c1g3s" // Note: Duplicate with index 38 and 41
+       */                                                                 
+
       this.data = await firstValueFrom(observable$);
 
       const {data: d0, layout: l0} = this.processData(this.data[36]); // c1g1l5s
@@ -185,8 +234,6 @@ export class BenchmarkExampleComponent implements OnInit {
 //      console.log("Data 40");
       const {data: d1} = this.processData(this.data[40]);              // c1g2l2s
      // const {data: dcffL2} = this.processData(this.data[50], "dash");              // 
-
-
 
 //      console.log("Data 41");
       const {data: dc1g1l7s} = this.processData(this.data[39]);        // c1g1l7s
@@ -308,7 +355,6 @@ export class BenchmarkExampleComponent implements OnInit {
     this.case2Data = 'Data for Case 2 has been loaded.';
     console.log(`Level 2 data loaded`);
 
-
     //case 2 data
     // Bubble Shape Data
     //=====================================================================================
@@ -333,6 +379,62 @@ export class BenchmarkExampleComponent implements OnInit {
                                                                 ])
 
 
+    /**
+     * Dataset Identifier to Index Mapping:
+     * 
+     * [0] "c2g1l8s"
+     * [1] "c2g2l2s"
+     * [2] "c2g3l4s"
+     * [3] "c2g1l4_circularity"
+     * [4] "c2g1l5_circularity"
+     * [5] "c2g1l6_circularity"
+     * [6] "c2g2l1_circularity"
+     * [7] "c2g2l2_circularity"
+     * [8] "c2g2l3_circularity"
+     * [9] "c2g3l2_circularity"
+     * [10] "c2g3l3_circularity"
+     * [11] "c2g3l4_circularity"
+     * [12] "c2g1l4_com"
+     * [13] "c2g1l5_com"
+     * [14] "c2g1l6_com"
+     * [15] "c2g2l1_com"
+     * [16] "c2g2l2_com"
+     * [17] "c2g2l3_com"
+     * [18] "c2g3l2_com"
+     * [19] "c2g3l3_com"
+     * [20] "c2g3l4_com"
+     * [21] "c2g1l4_rise_vel"
+     * [22] "c2g1l5_rise_vel"
+     * [23] "c2g1l6_rise_vel"
+     * [24] "c2g2l1_rise_vel"
+     * [25] "c2g2l2_rise_vel"
+     * [26] "c2g2l3_rise_vel"
+     * [27] "c2g3l2_rise_vel"
+     * [28] "c2g3l3_rise_vel"
+     * [29] "c2g3l3_rise_vel" // Note: Possible duplicate with index 28
+     * [30] "c2g1l4_bubble_mass"
+     * [31] "c2g1l5_bubble_mass"
+     * [32] "c2g1l6_bubble_mass"
+     * [33] "c2g2l1_bubble_mass"
+     * [34] "c2g2l2_bubble_mass"
+     * [35] "c2g2l3_bubble_mass"
+     * [36] "c2g3l2_bubble_mass"
+     * [37] "c2g3l3_bubble_mass"
+     * [38] "c2g3l3_bubble_mass" // Note: Possible duplicate with index 37
+     * [39] "ff_circularityL1"
+     * [40] "ff_circularityL2"
+     * [41] "ff_circularityL3"
+     * [42] "ff_bubbleMassL1"
+     * [43] "ff_bubbleMassL2"
+     * [44] "ff_bubbleMassL3"
+     * [45] "c2g1l6s" // Used in the example: const {data: d0, layout: l0} = this.processData(this.data[45]);
+     * [46] "c2g2l1s"
+     * [47] "c2g1l7s"
+     * [48] "c2g2l3s"
+     * [49] "down_bubbleShapeL1"
+     * [50] "down_bubbleShapeL2"
+     * [51] "down_bubbleShapeL3"
+     */
 
       this.data = await firstValueFrom(observable$);
       const {data: d0, layout: l0} = this.processData(this.data[45]); // c2g1l6s
@@ -374,7 +476,7 @@ export class BenchmarkExampleComponent implements OnInit {
       this.graphBubble2ShapeData = d0;
       this.graphBubble2Shapelayout = l0;
       this.graphCase2ShapePack = {data: [d0, dL1, dL2], layout: l0};
-      console.log(this.data.length)
+      //console.log(this.data.length)
       
 
       //=====================================================================================
@@ -458,9 +560,6 @@ export class BenchmarkExampleComponent implements OnInit {
 
   processData(dataFile : any, style?: string, s_max: number = 2) {
 
-    //  x: c1g1l1_mass_data.x.filter((_, index) => index % 90 === 0),
-    //  y: c1g1l1_mass_data.y.filter((_, index) => index % 90 === 0),
-
     let nSegments = dataFile.x.length / 2;
     const plotData = [];
 
@@ -471,15 +570,15 @@ export class BenchmarkExampleComponent implements OnInit {
 
 
     for (let i = 0; i < nSegments; i++) {
-      const segmentX = [dataFile.x.slice(s_max * i, s_max * (i + 1))];
-      const segmentY = [dataFile.y.slice(s_max * i, s_max * (i + 1))];
+      const segmentX = dataFile.x.slice(s_max * i, s_max * (i + 1));
+      const segmentY = dataFile.y.slice(s_max * i, s_max * (i + 1));
 
       if (i === 0) {
 
         if (style !== undefined) {
           plotData.push({
-            x: segmentX[0],
-            y: segmentY[0],
+            x: segmentX,
+            y: segmentY,
             type: 'scatter',
             mode: 'lines',
             line: { color: dataFile.marker.color, dash: style },
@@ -488,8 +587,8 @@ export class BenchmarkExampleComponent implements OnInit {
           });
         } else {
           plotData.push({
-            x: segmentX[0],
-            y: segmentY[0],
+            x: segmentX,
+            y: segmentY,
             type: 'scatter',
             mode: 'lines',
             name: dataFile.name,
@@ -503,8 +602,8 @@ export class BenchmarkExampleComponent implements OnInit {
 
         if (style !== undefined) {
           plotData.push({
-            x: segmentX[0],
-            y: segmentY[0],
+            x: segmentX,
+            y: segmentY,
             type: 'scatter',
             mode: 'lines',
             line: { color: dataFile.marker.color, dash: style },
@@ -513,8 +612,8 @@ export class BenchmarkExampleComponent implements OnInit {
           });
         } else {
           plotData.push({
-            x: segmentX[0],
-            y: segmentY[0],
+            x: segmentX,
+            y: segmentY,
             type: 'scatter',
             mode: 'lines',
             name: dataFile.name,
