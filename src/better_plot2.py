@@ -57,14 +57,14 @@ if __name__ == "__main__":
     # Example usage
 
     # 1. Load the reordered shape from a file
-    data = np.genfromtxt("reordered_shape_480.txt")  # shape (N,4)
+    data = np.genfromtxt("reordered_shape_240.txt")  # shape (N,4)
     
     # 2. Downsample by a factor of 10, for example
     skip_factor = 20
     data_downsampled = downsample_line_segments(data, skip=skip_factor)
     
     # 3. Save the downsampled shape to a new file (optional)
-    np.savetxt("downsampled_shape_480.txt", data_downsampled, fmt="%.6f")
+    np.savetxt("downsampled_shape_240.txt", data_downsampled, fmt="%.6f")
     
     # 4. Plot to verify
     import matplotlib.pyplot as plt

@@ -76,12 +76,12 @@ if __name__ == "__main__":
     # Example usage:
     
     # Suppose 'shape_240.txt' has columns x1, y1, x2, y2 in random order
-    data = np.genfromtxt("shape_480.txt")
+    data = np.genfromtxt("shape_240.txt")
     
     # Reorder so the segments form a continuous chain
     data_reordered = reorder_segments(data)
 
-    np.savetxt("reordered_shape_480.txt",data_reordered)
+    np.savetxt("reordered_shape_240.txt",data_reordered)
     
 """    # --- Now you can plot the first k segments and always have a continuous line.
     import matplotlib.pyplot as plt

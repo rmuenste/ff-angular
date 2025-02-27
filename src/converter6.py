@@ -3,8 +3,11 @@ import json
 
 # File names for input and corresponding output
 #files = ["downsampled_shape_120.txt", "downsampled_shape_240.txt", "downsampled_shape_480.txt"]
-files = ["downsampled_shape_120.txt", "downsampled_shape_240.txt", "downsampled_shape_480.txt"]
-output_names = ["ff_bubbleShapeL1.json", "ff_bubbleShapeL2.json", "ff_bubbleShapeL3.json"]
+#files = ["downsampled_shape_120.txt", "downsampled_shape_240.txt", "downsampled_shape_480.txt"]
+#output_names = ["ff_bubbleShapeL1.json", "ff_bubbleShapeL2.json", "ff_bubbleShapeL3.json"]
+
+files = ["downsampled_shape_240.txt"]
+output_names = ["ffdown_bubbleShapeL2.json"]
 
 # Loop through each file and process it
 for file, output in zip(files, output_names):
