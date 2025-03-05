@@ -545,6 +545,21 @@
         axis equal
       </code>
     </pre>
+
+    <p> Or with Matplotlib:</p>
+      <pre ngNonBindable>
+      <code>
+        data =  genfromtxt("c1g1l4s.txt")
+        plt.figure(figsize=(8, 6))
+        # Extract x and y columns
+        x = data[:, 0]  # First column
+        y = data[:, 1]  # Second column
+        
+        # Plot the line segments
+        plt.figure(figsize=(8, 6))
+        plt.scatter(x, y, color='red', s=20, label='Data Points')  # `s` controls marker size
+      </code>
+    </pre>
     </div>
 
   </mat-tab>
