@@ -136,7 +136,6 @@ export class BenchmarkExampleComponent implements OnInit {
 
   //case button is handled here
   loadSelection(userCase: number) {
-    console.log(userCase);
 
     if (userCase == 1){
       this.loadCase11Data();
@@ -150,7 +149,6 @@ export class BenchmarkExampleComponent implements OnInit {
 
 
     this.case11Data = 'Data for Case 11 has been loaded.';
-    console.log(`Level 11 data loaded`);
 
     try {
       const observable$ = this.postService.postMultiFileRequest(["c1g1l1_circularity", "c1g2l1_circularity", "c1g3l1_circularity",
@@ -222,24 +220,15 @@ export class BenchmarkExampleComponent implements OnInit {
       this.data = await firstValueFrom(observable$);
 
       const {data: d0, layout: l0} = this.processData(this.data[36]); // c1g1l5s
-//      console.log("Data 37");
       const {data: dc1g2l1s} = this.processData(this.data[37]);       // c2g2l1s
 
-//      console.log("Data 38");
       const {data: d2} = this.processData(this.data[38], "dot", 8);              // c2g3l4s
-      //const {data: dcffL1} = this.processData(this.data[49], "dash");              // 
 
-//      console.log("Data 39");
       const {data: dc1g1l6s} = this.processData(this.data[39]);       // c1g1l6s
-//      console.log("Data 40");
       const {data: d1} = this.processData(this.data[40]);              // c1g2l2s
-     // const {data: dcffL2} = this.processData(this.data[50], "dash");              // 
 
-//      console.log("Data 41");
       const {data: dc1g1l7s} = this.processData(this.data[39]);        // c1g1l7s
-//      console.log("Data 42");
       const {data: dc1g2l3s} = this.processData(this.data[40]);       // c2g2l3s
-     // const {data: dcffL3} = this.processData(this.data[51], "dash");              // 
 
       let d0_orig = [...d0];
       let dL1 = [...dc1g1l6s];
@@ -248,17 +237,14 @@ export class BenchmarkExampleComponent implements OnInit {
       //append d1 and d2 to d0
       d0.push(...dc1g2l1s);
       d0.push(...d2);
-      //d0.push(...dcffL1);
 
       // append level2 for g2 and g3
       dL1.push(...d1);
       dL1.push(...d2);
-      //dL1.push(...[dcffL2]);
 
       // append level3 for g2 and g3
       dL2.push(...dc1g2l3s);
       dL2.push(...d2);
-      //dL2.push(...[dcffL3]);
 
       this.graphBubble2ShapeData = d0;
       this.graphBubble2Shapelayout = l0;
@@ -353,31 +339,11 @@ export class BenchmarkExampleComponent implements OnInit {
 
 
     this.case2Data = 'Data for Case 2 has been loaded.';
-    console.log(`Level 2 data loaded`);
 
     //case 2 data
     // Bubble Shape Data
     //=====================================================================================
     try {
-      const observable$ = this.postService.postMultiFileRequest(["c2g1l8s", "c2g2l2s", "c2g3l4s",
-                                                                 "c2g1l4_circularity", "c2g1l5_circularity", "c2g1l6_circularity",
-                                                                 "c2g2l1_circularity", "c2g2l2_circularity", "c2g2l3_circularity",
-                                                                 "c2g3l2_circularity", "c2g3l3_circularity", "c2g3l4_circularity",
-                                                                 "c2g1l4_com", "c2g1l5_com", "c2g1l6_com",
-                                                                 "c2g2l1_com", "c2g2l2_com", "c2g2l3_com",
-                                                                 "c2g3l2_com", "c2g3l3_com", "c2g3l4_com", //riseVel
-                                                                 "c2g1l4_rise_vel", "c2g1l5_rise_vel", "c2g1l6_rise_vel",
-                                                                 "c2g2l1_rise_vel", "c2g2l2_rise_vel", "c2g2l3_rise_vel",
-                                                                 "c2g3l2_rise_vel", "c2g3l3_rise_vel", "c2g3l3_rise_vel", //bubble_mass
-                                                                 "c2g1l4_bubble_mass", "c2g1l5_bubble_mass", "c2g1l6_bubble_mass",
-                                                                 "c2g2l1_bubble_mass", "c2g2l2_bubble_mass", "c2g2l3_bubble_mass",
-                                                                 "c2g3l2_bubble_mass", "c2g3l3_bubble_mass", "c2g3l3_bubble_mass", //featflower
-                                                                 "ff_circularityL1", "ff_circularityL2", "ff_circularityL3",
-                                                                 "ff_bubbleMassL1", "ff_bubbleMassL2", "ff_bubbleMassL3",
-                                                                 "c2g1l6s", "c2g2l1s", "c2g1l7s", "c2g2l3s",
-                                                                 "down_bubbleShapeL1", "down_bubbleShapeL2", "down_bubbleShapeL3" 
-                                                                ])
-
 
     /**
      * Dataset Identifier to Index Mapping:
@@ -435,22 +401,49 @@ export class BenchmarkExampleComponent implements OnInit {
      * [50] "down_bubbleShapeL2"
      * [51] "down_bubbleShapeL3"
      */
+      const start = Date.now();
+      const observable$ = this.postService.postMultiFileRequest(["c2g1l8s", "c2g2l2s", "c2g3l4s",
+                                                                 "c2g1l4_circularity", "c2g1l5_circularity", "c2g1l6_circularity",
+                                                                 "c2g2l1_circularity", "c2g2l2_circularity", "c2g2l3_circularity",
+                                                                 "c2g3l2_circularity", "c2g3l3_circularity", "c2g3l4_circularity",
+                                                                 "c2g1l4_com", "c2g1l5_com", "c2g1l6_com",
+                                                                 "c2g2l1_com", "c2g2l2_com", "c2g2l3_com",
+                                                                 "c2g3l2_com", "c2g3l3_com", "c2g3l4_com", //riseVel
+                                                                 "c2g1l4_rise_vel", "c2g1l5_rise_vel", "c2g1l6_rise_vel",
+                                                                 "c2g2l1_rise_vel", "c2g2l2_rise_vel", "c2g2l3_rise_vel",
+                                                                 "c2g3l2_rise_vel", "c2g3l3_rise_vel", "c2g3l3_rise_vel", //bubble_mass
+                                                                 "c2g1l4_bubble_mass", "c2g1l5_bubble_mass", "c2g1l6_bubble_mass",
+                                                                 "c2g2l1_bubble_mass", "c2g2l2_bubble_mass", "c2g2l3_bubble_mass",
+                                                                 "c2g3l2_bubble_mass", "c2g3l3_bubble_mass", "c2g3l3_bubble_mass", //featflower
+                                                                 "ff_circularityL1", "ff_circularityL2", "ff_circularityL3",
+                                                                 "ff_bubbleMassL1", "ff_bubbleMassL2", "ff_bubbleMassL3",
+                                                                 "c2g1l6s", "c2g2l1s", "c2g1l7s", "c2g2l3s",
+                                                                 "down_bubbleShapeL1", "down_bubbleShapeL2", "down_bubbleShapeL3" 
+                                                                ])
 
       this.data = await firstValueFrom(observable$);
-      const {data: d0, layout: l0} = this.processData(this.data[45]); // c2g1l6s
-      const {data: dc2g2l1s} = this.processData(this.data[46]);       // c2g2l1s
-      const {data: d2} = this.processData(this.data[2], "dot", 8);              // c2g3l4s
-      const {data: dcffL1} = this.processData(this.data[49], "dash");              // 
-
-      const {data: dc2g1l7s} = this.processData(this.data[47]);       // c2g1l7s
-      const {data: d1} = this.processData(this.data[1]);              // c2g2l2s
-      const {data: dcffL2} = this.processData(this.data[50], "dash");              // 
+      const end = Date.now();
+      console.log(`Async load time: ${end - start} ms`);
 
 
+      const startProcess = Date.now();
+      const {data: d0, layout: l0} = this.processData(this.data[45]); 
+      const {data: dc2g2l1s} = this.processData(this.data[46]);      
+      const {data: d2} = this.processData(this.data[2], "dot", 8);  
+      const {data: dcffL1} = this.processData(this.data[49]);
 
-      const {data: dc2g1l8s} = this.processData(this.data[0]);        // c2g1l8s
-      const {data: dc2g2l3s} = this.processData(this.data[48]);       // c2g2l3s
-      const {data: dcffL3} = this.processData(this.data[51], "dash");              // 
+      const {data: dc2g1l7s} = this.processData(this.data[47]);     
+      const {data: d1} = this.processData(this.data[1]);            
+      const {data: dcffL2} = this.processData(this.data[50]);
+
+
+
+      const {data: dc2g1l8s} = this.processData(this.data[0]);      
+      const {data: dc2g2l3s} = this.processData(this.data[48]);      
+      const {data: dcffL3} = this.processData(this.data[51]);
+
+      const endProcess = Date.now();
+      console.log(`Process time: ${endProcess - startProcess} ms`);
 
       let d0_orig = [...d0];
       let dL1 = [...dc2g1l7s];
@@ -458,25 +451,22 @@ export class BenchmarkExampleComponent implements OnInit {
 
       //append d1 and d2 to d0
       d0.push(...dc2g2l1s);
-      d0.push(...d2);
       d0.push(...dcffL1);
+      d0.push(...d2);
 
       // append level2 for g2 and g3
       dL1.push(...d1);
-      dL1.push(...d2);
       dL1.push(...dcffL2);
-      //dL1.push(...[dcffL2]);
+      dL1.push(...d2);
 
       // append level3 for g2 and g3
       dL2.push(...dc2g2l3s);
-      dL2.push(...d2);
       dL2.push(...dcffL3);
-      //dL2.push(...[dcffL3]);
+      dL2.push(...d2);
 
       this.graphBubble2ShapeData = d0;
       this.graphBubble2Shapelayout = l0;
       this.graphCase2ShapePack = {data: [d0, dL1, dL2], layout: l0};
-      //console.log(this.data.length)
       
 
       //=====================================================================================
@@ -549,7 +539,6 @@ export class BenchmarkExampleComponent implements OnInit {
           this.data[44]
     );
     this.graphCase2MassPack = {data: bubbleMass_data, layout: bubbleMass_Layout};
-    console.log("MassPack: ", this.graphCase2MassPack);
 
     } catch (error) {
       console.log("Got error: ", error);

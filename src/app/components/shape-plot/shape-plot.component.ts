@@ -21,15 +21,12 @@ export class ShapePlotComponent implements OnInit {
   ngOnInit(): void {
     this.theGraph = JSON.parse(JSON.stringify(this.inputGraph));
     this.graph.data = this.theGraph.data[this.selectedLevel];
-    console.log("Data layout Shape: ", this.graph.data)
     this.graph.layout = this.theGraph.layout;
-    console.log(this.inputGraph);
     //let val = `Level ${this.selectedLevel + 1}`;
   }
 
   changeLevel(event: MatRadioChange): void {
     this.graph.data = this.theGraph.data[this.selectedLevel];
-    console.log('Selected level:', this.selectedLevel+1);
     this.cdr.detectChanges();
   }
 }
