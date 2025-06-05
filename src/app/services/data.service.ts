@@ -17,6 +17,8 @@ import { c1g1l1_circularity_data, c1g1l1_com_data, c1g1l1_riseVelocity_Data, c1g
   c2g2l3_bubbleMass_data} from '../components/benchmark-example/data_bubble2';
   import { c2g3l4s, c2g1l4s, c2g2l1s, c2g1l5s, c2g2l2s, c2g2l3s } from '../components/benchmark-example/case2_data';
   import { PostService } from 'src/services/post.service';
+import { MESH_DATA, MeshTable } from '../data/mesh-data';
+import { ELEMENT_DATA, PeriodicElement } from '../data/element-data';
   
 
 /*  
@@ -44,51 +46,17 @@ const graph2 = {
 };
 
 //=====================================================================================
-// Here we have the data of the mesh table
+// Mesh table data imported from dedicated file
 //=====================================================================================
-export interface MeshTable {
-  lvl: number;
-  mx: number;
-  my: number;
-  mz: number;
-  nx: number;
-  ny: number;
-  nz: number;
-  nel: number;
-  nq2: number;
-  tdof: number;
-}
 
-const MESH_DATA: MeshTable[] = [
-  {lvl: 1, mx: 16, my: 16, mz: 32, nx: 8, ny: 8, nz: 16, nel: 2048, nq2: 18785, tdof: 83332},
-  {lvl: 2, mx: 32, my: 32, mz: 64, nx: 16, ny: 16, nz: 32, nel: 16384, nq2: 140481, tdof: 627460},
-  {lvl: 3, mx: 64, my: 64, mz: 128, nx: 32, ny: 32, nz: 64, nel: 131072, nq2: 1085825, tdof: 4867588},
-  {lvl: 4, mx: 128, my: 128, mz: 128, nx: 64, ny: 64, nz: 256, nel: 1048576, nq2: 8536833, tdof: 38341636},
-];
 const displayedColumnsMeshTable: string[] = ['lvl', 'mx', 'my', 'mz', 'nx', 'ny', 'nz', 'nel', 'nq2', 'tdof'];
 //=====================================================================================
 
 
 //=====================================================================================
-// Here we have the data of the physical parameters
+// Physical parameter data imported from dedicated file
 //=====================================================================================
-export interface PeriodicElement {
-  p1: number;
-  position: number;
-  p2: number;
-  mu1: number;
-  mu2: number;
-  g: number;
-  sigma: number;
-  re: number;
-  eo: number;
-  rel: number;
-  relmu: number;
-}
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, p1: 1000, p2: 100, mu1: 10, mu2: 1, g: 0.98, sigma: 24.5, re: 35, eo: 10, rel: 10, relmu: 10},
-];
 
 const displayedColumnsPhysical: string[] = ['position', 'p1', 'p2', 'mu1', 'mu2', 'g', 'sigma', 're', 'eo', 'rel', 'relmu'];
 //=====================================================================================

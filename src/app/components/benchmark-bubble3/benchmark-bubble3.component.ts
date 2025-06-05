@@ -3,7 +3,9 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatRadioChange } from '@angular/material/radio';
 import { multi } from './data';
 import { bubble, sphericityL1, massConservationL2 } from './data';
-import { DataService, MeshTable, PeriodicElement } from 'src/app/services/data.service';
+import { DataService } from 'src/app/services/data.service';
+import { MeshTable } from 'src/app/data/mesh-data';
+import { PeriodicElement } from 'src/app/data/element-data';
 import { PostService } from 'src/services/post.service'; 
 import { firstValueFrom } from 'rxjs';
 
