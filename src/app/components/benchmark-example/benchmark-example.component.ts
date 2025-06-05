@@ -7,64 +7,12 @@ import { PeriodicElement, Notation, Reference, benchFormat,
          REFERENCE_DATA, BENCHMARK_FORMAT, REFERENCE_BubbleS
          } from './benchmark-interfaces';
 import { firstValueFrom } from 'rxjs';
-///
-
-interface PlotConfig {
-  data: any[] | null;
-  layout: any | null;
-}
-
-
-//=====================================================================================
-const CASE_FILES = {
-  1: {
-      circularity: ["c1g1l1_circularity", "c1g2l1_circularity", "c1g3l1_circularity", 
-                    "c1g1l2_circularity", "c1g2l2_circularity", "c1g3l2_circularity", 
-                    "c1g1l3_circularity", "c1g2l3_circularity", "c1g3l3_circularity"],
-      com: ["c1g1l1_com", "c1g2l1_com", "c1g3l1_com",
-            "c1g1l2_com", "c1g2l2_com", "c1g3l2_com",
-            "c1g1l3_com", "c1g2l3_com", "c1g3l3_com"],
-      riseVelocity: ["c1g1l1_rise_velocity", "c1g2l1_rise_velocity", "c1g3l1_rise_velocity",
-                     "c1g1l2_rise_velocity", "c1g2l2_rise_velocity", "c1g3l2_rise_velocity",
-                     "c1g1l3_rise_velocity", "c1g2l3_rise_velocity", "c1g3l3_rise_velocity"],
-      mass: ["c1g1l1_mass", "c1g2l1_mass", "c1g3l1_mass",
-             "c1g1l2_mass", "c1g2l2_mass", "c1g3l2_mass",
-             "c1g1l3_mass", "c1g2l3_mass", "c1g3l3_mass"],
-      shape: ["c1g1l5s", "c1g2l1s", "c1g3s", 
-              "c1g1l6s", "c1g2l2s", "c1g3s", 
-              "c1g1l6s", "c1g2l3s","c1g3s"] // Grouped shapes
-  },
-  2: {
-      circularity: [ "c2g1l4_circularity", "c2g1l5_circularity", "c2g1l6_circularity",
-                     "c2g2l1_circularity", "c2g2l2_circularity", "c2g2l3_circularity",
-                     "c2g3l2_circularity", "c2g3l3_circularity", "c2g3l4_circularity",
-                     "ff_circularityL1", "ff_circularityL2", "ff_circularityL3"],
-      com: ["c2g1l4_com", "c2g1l5_com", "c2g1l6_com",
-            "c2g2l1_com", "c2g2l2_com", "c2g2l3_com",
-            "c2g3l2_com", "c2g3l3_com", "c2g3l4_com"],
-      riseVelocity: ["c2g1l4_rise_vel", "c2g1l5_rise_vel", "c2g1l6_rise_vel",
-                     "c2g2l1_rise_vel", "c2g2l2_rise_vel", "c2g2l3_rise_vel",
-                     "c2g3l2_rise_vel", "c2g3l3_rise_vel", "c2g3l3_rise_vel"],
-      mass: [ "c2g1l4_bubble_mass", "c2g1l5_bubble_mass", "c2g1l6_bubble_mass",
-              "c2g2l1_bubble_mass", "c2g2l2_bubble_mass", "c2g2l3_bubble_mass",
-              "c2g3l2_bubble_mass", "c2g3l3_bubble_mass", "c2g3l3_bubble_mass",
-              "ff_bubbleMassL1", "ff_bubbleMassL2", "ff_bubbleMassL3"],
-      shape: ["c2g1l6s", "c2g1l7s", "c2g1l8s", "c2g2l1s",  "c2g2l2s", "c2g2l3s",  "c2g3l4s",
-              "down_bubbleShapeL1", "down_bubbleShapeL2", "down_bubbleShapeL3"
-      ] // Grouped shapes
-  }
-  // Add more cases if needed
-};
-
-//=====================================================================================
 
 @Component({
   selector: 'app-benchmark-example',
   templateUrl: './benchmark-example.component.html',
   styleUrls: ['./benchmark-example.component.scss']
 })
-
-
 export class BenchmarkExampleComponent implements OnInit {
 
   displayedColumns: string[] = ['position', 'p1', 'p2', 'mu1', 'mu2', 'g', 'sigma', 're', 'eo', 'rel', 'relmu'];
