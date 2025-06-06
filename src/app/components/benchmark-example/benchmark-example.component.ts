@@ -6,7 +6,7 @@ import { PeriodicElement, Notation, Reference, benchFormat,
          ReferenceBubbleS, ELEMENT_DATA, NOTATION_DATA, 
          REFERENCE_DATA, BENCHMARK_FORMAT, REFERENCE_BubbleS
          } from './benchmark-interfaces';
-import { firstValueFrom } from 'rxjs';
+import { BenchmarkPlotService } from '../../services/benchmark-plot.service';
 
 @Component({
   selector: 'app-benchmark-example',
@@ -83,584 +83,102 @@ export class BenchmarkExampleComponent implements OnInit {
 
   graphCase2MassPack: {} | null = null;
 
-  data: any;
 
 
   selectedCase: number = 1;
   case1Data: string = 'Data for Case 1';
-  case11Data: string = 'Data for Case 1';
   case2Data: string = 'Data for Case 2';
 
-  constructor(private dataService: DataService, private postService: PostService) {
+  constructor(
+    private dataService: DataService, 
+    private postService: PostService,
+    private benchmarkPlotService: BenchmarkPlotService
+  ) {
 
   }
 
 
   ngOnInit(): void {
-    this.loadCase11Data();
-    return;
-    //=====================================================================================
-    // Assign the data of the circularity plot
-    //=====================================================================================
-    const {data: plotData, layout: plotLayout} = this.dataService.get_case1_bubble_circularity_2d();
-    this.graphData = plotData;
-    this.graphLayout = plotLayout;
-    this.graphCircularityPack = {data: this.graphData, layout: this.graphLayout};
-
-
-    //=====================================================================================
-    const {data: comData, layout: comLayout} = this.dataService.get_case1_bubble_com_2d();
-    this.graphcomData = comData;
-    this.graphcomLayout = comLayout;
-    this.graphComPack = {data: this.graphcomData, layout: this.graphcomLayout};
-
-    //=====================================================================================
-    const {data: riseVelocityData, layout: riseVelocityLayout} = this.dataService.get_case1_bubble_vel_2d();
-    this.graphRiseVelocityData = riseVelocityData;
-    this.graphRiseVelocityLayout = riseVelocityLayout;
-    this.graphRiseVelocityPack = {data: this.graphRiseVelocityData, layout: this.graphRiseVelocityLayout};
-
-    // Bubble Shape Data
-    //=====================================================================================
-    const {data: c1g1l4shape_data, layout: c1g1l4shape_Layout} = this.dataService.get_case1_bubble_shape_2d();
-    this.graphBubble2ShapeData = c1g1l4shape_data;
-    this.graphBubble2Shapelayout = c1g1l4shape_Layout;
-
-    //=====================================================================================
-    const {data: c1g1l4_bubbleMass_data, layout: c1g1l4_bubbleMass_Layout} = this.dataService.get_case1_bubble_mass_2d();
-    this.graphBubble2MassData = c1g1l4_bubbleMass_data;
-    this.graphBubble2Masslayout = c1g1l4_bubbleMass_Layout;
-    this.graphMassPack = {data: this.graphBubble2MassData, layout: this.graphBubble2Masslayout};
-
+    this.loadCase1Data();
   };
 
   //case button is handled here
   loadSelection(userCase: number) {
 
     if (userCase == 1){
-      this.loadCase11Data();
+      this.loadCase1Data();
     } 
     else if (userCase == 2){
       this.loadCase2Data()
     }
   };
 
-  async loadCase11Data () {
-
-
-    this.case11Data = 'Data for Case 11 has been loaded.';
+  async loadCase1Data() {
+    this.case1Data = 'Data for Case 1 has been loaded.';
 
     try {
-      const observable$ = this.postService.postMultiFileRequest(["c1g1l1_circularity", "c1g2l1_circularity", "c1g3l1_circularity",
-                                                                 "c1g1l2_circularity", "c1g2l2_circularity", "c1g3l2_circularity", 
-                                                                 "c1g1l3_circularity", "c1g2l3_circularity", "c1g3l3_circularity",
-                                                                 "c1g1l1_com", "c1g2l1_com", "c1g3l1_com",
-                                                                 "c1g1l2_com", "c1g2l2_com", "c1g3l2_com",
-                                                                 "c1g1l3_com", "c1g2l3_com", "c1g3l3_com",
-                                                                 "c1g1l1_rise_velocity", "c1g2l1_rise_velocity", "c1g3l1_rise_velocity",
-                                                                 "c1g1l2_rise_velocity", "c1g2l2_rise_velocity", "c1g3l2_rise_velocity",
-                                                                 "c1g1l3_rise_velocity", "c1g2l3_rise_velocity", "c1g3l3_rise_velocity",
-                                                                 "c1g1l1_mass", "c1g2l1_mass", "c1g3l1_mass",
-                                                                 "c1g1l2_mass", "c1g2l2_mass", "c1g3l2_mass",
-                                                                 "c1g1l3_mass", "c1g2l3_mass", "c1g3l3_mass",
-                                                                 "c1g1l5s", "c1g2l1s", "c1g3s", 
-                                                                 "c1g1l6s", "c1g2l2s", "c1g3s", 
-                                                                 "c1g1l6s", "c1g2l3s","c1g3s"])  
-                                                              
-      /**
-       * Dataset Identifier to Index Mapping:
-       * 
-       * [0] "c1g1l1_circularity"
-       * [1] "c1g2l1_circularity"
-       * [2] "c1g3l1_circularity"
-       * [3] "c1g1l2_circularity"
-       * [4] "c1g2l2_circularity"
-       * [5] "c1g3l2_circularity"
-       * [6] "c1g1l3_circularity"
-       * [7] "c1g2l3_circularity"
-       * [8] "c1g3l3_circularity"
-       * [9] "c1g1l1_com"
-       * [10] "c1g2l1_com"
-       * [11] "c1g3l1_com"
-       * [12] "c1g1l2_com"
-       * [13] "c1g2l2_com"
-       * [14] "c1g3l2_com"
-       * [15] "c1g1l3_com"
-       * [16] "c1g2l3_com"
-       * [17] "c1g3l3_com"
-       * [18] "c1g1l1_rise_velocity"
-       * [19] "c1g2l1_rise_velocity"
-       * [20] "c1g3l1_rise_velocity"
-       * [21] "c1g1l2_rise_velocity"
-       * [22] "c1g2l2_rise_velocity"
-       * [23] "c1g3l2_rise_velocity"
-       * [24] "c1g1l3_rise_velocity"
-       * [25] "c1g2l3_rise_velocity"
-       * [26] "c1g3l3_rise_velocity"
-       * [27] "c1g1l1_mass"
-       * [28] "c1g2l1_mass"
-       * [29] "c1g3l1_mass"
-       * [30] "c1g1l2_mass"
-       * [31] "c1g2l2_mass"
-       * [32] "c1g3l2_mass"
-       * [33] "c1g1l3_mass"
-       * [34] "c1g2l3_mass"
-       * [35] "c1g3l3_mass"
-       * [36] "c1g1l5s"
-       * [37] "c1g2l1s"
-       * [38] "c1g3s"
-       * [39] "c1g1l6s"
-       * [40] "c1g2l2s"
-       * [41] "c1g3s" // Note: Duplicate with index 38
-       * [42] "c1g1l6s" // Note: Duplicate with index 39
-       * [43] "c1g2l3s"
-       * [44] "c1g3s" // Note: Duplicate with index 38 and 41
-       */                                                                 
+      const plotData = await this.benchmarkPlotService.getCase1PlotData();
 
-      this.data = await firstValueFrom(observable$);
+      // Assign shape data
+      this.graphBubble2ShapeData = plotData.shapePack.data[0];
+      this.graphBubble2Shapelayout = plotData.shapePack.layout;
+      this.graphCase1ShapePack = plotData.shapePack;
 
-      const {data: d0, layout: l0} = this.processData(this.data[36]); // c1g1l5s
-      const {data: dc1g2l1s} = this.processData(this.data[37]);       // c2g2l1s
+      // Assign circularity data
+      this.graphData = plotData.circularityPack.data;
+      this.graphLayout = plotData.circularityPack.layout;
+      this.graphCircularityPack = plotData.circularityPack;
 
-      const {data: d2} = this.processData(this.data[38], "dot", 8);              // c2g3l4s
+      // Assign COM data
+      this.graphComPack = plotData.comPack;
 
-      const {data: dc1g1l6s} = this.processData(this.data[39]);       // c1g1l6s
-      const {data: d1} = this.processData(this.data[40]);              // c1g2l2s
+      // Assign rise velocity data
+      this.graphRiseVelocityPack = plotData.riseVelocityPack;
 
-      const {data: dc1g1l7s} = this.processData(this.data[39]);        // c1g1l7s
-      const {data: dc1g2l3s} = this.processData(this.data[40]);       // c2g2l3s
+      // Assign mass data
+      this.graphMassPack = plotData.massPack;
 
-      let d0_orig = [...d0];
-      let dL1 = [...dc1g1l6s];
-      let dL2 = [...dc1g1l7s];
-
-      //append d1 and d2 to d0
-      d0.push(...dc1g2l1s);
-      d0.push(...d2);
-
-      // append level2 for g2 and g3
-      dL1.push(...d1);
-      dL1.push(...d2);
-
-      // append level3 for g2 and g3
-      dL2.push(...dc1g2l3s);
-      dL2.push(...d2);
-
-      this.graphBubble2ShapeData = d0;
-      this.graphBubble2Shapelayout = l0;
-      this.graphCase1ShapePack = {data: [d0, dL1, dL2], layout: l0};
-
-
-      
-      //=====================================================================================
-      // Assign the data of the circularity plot
-      //=====================================================================================
-      const {data: plotData, layout: plotLayout} = this.dataService.getcircularityData(
-        this.data[0],
-        this.data[1],
-        this.data[2],
-        this.data[3],
-        this.data[4],
-        this.data[5],
-        this.data[6],
-        this.data[7],
-        this.data[8],
-      );
-
-      this.graphData = plotData;
-      this.graphLayout = plotLayout; 
-      this.graphCircularityPack = {data: plotData, layout: plotLayout};
-
-
-      //=====================================================================================
-      // Assign the data of the com plot
-      //=====================================================================================
-      const {data: comData, layout: comLayout} = this.dataService.getcomData(
-        this.data[9],
-        this.data[10],
-        this.data[11],
-        this.data[12],
-        this.data[13],
-        this.data[14],
-        this.data[15],
-        this.data[16],
-        this.data[17],
-      );
-
-    this.graphComPack = {data: comData, layout: comLayout};
-
-
-      //=====================================================================================
-      // Assign the data of the rise velocity plot
-      //=====================================================================================
-      const {data: riseVelocityData, layout: riseVelocityLayout} = this.dataService.getriseVelocityData(
-        this.data[18],
-        this.data[19],
-        this.data[20],
-        this.data[21],
-        this.data[22],
-        this.data[23],
-        this.data[24],
-        this.data[25],
-        this.data[26],
-      );
-
-    this.graphRiseVelocityPack = {data: riseVelocityData, layout: riseVelocityLayout};
-
-
-      //=====================================================================================
-      // Assign the data of the Bubble Mass plot
-      //=====================================================================================
-      const {data: MassData, layout: MassLayout} = this.dataService.getmassData(
-        this.data[27],
-        this.data[28],
-        this.data[29],
-        this.data[30],
-        this.data[31],
-        this.data[32],
-        this.data[33],
-        this.data[34],
-        this.data[35],
-      );
-
-    this.graphMassPack = {data: MassData, layout: MassLayout};
-
-    } 
-      
-      catch (error: any) {
-        console.log("Got error: ", error);
-      }
-  };
+    } catch (error: any) {
+      console.log("Got error: ", error);
+    }
+  }
 
 
 
-    //handles case 2 data
+  //handles case 2 data
   async loadCase2Data() {
-
-
     this.case2Data = 'Data for Case 2 has been loaded.';
 
-    //case 2 data
-    // Bubble Shape Data
-    //=====================================================================================
     try {
-
-    /**
-     * Dataset Identifier to Index Mapping:
-     * 
-     * [0] "c2g1l8s"
-     * [1] "c2g2l2s"
-     * [2] "c2g3l4s"
-     * [3] "c2g1l4_circularity"
-     * [4] "c2g1l5_circularity"
-     * [5] "c2g1l6_circularity"
-     * [6] "c2g2l1_circularity"
-     * [7] "c2g2l2_circularity"
-     * [8] "c2g2l3_circularity"
-     * [9] "c2g3l2_circularity"
-     * [10] "c2g3l3_circularity"
-     * [11] "c2g3l4_circularity"
-     * [12] "c2g1l4_com"
-     * [13] "c2g1l5_com"
-     * [14] "c2g1l6_com"
-     * [15] "c2g2l1_com"
-     * [16] "c2g2l2_com"
-     * [17] "c2g2l3_com"
-     * [18] "c2g3l2_com"
-     * [19] "c2g3l3_com"
-     * [20] "c2g3l4_com"
-     * [21] "c2g1l4_rise_vel"
-     * [22] "c2g1l5_rise_vel"
-     * [23] "c2g1l6_rise_vel"
-     * [24] "c2g2l1_rise_vel"
-     * [25] "c2g2l2_rise_vel"
-     * [26] "c2g2l3_rise_vel"
-     * [27] "c2g3l2_rise_vel"
-     * [28] "c2g3l3_rise_vel"
-     * [29] "c2g3l3_rise_vel" // Note: Possible duplicate with index 28
-     * [30] "c2g1l4_bubble_mass"
-     * [31] "c2g1l5_bubble_mass"
-     * [32] "c2g1l6_bubble_mass"
-     * [33] "c2g2l1_bubble_mass"
-     * [34] "c2g2l2_bubble_mass"
-     * [35] "c2g2l3_bubble_mass"
-     * [36] "c2g3l2_bubble_mass"
-     * [37] "c2g3l3_bubble_mass"
-     * [38] "c2g3l3_bubble_mass" // Note: Possible duplicate with index 37
-     * [39] "ff_circularityL1"
-     * [40] "ff_circularityL2"
-     * [41] "ff_circularityL3"
-     * [42] "ff_bubbleMassL1"
-     * [43] "ff_bubbleMassL2"
-     * [44] "ff_bubbleMassL3"
-     * [45] "c2g1l6s" // Used in the example: const {data: d0, layout: l0} = this.processData(this.data[45]);
-     * [46] "c2g2l1s"
-     * [47] "c2g1l7s"
-     * [48] "c2g2l3s"
-     * [49] "down_bubbleShapeL1"
-     * [50] "down_bubbleShapeL2"
-     * [51] "down_bubbleShapeL3"
-     */
       const start = Date.now();
-      const observable$ = this.postService.postMultiFileRequest(["c2g1l8s", "c2g2l2s", "c2g3l4s",
-                                                                 "c2g1l4_circularity", "c2g1l5_circularity", "c2g1l6_circularity",
-                                                                 "c2g2l1_circularity", "c2g2l2_circularity", "c2g2l3_circularity",
-                                                                 "c2g3l2_circularity", "c2g3l3_circularity", "c2g3l4_circularity",
-                                                                 "c2g1l4_com", "c2g1l5_com", "c2g1l6_com",
-                                                                 "c2g2l1_com", "c2g2l2_com", "c2g2l3_com",
-                                                                 "c2g3l2_com", "c2g3l3_com", "c2g3l4_com", //riseVel
-                                                                 "c2g1l4_rise_vel", "c2g1l5_rise_vel", "c2g1l6_rise_vel",
-                                                                 "c2g2l1_rise_vel", "c2g2l2_rise_vel", "c2g2l3_rise_vel",
-                                                                 "c2g3l2_rise_vel", "c2g3l3_rise_vel", "c2g3l3_rise_vel", //bubble_mass
-                                                                 "c2g1l4_bubble_mass", "c2g1l5_bubble_mass", "c2g1l6_bubble_mass",
-                                                                 "c2g2l1_bubble_mass", "c2g2l2_bubble_mass", "c2g2l3_bubble_mass",
-                                                                 "c2g3l2_bubble_mass", "c2g3l3_bubble_mass", "c2g3l3_bubble_mass", //featflower
-                                                                 "ff_circularityL1", "ff_circularityL2", "ff_circularityL3",
-                                                                 "ff_bubbleMassL1", "ff_bubbleMassL2", "ff_bubbleMassL3",
-                                                                 "c2g1l6s", "c2g2l1s", "c2g1l7s", "c2g2l3s",
-                                                                 "down_bubbleShapeL1", "down_bubbleShapeL2", "down_bubbleShapeL3" 
-                                                                ])
-
-      this.data = await firstValueFrom(observable$);
+      const plotData = await this.benchmarkPlotService.getCase2PlotData();
       const end = Date.now();
       console.log(`Async load time: ${end - start} ms`);
 
+      // Assign shape data
+      this.graphBubble2ShapeData = plotData.shapePack.data[0];
+      this.graphBubble2Shapelayout = plotData.shapePack.layout;
+      this.graphCase2ShapePack = plotData.shapePack;
 
-      const startProcess = Date.now();
-      const {data: d0, layout: l0} = this.processData(this.data[45]); 
-      const {data: dc2g2l1s} = this.processData(this.data[46]);      
-      const {data: d2} = this.processData(this.data[2], "dot", 8);  
-      const {data: dcffL1} = this.processData(this.data[49]);
+      // Assign circularity data
+      this.graphCase2Data = plotData.circularityPack.data;
+      this.graphCase2Layout = plotData.circularityPack.layout;
+      this.graphCase2CircularityPack = plotData.circularityPack;
 
-      const {data: dc2g1l7s} = this.processData(this.data[47]);     
-      const {data: d1} = this.processData(this.data[1]);            
-      const {data: dcffL2} = this.processData(this.data[50]);
+      // Assign COM data
+      this.graph2ComPack = plotData.comPack;
 
+      // Assign rise velocity data
+      this.graphCase2RiseVelocityPack = plotData.riseVelocityPack;
 
-
-      const {data: dc2g1l8s} = this.processData(this.data[0]);      
-      const {data: dc2g2l3s} = this.processData(this.data[48]);      
-      const {data: dcffL3} = this.processData(this.data[51]);
-
-      const endProcess = Date.now();
-      console.log(`Process time: ${endProcess - startProcess} ms`);
-
-      let d0_orig = [...d0];
-      let dL1 = [...dc2g1l7s];
-      let dL2 = [...dc2g1l8s];
-
-      //append d1 and d2 to d0
-      d0.push(...dc2g2l1s);
-      d0.push(...dcffL1);
-      d0.push(...d2);
-
-      // append level2 for g2 and g3
-      dL1.push(...d1);
-      dL1.push(...dcffL2);
-      dL1.push(...d2);
-
-      // append level3 for g2 and g3
-      dL2.push(...dc2g2l3s);
-      dL2.push(...dcffL3);
-      dL2.push(...d2);
-
-      this.graphBubble2ShapeData = d0;
-      this.graphBubble2Shapelayout = l0;
-      this.graphCase2ShapePack = {data: [d0, dL1, dL2], layout: l0};
-      
-
-      //=====================================================================================
-      // Assign the data of the circularity plot
-      //=====================================================================================
-      const {data: plotData, layout: plotLayout} = this.dataService.getCase2Bubble2circularityData(
-        this.data[3],
-        this.data[6],
-        this.data[9],
-        this.data[4],
-        this.data[7],
-        this.data[10],
-        this.data[5],
-        this.data[8],
-        this.data[11],
-        this.data[39],
-        this.data[40],
-        this.data[41]
-      );
-
-      this.graphCase2Data = plotData;
-      this.graphCase2Layout = plotLayout; 
-      this.graphCase2CircularityPack = {data: this.graphCase2Data, layout: this.graphCase2Layout};
-
-      //=====================================================================================
-      // Assign the data of the com plot
-      //=====================================================================================
-      const {data: comData, layout: comLayout} = this.dataService.getCase2Bubble2comData(
-          this.data[12],
-          this.data[15],
-          this.data[18],
-          this.data[13],
-          this.data[16],
-          this.data[19],
-          this.data[14],
-          this.data[17],
-          this.data[20],
-        );
-
-      this.graph2ComPack = {data: comData, layout: comLayout};
-
-      //=====================================================================================
-      // Assign the data of the rise velocity plot
-      //=====================================================================================
-      const {data: riseVelocityData, layout: riseVelocityLayout} = this.dataService.getCase2Bubble2VelocityData(
-          this.data[21],
-          this.data[24],
-          this.data[27],
-          this.data[22],
-          this.data[25],
-          this.data[28],
-          this.data[23],
-          this.data[26],
-          this.data[29]
-      );
-      this.graphCase2RiseVelocityPack = {data: riseVelocityData, layout: riseVelocityLayout};
-
-    const {data: bubbleMass_data, layout: bubbleMass_Layout} = this.dataService.getCase2Bubble2MassData(
-          this.data[30],
-          this.data[33],
-          this.data[36],
-          this.data[31],
-          this.data[34],
-          this.data[37],
-          this.data[32],
-          this.data[35],
-          this.data[38],
-          this.data[42],
-          this.data[43],
-          this.data[44]
-    );
-    this.graphCase2MassPack = {data: bubbleMass_data, layout: bubbleMass_Layout};
+      // Assign mass data
+      this.graphCase2MassPack = plotData.massPack;
 
     } catch (error) {
       console.log("Got error: ", error);
     }
-
   }
 
 
-  processData(dataFile : any, style?: string, s_max: number = 2) {
-
-    let nSegments = dataFile.x.length / 2;
-    const plotData = [];
-
-    if (s_max !== undefined) {
-      // s_max was provided
-      nSegments = dataFile.x.length / s_max;
-    }
-
-
-    for (let i = 0; i < nSegments; i++) {
-      const segmentX = dataFile.x.slice(s_max * i, s_max * (i + 1));
-      const segmentY = dataFile.y.slice(s_max * i, s_max * (i + 1));
-
-      if (i === 0) {
-
-        if (style !== undefined) {
-          plotData.push({
-            x: segmentX,
-            y: segmentY,
-            type: 'scatter',
-            mode: 'lines',
-            line: { color: dataFile.marker.color, dash: style },
-            name: dataFile.name,
-            showlegend: true,
-          });
-        } else {
-          plotData.push({
-            x: segmentX,
-            y: segmentY,
-            type: 'scatter',
-            mode: 'lines',
-            name: dataFile.name,
-            line: { color: dataFile.marker.color},
-            showlegend: true,
-          });
-        }
-
-      } else {
-
-
-        if (style !== undefined) {
-          plotData.push({
-            x: segmentX,
-            y: segmentY,
-            type: 'scatter',
-            mode: 'lines',
-            line: { color: dataFile.marker.color, dash: style },
-            name: dataFile.name,
-            showlegend: false,
-          });
-        } else {
-          plotData.push({
-            x: segmentX,
-            y: segmentY,
-            type: 'scatter',
-            mode: 'lines',
-            name: dataFile.name,
-            line: { color: dataFile.marker.color},
-            showlegend: false,
-          });
-        }
-
-      }
-
-    }
-
-    return {
-      data: plotData,
-      layout: {
-        title: {
-          text: 'Bubble Shape',
-          font: {
-            color: '#ffffffb3'
-          }
-        },
-        showlegend: true,
-        legend: {
-          font: {
-            color: '#ffffffb3'
-          }
-        },
-        plot_bgcolor: '#303030',
-        paper_bgcolor: '#303030',
-        xaxis: {
-          range: [0.1, 0.9],
-          showgrid: true,
-          tickfont: {
-            color: '#ffffffb3'
-          },
-          gridcolor: '#505050',
-          title: {
-            text: 'X-Coordinate',
-            font: {
-              color: '#ffffffb3'
-            }
-          }
-        },
-        yaxis: {
-          showgrid: true,
-          tickfont: {
-            color: '#ffffffb3'
-          },
-          gridcolor: '#505050',
-          title: {
-            text: 'Y-Coordinate',
-            font: {
-              color: '#ffffffb3'
-            }
-          }
-        }
-      }
-    }
-  }
 
 }
