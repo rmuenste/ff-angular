@@ -55,7 +55,7 @@ export class BenchmarkPlotService {
       BenchmarkFiles.C1_G1_L2_MASS, BenchmarkFiles.C1_G2_L2_MASS, BenchmarkFiles.C1_G3_L2_MASS,
       BenchmarkFiles.C1_G1_L3_MASS, BenchmarkFiles.C1_G2_L3_MASS, BenchmarkFiles.C1_G3_L3_MASS,
       BenchmarkFiles.C1_G1_L5_SHAPE, BenchmarkFiles.C1_G2_L1_SHAPE, BenchmarkFiles.C1_G3_SHAPE,
-      BenchmarkFiles.C1_G1_L6_SHAPE, BenchmarkFiles.C1_G2_L2_SHAPE, BenchmarkFiles.C1_G2_L3_SHAPE
+      BenchmarkFiles.C1_G1_L6_SHAPE, BenchmarkFiles.C1_G2_L2_SHAPE, BenchmarkFiles.C1_G2_L2_SHAPE
     ];
 
     const observable$ = this.postService.postMultiFileRequestV2(fileIdentifiers);
@@ -139,7 +139,7 @@ export class BenchmarkPlotService {
     const {data: d2} = this.processData(dataMap[BenchmarkFiles.C1_G3_SHAPE], "dot", 8);
     const {data: dc1g1l6s} = this.processData(dataMap[BenchmarkFiles.C1_G1_L6_SHAPE]);
     const {data: d1} = this.processData(dataMap[BenchmarkFiles.C1_G2_L2_SHAPE]);
-    const {data: dc1g2l3s} = this.processData(dataMap[BenchmarkFiles.C1_G2_L3_SHAPE]);
+    const {data: dc1g2l3s} = this.processData(dataMap[BenchmarkFiles.C1_G2_L2_SHAPE]);
 
     let dL1 = [...dc1g1l6s];
     let dL2 = [...dc1g1l6s];

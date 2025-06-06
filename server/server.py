@@ -40,8 +40,9 @@ class ErrorResponse(BaseModel):
 # Using Dict[str, Any] because the JSON content can vary
 ResponseType = Dict[str, Any]
 
-@app.post("/get-multiple-json_v_new")
+@app.post("/get-multiple-json-v-new")
 async def get_multiple_json_v_new(request: FileRequest) -> ResponseType:
+    logger.info(f"File request received: {request.fileNames}")
     # Ensure fileNames is a list
     if not isinstance(request.fileNames, list):
         logger.error("Received non-list fileNames despite Pydantic model")
@@ -115,10 +116,10 @@ async def get_multiple_json(request: FileRequest):
     return json_responses
 
 if __name__ == '__main__':
-    uvicorn.run(app, host="127.0.0.1", port=3000)
+    uvicorn.run(app, host="127.0.0.1", port=8000)
 
 
 ## source env/bin/activate  in server directory
-## uvicorn server:app --reload
+## uvicorn server:app --reload --port 8000
 
 ## ng serve
