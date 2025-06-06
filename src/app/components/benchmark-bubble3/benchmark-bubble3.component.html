@@ -13,8 +13,8 @@
     </div>
     <div class="text-wrapper">
       In the table below we list the parameters of the meshes used in the computations. As we can see, meshes of different refinement levels
-      are used in our simulations. The refinement levels are created by regular refinement of the same base mesh. We show the problem resolution <app-mathjax [content]="'$(mx, my, mz)$'"></app-mathjax>
-      , the mesh resolution <app-mathjax [content]="'$(nx, ny, nz)$'"></app-mathjax>, the number of elements (NEL), the number of Q2 degrees of freedom (dof) and the total number of dofs.
+      are used in our simulations. The refinement levels are created by regular refinement of the same base mesh. We show the problem resolution <ng-katex [equation]='(mx, my, mz)'></ng-katex>
+      , the mesh resolution <ng-katex [equation]='(nx, ny, nz)'></ng-katex>, the number of elements (NEL), the number of Q2 degrees of freedom (dof) and the total number of dofs.
     </div>
     <div class="table-wrapper">
       <table mat-table [dataSource]="dataSourceMesh" class="mat-elevation-z8">
@@ -92,9 +92,9 @@
     </div>
     <div class="text-wrapper">
      The initial configuration, see the figure below,
-     consists of a circular bubble of radius <app-mathjax [content]="'$r_0 = 0.25$ centered at $(x,y) = (0.5, 0.5)$'"></app-mathjax> in a
+     consists of a circular bubble of radius <ng-katex [equation]="'r_0 = 0.25'"></ng-katex> centered at <ng-katex [equation]="'(x,y) = (0.5, 0.5)'"></ng-katex> in a
      1 by 2 cuboid domain. The density of the bubble is smaller than that of the
-     surrounding fluid <app-mathjax [content]="'$(\\rho_1 \\lt \\rho_2)$'"></app-mathjax>. The no-slip boundary condition (<app-mathjax [content]="'$\\mathbf{u}=0$'"></app-mathjax>)
+     surrounding fluid <ng-katex [equation]='(\\rho_1 \\lt \\rho_2)'></ng-katex>. The no-slip boundary condition (<ng-katex [equation]='\\mathbf{u}=0'></ng-katex>)
      is used on all boundaries.
     </div>
      <div class="im-div">
@@ -105,7 +105,7 @@
      The table below lists the fluid and physical parameters which specify the test cases. The
      evolution of the bubbles should be tracked for 3 time units during which the defined
      benchmark quantities should be measured. The first test case models a rising bubble with Reynolds
-     number <app-mathjax [content]="'$Re=35$'"></app-mathjax>, Eötvös number <app-mathjax [content]="'$Eo=10$'"></app-mathjax>, and both density and viscosity ratios equal to 10.
+     number <ng-katex [equation]='Re=35'></ng-katex>, Eötvös number <ng-katex [equation]='Eo=10'></ng-katex>, and both density and viscosity ratios equal to 10.
      </div>
 <div class="table-wrapper">
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -148,27 +148,27 @@
   </ng-container>
 
   <ng-container matColumnDef="sigma">
-    <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$\\sigma$'"></app-mathjax> </th>
+    <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='\\sigma'></ng-katex> </th>
     <td mat-cell *matCellDef="let element"> {{element.sigma}} </td>
   </ng-container>
 
   <ng-container matColumnDef="re">
-    <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$Re$'"></app-mathjax> </th>
+    <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='Re'></ng-katex> </th>
     <td mat-cell *matCellDef="let element"> {{element.re}} </td>
   </ng-container>
 
   <ng-container matColumnDef="eo">
-    <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$Eo$'"></app-mathjax> </th>
+    <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='Eo'></ng-katex> </th>
     <td mat-cell *matCellDef="let element"> {{element.eo}} </td>
   </ng-container>
 
   <ng-container matColumnDef="rel">
-    <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$\\rho_1 / \\rho_2$'"></app-mathjax> </th>
+    <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='\\rho_1 / \\rho_2'></ng-katex> </th>
     <td mat-cell *matCellDef="let element"> {{element.rel}} </td>
   </ng-container>
 
   <ng-container matColumnDef="relmu">
-    <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$\\mu_1 / \\mu_2$'"></app-mathjax> </th>
+    <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='\\mu_1 / \\mu_2'></ng-katex> </th>
     <td mat-cell *matCellDef="let element"> {{element.relmu}} </td>
   </ng-container>
 
@@ -197,22 +197,22 @@ w.r.t.
 <div class="definition-wrapper">
   <p class="definition-heading">Bubble Size</p>
   <div>
-  Size of the bubble in two different directions, namely in the rise direction <app-mathjax [content]="'$z$'"></app-mathjax> expressed as
-  <app-mathjax [content]="'$R_z / R_0 $'"></app-mathjax> (normalized w.r.t. initial bubble size <app-mathjax [content]="'$R_0 $'"></app-mathjax>) and in a perpendicular
-  to rise direction being aligned with one of the cartesian axis (<app-mathjax [content]="'$x$'"></app-mathjax> or <app-mathjax [content]="'$y$'"></app-mathjax>) expressed
-  as <app-mathjax [content]="'$R_{x,y} / R_0 $'"></app-mathjax>.
+  Size of the bubble in two different directions, namely in the rise direction <ng-katex [equation]='z'></ng-katex> expressed as
+  <ng-katex [equation]='R_z / R_0'></ng-katex> (normalized w.r.t. initial bubble size <ng-katex [equation]='R_0'></ng-katex>) and in a perpendicular
+  to rise direction being aligned with one of the cartesian axis (<ng-katex [equation]='x'></ng-katex> or <ng-katex [equation]='y'></ng-katex>) expressed
+  as <ng-katex [equation]='R_{x,y} / R_0'></ng-katex>.
   </div>
 </div>
 
 <div class="definition-wrapper">
   <p class="definition-heading">Bubble Sphericity</p>
   <div>
-    The "degree of sphericity" in <app-mathjax [content]="'$\\mathbb{R}^3$'"></app-mathjax> can be defined as
+    The "degree of sphericity" in <ng-katex [equation]='\\mathbb{R}^3'></ng-katex> can be defined as
     <div class="equation-wrapper">
-      <app-mathjax [content]="'$\\frac{A_0}{A} = \\frac{4 \\pi R^2_0}{A}$'"></app-mathjax>
+      <ng-katex [equation]='\\frac{A_0}{A} = \\frac{4 \\pi R^2_0}{A}'></ng-katex>
     </div>
-    Here, <app-mathjax [content]="'$A_0 $'"></app-mathjax> denotes the interfacial area of an equivalent (in terms of volume) spherical bubble of radius <app-mathjax [content]="'$R_0 $'"></app-mathjax>
-    (i.e. the surface area of the initial bubble) and <app-mathjax [content]="'$A$'"></app-mathjax> denotes the interfacial area of the simulated bubble at the given time level.
+    Here, <ng-katex [equation]='A_0'></ng-katex> denotes the interfacial area of an equivalent (in terms of volume) spherical bubble of radius <ng-katex [equation]='R_0'></ng-katex>
+    (i.e. the surface area of the initial bubble) and <ng-katex [equation]='A'></ng-katex> denotes the interfacial area of the simulated bubble at the given time level.
   </div>
 </div>
 
@@ -221,10 +221,10 @@ w.r.t.
   <div>
     The mean velocity with which the bubble is rising or moving and is defined as:
     <div class="equation-wrapper">
-      <app-mathjax [content]="'$\\mathbf{U}_c = \\frac{ \\int_{\\Omega_2} \\mathbf{u} \\; \\mathrm{d}x }{ \\int_{\\Omega_2} 1\\; \\mathrm{d}x }$'"></app-mathjax>
+      <ng-katex [equation]='\\mathbf{U}_c = \\frac{ \\int_{\\Omega_2} \\mathbf{u} \\; \\mathrm{d}x }{ \\int_{\\Omega_2} 1\\; \\mathrm{d}x }'></ng-katex>
     </div>
-    where <app-mathjax [content]="'$\\Omega_2$'"></app-mathjax> denotes the region that the bubble occupies. The velocity component in the direction opposite to the gravity vector is then
-    denoted as rise velocity <app-mathjax [content]="'$V_c$'"></app-mathjax> for which the stationary limit is called terminal velocity.
+    where <ng-katex [equation]='\\Omega_2'></ng-katex> denotes the region that the bubble occupies. The velocity component in the direction opposite to the gravity vector is then
+    denoted as rise velocity <ng-katex [equation]='V_c'></ng-katex> for which the stationary limit is called terminal velocity.
   </div>
 </div>
 According to the definition of this benchmark problem, the evolution of all these quantities is to be predicted in the course of a transient simulation starting with a bubble at rest, which

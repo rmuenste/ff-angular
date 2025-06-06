@@ -22,7 +22,7 @@ import { BenchmarksComponent } from './components/benchmarks/benchmarks.componen
 import { MainComponent } from './components/main/main.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './components/footer/footer.component';
-import { MathjaxComponent } from './components/mathjax/mathjax.component';
+import { KatexModule } from 'ng-katex';
 import { BenchmarkDetailComponent } from './components/benchmark-detail/benchmark-detail.component';
 import { BenchmarkExampleComponent } from './components/benchmark-example/benchmark-example.component';
 import { MatDividerModule } from '@angular/material/divider';
@@ -50,7 +50,6 @@ PlotlyModule.plotlyjs = PlotlyJS;
     BenchmarksComponent,
     MainComponent,
     FooterComponent,
-    MathjaxComponent,
     BenchmarkDetailComponent,
     BenchmarkExampleComponent,
     BenchmarkBubble3Component,
@@ -85,7 +84,8 @@ PlotlyModule.plotlyjs = PlotlyJS;
     NgxChartsModule,
     HttpClientModule,
     MatSelectModule,
-    PlotlyModule
+    PlotlyModule,
+    KatexModule
   ],
   providers: [],
   bootstrap: [AppComponent]

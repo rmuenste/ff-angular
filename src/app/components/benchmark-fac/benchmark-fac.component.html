@@ -9,7 +9,7 @@
       Flow around a cylinder is a well-known benchmark for the evaluation of numerical algorithms for incompressible
       Navier-Stokes equations in the laminar case. It was developed in 1995 as part of the research project "Flow simulation on high-performance computers"
       funded by the German Research Association (DFG). In analogy to the 2D case a cuboid-shaped domain with a cylindrical obstacle is created and flow
-      configurations for <app-mathjax [content]="'$Re = 20$'"></app-mathjax> and <app-mathjax [content]="'$Re = 100$'"></app-mathjax> are simulated. As observables for these simulations we choose the drag and lift coefficients on the cylinder.
+      configurations for <ng-katex [equation]='Re = 20'></ng-katex> and <ng-katex [equation]='Re = 100'></ng-katex> are simulated. As observables for these simulations we choose the drag and lift coefficients on the cylinder.
     </div>
     <div class="text-wrapper">
       The benchmark problems are studied with the open-source software package OpenFOAM, the widely used commercial code ANSYS-CFX (CFX) and our in-house code FeatFloWer. For OpenFOAM (version 1.6)
@@ -41,17 +41,17 @@
       </h4>
     </div>
     <div class="text-wrapper">
-    The solvers are tested in two benchmark configurations with an incompressible Newtonian fluid whose kinematic viscosity <app-mathjax [content]="'$\\nu$'"></app-mathjax> is equal to
-    <app-mathjax [content]="'$10^{-3}\\frac{m^2}{s}$'"></app-mathjax> and for which the conservation equations of mass and momentum are written as follows:
+    The solvers are tested in two benchmark configurations with an incompressible Newtonian fluid whose kinematic viscosity <ng-katex [equation]='\\nu'></ng-katex> is equal to
+    <ng-katex [equation]='10^{-3}\\frac{m^2}{s}'></ng-katex> and for which the conservation equations of mass and momentum are written as follows:
     </div>
     <div class="equation-wrapper">
-      <app-mathjax [content]="'$ \\frac{\\partial \\mathbf{u}}{\\partial t} + \\mathbf{u} \\cdot \\nabla \\mathbf{u} = -\\nabla p + \\nu \\Delta \\mathbf{u}$'"></app-mathjax>
+      <ng-katex [equation]='\\frac{\\partial \\mathbf{u}}{\\partial t} + \\mathbf{u} \\cdot \\nabla \\mathbf{u} = -\\nabla p + \\nu \\Delta \\mathbf{u}'></ng-katex>
     </div>
     <div class="equation-wrapper">
-      <app-mathjax [content]="'$ \\nabla \\cdot \\mathbf{u} = \\mathbf{0}$'"></app-mathjax>
+      <ng-katex [equation]='\\nabla \\cdot \\mathbf{u} = \\mathbf{0}'></ng-katex>
     </div>
      <div class="text-wrapper">
-     The Reynolds number is defined as <app-mathjax [content]="'$Re=\\frac{UD}{ν}$ '"> </app-mathjax>where <i>U </i> is the mean velocity of the imposed parabolic profile on the inflow boundary and <i>D </i> is the diameter of the cylinder. The benchmark
+     The Reynolds number is defined as <ng-katex [equation]="'Re=\\frac{UD}{ν}'"></ng-katex> where <i>U </i> is the mean velocity of the imposed parabolic profile on the inflow boundary and <i>D </i> is the diameter of the cylinder. The benchmark
      geometry and the corresponding 2D mesh at the coarsest level are shown in the figure below. The 3D mesh is obtained by extruding the 2D mesh in the z direction with 4 layers of cells,
      however the first level mesh for the computations is obtained by two successive refinements via connecting opposite midpoints of the the coarsest mesh which yields a mesh of 6144 cells.
      Our preliminary studies showed that this mesh offers a good balance between accuracy and computational cost.
@@ -127,27 +127,27 @@
 </table>
 </div>
 <div class="text-wrapper">
-The first benchmark problem is at <app-mathjax [content]="'$Re=20$'"></app-mathjax> and has been studied numerically by many research groups, and very accurate results have been presented. The second benchmark problem is unsteady,
+The first benchmark problem is at <ng-katex [equation]='Re=20'></ng-katex> and has been studied numerically by many research groups, and very accurate results have been presented. The second benchmark problem is unsteady,
 with a time-varying inflow profile which is very challenging and has not been rigorously studied, consequently the results have not yet been precisely determined. For the benchmark
-problems, no-slip boundary condition is employed on the walls and natural do-nothing boundary conditions are imposed at the outflow plane. The inflow conditions are set with <app-mathjax [content]="'$U_m=0.45 m/s$'"></app-mathjax>
-and <app-mathjax [content]="'$U_m=2.25 m/s$'"></app-mathjax> for the first and the second benchmark problem with the parabolic velocity profiles from the following two equations:
+problems, no-slip boundary condition is employed on the walls and natural do-nothing boundary conditions are imposed at the outflow plane. The inflow conditions are set with <ng-katex [equation]='U_m=0.45 m/s'></ng-katex>
+and <ng-katex [equation]='U_m=2.25 m/s'></ng-katex> for the first and the second benchmark problem with the parabolic velocity profiles from the following two equations:
 </div>
 <div class="equation-wrapper">
-  <app-mathjax [content]="'$$\\begin{aligned} \\mathbf{U}(0, y, z) &= 16U_m yz(H - y)(H - z)/H^4,\\; V = W = 0 \\\\
+  <ng-katex [equation]='\\begin{aligned} \\mathbf{U}(0, y, z) &= 16U_m yz(H - y)(H - z)/H^4,\\; V = W = 0 \\\\
                                             \\mathbf{U}(0, y, z) &= 16U_m yz \\sin(\\pi t / 8) (H - y)(H - z)/H^4,\\; V = W = 0
-  \\end{aligned}$$'"></app-mathjax>
+  \\end{aligned}'></ng-katex>
 </div>
 <div class="text-wrapper">
 The drag and lift force on the cylinder we evalute as follows:
 </div>
 <div class="equation-wrapper">
-  <app-mathjax [content]="'$$\\begin{aligned} \\mathbf{F}_D = \\int \\left (  \\rho \\nu \\frac{\\partial v_t}{\\partial n}n_y - pn_x\\right) dS \\\\
+  <ng-katex [equation]='\\begin{aligned} \\mathbf{F}_D = \\int \\left (  \\rho \\nu \\frac{\\partial v_t}{\\partial n}n_y - pn_x\\right) dS \\\\
                                               \\mathbf{F}_L =-\\int \\left ( \\rho \\nu \\frac{\\partial v_t}{\\partial n}n_x - pn_y\\right) dS
-  \\end{aligned}$$'"></app-mathjax>
+  \\end{aligned}'></ng-katex>
 </div>
 <div class="text-wrapper">
-  where <app-mathjax [content]="'$S$'"></app-mathjax> is the surface of the cylinder, <app-mathjax [content]="'$\\mathbf{n}$'"></app-mathjax> the normal on <app-mathjax [content]="'$S$'"></app-mathjax>, <app-mathjax [content]="'$\\mathbf{v}_t$'"></app-mathjax> the tangential velocity
-  on <app-mathjax [content]="'$S$'"></app-mathjax> with tangent vector <app-mathjax [content]="'$t=(n_y, -n_x, 0)$'"></app-mathjax>.
+  where <ng-katex [equation]='S'></ng-katex> is the surface of the cylinder, <ng-katex [equation]='\\mathbf{n}'></ng-katex> the normal on <ng-katex [equation]='S'></ng-katex>, <ng-katex [equation]='\\mathbf{v}_t'></ng-katex> the tangential velocity
+  on <ng-katex [equation]='S'></ng-katex> with tangent vector <ng-katex [equation]='t=(n_y, -n_x, 0)'></ng-katex>.
 
 </div>
   </mat-tab>
@@ -158,7 +158,7 @@ The drag and lift force on the cylinder we evalute as follows:
       </h4>
     </div>
     <div class="text-wrapper">
-    <p>The benchmark problems studied with all the codes, and while the problems were being studied, the question was not: <em>"Is the software tool capable of solving the problem?"</em> but <em>"How accurate and efficient is the given software tool?"</em>. Therefore, to show the accuracy of the employed CFD softwares, the benchmark problem at <app-mathjax [content]="'$Re=20$'"></app-mathjax> is firstly studied. The results for this case obtained for 4 different mesh levels are given here.</p>
+    <p>The benchmark problems studied with all the codes, and while the problems were being studied, the question was not: <em>"Is the software tool capable of solving the problem?"</em> but <em>"How accurate and efficient is the given software tool?"</em>. Therefore, to show the accuracy of the employed CFD softwares, the benchmark problem at <ng-katex [equation]='Re=20'></ng-katex> is firstly studied. The results for this case obtained for 4 different mesh levels are given here.</p>
     </div>
     <div class="table-wrapper">
 
@@ -184,25 +184,25 @@ The drag and lift force on the cylinder we evalute as follows:
 
       <!-- Name Column -->
       <ng-container matColumnDef="drag">
-        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{D}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='c_{D}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.drag}} </td>
       </ng-container>
 
       <!-- Weight Column -->
       <ng-container matColumnDef="lift">
-        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{L}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='c_{L}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.lift}} </td>
       </ng-container>
 
       <!-- Symbol Column -->
       <ng-container matColumnDef="errDrag">
-        <th mat-header-cell *matHeaderCellDef> %Err <app-mathjax [content]="'$c_{D}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> %Err <ng-katex [equation]='c_{D}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.errDrag}} </td>
       </ng-container>
 
       <!-- doft Column -->
       <ng-container matColumnDef="errLift">
-        <th mat-header-cell *matHeaderCellDef> %Err <app-mathjax [content]="'$c_{L}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> %Err <ng-katex [equation]='c_{L}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.errLift}} </td>
       </ng-container>
 
@@ -211,11 +211,11 @@ The drag and lift force on the cylinder we evalute as follows:
     </table>
     </div>
     <div class="text-wrapper">
-    <p>The qualitative results were indistinguishable even for the coarsest level calculations for the <app-mathjax [content]="'$Re=20$'"></app-mathjax> test case.</p>
+    <p>The qualitative results were indistinguishable even for the coarsest level calculations for the <ng-katex [equation]='Re=20'></ng-katex> test case.</p>
 
     <p>The expected agreement of the results for the first benchmark test motivated us to go on with the second 
       benchmark problem which is the challenging part of our benchmarking studies. The second benchmark problem 
-      has a fixed simulation time, <app-mathjax [content]="'$T=8s$'"></app-mathjax>, whereas the first benchmark problem is simulated towards the steady state solution. 
+      has a fixed simulation time, <ng-katex [equation]='T=8s'></ng-katex>, whereas the first benchmark problem is simulated towards the steady state solution. 
       There is no precise unique definition of the stopping criteria for all the softwares for the first case. 
       Therefore, while the software tools are compared with respect to their accuracy in both cases, 
       their computational performance has been tested in the later case, as well. The coarse grid computations 
@@ -227,16 +227,16 @@ The drag and lift force on the cylinder we evalute as follows:
       software packages will increase for higher number of partitions by using infiniband connected nodes.</p>
 
     <p>In the second benchmark test, the flow is simulated for 8 seconds, a half period of the imposed inflow condition.
-    The simulations start with zero inflow and zero initial condition at <app-mathjax [content]="'$t=0s$'"></app-mathjax> and finish at <app-mathjax [content]="'$t=8s$'"></app-mathjax>
+    The simulations start with zero inflow and zero initial condition at <ng-katex [equation]='t=0s'></ng-katex> and finish at <ng-katex [equation]='t=8s'></ng-katex>
     with zero inflow again. Due to the transient inflow condition, adaptive time stepping technique is a
     good candidate for this problem. However, in preliminary studies with this technique,
     numerical oscillations are observed in the results which are obtained by CFX and OpenFOAM.
     The oscillations were nor visible in qualitative results neither in the drag coefficient results.
-    However, when the results of a sensitive variable such as <app-mathjax [content]="'c_L'"></app-mathjax> are plotted, the numerical
+    However, when the results of a sensitive variable such as <ng-katex [equation]='c_L'></ng-katex> are plotted, the numerical
     oscillations appear. The results are obtained on a mesh with 393216 cells by OpenFOAM for
     two different values of maximum Courant numbers, maxCo, and with different tolerance values
-    of linear solvers. Tolerance values of the velocity solver, uTol, are set to <app-mathjax [content]="'$10^{-5}$'"></app-mathjax> or <app-mathjax [content]="'$10^{-6}$'"></app-mathjax>
-    and tolerance values of the pressure solver, pTol, are set to <app-mathjax [content]="'$10^{-6}$'"></app-mathjax> or <app-mathjax [content]="'$10^{-7}$'"></app-mathjax>.</p>
+    of linear solvers. Tolerance values of the velocity solver, uTol, are set to <ng-katex [equation]='10^{-5}'></ng-katex> or <ng-katex [equation]='10^{-6}'></ng-katex>
+    and tolerance values of the pressure solver, pTol, are set to <ng-katex [equation]='10^{-6}'></ng-katex> or <ng-katex [equation]='10^{-7}'></ng-katex>.</p>
 
     <p>Therefore, a fixed time step size is used in the simulations although it leads to excess of computational costs. 
       The benchmark calculations are performed on several levels of refined meshes to obtain mesh independent results 
@@ -270,29 +270,29 @@ The drag and lift force on the cylinder we evalute as follows:
     </div>
 
     <div class="text-wrapper">
-    <p>The old results for <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> and <app-mathjax [content]="'$c_{Lmin}$'"></app-mathjax> had been given within the intervals, <em>[3.2000,3.3000]
-      and [0.0020,0.0040]</em> respectively, by <em>Turek et al.</em>, and <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> has been determined as 3.2968
+    <p>The old results for <ng-katex [equation]='c_{Dmax}'></ng-katex> and <ng-katex [equation]='c_{Lmin}'></ng-katex> had been given within the intervals, <em>[3.2000,3.3000]
+      and [0.0020,0.0040]</em> respectively, by <em>Turek et al.</em>, and <ng-katex [equation]='c_{Dmax}'></ng-katex> has been determined as 3.2968
       by <em>John</em>. These old results are not sufficient and accurate enough to establish an inclusive
       benchmark study. Besides, to evaluate the results of benchmark calculations with respect to
-      only <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> and <app-mathjax [content]="'$c_{Lmin}$'"></app-mathjax> is not much elucidating on the accuracy of the results. Hence,
-      additional to the comparison of <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> and <app-mathjax [content]="'$c_{Lmin}$'"></app-mathjax> values, we also compare the solution
-      regarding <app-mathjax [content]="'$L_{2}$'"></app-mathjax> error and <app-mathjax [content]="'$L_{\\infty}$'"></app-mathjax> error which denotes the <app-mathjax [content]="'$L_{2}$'"></app-mathjax> norm of the error normalized by <app-mathjax [content]="'$L_{2}$'"></app-mathjax> norm of the reference
-      solution and the <app-mathjax [content]="'$L_{\\infty}$'"></app-mathjax> norm of error, respectively, are obtained through the following
+      only <ng-katex [equation]='c_{Dmax}'></ng-katex> and <ng-katex [equation]='c_{Lmin}'></ng-katex> is not much elucidating on the accuracy of the results. Hence,
+      additional to the comparison of <ng-katex [equation]='c_{Dmax}'></ng-katex> and <ng-katex [equation]='c_{Lmin}'></ng-katex> values, we also compare the solution
+      regarding <ng-katex [equation]='L_{2}'></ng-katex> error and <ng-katex [equation]='L_{\\infty}'></ng-katex> error which denotes the <ng-katex [equation]='L_{2}'></ng-katex> norm of the error normalized by <ng-katex [equation]='L_{2}'></ng-katex> norm of the reference
+      solution and the <ng-katex [equation]='L_{\\infty}'></ng-katex> norm of error, respectively, are obtained through the following
       calculation steps:</p>
 
   <ul class="fac-ul">
     <li>
-    An equidistant discrete time step is specified for which <app-mathjax [content]="'$L_{2}$'"></app-mathjax> error is independent of the step
+    An equidistant discrete time step is specified for which <ng-katex [equation]='L_{2}'></ng-katex> error is independent of the step
     size.
     </li> 
     <li>
       The reference solution and the other solutions are interpolated (linear interpolation) to the specified discrete time step.
     </li>
     <li>
-    <app-mathjax [content]="'$L_{2}$'"></app-mathjax> norm and <app-mathjax [content]="'$L_{\\infty}$'"></app-mathjax> norm of the differences between reference solution and other solutions are calculated.
+    <ng-katex [equation]='L_{2}'></ng-katex> norm and <ng-katex [equation]='L_{\\infty}'></ng-katex> norm of the differences between reference solution and other solutions are calculated.
     </li>
   </ul>
-<p>Results of the benchmark calculations for FeatFlow are plotted here. Values of the comparison criteria, <app-mathjax [content]="'$L_{2}$'"></app-mathjax> error, <app-mathjax [content]="'$L_{\\infty}$'"></app-mathjax> error and relative errors
+<p>Results of the benchmark calculations for FeatFlow are plotted here. Values of the comparison criteria, <ng-katex [equation]='L_{2}'></ng-katex> error, <ng-katex [equation]='L_{\\infty}'></ng-katex> error and relative errors
 due to the comparison criteria are given here and here.</p>
 
 <p>The finest level results are presented in the table below; the second table compares the relative errors. It is obvious 
@@ -326,19 +326,19 @@ due to the comparison criteria are given here and here.</p>
 
       <!-- dragmax Column -->
       <ng-container matColumnDef="dragmax">
-        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='c_{Dmax}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.dragmax}} </td>
       </ng-container>
 
       <!-- liftmax Column -->
       <ng-container matColumnDef="liftmax">
-        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Lmax}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='c_{Lmax}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.liftmax}} </td>
       </ng-container>
 
       <!-- liftmin Column -->
       <ng-container matColumnDef="liftmin">
-        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Lmin}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='c_{Lmin}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.liftmin}} </td>
       </ng-container>
 
@@ -383,37 +383,37 @@ due to the comparison criteria are given here and here.</p>
 
       <!-- cells Column -->
       <ng-container matColumnDef="errcdmax">
-        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='c_{Dmax}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.errcdmax}} </td>
       </ng-container>
 
       <!-- dragmax Column -->
       <ng-container matColumnDef="errclmin">
-        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Lmin}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='c_{Lmin}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.errclmin}} </td>
       </ng-container>
 
       <!-- liftmax Column -->
       <ng-container matColumnDef="errl2cd">
-        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{D}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='c_{D}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.errl2cd}} </td>
       </ng-container>
 
       <!-- liftmin Column -->
       <ng-container matColumnDef="errl2cl">
-        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{L}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='c_{L}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.errl2cl}} </td>
       </ng-container>
 
       <!-- tstep Column -->
       <ng-container matColumnDef="errlinfcd">
-        <th mat-header-cell *matHeaderCellDef><app-mathjax [content]="'$c_{D}$'"></app-mathjax></th>
+        <th mat-header-cell *matHeaderCellDef><ng-katex [equation]='c_{D}'></ng-katex></th>
         <td mat-cell *matCellDef="let element"> {{element.errlinfcd}} </td>
       </ng-container>
 
       <!-- time Column -->
       <ng-container matColumnDef="errlinfcl">
-        <th mat-header-cell *matHeaderCellDef><app-mathjax [content]="'$c_{L}$'"></app-mathjax></th>
+        <th mat-header-cell *matHeaderCellDef><ng-katex [equation]='c_{L}'></ng-katex></th>
         <td mat-cell *matCellDef="let element"> {{element.errlinfcl}} </td>
       </ng-container>
 
@@ -440,13 +440,13 @@ due to the comparison criteria are given here and here.</p>
       <ng-container matColumnDef="header-row-23-group">
         <th mat-header-cell *matHeaderCellDef
             [attr.colspan]="2">
-            %Err<app-mathjax [content]="'$L_2$'"></app-mathjax>
+            %Err<ng-katex [equation]='L_2'></ng-katex>
         </th>
       </ng-container>
       <ng-container matColumnDef="header-row-24-group">
         <th mat-header-cell *matHeaderCellDef
             [attr.colspan]="2">
-            %Err<app-mathjax [content]="'$L_{\inf}$'"></app-mathjax>
+            %Err<ng-katex [equation]='L_{\inf}'></ng-katex>
         </th>
       </ng-container>
 
@@ -485,19 +485,19 @@ due to the comparison criteria are given here and here.</p>
 
       <!-- dragmax Column -->
       <ng-container matColumnDef="dragmax">
-        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='c_{Dmax}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.dragmax}} </td>
       </ng-container>
 
       <!-- liftmax Column -->
       <ng-container matColumnDef="liftmax">
-        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Lmax}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='c_{Lmax}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.liftmax}} </td>
       </ng-container>
 
       <!-- liftmin Column -->
       <ng-container matColumnDef="liftmin">
-        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Lmin}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='c_{Lmin}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.liftmin}} </td>
       </ng-container>
 
@@ -542,37 +542,37 @@ due to the comparison criteria are given here and here.</p>
 
       <!-- cells Column -->
       <ng-container matColumnDef="errcdmax">
-        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='c_{Dmax}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.errcdmax}} </td>
       </ng-container>
 
       <!-- dragmax Column -->
       <ng-container matColumnDef="errclmin">
-        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Lmin}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='c_{Lmin}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.errclmin}} </td>
       </ng-container>
 
       <!-- liftmax Column -->
       <ng-container matColumnDef="errl2cd">
-        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{D}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='c_{D}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.errl2cd}} </td>
       </ng-container>
 
       <!-- liftmin Column -->
       <ng-container matColumnDef="errl2cl">
-        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{L}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='c_{L}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.errl2cl}} </td>
       </ng-container>
 
       <!-- tstep Column -->
       <ng-container matColumnDef="errlinfcd">
-        <th mat-header-cell *matHeaderCellDef><app-mathjax [content]="'$c_{D}$'"></app-mathjax></th>
+        <th mat-header-cell *matHeaderCellDef><ng-katex [equation]='c_{D}'></ng-katex></th>
         <td mat-cell *matCellDef="let element"> {{element.errlinfcd}} </td>
       </ng-container>
 
       <!-- time Column -->
       <ng-container matColumnDef="errlinfcl">
-        <th mat-header-cell *matHeaderCellDef><app-mathjax [content]="'$c_{L}$'"></app-mathjax></th>
+        <th mat-header-cell *matHeaderCellDef><ng-katex [equation]='c_{L}'></ng-katex></th>
         <td mat-cell *matCellDef="let element"> {{element.errlinfcl}} </td>
       </ng-container>
 
@@ -599,13 +599,13 @@ due to the comparison criteria are given here and here.</p>
       <ng-container matColumnDef="header-row-23-group">
         <th mat-header-cell *matHeaderCellDef
             [attr.colspan]="2">
-            %Err<app-mathjax [content]="'$L_2$'"></app-mathjax>
+            %Err<ng-katex [equation]='L_2'></ng-katex>
         </th>
       </ng-container>
       <ng-container matColumnDef="header-row-24-group">
         <th mat-header-cell *matHeaderCellDef
             [attr.colspan]="2">
-            %Err<app-mathjax [content]="'$L_{\inf}$'"></app-mathjax>
+            %Err<ng-katex [equation]='L_{\inf}'></ng-katex>
         </th>
       </ng-container>
 
@@ -644,19 +644,19 @@ due to the comparison criteria are given here and here.</p>
 
       <!-- dragmax Column -->
       <ng-container matColumnDef="dragmax">
-        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='c_{Dmax}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.dragmax}} </td>
       </ng-container>
 
       <!-- liftmax Column -->
       <ng-container matColumnDef="liftmax">
-        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Lmax}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='c_{Lmax}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.liftmax}} </td>
       </ng-container>
 
       <!-- liftmin Column -->
       <ng-container matColumnDef="liftmin">
-        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Lmin}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='c_{Lmin}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.liftmin}} </td>
       </ng-container>
 
@@ -701,37 +701,37 @@ due to the comparison criteria are given here and here.</p>
 
       <!-- cells Column -->
       <ng-container matColumnDef="errcdmax">
-        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='c_{Dmax}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.errcdmax}} </td>
       </ng-container>
 
       <!-- dragmax Column -->
       <ng-container matColumnDef="errclmin">
-        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Lmin}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='c_{Lmin}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.errclmin}} </td>
       </ng-container>
 
       <!-- liftmax Column -->
       <ng-container matColumnDef="errl2cd">
-        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{D}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='c_{D}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.errl2cd}} </td>
       </ng-container>
 
       <!-- liftmin Column -->
       <ng-container matColumnDef="errl2cl">
-        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{L}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='c_{L}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.errl2cl}} </td>
       </ng-container>
 
       <!-- tstep Column -->
       <ng-container matColumnDef="errlinfcd">
-        <th mat-header-cell *matHeaderCellDef><app-mathjax [content]="'$c_{D}$'"></app-mathjax></th>
+        <th mat-header-cell *matHeaderCellDef><ng-katex [equation]='c_{D}'></ng-katex></th>
         <td mat-cell *matCellDef="let element"> {{element.errlinfcd}} </td>
       </ng-container>
 
       <!-- time Column -->
       <ng-container matColumnDef="errlinfcl">
-        <th mat-header-cell *matHeaderCellDef><app-mathjax [content]="'$c_{L}$'"></app-mathjax></th>
+        <th mat-header-cell *matHeaderCellDef><ng-katex [equation]='c_{L}'></ng-katex></th>
         <td mat-cell *matCellDef="let element"> {{element.errlinfcl}} </td>
       </ng-container>
 
@@ -758,13 +758,13 @@ due to the comparison criteria are given here and here.</p>
       <ng-container matColumnDef="header-row-23-group">
         <th mat-header-cell *matHeaderCellDef
             [attr.colspan]="2">
-            %Err<app-mathjax [content]="'$L_2$'"></app-mathjax>
+            %Err<ng-katex [equation]='L_2'></ng-katex>
         </th>
       </ng-container>
       <ng-container matColumnDef="header-row-24-group">
         <th mat-header-cell *matHeaderCellDef
             [attr.colspan]="2">
-            %Err<app-mathjax [content]="'$L_{\inf}$'"></app-mathjax>
+            %Err<ng-katex [equation]='L_{\inf}'></ng-katex>
         </th>
       </ng-container>
 
@@ -803,19 +803,19 @@ due to the comparison criteria are given here and here.</p>
 
       <!-- dragmax Column -->
       <ng-container matColumnDef="dragmax">
-        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='c_{Dmax}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.dragmax}} </td>
       </ng-container>
 
       <!-- liftmax Column -->
       <ng-container matColumnDef="liftmax">
-        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Lmax}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='c_{Lmax}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.liftmax}} </td>
       </ng-container>
 
       <!-- liftmin Column -->
       <ng-container matColumnDef="liftmin">
-        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Lmin}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='c_{Lmin}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.liftmin}} </td>
       </ng-container>
 
@@ -860,37 +860,37 @@ due to the comparison criteria are given here and here.</p>
 
       <!-- cells Column -->
       <ng-container matColumnDef="errcdmax">
-        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Dmax}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='c_{Dmax}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.errcdmax}} </td>
       </ng-container>
 
       <!-- dragmax Column -->
       <ng-container matColumnDef="errclmin">
-        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{Lmin}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='c_{Lmin}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.errclmin}} </td>
       </ng-container>
 
       <!-- liftmax Column -->
       <ng-container matColumnDef="errl2cd">
-        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{D}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='c_{D}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.errl2cd}} </td>
       </ng-container>
 
       <!-- liftmin Column -->
       <ng-container matColumnDef="errl2cl">
-        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$c_{L}$'"></app-mathjax> </th>
+        <th mat-header-cell *matHeaderCellDef> <ng-katex [equation]='c_{L}'></ng-katex> </th>
         <td mat-cell *matCellDef="let element"> {{element.errl2cl}} </td>
       </ng-container>
 
       <!-- tstep Column -->
       <ng-container matColumnDef="errlinfcd">
-        <th mat-header-cell *matHeaderCellDef><app-mathjax [content]="'$c_{D}$'"></app-mathjax></th>
+        <th mat-header-cell *matHeaderCellDef><ng-katex [equation]='c_{D}'></ng-katex></th>
         <td mat-cell *matCellDef="let element"> {{element.errlinfcd}} </td>
       </ng-container>
 
       <!-- time Column -->
       <ng-container matColumnDef="errlinfcl">
-        <th mat-header-cell *matHeaderCellDef><app-mathjax [content]="'$c_{L}$'"></app-mathjax></th>
+        <th mat-header-cell *matHeaderCellDef><ng-katex [equation]='c_{L}'></ng-katex></th>
         <td mat-cell *matCellDef="let element"> {{element.errlinfcl}} </td>
       </ng-container>
 
@@ -917,13 +917,13 @@ due to the comparison criteria are given here and here.</p>
       <ng-container matColumnDef="header-row-23-group">
         <th mat-header-cell *matHeaderCellDef
             [attr.colspan]="2">
-            %Err<app-mathjax [content]="'$L_2$'"></app-mathjax>
+            %Err<ng-katex [equation]='L_2'></ng-katex>
         </th>
       </ng-container>
       <ng-container matColumnDef="header-row-24-group">
         <th mat-header-cell *matHeaderCellDef
             [attr.colspan]="2">
-            %Err<app-mathjax [content]="'$L_{\inf}$'"></app-mathjax>
+            %Err<ng-katex [equation]='L_{\inf}'></ng-katex>
         </th>
       </ng-container>
 

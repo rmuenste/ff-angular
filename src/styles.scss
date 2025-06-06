@@ -9,6 +9,7 @@
 @use 'sass:map';
 @use '@angular/material' as mat;
 @use '@angular/material/_theming';
+@import '~katex/dist/katex.css';
 
 @include mat.core();
 @import 'src/my-theme.scss';
