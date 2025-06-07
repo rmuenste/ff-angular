@@ -40,6 +40,7 @@ import { BenchmarkBubble2Component } from './components/benchmark-bubble2/benchm
 import { ComparativePlotComponent } from './components/comparative-plot/comparative-plot.component';
 import { ServerComponent } from './components/server/server.component';
 import { ShapePlotComponent } from './components/shape-plot/shape-plot.component';
+import { BenchmarkParticleSedimentationComponent } from './components/benchmark-particle-sedimentation/benchmark-particle-sedimentation.component';
 
 PlotlyModule.plotlyjs = PlotlyJS;
 
@@ -63,6 +64,7 @@ PlotlyModule.plotlyjs = PlotlyJS;
     ComparativePlotComponent,
     ServerComponent,
     ShapePlotComponent,
+    BenchmarkParticleSedimentationComponent,
   ],
   imports: [
     BrowserModule,

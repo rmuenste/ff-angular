@@ -1,0 +1,145 @@
+<mat-tab-group>
+  <mat-tab label="Introduction" class="hidden-cursor">
+    <div class="heading-wrapper">
+      <h4 class="my-h4">
+      Particle Sedimentation
+      </h4>
+    </div>
+    <div class="text-wrapper">
+      Particle sedimentation is a fundamental benchmark for the evaluation of numerical algorithms for fluid-structure interaction problems.
+      This benchmark involves the simulation of a solid particle settling under gravity in a viscous fluid, providing insights into
+      the dynamics of particle motion and fluid flow interaction. The benchmark tests various aspects of numerical methods including
+      mesh handling, coupling strategies, and accuracy of force calculations.
+    </div>
+    <div class="text-wrapper">
+      The benchmark problems are studied with different computational fluid dynamics software packages to evaluate their capability
+      in handling moving boundaries and fluid-particle interactions. Key observables include particle velocity, position, and
+      the forces acting on the particle during the sedimentation process.
+    </div>
+    <div class="text-wrapper">
+      This benchmark addresses several important questions in computational fluid dynamics:
+      <ul>
+        <li>How accurately can different solvers handle fluid-structure interaction problems?</li>
+        <li>What is the optimal mesh strategy for moving boundary problems?</li>
+        <li>How do different time stepping schemes affect the stability and accuracy of the solution?</li>
+      </ul>
+    </div>
+  </mat-tab>
+
+  
+  <mat-tab label="Definition">
+    <div class="heading-wrapper">
+      <h4 class="my-h4">
+      Geometry and flow configurations
+      </h4>
+    </div>
+    <div class="text-wrapper">
+    The benchmark involves a circular particle settling in a rectangular domain filled with viscous fluid. The fluid is characterized by
+    density <app-mathjax [content]="'$\\rho_f$'"></app-mathjax> and dynamic viscosity <app-mathjax [content]="'$\\mu$'"></app-mathjax>.
+    The particle has density <app-mathjax [content]="'$\\rho_p$'"></app-mathjax> and radius <app-mathjax [content]="'$r$'"></app-mathjax>.
+    </div>
+    <div class="text-wrapper">
+    The governing equations for the fluid motion are the incompressible Navier-Stokes equations:
+    </div>
+    <div class="equation-wrapper">
+      <app-mathjax [content]="'$ \\frac{\\partial \\mathbf{u}}{\\partial t} + \\mathbf{u} \\cdot \\nabla \\mathbf{u} = -\\frac{1}{\\rho_f}\\nabla p + \\frac{\\mu}{\\rho_f} \\Delta \\mathbf{u} + \\mathbf{g}$'"></app-mathjax>
+    </div>
+    <div class="equation-wrapper">
+      <app-mathjax [content]="'$ \\nabla \\cdot \\mathbf{u} = \\mathbf{0}$'"></app-mathjax>
+    </div>
+     <div class="text-wrapper">
+     The particle motion is governed by Newton's second law, considering the gravitational force, buoyancy force, and drag force from the fluid.
+     The Reynolds number based on particle diameter and terminal velocity is a key parameter characterizing the flow regime.
+     </div>
+
+     <div class="text-wrapper">
+     Initial conditions specify the particle at rest at a given height above the bottom of the domain. The fluid is initially at rest.
+     Boundary conditions include no-slip walls and appropriate outflow conditions.
+     </div>
+
+     <div class="text-wrapper">
+     <p>The benchmark focuses on tracking the particle's settling behavior, including:</p>
+     <ul>
+       <li>Particle velocity as a function of time</li>
+       <li>Particle position trajectory</li>
+       <li>Forces acting on the particle</li>
+       <li>Approach to terminal velocity</li>
+     </ul>
+     </div>
+  </mat-tab>
+  
+  <mat-tab label="Results">
+    <div class="heading-wrapper">
+      <h4 class="my-h4">
+     Verification and Results
+      </h4>
+    </div>
+    <div class="text-wrapper">
+    <p>The particle sedimentation benchmark has been studied with various computational fluid dynamics codes to evaluate their
+    accuracy and efficiency in handling fluid-structure interaction problems. The benchmark focuses on both qualitative
+    and quantitative validation of the numerical methods.</p>
+    </div>
+    
+    <div class="text-wrapper">
+    <p>Key results include the time evolution of particle velocity, which should asymptotically approach the theoretical
+    terminal velocity. The particle position as a function of time provides insights into the settling dynamics and
+    can be compared with analytical solutions for the limiting cases.</p>
+    </div>
+
+  </mat-tab>
+
+  <mat-tab label="Reference Data">
+    <div class="heading-wrapper">
+      <h4 class="my-h4">
+     Reference Data
+      </h4>
+    </div>
+    <div class="table-wrapper">
+    <table mat-table [dataSource]="dataSourceRefData" class="mat-elevation-z8">
+
+      <!-- Column Column -->
+      <ng-container matColumnDef="column">
+        <th mat-header-cell *matHeaderCellDef> Column </th>
+        <td mat-cell *matCellDef="let element"> {{element.column}} </td>
+      </ng-container>
+
+      <!-- Quantity Column -->
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef> Quantity </th>
+        <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsRefData"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsRefData;"></tr>
+    </table>
+    </div>
+    <div class="table-wrapper">
+    <table mat-table [dataSource]="dataSourceFiles" class="mat-elevation-z8">
+
+      <!-- File Column -->
+      <ng-container matColumnDef="file">
+        <th mat-header-cell *matHeaderCellDef> File </th>
+        <td mat-cell *matCellDef="let element"> {{element.file}} </td>
+      </ng-container>
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element">
+          <a href="assets/files/particle-sedimentation/ParticleSedimentationData.txt">{{element.action}}</a>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsFiles"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsFiles;"></tr>
+    </table>
+    </div>
+    <div class="text-wrapper">
+    <h4>
+    Data Analysis
+    </h4>
+    <p>The reference data file contains the particle sedimentation results including time series of velocity, position, and forces.
+    This data can be used for validation and comparison with other numerical methods.</p>
+    </div>
+  </mat-tab>
+</mat-tab-group>
