@@ -107,7 +107,17 @@ export class BenchmarkBubble3Component implements OnInit {
     try {
       const observable$ = this.postService.postViewData('rising-bubble-3d');
 
-      this.data = await firstValueFrom(observable$);
+      const dataObject = await firstValueFrom(observable$);
+
+      // Convert object response to array format for backward compatibility
+      const expectedOrder = [
+        "RB3sphericityL1", "RB3sphericityL2", "RB3sphericityL3",
+        "RB3bubble_massL1", "RB3bubble_massL2", "RB3bubble_massL3", 
+        "RB3sizeL1", "RB3sizeL2", "RB3sizeL3",
+        "RB3surfaceL1", "RB3surfaceL2", "RB3surfaceL3"
+      ];
+      
+      this.data = expectedOrder.map(key => dataObject[key]);
 
       //=====================================================================================
       // Assign the data of the sphericity plot
@@ -159,52 +169,10 @@ export class BenchmarkBubble3Component implements OnInit {
   }
 
   }
-
-
   
   ngOnInit(): void {
 
     this.loadData();
-
-
-
-    //=====================================================================================
-    // Assign the data of the sphericity plot
-    //=====================================================================================
-    /*
-    const {data: plotData, layout: plotLayout} = this.dataService.get_bubble_sphericity_3d();
-    this.chartSpherecityData = plotData
-    //console.log(`Plot data length: ${JSON.stringify(this.chartSpherecityData)}`)
-
-    //this.graph3 = JSON.parse(JSON.stringify(this.graph));
-    this.graph3.data = this.chartSpherecityData;
-    this.graph3.layout = plotLayout;
-    */
-    //=====================================================================================
-    // Assign the data of the mass conservation plot
-    //=====================================================================================
-    //const {data: massData, layout: massLayout} = this.dataService.get_bubble_mass_3d();
-    //this.chartMassData = massData;
-    //this.graphMassConservation.data = this.chartMassData;
-    //this.graphMassConservation.layout = massLayout;
-
-    //=====================================================================================
-    // Assign the data of the bubble size plot
-    //=====================================================================================
-    //const {data: sizeData, layout: sizeLayout} = this.dataService.get_bubble_size_3d();
-    //this.chartSizeData = sizeData;
-    //this.graphSize.data = this.chartSizeData;
-    //this.graphSize.layout = sizeLayout;
-
-    //=====================================================================================
-    // Assign the data of the surface data plot
-    //=====================================================================================
-    //const {data: surfaceData, layout: surfaceLayout} = this.dataService.get_bubble_surface_3d();
-    //this.chartSurfaceData = surfaceData;
-    //this.graphSurface.data = this.chartSurfaceData;
-    //this.graphSurface.layout = surfaceLayout;
-
-    //=====================================================================================
 
     let meshTableData = this.dataService.getMeshTableData();
     this.dataSourceMesh = meshTableData.meshData;

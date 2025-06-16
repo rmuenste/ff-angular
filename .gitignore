@@ -18,6 +18,16 @@ chrome-profiler-events*.json
 .project
 .classpath
 .c9/
+
+# Environment files with potentially sensitive configuration
+# Only .env.example should be committed as a template
+server/.env
+server/.env.local
+server/.env.development
+server/.env.staging
+server/.env.production
+# Keep the example template
+!server/.env.example
 *.launch
 .settings/
 *.sublime-workspace
