@@ -5,11 +5,11 @@
 </div>
 <div class="text-wrapper">
  The initial configuration, see the figure below, is identical for both test cases and
- consists of a circular bubble of radius <app-mathjax [content]="'$r_0 = 0.25$ centered at $(x,y) = (0.5, 0.5)$'"></app-mathjax> in a
+ consists of a circular bubble of radius <ng-katex [equation]="'r_0 = 0.25'"></ng-katex> centered at <ng-katex [equation]="'(x,y) = (0.5, 0.5)'"></ng-katex> in a
  1 by 2 rectangular domain. The density of the bubble is smaller than that of the
- surrounding fluid <app-mathjax [content]="'$(\\rho_1 \\lt \\rho_2)$'"></app-mathjax>. The no-slip boundary condition (<app-mathjax [content]="'$\\mathbf{u}=0$'"></app-mathjax>) is used at the top and
- bottom boundaries, whereas the free slip condition <app-mathjax [content]="'$ \\left ( \\mathbf{u} \\cdot \\hat{\\mathbf{n}} = 0, \\hat{\\boldsymbol{\\tau}}
- \\cdot \\left ( \\nabla \\mathbf{u} + \\nabla \\mathbf{u}^T \\right ) \\right )$'"></app-mathjax>, where <app-mathjax [content]="'$\\hat{\\boldsymbol{\\tau}}$'"></app-mathjax> is the
+ surrounding fluid <ng-katex [equation]='(\\rho_1 \\lt \\rho_2)'></ng-katex>. The no-slip boundary condition (<ng-katex [equation]='\\mathbf{u}=0'></ng-katex>) is used at the top and
+ bottom boundaries, whereas the free slip condition <ng-katex [equation]='\\left ( \\mathbf{u} \\cdot \\hat{\\mathbf{n}} = 0, \\hat{\\boldsymbol{\\tau}}
+ \\cdot \\left ( \\nabla \\mathbf{u} + \\nabla \\mathbf{u}^T \\right ) \\right )'></ng-katex>, where <ng-katex [equation]='\\hat{\\boldsymbol{\\tau}}'></ng-katex> is the
  tangent vector imposed on the vertical walls.
 </div>
 <div class="im-div">
@@ -20,7 +20,7 @@
 The table below lists the fluid and physical parameters which specify the test cases. The
 evolution of the bubbles should be tracked for 3 time units during which the defined
 benchmark quantities should be measured. The first test case models a rising bubble with Reynolds
-number <app-mathjax [content]="'$Re=35$'"></app-mathjax>, Eötvös number <app-mathjax [content]="'$Eo=10$'"></app-mathjax>, and both density and viscosity ratios equal to 10.
-The second and more challenging test case models a rising bubble with <app-mathjax [content]="'$Re=35$, $Eo=125$'"></app-mathjax>,
+number <ng-katex [equation]='Re=35'></ng-katex>, Eötvös number <ng-katex [equation]='Eo=10'></ng-katex>, and both density and viscosity ratios equal to 10.
+The second and more challenging test case models a rising bubble with <ng-katex [equation]='Re=35'></ng-katex>, <ng-katex [equation]='Eo=125'></ng-katex>,
 and with large density and viscosity ratios (1000 and 100).
 </div>
