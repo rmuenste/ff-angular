@@ -241,21 +241,24 @@ class ErrorResponse(BaseModel):
 ResponseType = Dict[str, Any]
 
 # Request logging middleware
-@app.middleware("http")
+@app.middleware("http")  # <-- This decorator registers the function as HTTP middleware
 async def log_requests(request: Request, call_next):
-    start_time = time.time()
-    client_ip = request.client.host
-    
-    # Log incoming request
+    start_time = time.time()  # Record the time when the request is received
+    client_ip = request.client.host  # Get the IP address of the client making the request
+
     logger.info(f"Request: {request.method} {request.url.path} from {client_ip}")
-    
+    # Log that a request was received, e.g., "GET /get-view-data from 192.168.1.20"
+
     response = await call_next(request)
-    
-    # Log response details
-    process_time = time.time() - start_time
+    # `call_next` forwards the request to the next step in the chain (usually the route handler),
+    # and waits for the response to come back.
+
+    process_time = time.time() - start_time  # Measure how long it took to process the request
     logger.info(f"Response: {response.status_code} in {process_time:.3f}s")
-    
-    return response
+    # Log the status code and how long it took
+
+    return response  # Send the response back to the client
+
 
 @app.post("/get-multiple-json-v-new")
 async def get_multiple_json_v_new(request: FileRequest, http_request: Request) -> ResponseType:
