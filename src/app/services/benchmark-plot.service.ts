@@ -291,17 +291,17 @@ export class BenchmarkPlotService {
     return { data: bubbleMass_data, layout: bubbleMass_Layout };
   }
 
-  private processData(dataFile: any, style?: string, s_max: number = 2) {
+  private processData(dataFile: any, style?: string, sMax: number = 2) {
     let nSegments = dataFile.x.length / 2;
     const plotData = [];
 
-    if (s_max !== undefined) {
-      nSegments = dataFile.x.length / s_max;
+    if (sMax !== undefined) {
+      nSegments = dataFile.x.length / sMax;
     }
 
     for (let i = 0; i < nSegments; i++) {
-      const segmentX = dataFile.x.slice(s_max * i, s_max * (i + 1));
-      const segmentY = dataFile.y.slice(s_max * i, s_max * (i + 1));
+      const segmentX = dataFile.x.slice(sMax * i, sMax * (i + 1));
+      const segmentY = dataFile.y.slice(sMax * i, sMax * (i + 1));
 
       if (i === 0) {
         if (style !== undefined) {

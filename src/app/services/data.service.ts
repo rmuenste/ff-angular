@@ -73,7 +73,7 @@ export class DataService {
   //=====================================================================================
   // Here we have the data of the sphericity plot
   //=====================================================================================
-  get_bubble_sphericity_3d(
+  getBubbleSphericity3d(
     RB3sphericityL1In: PlotData[],
     RB3sphericityL2In: PlotData[],
     RB3sphericityL3In: PlotData[]
@@ -133,7 +133,7 @@ export class DataService {
   //=====================================================================================
   // Here we have the data of the mass conservation plot (Bubble 3D)
   //=====================================================================================
-  get_bubble_mass_3d(
+  getBubbleMass3d(
     RB3bubble_massL1: PlotData[],
     RB3bubble_massL2: PlotData[],
     RB3bubble_massL3: PlotData[]
@@ -189,7 +189,7 @@ export class DataService {
   //=====================================================================================
   // Here we have the data of the size plot
   //=====================================================================================
-  get_bubble_size_3d(
+  getBubbleSize3d(
     RB3sizeL1: PlotData[],
     RB3sizeL2: PlotData[],
     RB3sizeL3: PlotData[]
@@ -244,7 +244,7 @@ export class DataService {
   //=====================================================================================
   // Here we have the data of the surface plot
   //=====================================================================================
-  get_bubble_surface_3d(
+  getBubbleSurface3d(
     RB3surfaceL1: PlotData[],
     RB3surfaceL2: PlotData[],
     RB3surfaceL3: PlotData[]
@@ -330,7 +330,7 @@ export class DataService {
   //=====================================================================================
   // Here we have the data of the circularity (Bubble 2D Case 1)
   //=====================================================================================
-  get_case1_bubble_circularity_2d() {
+  getCase1BubbleCircularity2d() {
 
     const markerTraceTP2D = {
       x: c1g1l1_circularity_data.x.filter((_, index) => index % 90 === 0),
@@ -1263,7 +1263,7 @@ return {
 };
 
 
-  get_case1_bubble_com_2d() {
+  getCase1BubbleCom2d() {
     //const bubble2Shape_data = [bubbleShape];
   
     const markerTraceTP2D = {
@@ -1449,7 +1449,7 @@ return {
     }
   };
 
-  get_case1_bubble_vel_2d() {
+  getCase1BubbleVel2d() {
     //const bubble2Velocity_data = [];
 
     const markerTraceTP2D = {
@@ -1630,7 +1630,7 @@ return {
 
 
   //case 1 bubble shape
-  get_case1_bubble_shape_2d() {
+  getCase1BubbleShape2d() {
 
     const nSegments = c1g1l4s_data.x.length / 2;
     const plotData = [];
@@ -1698,14 +1698,14 @@ return {
     }
   };
 
-  load_case2_bubble_shape_2d() {
+  loadCase2BubbleShape2d() {
 
     let jsonData = "";
 
   }
 
   //case2 bubble shape
-  get_case2_bubble_shape_2d() {
+  getCase2BubbleShape2d() {
 
 //    let jsonData = "";
 //    this.postService.postFileRequest("bubble_shape_case2").subscribe(
@@ -1842,7 +1842,7 @@ return {
     }
   };
 
-  get_case1_bubble_mass_2d() { 
+  getCase1BubbleMass2d() {
     //const bubble2Velocity_data = []; N for normalized
     
     const markerTraceTP2D = {

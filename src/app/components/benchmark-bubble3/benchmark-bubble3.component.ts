@@ -122,7 +122,7 @@ export class BenchmarkBubble3Component implements OnInit {
       //=====================================================================================
       // Assign the data of the sphericity plot
       //=====================================================================================
-      const {data: plotData, layout: plotLayout} = this.dataService.get_bubble_sphericity_3d(
+      const {data: plotData, layout: plotLayout} = this.dataService.getBubbleSphericity3d(
         this.data[0],
         this.data[1],
         this.data[2],
@@ -132,7 +132,7 @@ export class BenchmarkBubble3Component implements OnInit {
       //=====================================================================================
       // Assign the data of the mass conservation plot
       //=====================================================================================
-      const {data: massData, layout: massLayout} = this.dataService.get_bubble_mass_3d(
+      const {data: massData, layout: massLayout} = this.dataService.getBubbleMass3d(
         this.data[3],
         this.data[4],
         this.data[5]
@@ -143,7 +143,7 @@ export class BenchmarkBubble3Component implements OnInit {
       //=====================================================================================
       // Assign the data of the size plot
       //=====================================================================================
-      const {data: sizeData, layout: sizeLayout} = this.dataService.get_bubble_size_3d(
+      const {data: sizeData, layout: sizeLayout} = this.dataService.getBubbleSize3d(
         this.data[6],
         this.data[7],
         this.data[8]
@@ -154,7 +154,7 @@ export class BenchmarkBubble3Component implements OnInit {
       //=====================================================================================
       // Assign the data of the surface plot
       //=====================================================================================
-      const {data: surfaceData, layout: surfaceLayout} = this.dataService.get_bubble_surface_3d(
+      const {data: surfaceData, layout: surfaceLayout} = this.dataService.getBubbleSurface3d(
         this.data[9],
         this.data[10],
         this.data[11]
