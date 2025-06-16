@@ -105,12 +105,7 @@ export class BenchmarkBubble3Component implements OnInit {
   async loadData () {
 
     try {
-      const observable$ = this.postService.postMultiFileRequest([
-                                                                  "RB3sphericityL1", "RB3sphericityL2", "RB3sphericityL3",
-                                                                  "RB3bubble_massL1", "RB3bubble_massL2", "RB3bubble_massL3",
-                                                                  "RB3sizeL1", "RB3sizeL2", "RB3sizeL3",
-                                                                  "RB3surfaceL1", "RB3surfaceL2", "RB3surfaceL3"
-                                                                ])
+      const observable$ = this.postService.postViewData('rising-bubble-3d');
 
       this.data = await firstValueFrom(observable$);
 

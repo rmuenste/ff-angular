@@ -1,6 +1,7 @@
 
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-server',
@@ -14,8 +15,9 @@ export class ServerComponent implements OnInit {
 
   ngOnInit() {
     const fileNames = ['sample1', 'sample2', 'sample3']; // Replace with actual filenames
+    const url = `${environment.api.baseUrl}${environment.api.endpoints.getMultipleJson}`;
 
-    this.http.post<any[]>('http://localhost:3000/get-multiple-json', { fileNames }).subscribe(
+    this.http.post<any[]>(url, { fileNames }).subscribe(
       (response) => {
         this.dataArray = response;
         console.log(this.dataArray);

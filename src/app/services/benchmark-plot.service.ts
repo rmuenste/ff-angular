@@ -41,24 +41,7 @@ export class BenchmarkPlotService {
   ) { }
 
   async getCase1PlotData(): Promise<Case1PlotData> {
-    const fileIdentifiers = [
-      BenchmarkFiles.C1_G1_L1_CIRC, BenchmarkFiles.C1_G2_L1_CIRC, BenchmarkFiles.C1_G3_L1_CIRC,
-      BenchmarkFiles.C1_G1_L2_CIRC, BenchmarkFiles.C1_G2_L2_CIRC, BenchmarkFiles.C1_G3_L2_CIRC,
-      BenchmarkFiles.C1_G1_L3_CIRC, BenchmarkFiles.C1_G2_L3_CIRC, BenchmarkFiles.C1_G3_L3_CIRC,
-      BenchmarkFiles.C1_G1_L1_COM, BenchmarkFiles.C1_G2_L1_COM, BenchmarkFiles.C1_G3_L1_COM,
-      BenchmarkFiles.C1_G1_L2_COM, BenchmarkFiles.C1_G2_L2_COM, BenchmarkFiles.C1_G3_L2_COM,
-      BenchmarkFiles.C1_G1_L3_COM, BenchmarkFiles.C1_G2_L3_COM, BenchmarkFiles.C1_G3_L3_COM,
-      BenchmarkFiles.C1_G1_L1_RISE_VELOCITY, BenchmarkFiles.C1_G2_L1_RISE_VELOCITY, BenchmarkFiles.C1_G3_L1_RISE_VELOCITY,
-      BenchmarkFiles.C1_G1_L2_RISE_VELOCITY, BenchmarkFiles.C1_G2_L2_RISE_VELOCITY, BenchmarkFiles.C1_G3_L2_RISE_VELOCITY,
-      BenchmarkFiles.C1_G1_L3_RISE_VELOCITY, BenchmarkFiles.C1_G2_L3_RISE_VELOCITY, BenchmarkFiles.C1_G3_L3_RISE_VELOCITY,
-      BenchmarkFiles.C1_G1_L1_MASS, BenchmarkFiles.C1_G2_L1_MASS, BenchmarkFiles.C1_G3_L1_MASS,
-      BenchmarkFiles.C1_G1_L2_MASS, BenchmarkFiles.C1_G2_L2_MASS, BenchmarkFiles.C1_G3_L2_MASS,
-      BenchmarkFiles.C1_G1_L3_MASS, BenchmarkFiles.C1_G2_L3_MASS, BenchmarkFiles.C1_G3_L3_MASS,
-      BenchmarkFiles.C1_G1_L5_SHAPE, BenchmarkFiles.C1_G2_L1_SHAPE, BenchmarkFiles.C1_G3_SHAPE,
-      BenchmarkFiles.C1_G1_L6_SHAPE, BenchmarkFiles.C1_G2_L2_SHAPE, BenchmarkFiles.C1_G2_L2_SHAPE
-    ];
-
-    const observable$ = this.postService.postMultiFileRequestV2(fileIdentifiers);
+    const observable$ = this.postService.postViewData('benchmark-case1');
     const dataMap = await firstValueFrom(observable$);
 
     // Process shape data
@@ -86,27 +69,7 @@ export class BenchmarkPlotService {
   }
 
   async getCase2PlotData(): Promise<Case2PlotData> {
-    const fileIdentifiers = [
-      BenchmarkFiles.C2_G1_L8_SHAPE, BenchmarkFiles.C2_G2_L2_SHAPE, BenchmarkFiles.C2_G3_L4_SHAPE,
-      BenchmarkFiles.C2_G1_L4_CIRC, BenchmarkFiles.C2_G1_L5_CIRC, BenchmarkFiles.C2_G1_L6_CIRC,
-      BenchmarkFiles.C2_G2_L1_CIRC, BenchmarkFiles.C2_G2_L2_CIRC, BenchmarkFiles.C2_G2_L3_CIRC,
-      BenchmarkFiles.C2_G3_L2_CIRC, BenchmarkFiles.C2_G3_L3_CIRC, BenchmarkFiles.C2_G3_L4_CIRC,
-      BenchmarkFiles.C2_G1_L4_COM, BenchmarkFiles.C2_G1_L5_COM, BenchmarkFiles.C2_G1_L6_COM,
-      BenchmarkFiles.C2_G2_L1_COM, BenchmarkFiles.C2_G2_L2_COM, BenchmarkFiles.C2_G2_L3_COM,
-      BenchmarkFiles.C2_G3_L2_COM, BenchmarkFiles.C2_G3_L3_COM, BenchmarkFiles.C2_G3_L4_COM,
-      BenchmarkFiles.C2_G1_L4_RISE_VEL, BenchmarkFiles.C2_G1_L5_RISE_VEL, BenchmarkFiles.C2_G1_L6_RISE_VEL,
-      BenchmarkFiles.C2_G2_L1_RISE_VEL, BenchmarkFiles.C2_G2_L2_RISE_VEL, BenchmarkFiles.C2_G2_L3_RISE_VEL,
-      BenchmarkFiles.C2_G3_L2_RISE_VEL, BenchmarkFiles.C2_G3_L3_RISE_VEL,
-      BenchmarkFiles.C2_G1_L4_BUBBLE_MASS, BenchmarkFiles.C2_G1_L5_BUBBLE_MASS, BenchmarkFiles.C2_G1_L6_BUBBLE_MASS,
-      BenchmarkFiles.C2_G2_L1_BUBBLE_MASS, BenchmarkFiles.C2_G2_L2_BUBBLE_MASS, BenchmarkFiles.C2_G2_L3_BUBBLE_MASS,
-      BenchmarkFiles.C2_G3_L2_BUBBLE_MASS, BenchmarkFiles.C2_G3_L3_BUBBLE_MASS,
-      BenchmarkFiles.FF_CIRCULARITY_L1, BenchmarkFiles.FF_CIRCULARITY_L2, BenchmarkFiles.FF_CIRCULARITY_L3,
-      BenchmarkFiles.FF_BUBBLE_MASS_L1, BenchmarkFiles.FF_BUBBLE_MASS_L2, BenchmarkFiles.FF_BUBBLE_MASS_L3,
-      BenchmarkFiles.C2_G1_L6_SHAPE, BenchmarkFiles.C2_G2_L1_SHAPE, BenchmarkFiles.C2_G1_L7_SHAPE, BenchmarkFiles.C2_G2_L3_SHAPE,
-      BenchmarkFiles.DOWN_BUBBLE_SHAPE_L1, BenchmarkFiles.DOWN_BUBBLE_SHAPE_L2, BenchmarkFiles.DOWN_BUBBLE_SHAPE_L3
-    ];
-
-    const observable$ = this.postService.postMultiFileRequestV2(fileIdentifiers);
+    const observable$ = this.postService.postViewData('benchmark-case2');
     const dataMap = await firstValueFrom(observable$);
 
     // Process shape data

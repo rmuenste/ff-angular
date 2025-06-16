@@ -12,6 +12,13 @@ ng serve
 ```
 Navigate to `http://localhost:4200/` to view the application.
 
+For different environments:
+```bash
+ng serve --configuration=development  # Default
+ng serve --configuration=staging
+ng serve --configuration=production
+```
+
 ### JSON Backend Server
 
 The application requires a backend server running on port 3000 to serve JSON data. Two implementations are provided in the `server` directory:
@@ -19,7 +26,10 @@ The application requires a backend server running on port 3000 to serve JSON dat
 **Node.js implementation**:
 ```bash
 cd server
-node server.js
+npm run dev          # Development
+npm run staging      # Staging  
+npm run prod         # Production
+# or directly: node server.js
 ```
 
 **Python (FastAPI) implementation**:
@@ -27,16 +37,34 @@ node server.js
 cd server
 # Activate virtual environment if needed
 # source env/bin/activate
-uvicorn server:app --reload
+
+# Development
+ENVIRONMENT=development python server.py
+
+# Staging
+ENVIRONMENT=staging python server.py
+
+# Production  
+ENVIRONMENT=production python server.py
+
+# or using uvicorn directly:
+uvicorn server:app --reload --host 127.0.0.1 --port 8000
 ```
 
 Both implementations serve JSON data from the `server/data` directory.
+The FastAPI server is used as a file server backend for the Angular frontend. The
+frontend can send file request to the FastAPI to get data it then visualizes.
+
+**Environment Configuration**: Both servers now support environment-specific configuration files (`.env.development`, `.env.staging`, `.env.production`). See `ENVIRONMENT_SETUP.md` for detailed configuration instructions.
 
 ### Build
 
 Build the project:
 ```bash
-ng build
+ng build                              # Production build (default)
+ng build --configuration=development  # Development build
+ng build --configuration=staging      # Staging build  
+ng build --configuration=production   # Production build
 ```
 Build artifacts will be stored in the `dist/` directory.
 
