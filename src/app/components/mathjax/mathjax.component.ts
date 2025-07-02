@@ -24,15 +24,15 @@ export class MathjaxComponent implements OnInit, OnChanges {
   }
 
   updateMathObj() {
-    let obj: any = this.cs.nativeGlobal()['MathJax'];
-    this.mathJaxObject = obj;
+    let mathJaxGlobal: any = this.cs.nativeGlobal()['MathJax'];
+    this.mathJaxObject = mathJaxGlobal;
   }
 
   renderMath() {
     this.updateMathObj();
-    let angObj = this;
+    let componentRef = this;
     setTimeout( () => {
-      angObj.mathJaxObject['Hub'].Queue(["Typeset", angObj.mathJaxObject.Hub])
+      componentRef.mathJaxObject['Hub'].Queue(["Typeset", componentRef.mathJaxObject.Hub])
     }, 1000);
   }
 
