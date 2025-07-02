@@ -33,7 +33,7 @@ export class BenchmarkBubble3Component implements OnInit {
   //=============================================================================
   // Line chart
   chartSpherecityData : any[] = [];
-  graph3: {} | null = null;
+  sphericityGraph: {} | null = null;
   
   //=============================================================================
 
@@ -127,7 +127,7 @@ export class BenchmarkBubble3Component implements OnInit {
         this.data[1],
         this.data[2],
       );
-      this.graph3 ={data: plotData, layout: plotLayout};
+      this.sphericityGraph ={data: plotData, layout: plotLayout};
 
       //=====================================================================================
       // Assign the data of the mass conservation plot
@@ -195,10 +195,10 @@ export class BenchmarkBubble3Component implements OnInit {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
 
-  g3change(ob: MatCheckboxChange): void {
-    let idx: number = parseInt(ob.source.id);
-    //this.showTimeStepG1[idx] = ob.checked;
-    console.log(`We got ${ob.checked} from source: ${ob.source.id}`);
+  g3change(checkboxEvent: MatCheckboxChange): void {
+    let checkboxIndex: number = parseInt(checkboxEvent.source.id);
+    //this.showTimeStepG1[checkboxIndex] = checkboxEvent.checked;
+    console.log(`We got ${checkboxEvent.checked} from source: ${checkboxEvent.source.id}`);
     // Next we manipulate the input date by filtering
     this.filterSphericityData();
   }
