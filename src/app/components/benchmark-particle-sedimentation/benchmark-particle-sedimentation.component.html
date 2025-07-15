@@ -1,72 +1,119 @@
 <mat-tab-group>
   <mat-tab label="Introduction" class="hidden-cursor">
-    <div class="heading-wrapper">
-      <h4 class="my-h4">
-      Particle Sedimentation
-      </h4>
-    </div>
-    <div class="text-wrapper">
-      Particle sedimentation is a fundamental benchmark for the evaluation of numerical algorithms for fluid-structure interaction problems.
-      This benchmark involves the simulation of a solid particle settling under gravity in a viscous fluid, providing insights into
-      the dynamics of particle motion and fluid flow interaction. The benchmark tests various aspects of numerical methods including
-      mesh handling, coupling strategies, and accuracy of force calculations.
-    </div>
-    <div class="text-wrapper">
-      The benchmark problems are studied with different computational fluid dynamics software packages to evaluate their capability
-      in handling moving boundaries and fluid-particle interactions. Key observables include particle velocity, position, and
-      the forces acting on the particle during the sedimentation process.
-    </div>
-    <div class="text-wrapper">
-      This benchmark addresses several important questions in computational fluid dynamics:
-      <ul>
-        <li>How accurately can different solvers handle fluid-structure interaction problems?</li>
-        <li>What is the optimal mesh strategy for moving boundary problems?</li>
-        <li>How do different time stepping schemes affect the stability and accuracy of the solution?</li>
-      </ul>
-    </div>
-  </mat-tab>
-
+  <div class="text-wrapper">
+  <p>
+  This benchmark examines the sedimentation of a single spherical particle in a confined tank, designed specifically to validate numerical methods for simulating particulate flows. The study compares experiments and lattice-Boltzmann simulations of a sphere settling through silicon oil over a range of particle Reynolds numbers (1.5–31.9). By using a confined box with controlled dimensions, the experimental setup ensures that wall effects are consistently captured both in the laboratory and in the simulations, eliminating the need for uncertain boundary assumptions.
+  </p>
+  </div>
   
-  <mat-tab label="Definition">
-    <div class="heading-wrapper">
-      <h4 class="my-h4">
-      Geometry and flow configurations
-      </h4>
-    </div>
-    <div class="text-wrapper">
-    The benchmark involves a circular particle settling in a rectangular domain filled with viscous fluid. The fluid is characterized by
-    density <app-mathjax [content]="'$\\rho_f$'"></app-mathjax> and dynamic viscosity <app-mathjax [content]="'$\\mu$'"></app-mathjax>.
-    The particle has density <app-mathjax [content]="'$\\rho_p$'"></app-mathjax> and radius <app-mathjax [content]="'$r$'"></app-mathjax>.
-    </div>
-    <div class="text-wrapper">
-    The governing equations for the fluid motion are the incompressible Navier-Stokes equations:
-    </div>
-    <div class="equation-wrapper">
-      <app-mathjax [content]="'$ \\frac{\\partial \\mathbf{u}}{\\partial t} + \\mathbf{u} \\cdot \\nabla \\mathbf{u} = -\\frac{1}{\\rho_f}\\nabla p + \\frac{\\mu}{\\rho_f} \\Delta \\mathbf{u} + \\mathbf{g}$'"></app-mathjax>
-    </div>
-    <div class="equation-wrapper">
-      <app-mathjax [content]="'$ \\nabla \\cdot \\mathbf{u} = \\mathbf{0}$'"></app-mathjax>
-    </div>
-     <div class="text-wrapper">
-     The particle motion is governed by Newton's second law, considering the gravitational force, buoyancy force, and drag force from the fluid.
-     The Reynolds number based on particle diameter and terminal velocity is a key parameter characterizing the flow regime.
-     </div>
-
-     <div class="text-wrapper">
-     Initial conditions specify the particle at rest at a given height above the bottom of the domain. The fluid is initially at rest.
-     Boundary conditions include no-slip walls and appropriate outflow conditions.
-     </div>
-
-     <div class="text-wrapper">
-     <p>The benchmark focuses on tracking the particle's settling behavior, including:</p>
-     <ul>
-       <li>Particle velocity as a function of time</li>
-       <li>Particle position trajectory</li>
-       <li>Forces acting on the particle</li>
-       <li>Approach to terminal velocity</li>
-     </ul>
-     </div>
+  <div class="text-wrapper">
+  <p>
+  Key to this benchmark is the use of <strong>Particle Image Velocimetry (PIV)</strong>, which enables detailed, spatially and temporally resolved measurements of the flow field around the settling sphere. PIV allows researchers to observe not only the sphere’s trajectory and velocity over time, but also the surrounding fluid motion in high detail. These measurements are critical for validating simulation codes, as they test whether numerical models accurately capture both the particle motion and the complex, evolving fluid flow—especially during acceleration, steady descent, and deceleration near the bottom wall.
+  </p>
+  </div>
+  
+  <div class="text-wrapper">
+  <p>
+  The main observables provided in this benchmark are:
+  <ul>
+    <li>The sphere's position and velocity over time (trajectory and settling velocity).</li>
+    <li>Detailed snapshots of the fluid velocity field around the sphere from PIV measurements.</li>
+    <li>Time series of fluid velocities at selected monitoring points in the tank.</li>
+  </ul>
+  These datasets enable thorough validation of numerical approaches, including the treatment of moving boundaries, near-wall lubrication effects, and transient hydrodynamic interactions.
+  </div>
   </mat-tab>
+
+  <mat-tab label="Definition">
+  <div class="heading-wrapper">
+    <h4>
+      Geometry and flow configuration
+    </h4>
+  </div>
+  <div class="text-wrapper">
+    The benchmark models a single solid sphere settling under gravity in a confined rectangular tank filled with silicone oil. 
+    The container has internal dimensions of <app-mathjax [content]="'$100 \\times 100 \\times 160\\,\\text{mm}$'"></app-mathjax> (width × depth × height). 
+    A precision Nylon sphere with diameter <app-mathjax [content]="'$d_p = 15\\,\\text{mm}$'"></app-mathjax> is released from rest at a known height and its trajectory is tracked until it comes to rest at the bottom wall.
+    <br>
+    No-slip boundary conditions (<app-mathjax [content]="'\\mathbf{u} = 0'"></app-mathjax>) are imposed on all container walls. 
+    The confined geometry ensures wall effects are consistently captured in both the experiment and the numerical simulations.
+  </div>
+
+  <div class="im-div">
+    <h3 class="mat-h3">Experimental setup and boundary conditions</h3>
+    <img src="assets/sedimentation_setup.png" alt="Experimental setup of settling sphere">
+  </div>
+
+  <div class="heading-wrapper">
+    <h4>
+      Particle and fluid properties
+    </h4>
+  </div>
+  <div class="text-wrapper">
+    The working fluid is silicone oil with varied viscosity and density to produce different Reynolds numbers.
+    The Nylon sphere has a density of <app-mathjax [content]="'$\\rho_p = 1120\\,\\text{kg/m}^3$'"></app-mathjax>.
+    The fluid properties were selected to achieve particle Reynolds numbers between approximately 1.5 and 32.
+  </div>
+
+  <div class="table-wrapper">
+    <table mat-table [dataSource]="dataSourceSedimentation" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="case">
+        <th mat-header-cell *matHeaderCellDef> Case </th>
+        <td mat-cell *matCellDef="let element"> {{element.case}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="rho_f">
+        <th mat-header-cell *matHeaderCellDef> ρ<sub>f</sub> [kg/m³] </th>
+        <td mat-cell *matCellDef="let element"> {{element.rho_f}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="mu_f">
+        <th mat-header-cell *matHeaderCellDef> μ<sub>f</sub> [mPa·s] </th>
+        <td mat-cell *matCellDef="let element"> {{element.mu_f}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Re">
+        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$Re$'"></app-mathjax> </th>
+        <td mat-cell *matCellDef="let element"> {{element.Re}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="St">
+        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$St$'"></app-mathjax> </th>
+        <td mat-cell *matCellDef="let element"> {{element.St}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsSedimentation"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsSedimentation;"></tr>
+    </table>
+  </div>
+
+  <div class="text-wrapper">
+    <p>
+      The table lists the four experimental conditions with varying fluid properties. Cases cover laminar settling from low (<app-mathjax [content]="'$Re \\approx 1.5$'"></app-mathjax>) to transitional (<app-mathjax [content]="'$Re \\approx 32$'"></app-mathjax>) flow regimes.
+    </p>
+  </div>
+
+  <div class="heading-wrapper">
+    <h4>
+      Key equations
+    </h4>
+  </div>
+  <div class="text-wrapper">
+    The benchmark measures the transient motion of the sphere and the induced flow field. The key dimensionless numbers are:
+    <ul>
+      <li>Reynolds number: <app-mathjax [content]="'$Re = \\frac{\\rho_f u_\\infty d_p}{\\mu_f}$'"></app-mathjax></li>
+      <li>Stokes number: <app-mathjax [content]="'$St = \\frac{1}{9} \\frac{\\rho_p d_p u_\\infty}{\\rho_f \\nu}$'"></app-mathjax></li>
+    </ul>
+    <p>
+      Near-wall lubrication forces are modeled in the simulation by applying:
+      <br>
+      <app-mathjax [content]="'$F_{lub} = -6 \\pi \\mu_f d_p u_\\perp \\left( \\frac{d_p}{h} - \\frac{d_p}{D_0} \\right)$'"></app-mathjax>,
+      <br>
+      where <app-mathjax [content]="'$h$'"></app-mathjax> is the gap distance and <app-mathjax [content]="'$u_\\perp$'"></app-mathjax> is the normal velocity component.
+    </p>
+  </div>
+</mat-tab>
   
   <mat-tab label="Results">
     <div class="heading-wrapper">
