@@ -31,14 +31,11 @@ import { BenchmarkFacComponent } from './components/benchmark-fac/benchmark-fac.
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import * as PlotlyJS from 'plotly.js-dist-min';
 import { PlotlyModule } from 'angular-plotly.js';
-import { PlotlyExampleComponentComponent } from './components/plotly-example-component/plotly-example-component.component';
 import { BenchmarksMainComponent } from './components/benchmarks-main/benchmarks-main/benchmarks-main.component';
-import { BenchmarkGeneralComponent } from './components/benchmark-general/benchmark-general/benchmark-general.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { PlotComponentComponent } from './components/plot-component/plot-component.component';
 import { BenchmarkBubble2Component } from './components/benchmark-bubble2/benchmark-bubble2.component';
 import { ComparativePlotComponent } from './components/comparative-plot/comparative-plot.component';
-import { ServerComponent } from './components/server/server.component';
 import { ShapePlotComponent } from './components/shape-plot/shape-plot.component';
 import { BenchmarkParticleSedimentationComponent } from './components/benchmark-particle-sedimentation/benchmark-particle-sedimentation.component';
 
@@ -56,13 +53,10 @@ PlotlyModule.plotlyjs = PlotlyJS;
     BenchmarkExampleComponent,
     BenchmarkBubble3Component,
     BenchmarkFacComponent,
-    PlotlyExampleComponentComponent,
     BenchmarksMainComponent,
-    BenchmarkGeneralComponent,
     PlotComponentComponent,
     BenchmarkBubble2Component,
     ComparativePlotComponent,
-    ServerComponent,
     ShapePlotComponent,
     BenchmarkParticleSedimentationComponent,
   ],

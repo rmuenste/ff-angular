@@ -1,31 +1,131 @@
-## Project Overview
+## Commands
 
-This is an Angular 13 project called "new-material" that appears to be a data visualization tool for scientific or engineering data. It uses Angular Material for UI components and `ngx-charts` and `plotly.js` for plotting.
+### Development Server
 
-## Backend
+Run the Angular development server:
+```bash
+ng serve
+```
+Navigate to `http://localhost:4200/` to view the application.
 
-The project has two backends: a Node.js/Express server and a Python/FastAPI server. Both servers have the same functionality: serving static JSON data from the `server/data` directory. The Python server is the preferred backend, and the Node.js server should be deprecated.
+For different environments:
+```bash
+ng serve --configuration=development  # Default
+ng serve --configuration=staging
+ng serve --configuration=production
+```
 
-## Frontend
+### JSON Backend Server
 
-The frontend is an Angular application with a large number of components. The core logic for fetching and processing data is located in `data.service.ts`. This service is very large and contains a lot of hardcoded data and repeated code for creating plots. This makes the service difficult to maintain and test.
+The application requires a backend server running on port 3000 to serve JSON data. Two implementations are provided in the `server` directory:
 
-Recent changes have started to address this issue by moving some of the hardcoded data to separate files in a new `src/app/data` directory. This is a positive change, but more refactoring is needed.
+**Node.js implementation**:
+```bash
+cd server
+npm run dev          # Development
+npm run staging      # Staging  
+npm run prod         # Production
+# or directly: node server.js
+```
 
-## Data
+**Python (FastAPI) implementation**:
+```bash
+cd server
+# Activate virtual environment if needed
+# source env/bin/activate
 
-The application uses a large number of static JSON and text files as data sources. These files are located in the `server/data` and `src` directories. The data seems to be related to fluid dynamics simulations, with filenames like `c1g1l1_circularity.json` and `ff_bubbleMassL1.json`.
+# Development
+ENVIRONMENT=development python server.py
 
-## Current Issues
+# Staging
+ENVIRONMENT=staging python server.py
 
-*   **Large, Monolithic Service:** The `data.service.ts` is still very large and contains a lot of repeated code for creating plots.
-*   **Hardcoded Data:** While some data has been moved, the service still imports a large amount of static data directly from files.
-*   **Lack of Tests:** The project still lacks meaningful tests.
-*   **Redundant Backends:** The Node.js and Python backends are still both present.
+# Production  
+ENVIRONMENT=production python server.py
 
-## Recommendations
+# or using uvicorn directly:
+uvicorn server:app --reload --host 127.0.0.1 --port 8000
+```
 
-*   **Deprecate the Node.js backend:** Remove the Node.js backend and update the frontend to use the Python backend exclusively.
-*   **Refactor the `data.service.ts`:** Continue refactoring the service by breaking it down into smaller, more manageable services. Use a configuration file to specify the data files to be loaded, rather than hardcoding them in the service.
-*   **Add tests:** Add unit tests for the services and components. This will make it easier to refactor the code and prevent bugs.
-*   **Use a data management solution:** For a production application, it would be better to use a database or other data management solution to store the data, rather than relying on static files.
+Both implementations serve JSON data from the `server/data` directory.
+The FastAPI server is used as a file server backend for the Angular frontend. The
+frontend can send file request to the FastAPI to get data it then visualizes.
+
+**Environment Configuration**: Both servers now support environment-specific configuration files (`.env.development`, `.env.staging`, `.env.production`). See `ENVIRONMENT_SETUP.md` for detailed configuration instructions.
+
+### Build
+
+Build the project:
+```bash
+ng build                              # Production build (default)
+ng build --configuration=development  # Development build
+ng build --configuration=staging      # Staging build  
+ng build --configuration=production   # Production build
+```
+Build artifacts will be stored in the `dist/` directory.
+
+### Testing
+
+Run unit tests:
+```bash
+ng test
+```
+Tests are executed via Karma.
+
+### Code Generation
+
+Generate Angular components, services, etc.:
+```bash
+ng generate component component-name
+# Also supports: directive|pipe|service|class|guard|interface|enum|module
+```
+
+## Architecture Overview
+
+This is an Angular (v13.1.0) application for visualizing benchmark data with the following key aspects:
+
+1. **Main Framework & Libraries**:
+   - Angular Material for UI components
+   - Plotly.js for data visualization/charts
+   - ngx-charts for additional charting capabilities
+   - Angular Flex Layout for responsive layouts
+
+2. **Core Architecture**:
+   - Angular Single Page Application with routing
+   - Component-based UI architecture
+   - Services for data handling and backend communication
+   - JSON-based data interchange with backend
+
+3. **Key Components**:
+   - Benchmark visualization components (benchmark-bubble2, benchmark-bubble3, benchmark-example, etc.)
+   - Comparative plot components for data visualization
+   - Mathjax component for rendering mathematical equations
+   - Shape plotting components for bubble visualization
+
+4. **Data Flow**:
+   - JSON data is served by a simple backend (Node.js or Python/FastAPI)
+   - The PostService handles HTTP requests to the backend
+   - DataService processes and transforms data for visualization
+   - Components request data via services and render visualizations
+
+5. **Backend**:
+   - Simple REST API serving JSON files from the `server/data` directory
+   - Supports single file requests and batch file requests
+   - Both Node.js and Python implementations provided
+
+6. **File Organization**:
+   - `src/app/components`: UI components organized by feature
+   - `src/app/services`: Angular services for data handling
+   - `src/app/models`: Data models and interfaces
+   - `server`: Backend implementations and data files
+   - `src/assets`: Static assets like images and files
+
+## Working with JSON Data
+
+The application relies heavily on JSON data files in the `server/data` directory, which are loaded through the backend API. The naming convention for these files follows patterns like:
+
+- `cXgYlZ_[metric].json`: Case X, Group Y, Level Z for a specific metric (circularity, mass, com, etc.)
+- `ff_[metric]LZ.json`: FeatFlow data for a specific metric at Level Z
+- `RB3[metric]LZ.json`: Rising Bubble 3D data for a specific metric at Level Z
+
+When fetching data, use the PostService which provides methods for requesting single or multiple JSON files.
