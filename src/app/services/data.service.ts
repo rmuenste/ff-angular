@@ -7,7 +7,7 @@ import { ELEMENT_DATA } from '../data/element-data';
 
 
 import { BenchmarkData, exampleBenchmarkData  } from '../models/benchmark-data';
-import { PlotData } from '../components/benchmark-example/benchmark-interfaces';
+import { PlotData } from '../components/benchmark-2d-rising-bubble/benchmark-2d-rising-bubble-interfaces';
 import { PlotMarker } from 'plotly.js-dist-min';
 
 

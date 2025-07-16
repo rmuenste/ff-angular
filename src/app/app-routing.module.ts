@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BenchmarkExampleComponent } from './components/benchmark-example/benchmark-example.component';
+import { Benchmark2DRisingBubbleComponent } from './components/benchmark-2d-rising-bubble/benchmark-2d-rising-bubble.component';
 import { BenchmarksComponent } from './components/benchmarks/benchmarks.component';
 import { BenchmarkBubble3Component } from './components/benchmark-bubble3/benchmark-bubble3.component';
 import { MainComponent } from './components/main/main.component';
@@ -19,8 +19,8 @@ const routes: Routes = [
         component: BenchmarksMainComponent
       },
       {
-        path: 'bubble2',
-        component: BenchmarkExampleComponent
+        path: '2d-rising-bubble',
+        component: Benchmark2DRisingBubbleComponent
       },
       {
         path: 'bubble3',

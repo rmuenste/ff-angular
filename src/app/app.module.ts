@@ -23,8 +23,7 @@ import { MainComponent } from './components/main/main.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './components/footer/footer.component';
 import { MathjaxComponent } from './components/mathjax/mathjax.component';
-import { BenchmarkDetailComponent } from './components/benchmark-detail/benchmark-detail.component';
-import { BenchmarkExampleComponent } from './components/benchmark-example/benchmark-example.component';
+import { Benchmark2DRisingBubbleComponent } from './components/benchmark-2d-rising-bubble/benchmark-2d-rising-bubble.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { BenchmarkBubble3Component } from './components/benchmark-bubble3/benchmark-bubble3.component';
 import { BenchmarkFacComponent } from './components/benchmark-fac/benchmark-fac.component';
@@ -34,7 +33,6 @@ import { PlotlyModule } from 'angular-plotly.js';
 import { BenchmarksMainComponent } from './components/benchmarks-main/benchmarks-main/benchmarks-main.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { PlotComponentComponent } from './components/plot-component/plot-component.component';
-import { BenchmarkBubble2Component } from './components/benchmark-bubble2/benchmark-bubble2.component';
 import { ComparativePlotComponent } from './components/comparative-plot/comparative-plot.component';
 import { ShapePlotComponent } from './components/shape-plot/shape-plot.component';
 import { BenchmarkParticleSedimentationComponent } from './components/benchmark-particle-sedimentation/benchmark-particle-sedimentation.component';
@@ -49,13 +47,11 @@ PlotlyModule.plotlyjs = PlotlyJS;
     MainComponent,
     FooterComponent,
     MathjaxComponent,
-    BenchmarkDetailComponent,
-    BenchmarkExampleComponent,
+    Benchmark2DRisingBubbleComponent,
     BenchmarkBubble3Component,
     BenchmarkFacComponent,
     BenchmarksMainComponent,
     PlotComponentComponent,
-    BenchmarkBubble2Component,
     ComparativePlotComponent,
     ShapePlotComponent,
     BenchmarkParticleSedimentationComponent,

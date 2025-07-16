@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatRadioChange } from '@angular/material/radio';
-import { multi } from './data';
-import { bubble, sphericityL1, massConservationL2 } from './data';
 import { DataService } from 'src/app/services/data.service';
 import { MeshTable } from 'src/app/data/mesh-data';
 import { PeriodicElement } from 'src/app/data/element-data';
@@ -76,7 +74,6 @@ export class BenchmarkBubble3Component implements OnInit {
 
   mathEq = `When $ a \\ne 0 $`;
 
-  lineData = bubble;
   view: [number, number] = [700, 700];
 
   // options
@@ -195,28 +192,10 @@ export class BenchmarkBubble3Component implements OnInit {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
 
-  g3change(checkboxEvent: MatCheckboxChange): void {
-    let checkboxIndex: number = parseInt(checkboxEvent.source.id);
-    //this.showTimeStepG1[checkboxIndex] = checkboxEvent.checked;
-    console.log(`We got ${checkboxEvent.checked} from source: ${checkboxEvent.source.id}`);
-    // Next we manipulate the input date by filtering
-    this.filterSphericityData();
-  }
 
   changeLevel(event: MatRadioChange): void {
     console.log("We got ", event.value);
   }
 
-
-  filterSphericityData(): void {
-    // Make it so that the color of a particular dataSet with index i
-    // stays the same.
-    this.chartSpherecityData.splice(0, this.chartSpherecityData.length);
-    for(let i = 0; i < this.showTimeStepG1.length; i++) {
-      if(this.showTimeStepG1[i]) {
-        this.chartSpherecityData.push(sphericityL1.data[i]);
-      }
-    }
-  }
 }
 
