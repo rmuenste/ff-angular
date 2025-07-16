@@ -138,77 +138,149 @@
      Verification and Results
       </h4>
     </div>
+
     <div class="text-wrapper">
-    <p>The particle sedimentation benchmark has been studied with various computational fluid dynamics codes to evaluate their
-    accuracy and efficiency in handling fluid-structure interaction problems. The benchmark focuses on both qualitative
-    and quantitative validation of the numerical methods.</p>
+      <p>
+        The figures below show simulation results for the benchmark Cases E1–E4. 
+        Each case represents a different settling regime, with particle Reynolds numbers ranging from approximately 1.5 to 32.
+        The simulations were performed using a <em>Finite Element Method with Fictitious Boundary Method (FEM-FBM)</em> approach,
+        which enables direct numerical resolution of fluid–solid interaction by imposing no-slip boundary conditions on the moving sphere surface.
+      </p>
     </div>
-    
+  
     <div class="text-wrapper">
-    <p>Key results include the time evolution of particle velocity, which should asymptotically approach the theoretical
-    terminal velocity. The particle position as a function of time provides insights into the settling dynamics and
-    can be compared with analytical solutions for the limiting cases.</p>
+      <p>
+        The <em>Trajectory by dimensionless gap height</em> plot shows the sphere's normalized distance to the bottom wall 
+        (<app-mathjax [content]="'$h/d_p$'"></app-mathjax>) as a function of time. 
+        This trajectory captures the transient stages of sedimentation: initial acceleration under gravity, approach to a near-constant settling velocity, 
+        and deceleration due to lubrication forces as the particle nears the bottom wall. 
+        Simulation results are shown alongside experimental PIV measurements, demonstrating good agreement across the full range of Reynolds numbers.
+      </p>
     </div>
+  
+    <div class="text-wrapper">
+      <p>
+        The <em>Sedimentation</em> plot shows the vertical velocity component (<app-mathjax [content]="'$u_z$'"></app-mathjax>) over time. 
+        This is a sensitive measure of the dynamic response of the sphere to hydrodynamic forces. 
+        In lower-Re cases (E1–E2), the particle smoothly reaches a steady velocity and decelerates gradually near the wall. 
+        In higher-Re cases (E3–E4), the approach to terminal velocity is more rapid and deceleration occurs closer to impact, reflecting reduced viscous damping. 
+        The simulation tracks these variations accurately, validating the numerical treatment of inertia, wall effects, and lubrication corrections.
+      </p>
+    </div>
+  
+    <div class="text-wrapper">
+      <p>
+        These results demonstrate the FEM-FBM approach's capability to resolve the transient settling behavior and near-wall hydrodynamics of 
+        a particle in confined viscous flow. They also highlight the benchmark’s utility in validating advanced numerical schemes 
+        against detailed experimental data including time-resolved particle trajectories and flow fields measured via PIV.
+      </p>
+    </div>    
 
     <div class="results-images">
       <img src="assets/velocities.png" alt="Particle velocities over time">
       <img src="assets/positions.png" alt="Particle positions over time">
     </div>
 
+
   </mat-tab>
 
   <mat-tab label="Reference Data">
     <div class="heading-wrapper">
       <h4 class="my-h4">
-     Reference Data
+        Downloads
       </h4>
     </div>
-    <div class="table-wrapper">
-    <table mat-table [dataSource]="dataSourceRefData" class="mat-elevation-z8">
 
-      <!-- Column Column -->
-      <ng-container matColumnDef="column">
-        <th mat-header-cell *matHeaderCellDef> Column </th>
-        <td mat-cell *matCellDef="let element"> {{element.column}} </td>
-      </ng-container>
-
-      <!-- Quantity Column -->
-      <ng-container matColumnDef="quantity">
-        <th mat-header-cell *matHeaderCellDef> Quantity </th>
-        <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumnsRefData"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumnsRefData;"></tr>
-    </table>
-    </div>
-    <div class="table-wrapper">
-    <table mat-table [dataSource]="dataSourceFiles" class="mat-elevation-z8">
-
-      <!-- File Column -->
-      <ng-container matColumnDef="file">
-        <th mat-header-cell *matHeaderCellDef> File </th>
-        <td mat-cell *matCellDef="let element"> {{element.file}} </td>
-      </ng-container>
-
-      <!-- Action Column -->
-      <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef> Action </th>
-        <td mat-cell *matCellDef="let element">
-          <a href="assets/files/particle-sedimentation/ParticleSedimentationData.txt">{{element.action}}</a>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumnsFiles"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumnsFiles;"></tr>
-    </table>
-    </div>
     <div class="text-wrapper">
-    <h4>
-    Data Analysis
-    </h4>
-    <p>The reference data file contains the particle sedimentation results including time series of velocity, position, and forces.
-    This data can be used for validation and comparison with other numerical methods.</p>
+      <p>
+        The following tables provide the data for the four simulation cases (E1-E4). Each case was simulated at two different resolution levels. The data for each observable (velocity and position) is available for download.
+      </p>
+    </div>
+
+    <div class="table-wrapper">
+      <h5>Case E1</h5>
+      <table mat-table [dataSource]="dataSourceE1" class="mat-elevation-z8">
+        <ng-container matColumnDef="resolution">
+          <th mat-header-cell *matHeaderCellDef> Resolution </th>
+          <td mat-cell *matCellDef="let element"> {{element.resolution}} </td>
+        </ng-container>
+        <ng-container matColumnDef="velocity">
+          <th mat-header-cell *matHeaderCellDef> Velocity </th>
+          <td mat-cell *matCellDef="let element"> <a [href]="element.velocity" download>Download</a> </td>
+        </ng-container>
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> Position </th>
+          <td mat-cell *matCellDef="let element"> <a [href]="element.position" download>Download</a> </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="['resolution', 'velocity', 'position']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['resolution', 'velocity', 'position'];"></tr>
+      </table>
+    </div>
+
+    <div class="table-wrapper">
+      <h5>Case E2</h5>
+      <table mat-table [dataSource]="dataSourceE2" class="mat-elevation-z8">
+        <ng-container matColumnDef="resolution">
+          <th mat-header-cell *matHeaderCellDef> Resolution </th>
+          <td mat-cell *matCellDef="let element"> {{element.resolution}} </td>
+        </ng-container>
+        <ng-container matColumnDef="velocity">
+          <th mat-header-cell *matHeaderCellDef> Velocity </th>
+          <td mat-cell *matCellDef="let element"> <a [href]="element.velocity" download>Download</a> </td>
+        </ng-container>
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> Position </th>
+          <td mat-cell *matCellDef="let element"> <a [href]="element.position" download>Download</a> </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="['resolution', 'velocity', 'position']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['resolution', 'velocity', 'position'];"></tr>
+      </table>
+    </div>
+
+    <div class="table-wrapper">
+      <h5>Case E3</h5>
+      <table mat-table [dataSource]="dataSourceE3" class="mat-elevation-z8">
+        <ng-container matColumnDef="resolution">
+          <th mat-header-cell *matHeaderCellDef> Resolution </th>
+          <td mat-cell *matCellDef="let element"> {{element.resolution}} </td>
+        </ng-container>
+        <ng-container matColumnDef="velocity">
+          <th mat-header-cell *matHeaderCellDef> Velocity </th>
+          <td mat-cell *matCellDef="let element"> <a [href]="element.velocity" download>Download</a> </td>
+        </ng-container>
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> Position </th>
+          <td mat-cell *matCellDef="let element"> <a [href]="element.position" download>Download</a> </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="['resolution', 'velocity', 'position']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['resolution', 'velocity', 'position'];"></tr>
+      </table>
+    </div>
+
+    <div class="table-wrapper">
+      <h5>Case E4</h5>
+      <table mat-table [dataSource]="dataSourceE4" class="mat-elevation-z8">
+        <ng-container matColumnDef="resolution">
+          <th mat-header-cell *matHeaderCellDef> Resolution </th>
+          <td mat-cell *matCellDef="let element"> {{element.resolution}} </td>
+        </ng-container>
+        <ng-container matColumnDef="velocity">
+          <th mat-header-cell *matHeaderCellDef> Velocity </th>
+          <td mat-cell *matCellDef="let element"> <a [href]="element.velocity" download>Download</a> </td>
+        </ng-container>
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> Position </th>
+          <td mat-cell *matCellDef="let element"> <a [href]="element.position" download>Download</a> </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="['resolution', 'velocity', 'position']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['resolution', 'velocity', 'position'];"></tr>
+      </table>
+    </div>
+
+    <div class="text-wrapper">
+      <p>
+        <a href="assets/sedimentation.zip" download>Download all data as an archive</a>
+      </p>
     </div>
   </mat-tab>
 </mat-tab-group>

@@ -46,6 +46,8 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background: var(--dark-theme-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* width */
@@ -83,7 +85,7 @@ body {
 .mat-h1 {
 font-size: 70px;
 line-height: 70px;
-font-weight: 700;
+font-weight: 400;
 }
 
 .mat-h2 {
@@ -91,17 +93,39 @@ font-weight: 300;
 }
 
 .mat-h3 {
-font-weight: 500;
+font-weight: 400;
 font-size: 18px;
 }
 
 .my-h4 {
-margin-top: 20px;
+  margin-top: 20px;
+  font-weight: 450;
+}
+
+h4 {
+  font-weight: 450;
+}
+
+h5 {
+  font-weight: 400;
+}
+
+strong {
+  font-weight: 400;
+}
+
+
+th {
+  font-weight: 400;
 }
 
 .text-wrapper {
-  padding: 20px 10px 10px 10px;
-  text-align: justify;
+    padding: 20px 10px 10px 10px;
+    text-align: justify;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.5;
+    font-size: 16px;
 }
 
 .table-wrapper {

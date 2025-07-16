@@ -60,10 +60,32 @@ export class BenchmarkParticleSedimentationComponent implements OnInit {
   yAxisLabel: string = 'Population';
   timeline: boolean = true;
 
+  dataSourceE1 = [
+    { resolution: 'L2', velocity: 'assets/sedimentation/velE1.txt', position: 'assets/sedimentation/posE1.txt' },
+    { resolution: 'L3', velocity: 'assets/sedimentation/velE1_L3.txt', position: 'assets/sedimentation/posE1_L3.txt' },
+  ];
+
+  dataSourceE2 = [
+    { resolution: 'L2', velocity: 'assets/sedimentation/velE2.txt', position: 'assets/sedimentation/posE2.txt' },
+    { resolution: 'L3', velocity: 'assets/sedimentation/velE2_L3.txt', position: 'assets/sedimentation/posE2_L3.txt' },
+  ];
+
+  dataSourceE3 = [
+    { resolution: 'L2', velocity: 'assets/sedimentation/velE3.txt', position: 'assets/sedimentation/posE3.txt' },
+    { resolution: 'L3', velocity: 'assets/sedimentation/velE3_L3.txt', position: 'assets/sedimentation/posE3_L3.txt' },
+  ];
+
+  dataSourceE4 = [
+    { resolution: 'L2', velocity: 'assets/sedimentation/velE4.txt', position: 'assets/sedimentation/posE4.txt' },
+    { resolution: 'L3', velocity: 'assets/sedimentation/velE4_L3.txt', position: 'assets/sedimentation/posE4_L3.txt' },
+  ];
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  
 
   onSelect(data: any): void {
     console.log('Item clicked', JSON.parse(JSON.stringify(data)));
