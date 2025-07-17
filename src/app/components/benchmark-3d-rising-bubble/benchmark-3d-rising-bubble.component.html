@@ -244,34 +244,34 @@ surface. The dimensionless timespan of the simulation covers the time interval f
 
    <div fxFlex.gt-sm="40%" fxFlex.lt-lg="100%">
      <div *ngIf="sphericityGraph; else loading">
-       <app-plot-component
+       <app-filterable-plot
          [graph]="sphericityGraph"
-       ></app-plot-component>
+       ></app-filterable-plot>
      </div>
    </div>
 
 
   <div fxFlex.gt-sm="40%" fxFlex.lt-lg="100%">
     <div *ngIf="graphMassConservation; else loading">
-      <app-plot-component
+      <app-filterable-plot
         [graph]="graphMassConservation"
-      ></app-plot-component>
+      ></app-filterable-plot>
     </div>
   </div>
 
   <div fxFlex.gt-sm="40%" fxFlex.lt-lg="100%">
     <div *ngIf="graphSize; else loading">
-      <app-plot-component
+      <app-filterable-plot
         [graph]="graphSize"
-      ></app-plot-component>
+      ></app-filterable-plot>
     </div>
   </div>
 
   <div fxFlex.gt-sm="40%" fxFlex.lt-lg="100%">
     <div *ngIf="graphSurface; else loading">
-      <app-plot-component
+      <app-filterable-plot
         [graph]="graphSurface"
-      ></app-plot-component>
+      ></app-filterable-plot>
     </div>
   </div>
 </div>

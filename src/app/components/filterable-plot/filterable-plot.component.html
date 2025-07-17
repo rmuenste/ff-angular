@@ -1,0 +1,49 @@
+<div class="plot-wrapper">
+  <app-base-plot 
+    [data]="currentData"
+    [layout]="layout"
+    [useResizeHandler]="false">
+  </app-base-plot>
+  
+  <div class="plot-section">
+    <span>
+      <mat-checkbox 
+        class="plot-margin" 
+        [(ngModel)]="showTimeStepG1[0]" 
+        (change)="onFilterChange($event)">
+        dt=1.0E-3
+      </mat-checkbox>
+      <mat-checkbox 
+        class="plot-margin" 
+        [(ngModel)]="showTimeStepG1[1]" 
+        (change)="onFilterChange($event)">
+        dt=0.25E-3
+      </mat-checkbox>
+      <mat-checkbox 
+        class="plot-margin" 
+        [(ngModel)]="showTimeStepG1[2]" 
+        (change)="onFilterChange($event)">
+        dt=0.0625E-3
+      </mat-checkbox>
+      <mat-checkbox 
+        class="plot-margin" 
+        [(ngModel)]="showTimeStepG1[3]" 
+        (change)="onFilterChange($event)">
+        dt=0.0156E-3
+      </mat-checkbox>
+    </span>
+  </div>
+  
+  <div class="plot-section">
+    <span>
+      <mat-radio-group [(ngModel)]="selectedLevel" (change)="changeLevel($event)">
+        <mat-radio-button 
+          *ngFor="let level of graph.data; let i = index" 
+          class="plot-margin" 
+          [value]="i">
+          Level {{i + 1}}
+        </mat-radio-button> 
+      </mat-radio-group>
+    </span>  
+  </div>
+</div>

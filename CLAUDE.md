@@ -32,6 +32,13 @@ npm run prod         # Production
 # or directly: node server.js
 ```
 
+**Error handling**
+The node.js can continue to run if the application crashed. Terminate it with:
+
+```bash
+sudo lsof -i :4200
+```
+
 **Python (FastAPI) implementation**:
 ```bash
 cd server

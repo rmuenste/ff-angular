@@ -32,9 +32,9 @@ import * as PlotlyJS from 'plotly.js-dist-min';
 import { PlotlyModule } from 'angular-plotly.js';
 import { BenchmarksMainComponent } from './components/benchmarks-main/benchmarks-main/benchmarks-main.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { PlotComponentComponent } from './components/plot-component/plot-component.component';
-import { ComparativePlotComponent } from './components/comparative-plot/comparative-plot.component';
-import { ShapePlotComponent } from './components/shape-plot/shape-plot.component';
+import { BasePlotComponent } from './components/base-plot/base-plot.component';
+import { LevelSelectionPlotComponent } from './components/level-selection-plot/level-selection-plot.component';
+import { FilterablePlotComponent } from './components/filterable-plot/filterable-plot.component';
 import { BenchmarkParticleSedimentationComponent } from './components/benchmark-particle-sedimentation/benchmark-particle-sedimentation.component';
 
 PlotlyModule.plotlyjs = PlotlyJS;
@@ -51,9 +51,9 @@ PlotlyModule.plotlyjs = PlotlyJS;
     Benchmark3DRisingBubbleComponent,
     BenchmarkFacComponent,
     BenchmarksMainComponent,
-    PlotComponentComponent,
-    ComparativePlotComponent,
-    ShapePlotComponent,
+    BasePlotComponent,
+    LevelSelectionPlotComponent,
+    FilterablePlotComponent,
     BenchmarkParticleSedimentationComponent,
   ],
   imports: [
