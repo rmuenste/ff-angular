@@ -1,15 +1,23 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        MatIconModule,
+        MatToolbarModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        NavbarComponent,
+        FooterComponent
       ],
     }).compileComponents();
   });
@@ -26,10 +34,14 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('new-material');
   });
 
-  it('should render title', () => {
+  it('should render app-navbar and app-footer in the layout', () => {
     const fixture = TestBed.createComponent(AppComponent);
+    // This instantiates the component
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('new-material app is running!');
+
+    expect(compiled.querySelector('app-navbar')).toBeTruthy();
+    expect(compiled.querySelector('app-footer')).toBeTruthy();
   });
+
 });
