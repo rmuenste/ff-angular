@@ -21,7 +21,7 @@ def load_env_file(env_file='.env'):
                 line = line.strip()
                 if line and not line.startswith('#') and '=' in line:
                     key, value = line.split('=', 1)
-                    os.environ.setdefault(key.strip(), value.strip())
+                    os.environ[key.strip()] = value.strip()
 
 # Load environment configuration
 environment = os.getenv('ENVIRONMENT', 'development')
@@ -35,7 +35,11 @@ logger = logging.getLogger(__name__)
 app = FastAPI()
 
 # Get environment variables with defaults
-ALLOWED_ORIGINS = os.getenv('ALLOWED_ORIGINS', 'http://localhost:4200').split(',')
+origins_env = os.getenv('ALLOWED_ORIGINS')
+logger.info(f"ALLOWED_ORIGINS env var: {origins_env}")
+ALLOWED_ORIGINS = os.getenv('ALLOWED_ORIGINS', 
+    'http://localhost:4200,http://localhost:8080,http://localhost:8081,http://0.0.0.0:8080,http://0.0.0.0:8081,http://127.0.0.1:8080,http://127.0.0.1:8081'
+).split(',')
 PORT = int(os.getenv('PORT', '8000'))
 HOST = os.getenv('HOST', '127.0.0.1')
 DATA_DIRECTORY = os.getenv('DATA_DIRECTORY', 'data')
@@ -127,6 +131,7 @@ def check_rate_limit(client_ip: str) -> bool:
 
 # Define the allowed origins
 origins = ALLOWED_ORIGINS
+logger.info(f"Configured CORS origins: {origins}")
 
 # Add CORS middleware
 app.add_middleware(

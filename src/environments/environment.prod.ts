@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   api: {
-    baseUrl: 'https://api.yourdomain.com',
+    baseUrl: 'http://localhost:8000',
     endpoints: {
       posts: 'https://jsonplaceholder.typicode.com/posts',
       getJson: '/get-json',

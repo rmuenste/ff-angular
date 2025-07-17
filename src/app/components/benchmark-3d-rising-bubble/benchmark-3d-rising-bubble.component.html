@@ -73,15 +73,16 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumnsMesh;"></tr>
       </table>
     </div>
-    <!--
+
     <div class="video-wrapper">
-    <h4>Video Rising Bubble 3D</h4>
-      <video width="624" height="351" controls>
-        <source src="assets/test.ogv" type="video/ogv">
+      <h4>Video Rising Bubble 3D</h4>
+      <p>Environment production: {{ environment.production }}</p>
+      <video *ngIf="environment.production" width="624" height="351" controls>
         <source src="assets/risingbubble2.mp4" type="video/mp4">
       </video>
+      <p *ngIf="!environment.production">Video hidden in development mode</p>
     </div>
-    -->
+
   </mat-tab>
   <!-- Definition Tab -->
   <mat-tab label="Definition">

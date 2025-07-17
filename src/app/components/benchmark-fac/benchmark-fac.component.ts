@@ -9,6 +9,7 @@ import { FF_ERROR_RESULTS } from './ff_error_results'
 import { VS_ERROR_RESULTS } from './ff_error_results'
 import { OF_ERROR_RESULTS } from './of_error_results'
 import { CFX_ERROR_RESULTS } from './cfx_error_results'
+import { environment } from 'src/environments/environment';
 
 
 export interface ReferenceElement {
@@ -41,6 +42,7 @@ const fileData: FileDownload[] = [
 })
 export class BenchmarkFacComponent implements OnInit {
 
+  environment = environment;
   displayedColumns: string[] = ['level', 'cells', 'name', 'dofu', 'dofp', 'doft'];
   dataSource = ELEMENT_DATA;
 

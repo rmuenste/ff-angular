@@ -6,6 +6,7 @@ import { MeshTable } from 'src/app/data/mesh-data';
 import { PeriodicElement } from 'src/app/data/element-data';
 import { PostService } from 'src/services/post.service'; 
 import { firstValueFrom } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 
 export interface FileDownload {
@@ -28,6 +29,7 @@ const fileData: FileDownload[] = [
 export class Benchmark3DRisingBubbleComponent implements OnInit {
   displayedColumnsFiles: string[] = ['file', 'action'];
   dataSourceFiles = fileData;
+  environment = environment;
   //=============================================================================
   // Line chart
   chartSpherecityData : any[] = [];
