@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Observable, firstValueFrom } from 'rxjs';
-import { PostService } from 'src/services/post.service';
+import { IDataService } from './interfaces/data-service.interface';
+import { DATA_SERVICE_TOKEN } from './data-service.factory';
 import { DataService } from './data.service';
 import { BenchmarkFiles } from '../benchmark-data.constants';
 
@@ -36,12 +37,12 @@ export interface Case2PlotData {
 export class BenchmarkPlotService {
 
   constructor(
-    private postService: PostService,
+    @Inject(DATA_SERVICE_TOKEN) private apiDataService: IDataService,
     private dataService: DataService
   ) { }
 
   async getCase1PlotData(): Promise<Case1PlotData> {
-    const observable$ = this.postService.postViewData('benchmark-case1');
+    const observable$ = this.apiDataService.getViewData('benchmark-case1');
     const dataMap = await firstValueFrom(observable$);
 
     // Process shape data
@@ -69,7 +70,7 @@ export class BenchmarkPlotService {
   }
 
   async getCase2PlotData(): Promise<Case2PlotData> {
-    const observable$ = this.postService.postViewData('benchmark-case2');
+    const observable$ = this.apiDataService.getViewData('benchmark-case2');
     const dataMap = await firstValueFrom(observable$);
 
     // Process shape data

@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatRadioChange } from '@angular/material/radio';
 import { DataService } from 'src/app/services/data.service';
 import { MeshTable } from 'src/app/data/mesh-data';
 import { PeriodicElement } from 'src/app/data/element-data';
-import { PostService } from 'src/services/post.service'; 
+import { IDataService } from 'src/app/services/interfaces/data-service.interface';
+import { DATA_SERVICE_TOKEN } from 'src/app/services/data-service.factory';
 import { firstValueFrom } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -96,7 +97,10 @@ export class Benchmark3DRisingBubbleComponent implements OnInit {
 
 
 
-  constructor(private dataService: DataService, private postService: PostService) {
+  constructor(
+    private dataService: DataService, 
+    @Inject(DATA_SERVICE_TOKEN) private apiDataService: IDataService
+  ) {
 
   }
 
@@ -104,7 +108,7 @@ export class Benchmark3DRisingBubbleComponent implements OnInit {
   async loadData () {
 
     try {
-      const observable$ = this.postService.postViewData('rising-bubble-3d');
+      const observable$ = this.apiDataService.getViewData('rising-bubble-3d');
 
       const dataObject = await firstValueFrom(observable$);
 

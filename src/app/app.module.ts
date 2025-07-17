@@ -35,6 +35,7 @@ import { BasePlotComponent } from './components/base-plot/base-plot.component';
 import { LevelSelectionPlotComponent } from './components/level-selection-plot/level-selection-plot.component';
 import { FilterablePlotComponent } from './components/filterable-plot/filterable-plot.component';
 import { BenchmarkParticleSedimentationComponent } from './components/benchmark-particle-sedimentation/benchmark-particle-sedimentation.component';
+import { DATA_SERVICE_PROVIDER } from './services/data-service.factory';
 
 PlotlyModule.plotlyjs = PlotlyJS;
 
@@ -77,7 +78,7 @@ PlotlyModule.plotlyjs = PlotlyJS;
     MatSelectModule,
     PlotlyModule
   ],
-  providers: [],
+  providers: [DATA_SERVICE_PROVIDER],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

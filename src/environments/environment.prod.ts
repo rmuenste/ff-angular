@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
+  dataSource: 'static' as 'server' | 'static', // Production uses static by default
   api: {
     baseUrl: 'http://localhost:8000',
     endpoints: {
