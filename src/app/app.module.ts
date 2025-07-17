@@ -27,7 +27,6 @@ import { Benchmark2DRisingBubbleComponent } from './components/benchmark-2d-risi
 import { MatDividerModule } from '@angular/material/divider';
 import { Benchmark3DRisingBubbleComponent } from './components/benchmark-3d-rising-bubble/benchmark-3d-rising-bubble.component';
 import { BenchmarkFacComponent } from './components/benchmark-fac/benchmark-fac.component';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 import * as PlotlyJS from 'plotly.js-dist-min';
 import { PlotlyModule } from 'angular-plotly.js';
 import { BenchmarksMainComponent } from './components/benchmarks-main/benchmarks-main/benchmarks-main.component';
@@ -74,7 +73,6 @@ PlotlyModule.plotlyjs = PlotlyJS;
     MatToolbarModule,
     MatSidenavModule,
     MatDividerModule,
-    NgxChartsModule,
     HttpClientModule,
     MatSelectModule,
     PlotlyModule
