@@ -25,7 +25,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MathjaxComponent } from './components/mathjax/mathjax.component';
 import { Benchmark2DRisingBubbleComponent } from './components/benchmark-2d-rising-bubble/benchmark-2d-rising-bubble.component';
 import { MatDividerModule } from '@angular/material/divider';
-import { BenchmarkBubble3Component } from './components/benchmark-bubble3/benchmark-bubble3.component';
+import { Benchmark3DRisingBubbleComponent } from './components/benchmark-3d-rising-bubble/benchmark-3d-rising-bubble.component';
 import { BenchmarkFacComponent } from './components/benchmark-fac/benchmark-fac.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import * as PlotlyJS from 'plotly.js-dist-min';
@@ -48,7 +48,7 @@ PlotlyModule.plotlyjs = PlotlyJS;
     FooterComponent,
     MathjaxComponent,
     Benchmark2DRisingBubbleComponent,
-    BenchmarkBubble3Component,
+    Benchmark3DRisingBubbleComponent,
     BenchmarkFacComponent,
     BenchmarksMainComponent,
     PlotComponentComponent,

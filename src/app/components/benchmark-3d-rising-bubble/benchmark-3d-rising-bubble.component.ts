@@ -21,11 +21,11 @@ const fileData: FileDownload[] = [
 ];
 
 @Component({
-  selector: 'app-benchmark-bubble3',
-  templateUrl: './benchmark-bubble3.component.html',
-  styleUrls: ['./benchmark-bubble3.component.scss']
+  selector: 'app-benchmark-3d-rising-bubble',
+  templateUrl: './benchmark-3d-rising-bubble.component.html',
+  styleUrls: ['./benchmark-3d-rising-bubble.component.scss']
 })
-export class BenchmarkBubble3Component implements OnInit {
+export class Benchmark3DRisingBubbleComponent implements OnInit {
   displayedColumnsFiles: string[] = ['file', 'action'];
   dataSourceFiles = fileData;
   //=============================================================================
