@@ -72,29 +72,59 @@ export class StaticDataService implements IDataService {
 
   /**
    * Get data for a specific view by loading all associated files
+   * @param viewName - The view identifier (e.g., 'benchmark-case1')
+   * @returns Observable<object> - Single object with all file data keyed by filename
    */
   getViewData(viewName: string): Observable<any> {
-    const fileList = this.VIEW_MAPPINGS[viewName];
+    // Get the array of filenames associated with this view
+    const fileList = this.VIEW_MAPPINGS[viewName];  // Type: string[]
     
+    // Guard clause: return error observable if view doesn't exist
     if (!fileList) {
+      // of() creates an Observable that emits this error object once and completes
       return of({ error: `View '${viewName}' not found` });
     }
-
-    // Load all files for this view
+  
+    // Transform each filename (string) into an Observable<any>
+    // This is JavaScript's Array.map() - NOT RxJS map()
     const fileRequests = fileList.map(filename => 
-      this.loadFile(filename).pipe(
-        map(data => ({ [this.getBaseFileName(filename)]: data })),
-        catchError(error => of({ [this.getBaseFileName(filename)]: { error: `File not found: ${filename}` } }))
+      // Each filename becomes an Observable that loads and transforms the file
+      this.loadFile(filename).pipe(  // Returns Observable<any> (raw file data)
+        
+        // RxJS map() transforms each emitted value through the Observable chain
+        // Input: raw file data from loadFile()
+        // Output: object with computed key { "filename_without_json": fileData }
+        map(data => ({ 
+          [this.getBaseFileName(filename)]: data  // Computed property name syntax
+        })),
+        
+        // catchError() handles any errors and converts them to regular emissions
+        // This prevents one failed file from breaking the entire operation
+        // of() converts the error object into an Observable emission
+        catchError(error => of({ 
+          [this.getBaseFileName(filename)]: { error: `File not found: ${filename}` } 
+        }))
       )
     );
-
-    // Combine all file requests
+    // Result: fileRequests is Observable<any>[] (array of Observables)
+  
+    // forkJoin() takes an array of Observables and returns a single Observable
+    // that emits an array of all results when ALL observables complete
+    // Type transformation: Observable<any>[] → Observable<any[]>
     return forkJoin(fileRequests).pipe(
+      
+      // RxJS map() transforms the emitted array into a single merged object
+      // Input: array of objects like [{ "file1": data1 }, { "file2": data2 }, ...]
+      // Output: single object like { "file1": data1, "file2": data2, ... }
       map(results => {
-        // Merge all results into a single object
+        // Array.reduce() accumulates/merges all objects into one
+        // acc = accumulated result (starts as empty object {})
+        // curr = current array element (object with one key-value pair)
+        // {...acc, ...curr} = spread operator merges objects
         return results.reduce((acc, curr) => ({ ...acc, ...curr }), {});
       })
     );
+    // Final result: Observable<object> with all file data keyed by filename
   }
 
   /**

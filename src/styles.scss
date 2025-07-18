@@ -37,6 +37,7 @@ $text-dark1: #ffffffb3;
 $text-dark2: rgb(170, 170, 170);
 :root {
   --primary-bg-color: #8bc34a;
+//  --primary-text-color: #ffffffb3;
   --primary-text-color: rgba(0, 0, 0, 0.87);
   --dark-theme-background: #303030;
 }
@@ -99,11 +100,16 @@ font-size: 18px;
 
 .my-h4 {
   margin-top: 20px;
+  font-size: 24px;
+  font-weight: 450;
+}
+
+h3 {
   font-weight: 450;
 }
 
 h4 {
-  font-weight: 450;
+  font-weight: 400;
 }
 
 h5 {
@@ -193,4 +199,9 @@ color: $text-dark2;
 
 .plot-margin {
   margin: 0 10px;
+}
+
+a {
+  color: $text-dark1;
+  text-decoration: none;
 }

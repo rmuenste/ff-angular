@@ -1,8 +1,8 @@
 <mat-tab-group>
   <mat-tab label="Introduction">
     <div class="heading-wrapper">
-      <h4>
-        Geometry and flow configurations
+      <h4 class="my-h4">
+        Two-Dimensional Rising Bubble
       </h4>
     </div>
     <div class="text-wrapper">
@@ -14,7 +14,7 @@
       below:
     </div>
     <div class="text-wrapper">
-      <p style="text-align: center; font-weight: bold;">
+      <p style="text-align: center;">
         Numerical simulations of a two-dimensional rising bubble for six different codes with identical problem
         formulations
       </p>
@@ -72,7 +72,7 @@
   </mat-tab>
   <mat-tab label="Definition">
     <div class="heading-wrapper">
-      <h4>
+      <h4 class="my-h4">
         Geometry and flow configurations
       </h4>
     </div>
@@ -198,11 +198,10 @@
         <h4>
           Verification of the results by the picture norm
         </h4>
+        <p style="margin-bottom: 15px;">
         To visually verify the results the following approximate bubble shapes can be used. (The raw data for the bubble
         shapes can be obtained from the Reference data page.)
-        <div class="im-div">
-          <h3 class="mat-h3">Initial configuration and boundary conditions for the test cases</h3>
-        </div>
+        </p>
 
         <div *ngIf="graph2ComPack" class="plot-wrapper-ex">
           <div class="plot-wrapper-ex">
@@ -288,9 +287,6 @@
         </h4>
         To visually verify the results the following approximate bubble shapes can be used. (The raw data for the bubble
         shapes can be obtained from the Reference data page.)
-        <div class="im-div">
-          <h3 class="mat-h3">Initial configuration and boundary conditions for the test cases</h3>
-        </div>
 
         <div *ngIf="graphCase1ShapePack" class="plot-wrapper-ex">
 
@@ -374,9 +370,9 @@
   </mat-tab>
   <mat-tab label="Reference Data">
     <div class="text-wrapper">
-      <h2>
+      <h4 class="my-h4">
         Reference Data
-      </h2>
+      </h4>
     </div>
     <div class="text-wrapper">
       <p>
