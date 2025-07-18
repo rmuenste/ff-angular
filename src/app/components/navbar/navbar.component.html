@@ -1,6 +1,9 @@
 <mat-toolbar color="primary" class="myfixed">
   <mat-toolbar-row>
     <nav class="nav-content">
+      <button *ngIf="(isHandset$ | async)" mat-icon-button (click)="toggleSidenav()">
+        <mat-icon>menu</mat-icon>
+      </button>
       <a routerLink="/"
         mat-button>
         <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>

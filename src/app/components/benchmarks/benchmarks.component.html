@@ -1,38 +1,38 @@
 <div fxFlex class="benchmarks-container main-content">
   <div class="page-header">
-  <h1>Benchmarks</h1>
+    <h1>Benchmarks</h1>
   </div>
-  <mat-drawer-container [style.height]="'100%'" opened class="mydrawer-container">
-    <mat-drawer mode="side" opened class="my-drawer">
+  <mat-drawer-container [style.height]="'100%'" class="mydrawer-container">
+    <mat-drawer #drawer [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)" class="my-drawer">
       <mat-nav-list>
         <a routerLink="fac3"
            routerLinkActive="myA" [routerLinkActiveOptions]="{exact: true}"
            mat-list-item
-           >
+           (click)="closeSidenavOnMobile()">
           <span class="nav-item-style">3D Flow Around Cylinder</span>
         </a>
         <a routerLink="bubble3"
            routerLinkActive="myA" [routerLinkActiveOptions]="{exact: true}"
-           mat-list-item>
+           mat-list-item
+           (click)="closeSidenavOnMobile()">
           <span class="nav-item-style">3D Rising Bubble</span>
         </a>
         <a routerLink="2d-rising-bubble"
-        routerLinkActive="myA" [routerLinkActiveOptions]="{exact: true}"
-        mat-list-item>
-        <span class="nav-item-style">2D Rising Bubble</span>
+           routerLinkActive="myA" [routerLinkActiveOptions]="{exact: true}"
+           mat-list-item
+           (click)="closeSidenavOnMobile()">
+          <span class="nav-item-style">2D Rising Bubble</span>
         </a>
         <a routerLink="particle-sedimentation"
            routerLinkActive="myA" [routerLinkActiveOptions]="{exact: true}"
-           mat-list-item>
+           mat-list-item
+           (click)="closeSidenavOnMobile()">
           <span class="nav-item-style">Particle Sedimentation</span>
         </a>
       </mat-nav-list>
-      </mat-drawer>
+    </mat-drawer>
     <mat-drawer-content>
       <router-outlet></router-outlet>
     </mat-drawer-content>
   </mat-drawer-container>
 </div>
-<!--
- fxLayout="row" fxLayoutAlign="start center" class="fill-width"
--->
