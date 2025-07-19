@@ -1,145 +1,67 @@
-/*
- You can add global styles to this file, and also import other style files
- background-color: #3f51b5;
-  --primary-bg-color: #c2185b;
-
-  500: #8bc34a,
- */
-
-@use 'sass:map';
+// Main styles entry point
 @use '@angular/material' as mat;
-@use '@angular/material/_theming';
+@use 'themes' as themes;
 
+// Include Angular Material core styles (only once)
 @include mat.core();
-@import 'src/my-theme.scss';
 
-/*
-$app-primary: mat.define-palette(mat.$pink-palette);
+// Apply typography
+@include themes.apply-custom-typography();
 
-$app-accent: mat.define-palette(mat.$blue-gray-palette);
+// Default theme - apply dark theme by default
+// In the future, this will be controlled by a theme service
+@include themes.apply-dark-theme();
 
-$my-theme: mat.define-dark-theme((
-  color: (
-    primary: $app-primary,
-    accent: $app-accent,
-  )
-));
-
-*/
-$color-config: mat.get-color-config($my-theme);
-
-// Get the primary color palette from the color-config.
-$primary-palette: map.get($color-config, 'primary');
-$my-primary-color: mat.get-color-from-palette($primary-palette, 500);
-
-
-$text-dark1: #ffffffb3;
-$text-dark2: rgb(170, 170, 170);
-:root {
-  --primary-bg-color: #8bc34a;
-//  --primary-text-color: #ffffffb3;
-  --primary-text-color: rgba(0, 0, 0, 0.87);
-  --dark-theme-background: #303030;
+// Global styles that don't depend on theme
+html, body { 
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-html, body { height: 100% }
 body {
-  margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background: var(--dark-theme-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: var(--background-color);
+  color: var(--text-primary);
 }
 
-/* width */
+// Scrollbar styling (theme-specific styles are in theme files)
 ::-webkit-scrollbar {
-    width: 4px;
+  width: 4px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 4px #707070;
-    background: white;
-    border-radius: 10px;
+  border-radius: 10px;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
-    background: blud;
-    border-radius: 10px;
+  border-radius: 10px;
 }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: grey;
+// Global layout utilities
+* {
+  margin-top: 0;
 }
-
-*
- {
-        margin-top: 0;
-  }
 
 .main-content {
   padding-top: 64px;
 }
 
-.mat-h1 {
-font-size: 70px;
-line-height: 70px;
-font-weight: 400;
-}
-
-.mat-h2 {
-font-weight: 300;
-}
-
-.mat-h3 {
-font-weight: 400;
-font-size: 18px;
-}
-
-.my-h4 {
-  margin-top: 20px;
-  font-size: 24px;
-  font-weight: 450;
-}
-
-h3 {
-  font-weight: 450;
-}
-
-h4 {
-  font-weight: 400;
-}
-
-h5 {
-  font-weight: 400;
-}
-
-strong {
-  font-weight: 400;
-}
-
-
-th {
-  font-weight: 400;
-}
-
+// Content layout classes
 .text-wrapper {
-    padding: 20px 10px 10px 10px;
-    text-align: justify;
-    max-width: 700px;
-    margin: 0 auto;
-    line-height: 1.5;
-    font-size: 16px;
+  padding: 20px 10px 10px 10px;
+  text-align: justify;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.5;
+  font-size: 16px;
 }
 
 .table-wrapper {
   width: 80%;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 20px auto;
 }
 
 .im-div {
@@ -148,22 +70,18 @@ th {
 
 .definition-wrapper {
   width: 90%;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 20px auto;
 }
 
 .equation-wrapper {
-text-align: center;
-margin-top: 10px;
-margin-bottom: 10px;
+  text-align: center;
+  margin: 10px 0;
 }
 
 .definition-heading {
-margin-bottom: 8px;
-font-style: italic;
-color: $text-dark2;
+  margin-bottom: 8px;
+  font-style: italic;
+  color: var(--text-secondary);
 }
 
 .heading-wrapper {
@@ -172,20 +90,14 @@ color: $text-dark2;
 
 .plot-wrapper {
   width: 80%;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 20px auto;
   align-items: center;
   text-align: center;
 }
 
 .plot-wrapper-ex {
   width: 700px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 20px auto;
   align-items: center;
   text-align: center;
 }
@@ -201,7 +113,23 @@ color: $text-dark2;
   margin: 0 10px;
 }
 
+// Links
 a {
-  color: $text-dark1;
+  color: var(--text-primary);
   text-decoration: none;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+// Theme switcher will be added here in the future
+.theme-switcher {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  
+  // This will be implemented later
+  display: none;
 }

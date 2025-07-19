@@ -1,0 +1,91 @@
+// Theme Base - Common theme definitions and mixins
+@use '@angular/material' as mat;
+
+// Base theme mixins that all themes will use
+@mixin base-theme($theme) {
+  // Include the common styles for Angular Material
+  @include mat.all-component-themes($theme);
+  
+  // Extract theme-specific color palettes
+  $color-config: mat.get-color-config($theme);
+  $primary: map-get($color-config, 'primary');
+  $accent: map-get($color-config, 'accent');
+  $warn: map-get($color-config, 'warn');
+  $is-dark: map-get($color-config, 'is-dark');
+  
+  // Define CSS custom properties based on theme
+  :root {
+    --primary-color: #{mat.get-color-from-palette($primary, 500)};
+    --primary-lighter: #{mat.get-color-from-palette($primary, 300)};
+    --primary-darker: #{mat.get-color-from-palette($primary, 700)};
+    --accent-color: #{mat.get-color-from-palette($accent, 500)};
+    --warn-color: #{mat.get-color-from-palette($warn, 500)};
+    
+    @if $is-dark {
+      --background-color: #303030;
+      --surface-color: #424242;
+      --text-primary: rgba(255, 255, 255, 0.87);
+      --text-secondary: rgba(255, 255, 255, 0.7);
+      --text-disabled: rgba(255, 255, 255, 0.38);
+      --divider-color: rgba(255, 255, 255, 0.12);
+      // High contrast text for colored backgrounds
+      --text-on-primary: rgba(0, 0, 0, 0.87);  // Black text on green
+      --text-on-accent: rgba(255, 255, 255, 0.87);  // White text on orange
+    } @else {
+      --background-color: #fafafa;
+      --surface-color: #ffffff;
+      --text-primary: rgba(0, 0, 0, 0.87);
+      --text-secondary: rgba(0, 0, 0, 0.6);
+      --text-disabled: rgba(0, 0, 0, 0.38);
+      --divider-color: rgba(0, 0, 0, 0.12);
+      // High contrast text for colored backgrounds
+      --text-on-primary: rgba(0, 0, 0, 0.87);  // Black text on green
+      --text-on-accent: rgba(255, 255, 255, 0.87);  // White text on orange
+    }
+  }
+}
+
+// Custom component theme mixins
+@mixin custom-component-themes($theme) {
+  $color-config: mat.get-color-config($theme);
+  $is-dark: map-get($color-config, 'is-dark');
+  
+  // Main header component theming
+  .main-header {
+    background: var(--primary-color);
+    color: var(--text-primary);
+  }
+  
+  // Main page component theming
+  .main-page {
+    background: var(--background-color);
+    color: var(--text-primary);
+  }
+  
+  // Navbar theming
+  mat-toolbar {
+    @if $is-dark {
+      box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+                  0 6px 10px rgba(0, 0, 0, 0.14),
+                  0 1px 18px rgba(0, 0, 0, 0.12);
+    } @else {
+      box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.1),
+                  0 6px 10px rgba(0, 0, 0, 0.07),
+                  0 1px 18px rgba(0, 0, 0, 0.06);
+    }
+  }
+  
+  // Links and interactive elements
+  a {
+    color: var(--text-primary);
+    
+    &:hover {
+      background: rgba(var(--text-primary), 0.08);
+    }
+  }
+  
+  // Definition text styling
+  .definition-heading {
+    color: var(--text-secondary);
+  }
+}

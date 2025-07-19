@@ -1,0 +1,44 @@
+// Light Theme Definition
+@use '@angular/material' as mat;
+@use 'theme-base' as base;
+
+// Define palettes for light theme
+$light-primary: mat.define-palette(mat.$light-green-palette, 500, 300, 700);
+$light-accent: mat.define-palette(mat.$deep-orange-palette, 500, 300, 700);
+$light-warn: mat.define-palette(mat.$red-palette, 500, 300, 700);
+
+// Create light theme
+$light-theme: mat.define-light-theme((
+  color: (
+    primary: $light-primary,
+    accent: $light-accent,
+    warn: $light-warn,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
+));
+
+// Apply light theme
+@mixin apply-light-theme() {
+  @include base.base-theme($light-theme);
+  @include base.custom-component-themes($light-theme);
+  
+  // Light theme specific overrides
+  :root {
+    --theme-name: 'light';
+    
+    // Scrollbar styling for light theme
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.1);
+      background: #f1f1f1;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      
+      &:hover {
+        background: #a8a8a8;
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+// Custom Theme Definition (alternative color scheme)
+@use '@angular/material' as mat;
+@use 'theme-base' as base;
+
+// Define palettes for custom theme - using different colors
+$custom-primary: mat.define-palette(mat.$indigo-palette, 500, 300, 700);
+$custom-accent: mat.define-palette(mat.$pink-palette, 500, 300, 700);
+$custom-warn: mat.define-palette(mat.$red-palette, 500, 300, 700);
+
+// Create custom dark theme
+$custom-theme: mat.define-dark-theme((
+  color: (
+    primary: $custom-primary,
+    accent: $custom-accent,
+    warn: $custom-warn,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
+));
+
+// Apply custom theme
+@mixin apply-custom-theme() {
+  @include base.base-theme($custom-theme);
+  @include base.custom-component-themes($custom-theme);
+  
+  // Custom theme specific overrides
+  :root {
+    --theme-name: 'custom';
+    
+    // Custom scrollbar styling
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 4px rgba(63, 81, 181, 0.3);
+      background: #1a1a2e;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(45deg, #3f51b5, #e91e63);
+      
+      &:hover {
+        background: linear-gradient(45deg, #5c6bc0, #f06292);
+      }
+    }
+  }
+}

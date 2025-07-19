@@ -1,0 +1,89 @@
+// Typography Configuration
+@use '@angular/material' as mat;
+
+// Custom typography configuration
+$custom-typography: mat.define-typography-config(
+  $font-family: 'Roboto, "Helvetica Neue", sans-serif',
+  $display-4: mat.define-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
+  $display-3: mat.define-typography-level(56px, 56px, 400, $letter-spacing: -0.02em),
+  $display-2: mat.define-typography-level(45px, 48px, 400, $letter-spacing: -0.005em),
+  $display-1: mat.define-typography-level(34px, 40px, 400),
+  $headline: mat.define-typography-level(24px, 32px, 400),
+  $title: mat.define-typography-level(20px, 32px, 500),
+  $subheading-2: mat.define-typography-level(16px, 28px, 400),
+  $subheading-1: mat.define-typography-level(15px, 24px, 400),
+  $body-2: mat.define-typography-level(14px, 24px, 500),
+  $body-1: mat.define-typography-level(14px, 20px, 400),
+  $caption: mat.define-typography-level(12px, 20px, 400),
+  $button: mat.define-typography-level(14px, 14px, 500),
+  $input: mat.define-typography-level(inherit, 1.125, 400)
+);
+
+// Custom typography classes
+@mixin apply-custom-typography() {
+  @include mat.typography-hierarchy($custom-typography);
+  
+  // Override default Material typography classes
+  .mat-h1, .mat-headline, .mat-typography h1 {
+    font-size: 70px;
+    line-height: 70px;
+    font-weight: 400;
+    margin: 0 0 16px;
+  }
+
+  .mat-h2, .mat-title, .mat-typography h2 {
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 300;
+    margin: 0 0 16px;
+  }
+
+  .mat-h3, .mat-subheading-2, .mat-typography h3 {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 400;
+    margin: 0 0 16px;
+  }
+
+  .mat-h4, .mat-subheading-1, .mat-typography h4 {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    margin: 0 0 16px;
+  }
+
+  .mat-h5, .mat-typography h5 {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    margin: 0 0 12px;
+  }
+
+  // Custom heading classes
+  .my-h4 {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: 450;
+    margin-bottom: 16px;
+  }
+
+  // Body text styling
+  .text-wrapper {
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+  
+  // Ensure consistent font weights
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  }
+  
+  strong {
+    font-weight: 500; // Increased from 400 for better emphasis
+  }
+  
+  th {
+    font-weight: 500; // Increased from 400 for table headers
+  }
+}

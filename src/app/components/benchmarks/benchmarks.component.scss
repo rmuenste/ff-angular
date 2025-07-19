@@ -1,10 +1,8 @@
-@import 'src/styles.scss';
 
 .page-header {
   height: 80px;
-  background: $my-primary-color;
-  color: white;
-  color: var(--primary-text-color);
+  background: var(--primary-color);
+  color: var(--text-on-primary);
   display: flex;
   align-items: center;
   padding-left: 20px;
@@ -46,7 +44,7 @@ h1 {
 }
 
 .nav-item-style {
-  color: #ffffffa6;
+  color: var(--text-secondary);
 }
 
 .myA {
