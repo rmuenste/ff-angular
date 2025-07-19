@@ -29,10 +29,14 @@ h1 {
 
 .benchmarks-container {
   height: 100%;
+  background: var(--background-color);
+  color: var(--text-primary);
 }
 
 .my-drawer {
   overflow: auto;
+  background: var(--surface-color) !important;
+  color: var(--text-primary) !important;
 }
 
 .mat-drawer-container h3 {
@@ -69,7 +73,7 @@ color: var(--text-on-primary) !important;
 }
 
 .mat-focus-indicator {
-  background-color: #424242;
+  background-color: var(--surface-color);
 }
 
 

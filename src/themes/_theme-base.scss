@@ -98,6 +98,12 @@
     background-color: var(--primary-color) !important;
   }
   
+  // Tab header styling for proper navigation appearance
+  .mat-tab-group .mat-tab-header {
+    border-bottom: 1px solid var(--divider-color) !important;
+    background: var(--surface-color) !important;
+  }
+  
   // Tab labels - use proper contrast colors
   .mat-tab-group.mat-primary .mat-tab-label.mat-tab-label-active {
     color: var(--text-primary) !important;  // Use primary text color for better readability
@@ -105,6 +111,11 @@
   
   .mat-tab-group.mat-primary .mat-tab-label:not(.mat-tab-label-active) {
     color: var(--text-secondary) !important;  // Inactive tabs use secondary text
+  }
+  
+  // Tab body background
+  .mat-tab-group .mat-tab-body-wrapper {
+    background: var(--background-color) !important;
   }
   
   // Other Material components that might need overrides
@@ -131,5 +142,52 @@
   .mat-raised-button.mat-accent {
     background-color: var(--accent-color) !important;
     color: var(--text-on-accent) !important;
+  }
+  
+  // Material drawer/sidenav components
+  .mat-drawer,
+  .mat-sidenav {
+    background: var(--surface-color) !important;
+    color: var(--text-primary) !important;
+  }
+  
+  .mat-drawer-container,
+  .mat-sidenav-container {
+    background: var(--background-color) !important;
+    color: var(--text-primary) !important;
+  }
+  
+  // Material list items in drawer
+  .mat-drawer .mat-list-item,
+  .mat-sidenav .mat-list-item {
+    color: var(--text-primary) !important;
+  }
+  
+  // Material table styling for better presentation
+  .mat-table {
+    .mat-header-cell,
+    .mat-cell {
+      text-align: center !important;
+    }
+    
+    // Keep identifier/text columns left-aligned for readability
+    .mat-column-position,
+    .mat-column-case,
+    .mat-column-abbreviation,
+    .mat-column-name,
+    .mat-column-level,
+    .mat-column-quantity,
+    .mat-column-file,
+    .mat-column-action,
+    .mat-column-column,
+    .mat-column-resolution,
+    .mat-column-velocity {
+      text-align: left !important;
+    }
+    
+    // For complex tables with descriptive text, keep left alignment
+    .mat-cell:first-child {
+      text-align: left !important;
+    }
   }
 }

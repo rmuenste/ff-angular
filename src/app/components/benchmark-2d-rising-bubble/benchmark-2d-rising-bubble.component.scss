@@ -1,3 +1,11 @@
+// Ensure component has theme-aware background
+:host {
+  display: block;
+  background: var(--background-color);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
 ::ng-deep .mat-tab-label {
   flex: 1;
 }
@@ -8,8 +16,8 @@ table {
 .picture-element {
     max-width: 50%;
     text-align: center;
-    background-color: white;
-    border: 1px solid #ddd;
+    background-color: var(--surface-color);
+    border: 1px solid var(--divider-color);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     margin-left: auto;
@@ -27,7 +35,7 @@ table {
 
 .picture-element p.title {
     margin-bottom: 15px;
-    color:darkgray;
+    color: var(--text-primary);
     font-size: 1.2em;
     font-weight: bold;
 }
