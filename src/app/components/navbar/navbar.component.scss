@@ -12,6 +12,8 @@
 
 mat-toolbar {
   padding: 0px;
+  background: var(--primary-color);
+  color: var(--text-on-primary);
   // Theme-specific shadows are handled in the theme files
 }
 

@@ -1,0 +1,80 @@
+.theme-switcher {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+// Quick toggle button (always visible)
+.quick-toggle {
+  color: var(--text-primary);
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+// Full theme toggle group (desktop only)
+.theme-toggle-group {
+  display: none;
+  
+  @media (min-width: 768px) {
+    display: flex;
+  }
+  
+  .mat-button-toggle {
+    border: 1px solid var(--divider-color);
+    
+    &.mat-button-toggle-checked {
+      background: var(--primary-color);
+      color: var(--text-on-primary);
+    }
+    
+    &:not(.mat-button-toggle-checked) {
+      background: var(--surface-color);
+      color: var(--text-primary);
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
+    }
+  }
+  
+  .theme-label {
+    margin-left: 4px;
+    font-size: 12px;
+    
+    @media (max-width: 1024px) {
+      display: none; // Hide labels on smaller screens
+    }
+  }
+}
+
+// System theme indicator
+.system-theme-info {
+  display: flex;
+  align-items: center;
+  
+  .system-icon {
+    font-size: 18px;
+    color: var(--text-secondary);
+    opacity: 0.7;
+  }
+}
+
+// Mobile responsiveness
+@media (max-width: 768px) {
+  .theme-switcher {
+    gap: 4px;
+  }
+  
+  .quick-toggle {
+    .mat-icon {
+      font-size: 20px;
+    }
+  }
+}
+
+// Smooth theme transitions
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}

@@ -88,4 +88,48 @@
   .definition-heading {
     color: var(--text-secondary);
   }
+  
+  // Override Angular Material component colors to use CSS custom properties
+  // This ensures components like mat-tab ink-bar respond to theme switching
+  
+  // Tab ink bar (tab underline indicator)
+  .mat-tab-group.mat-primary .mat-ink-bar,
+  .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color: var(--primary-color) !important;
+  }
+  
+  // Tab labels - use proper contrast colors
+  .mat-tab-group.mat-primary .mat-tab-label.mat-tab-label-active {
+    color: var(--text-primary) !important;  // Use primary text color for better readability
+  }
+  
+  .mat-tab-group.mat-primary .mat-tab-label:not(.mat-tab-label-active) {
+    color: var(--text-secondary) !important;  // Inactive tabs use secondary text
+  }
+  
+  // Other Material components that might need overrides
+  .mat-button.mat-primary,
+  .mat-icon-button.mat-primary,
+  .mat-fab.mat-primary {
+    background-color: var(--primary-color) !important;
+    color: var(--text-on-primary) !important;
+  }
+  
+  .mat-button.mat-accent,
+  .mat-icon-button.mat-accent,
+  .mat-fab.mat-accent {
+    background-color: var(--accent-color) !important;
+    color: var(--text-on-accent) !important;
+  }
+  
+  // Raised buttons
+  .mat-raised-button.mat-primary {
+    background-color: var(--primary-color) !important;
+    color: var(--text-on-primary) !important;
+  }
+  
+  .mat-raised-button.mat-accent {
+    background-color: var(--accent-color) !important;
+    color: var(--text-on-accent) !important;
+  }
 }

@@ -25,6 +25,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MathjaxComponent } from './components/mathjax/mathjax.component';
 import { Benchmark2DRisingBubbleComponent } from './components/benchmark-2d-rising-bubble/benchmark-2d-rising-bubble.component';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { Benchmark3DRisingBubbleComponent } from './components/benchmark-3d-rising-bubble/benchmark-3d-rising-bubble.component';
 import { BenchmarkFacComponent } from './components/benchmark-fac/benchmark-fac.component';
 import * as PlotlyJS from 'plotly.js-dist-min';
@@ -36,6 +37,7 @@ import { LevelSelectionPlotComponent } from './components/level-selection-plot/l
 import { FilterablePlotComponent } from './components/filterable-plot/filterable-plot.component';
 import { BenchmarkParticleSedimentationComponent } from './components/benchmark-particle-sedimentation/benchmark-particle-sedimentation.component';
 import { DATA_SERVICE_PROVIDER } from './services/data-service.factory';
+import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switcher.component';
 
 PlotlyModule.plotlyjs = PlotlyJS;
 
@@ -55,6 +57,7 @@ PlotlyModule.plotlyjs = PlotlyJS;
     LevelSelectionPlotComponent,
     FilterablePlotComponent,
     BenchmarkParticleSedimentationComponent,
+    ThemeSwitcherComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,6 +77,7 @@ PlotlyModule.plotlyjs = PlotlyJS;
     MatToolbarModule,
     MatSidenavModule,
     MatDividerModule,
+    MatButtonToggleModule,
     HttpClientModule,
     MatSelectModule,
     PlotlyModule

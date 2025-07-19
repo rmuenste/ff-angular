@@ -37,7 +37,8 @@ h1 {
 
 .mat-drawer-container h3 {
   margin-bottom: 0px;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: var(--surface-color);
+  color: var(--text-primary);
   padding: 5px 5px 5px 5px;
   font-weight: normal;
   text-align: center;
@@ -48,24 +49,23 @@ h1 {
 }
 
 .myA {
-background-color: #8bc34a7c !important;
+background: var(--primary-color) !important;
+opacity: 0.8 !important;
+color: var(--text-on-primary) !important;
 }
 
 .myA:hover {
-background-color: #c5f7517c !important;
+background: var(--primary-lighter) !important;
+opacity: 0.9 !important;
+color: var(--text-on-primary) !important;
 }
 
 
-/*
-a.benchmarks-selected {
-color:rgb(154, 212, 159);
-background-color: #8bc34a7c;
-}
-
-.myA:focus {
-}
+// Active/focus states for navigation items  
 .myA:active {
-background-color: #8bc34a7c !important;
+  background: var(--primary-color) !important;
+  opacity: 1 !important;
+  color: var(--text-on-primary) !important;
 }
 
 .mat-focus-indicator {

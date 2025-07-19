@@ -18,7 +18,8 @@ table {
 
 .picture-element p.title,
 .picture-element p.caption {
-    background-color: #f5f5f5;
+    background-color: var(--surface-color);
+    color: var(--text-primary);
     padding: 10px;
     margin: 0;
     border-radius: 4px;
@@ -40,5 +41,5 @@ table {
 
 .picture-element p.caption {
     font-size: 0.9em;
-    color: #555;
+    color: var(--text-secondary);
 }
