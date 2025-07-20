@@ -6,16 +6,16 @@
  * imported from the node_modules folder. For each palette we can optionally specify a default, ligher and darker hue.
  * Look at available color palettes: https://material.io/design/color
  */
- $my-primary: mat.define-palette(mat.$light-green-palette);
+ $my-primary: mat.m2-define-palette(mat.$m2-light-green-palette);
 
  // Here we set the accent color palette
- $my-accent: mat.define-palette(mat.$deep-orange-palette);
+ $my-accent: mat.m2-define-palette(mat.$m2-deep-orange-palette);
 
  // Here we set the warn color palette
- $my-warn: mat.define-palette(mat.$red-palette);
+ $my-warn: mat.m2-define-palette(mat.$m2-red-palette);
 
  // Here we create a theme object called $my-theme with our primary, accent and warn palettes
- $my-theme: mat.define-dark-theme((
+ $my-theme: mat.m2-define-dark-theme((
    color: (
      primary: $my-primary,
      accent: $my-accent,

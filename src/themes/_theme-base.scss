@@ -7,7 +7,7 @@
   @include mat.all-component-themes($theme);
   
   // Extract theme-specific color palettes
-  $color-config: mat.get-color-config($theme);
+  $color-config: mat.m2-get-color-config($theme);
   $primary: map-get($color-config, 'primary');
   $accent: map-get($color-config, 'accent');
   $warn: map-get($color-config, 'warn');
@@ -15,11 +15,11 @@
   
   // Define CSS custom properties based on theme
   :root {
-    --primary-color: #{mat.get-color-from-palette($primary, 500)};
-    --primary-lighter: #{mat.get-color-from-palette($primary, 300)};
-    --primary-darker: #{mat.get-color-from-palette($primary, 700)};
-    --accent-color: #{mat.get-color-from-palette($accent, 500)};
-    --warn-color: #{mat.get-color-from-palette($warn, 500)};
+    --primary-color: #{mat.m2-get-color-from-palette($primary, 500)};
+    --primary-lighter: #{mat.m2-get-color-from-palette($primary, 300)};
+    --primary-darker: #{mat.m2-get-color-from-palette($primary, 700)};
+    --accent-color: #{mat.m2-get-color-from-palette($accent, 500)};
+    --warn-color: #{mat.m2-get-color-from-palette($warn, 500)};
     
     @if $is-dark {
       --background-color: #303030;
@@ -47,7 +47,7 @@
 
 // Custom component theme mixins
 @mixin custom-component-themes($theme) {
-  $color-config: mat.get-color-config($theme);
+  $color-config: mat.m2-get-color-config($theme);
   $is-dark: map-get($color-config, 'is-dark');
   
   // Main header component theming

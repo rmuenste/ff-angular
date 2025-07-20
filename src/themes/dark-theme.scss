@@ -3,18 +3,18 @@
 @use 'theme-base' as base;
 
 // Define palettes for dark theme
-$dark-primary: mat.define-palette(mat.$light-green-palette, 500, 300, 700);
-$dark-accent: mat.define-palette(mat.$deep-orange-palette, 500, 300, 700);
-$dark-warn: mat.define-palette(mat.$red-palette, 500, 300, 700);
+$dark-primary: mat.m2-define-palette(mat.$m2-light-green-palette, 500, 300, 700);
+$dark-accent: mat.m2-define-palette(mat.$m2-deep-orange-palette, 500, 300, 700);
+$dark-warn: mat.m2-define-palette(mat.$m2-red-palette, 500, 300, 700);
 
 // Create dark theme
-$dark-theme: mat.define-dark-theme((
+$dark-theme: mat.m2-define-dark-theme((
   color: (
     primary: $dark-primary,
     accent: $dark-accent,
     warn: $dark-warn,
   ),
-  typography: mat.define-typography-config(),
+  typography: mat.m2-define-typography-config(),
   density: 0,
 ));
 
