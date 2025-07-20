@@ -31,7 +31,6 @@ import { BenchmarkFacComponent } from './components/benchmark-fac/benchmark-fac.
 import * as PlotlyJS from 'plotly.js-dist-min';
 import { PlotlyModule } from 'angular-plotly.js';
 import { BenchmarksMainComponent } from './components/benchmarks-main/benchmarks-main/benchmarks-main.component';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { BasePlotComponent } from './components/base-plot/base-plot.component';
 import { LevelSelectionPlotComponent } from './components/level-selection-plot/level-selection-plot.component';
 import { FilterablePlotComponent } from './components/filterable-plot/filterable-plot.component';
@@ -63,7 +62,6 @@ PlotlyModule.plotlyjs = PlotlyJS;
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FlexLayoutModule,
     MatButtonModule,
     MatRadioModule,
     MatCheckboxModule,

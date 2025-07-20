@@ -133,3 +133,161 @@ a {
   // This will be implemented later
   display: none;
 }
+
+// Layout Utility Classes - Replaces Angular Flex Layout
+// =====================================================
+
+// Flexbox container utilities
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-row-wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+// Flex item utilities
+.flex-auto {
+  flex: 1 1 auto;
+}
+
+.flex-none {
+  flex: none;
+}
+
+.flex-10 {
+  flex: 0 0 10%;
+}
+
+.flex-40 {
+  flex: 0 0 40%;
+}
+
+.flex-100 {
+  flex: 0 0 100%;
+}
+
+// Justify content utilities
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+// Align items utilities
+.items-start {
+  align-items: flex-start;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+.items-stretch {
+  align-items: stretch;
+}
+
+// Gap utilities
+.gap-4 {
+  gap: 1rem; // 16px
+}
+
+.gap-2 {
+  gap: 0.5rem; // 8px
+}
+
+.gap-6 {
+  gap: 1.5rem; // 24px
+}
+
+// Responsive utilities - Angular Material breakpoints
+// xs: 0px, sm: 600px, md: 960px, lg: 1280px, xl: 1920px
+
+@media (min-width: 600px) {
+  .flex-40-sm {
+    flex: 0 0 40%;
+  }
+  
+  .flex-50-sm {
+    flex: 0 0 50%;
+  }
+  
+  .flex-100-sm {
+    flex: 0 0 100%;
+  }
+}
+
+@media (min-width: 960px) {
+  .flex-30-md {
+    flex: 0 0 30%;
+  }
+  
+  .flex-33-md {
+    flex: 0 0 33.333%;
+  }
+  
+  .flex-40-md {
+    flex: 0 0 40%;
+  }
+  
+  .flex-50-md {
+    flex: 0 0 50%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .flex-25-lg {
+    flex: 0 0 25%;
+  }
+  
+  .flex-33-lg {
+    flex: 0 0 33.333%;
+  }
+  
+  .flex-40-lg {
+    flex: 0 0 40%;
+  }
+  
+  .flex-50-lg {
+    flex: 0 0 50%;
+  }
+}
+
+@media (max-width: 1279px) {
+  .flex-100-lt-lg {
+    flex: 0 0 100%;
+  }
+}
+
+// App-specific layout wrapper
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
