@@ -191,4 +191,65 @@
       text-align: left !important;
     }
   }
+  
+  // MDC Checkbox theming - ensure proper contrast in all themes
+  .mat-mdc-checkbox {
+    // Unchecked state border and background
+    .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate) ~ .mdc-checkbox__background {
+      border-color: var(--text-secondary) !important;
+      background-color: transparent !important;
+    }
+    
+    // Checked state
+    .mdc-checkbox__native-control:enabled:checked ~ .mdc-checkbox__background,
+    .mdc-checkbox__native-control:enabled:indeterminate ~ .mdc-checkbox__background {
+      border-color: var(--primary-color) !important;
+      background-color: var(--primary-color) !important;
+    }
+    
+    // Checkmark color
+    .mdc-checkbox__native-control:enabled:checked ~ .mdc-checkbox__background .mdc-checkbox__checkmark,
+    .mdc-checkbox__native-control:enabled:indeterminate ~ .mdc-checkbox__background .mdc-checkbox__mixedmark {
+      color: var(--text-on-primary) !important;
+    }
+    
+    // Label text color
+    .mdc-form-field > label {
+      color: var(--text-primary) !important;
+    }
+    
+    // Focus/hover states
+    .mdc-checkbox__native-control:enabled:focus ~ .mdc-checkbox__background {
+      border-color: var(--primary-color) !important;
+    }
+  }
+  
+  // MDC Radio Button theming - ensure proper contrast in all themes
+  .mat-mdc-radio-button {
+    // Unchecked state outer circle
+    .mdc-radio__native-control:enabled:not(:checked) + .mdc-radio__background .mdc-radio__outer-circle {
+      border-color: var(--text-secondary) !important;
+    }
+    
+    // Checked state outer circle
+    .mdc-radio__native-control:enabled:checked + .mdc-radio__background .mdc-radio__outer-circle {
+      border-color: var(--primary-color) !important;
+    }
+    
+    // Checked state inner circle
+    .mdc-radio__native-control:enabled:checked + .mdc-radio__background .mdc-radio__inner-circle {
+      border-color: var(--primary-color) !important;
+      background-color: var(--primary-color) !important;
+    }
+    
+    // Label text color
+    .mdc-form-field > label {
+      color: var(--text-primary) !important;
+    }
+    
+    // Focus/hover states
+    .mdc-radio__native-control:enabled:focus + .mdc-radio__background .mdc-radio__outer-circle {
+      border-color: var(--primary-color) !important;
+    }
+  }
 }

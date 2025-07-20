@@ -70,6 +70,11 @@ Run unit tests:
 ```bash
 ng test
 ```
+
+In LLM AI terminal workflows use the following command:
+```bash
+ng test --watch=false --browsers=ChromeHeadless
+```
 Tests are executed via Karma.
 
 ### Code Generation

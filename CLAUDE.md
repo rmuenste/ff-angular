@@ -82,7 +82,7 @@ Run unit tests:
 ng test
 ```
 
-In :
+In LLM AI terminal workflows use the following command:
 ```bash
 ng test --watch=false --browsers=ChromeHeadless
 ```
