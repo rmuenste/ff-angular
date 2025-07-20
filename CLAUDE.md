@@ -81,6 +81,12 @@ Run unit tests:
 ```bash
 ng test
 ```
+
+In :
+```bash
+ng test --watch=false --browsers=ChromeHeadless
+```
+
 Tests are executed via Karma.
 
 ### Code Generation
