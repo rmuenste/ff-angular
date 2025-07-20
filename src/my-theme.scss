@@ -23,9 +23,4 @@
    )
  ));
 
-/*
- TODO(mdc-migration): Remove all-legacy-component-themes once all legacy components are migrated
- */
-@include mat.all-legacy-component-themes($my-theme);
-
 @include mat.all-component-themes($my-theme);
