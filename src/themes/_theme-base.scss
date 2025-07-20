@@ -92,29 +92,30 @@
   // Override Angular Material component colors to use CSS custom properties
   // This ensures components like mat-tab ink-bar respond to theme switching
   
-  // Tab ink bar (tab underline indicator)
-  .mat-tab-group.mat-primary .mat-ink-bar,
-  .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  // Tab ink bar (tab underline indicator) - MDC classes
+  .mat-mdc-tab-group.mat-primary .mdc-tab-indicator__content--underline,
+  .mat-mdc-tab-nav-bar.mat-primary .mdc-tab-indicator__content--underline {
+    border-color: var(--primary-color) !important;
     background-color: var(--primary-color) !important;
   }
   
-  // Tab header styling for proper navigation appearance
-  .mat-tab-group .mat-tab-header {
+  // Tab header styling for proper navigation appearance - MDC classes  
+  .mat-mdc-tab-header {
     border-bottom: 1px solid var(--divider-color) !important;
     background: var(--surface-color) !important;
   }
   
-  // Tab labels - use proper contrast colors
-  .mat-tab-group.mat-primary .mat-tab-label.mat-tab-label-active {
-    color: var(--text-primary) !important;  // Use primary text color for better readability
+  // Tab labels - use proper contrast colors - MDC classes
+  .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+    color: var(--text-primary) !important;  // Active tab uses primary text color
   }
   
-  .mat-tab-group.mat-primary .mat-tab-label:not(.mat-tab-label-active) {
+  .mat-mdc-tab:not(.mdc-tab--active) .mdc-tab__text-label {
     color: var(--text-secondary) !important;  // Inactive tabs use secondary text
   }
   
-  // Tab body background
-  .mat-tab-group .mat-tab-body-wrapper {
+  // Tab body background - MDC classes
+  .mat-mdc-tab-body-wrapper {
     background: var(--background-color) !important;
   }
   
