@@ -23,4 +23,4 @@
    )
  ));
 
-@include mat.all-component-themes($my-theme);
+@include mat.all-legacy-component-themes($my-theme);

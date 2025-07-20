@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ChangeDetectorRef } from '@angular/core';
-import { MatRadioChange } from '@angular/material/radio';
+import { MatLegacyRadioChange as MatRadioChange } from '@angular/material/legacy-radio';
 
 @Component({
   selector: 'app-level-selection-plot',

@@ -14,7 +14,7 @@ $custom-theme: mat.define-dark-theme((
     accent: $custom-accent,
     warn: $custom-warn,
   ),
-  typography: mat.define-typography-config(),
+  typography: mat.define-legacy-typography-config(),
   density: 0,
 ));
 
