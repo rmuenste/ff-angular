@@ -4,7 +4,9 @@
 // Base theme mixins that all themes will use
 @mixin base-theme($theme) {
   // Include the common styles for Angular Material
+  /* TODO(mdc-migration): Remove all-legacy-component-themes once all legacy components are migrated*/
   @include mat.all-legacy-component-themes($theme);
+  @include mat.all-component-themes($theme);
   
   // Extract theme-specific color palettes
   $color-config: mat.get-color-config($theme);

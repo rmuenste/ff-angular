@@ -14,7 +14,7 @@ $light-theme: mat.define-light-theme((
     accent: $light-accent,
     warn: $light-warn,
   ),
-  typography: mat.define-legacy-typography-config(),
+  typography: mat.define-typography-config(),
   density: 0,
 ));
 
