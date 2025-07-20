@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BenchmarkExampleComponent } from './components/benchmark-example/benchmark-example.component';
+import { Benchmark2DRisingBubbleComponent } from './components/benchmark-2d-rising-bubble/benchmark-2d-rising-bubble.component';
 import { BenchmarksComponent } from './components/benchmarks/benchmarks.component';
-import { BenchmarkBubble3Component } from './components/benchmark-bubble3/benchmark-bubble3.component';
+import { Benchmark3DRisingBubbleComponent } from './components/benchmark-3d-rising-bubble/benchmark-3d-rising-bubble.component';
 import { MainComponent } from './components/main/main.component';
 import { BenchmarkFacComponent } from './components/benchmark-fac/benchmark-fac.component';
 import { BenchmarksMainComponent } from './components/benchmarks-main/benchmarks-main/benchmarks-main.component';
-import { BenchmarkGeneralComponent } from './components/benchmark-general/benchmark-general/benchmark-general.component';
+import { BenchmarkParticleSedimentationComponent } from './components/benchmark-particle-sedimentation/benchmark-particle-sedimentation.component';
 
 const routes: Routes = [
   {path: '', component: MainComponent},
@@ -19,20 +19,20 @@ const routes: Routes = [
         component: BenchmarksMainComponent
       },
       {
-        path: 'bubble2',
-        component: BenchmarkExampleComponent
+        path: '2d-rising-bubble',
+        component: Benchmark2DRisingBubbleComponent
       },
       {
         path: 'bubble3',
-        component: BenchmarkBubble3Component
+        component: Benchmark3DRisingBubbleComponent
       },
       {
         path: 'fac3',
         component: BenchmarkFacComponent
       },
       {
-        path: 'benchmark/:benchmarkId',
-        component: BenchmarkGeneralComponent
+        path: 'particle-sedimentation',
+        component: BenchmarkParticleSedimentationComponent
       }
     ]
   }

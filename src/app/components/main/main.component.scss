@@ -5,11 +5,10 @@
 
 .main-header {
 width: 100%;
-background: var(--primary-bg-color);
-color: var(--primary-text-color);
+background: var(--primary-color);
+color: var(--text-on-primary);
 height: 420px;
 position: relative;
-/*margin-top: -21px;*/
 }
 
 .main-header:before {
@@ -44,12 +43,11 @@ position: relative;
 
 .main-page {
 width: 55%;
-background: var(--dark-theme-background);
-color: #ffffffb3;
+background: var(--background-color);
+color: var(--text-primary);
 display: flex;
 flex-direction: column;
 padding: 16px;
-/*margin-top: -21px;*/
 margin: auto;
 align-items: center;
 }

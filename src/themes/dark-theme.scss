@@ -1,0 +1,44 @@
+// Dark Theme Definition
+@use '@angular/material' as mat;
+@use 'theme-base' as base;
+
+// Define palettes for dark theme
+$dark-primary: mat.define-palette(mat.$light-green-palette, 500, 300, 700);
+$dark-accent: mat.define-palette(mat.$deep-orange-palette, 500, 300, 700);
+$dark-warn: mat.define-palette(mat.$red-palette, 500, 300, 700);
+
+// Create dark theme
+$dark-theme: mat.define-dark-theme((
+  color: (
+    primary: $dark-primary,
+    accent: $dark-accent,
+    warn: $dark-warn,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
+));
+
+// Apply dark theme
+@mixin apply-dark-theme() {
+  @include base.base-theme($dark-theme);
+  @include base.custom-component-themes($dark-theme);
+  
+  // Dark theme specific overrides
+  :root {
+    --theme-name: 'dark';
+    
+    // Scrollbar styling for dark theme
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 4px rgba(112, 112, 112, 0.5);
+      background: #2c2c2c;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: #555555;
+      
+      &:hover {
+        background: #777777;
+      }
+    }
+  }
+}

@@ -1,6 +1,5 @@
 @use '@angular/material' as mat;
 
- @include mat.core();
 
  /*
  * Define the primary, accent, warn palettes for our material theme availabe in palette.scss which is
@@ -20,7 +19,7 @@
    color: (
      primary: $my-primary,
      accent: $my-accent,
-     war: $my-warn,
+     warn: $my-warn,
    )
  ));
 

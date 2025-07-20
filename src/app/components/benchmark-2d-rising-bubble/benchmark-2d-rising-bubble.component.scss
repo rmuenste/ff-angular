@@ -1,0 +1,53 @@
+// Ensure component has theme-aware background
+:host {
+  display: block;
+  background: var(--background-color);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+::ng-deep .mat-tab-label {
+  flex: 1;
+}
+
+table {
+  width: 100%;
+}
+.picture-element {
+    max-width: 50%;
+    text-align: center;
+    background-color: var(--surface-color);
+    border: 1px solid var(--divider-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.picture-element p.title,
+.picture-element p.caption {
+    background-color: var(--surface-color);
+    color: var(--text-primary);
+    padding: 10px;
+    margin: 0;
+    border-radius: 4px;
+}
+
+.picture-element p.title {
+    margin-bottom: 15px;
+    color: var(--text-primary);
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.picture-element img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 15px auto;
+}
+
+.picture-element p.caption {
+    font-size: 0.9em;
+    color: var(--text-secondary);
+}

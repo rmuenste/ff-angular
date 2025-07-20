@@ -1,0 +1,31 @@
+<!-- Theme switcher with button toggle group -->
+<div class="theme-switcher">
+  <!-- Quick toggle button (mobile-friendly) -->
+  <button 
+    mat-icon-button 
+    class="quick-toggle"
+    [title]="'Switch to ' + (currentTheme === 'light' ? 'dark' : 'light') + ' theme'"
+    (click)="toggleTheme()">
+    <mat-icon>{{ currentTheme === 'light' ? 'dark_mode' : 'light_mode' }}</mat-icon>
+  </button>
+
+  <!-- Full theme selector (desktop) -->
+  <mat-button-toggle-group 
+    class="theme-toggle-group"
+    [value]="currentTheme"
+    (change)="onThemeChange($event.value)">
+    
+    <mat-button-toggle 
+      *ngFor="let theme of availableThemes" 
+      [value]="theme.name"
+      [title]="theme.description">
+      <mat-icon>{{ theme.icon }}</mat-icon>
+      <span class="theme-label">{{ theme.displayName }}</span>
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+
+  <!-- System theme indicator -->
+  <div class="system-theme-info" *ngIf="isSystemTheme">
+    <mat-icon class="system-icon" title="Following system theme">computer</mat-icon>
+  </div>
+</div>

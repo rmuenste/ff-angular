@@ -1,11 +1,9 @@
-@import 'src/styles.scss';
 
 .myfooter {
 width: 100%;
-background: $my-primary-color;
-color: var(--primary-text-color);
+background: var(--primary-color);
+color: var(--text-on-primary);  // Black text on green background for good contrast
 min-height: 25px;
-/*margin-top: -21px;*/
 }
 
 .footer-container {

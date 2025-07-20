@@ -6,6 +6,31 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+## JSON backend
+
+The sample charts expect a small JSON-serving API running on port `3000`.  You can
+start either the Node or Python version of this backend from the `server`
+directory:
+
+```bash
+# Node implementation
+node server.js
+
+# Python (FastAPI) implementation
+uvicorn server:app --reload
+```
+
+Both commands launch the API at `http://localhost:3000`.
+
+## Data Source Configuration
+
+The application can fetch data in two ways, configured in `src/environments/environment.ts`:
+
+*   **`dataSource: 'server'`**: (Default) Fetches data from a live backend API (Node.js or Python). This is the standard mode for development and production.
+*   **`dataSource: 'static'`**: Fetches data from local JSON files stored in `src/assets/data`. This mode is useful for offline development or when a backend is unavailable.
+
+To switch between modes, edit the `dataSource` property in `src/environments/environment.ts` and `src/environments/environment.prod.ts`.
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.

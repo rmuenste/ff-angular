@@ -3,7 +3,21 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  dataSource: 'static' as 'server' | 'static', // Switch between 'server' and 'static'
+  api: {
+    baseUrl: 'http://localhost:8000',
+    endpoints: {
+      posts: 'https://jsonplaceholder.typicode.com/posts',
+      getJson: '/get-json',
+      getMultipleJson: '/get-multiple-json',
+      getMultipleJsonV2: '/get-multiple-json-v-new',
+      getViewData: '/get-view-data'
+    }
+  },
+  cors: {
+    allowedOrigins: ['http://localhost:4200']
+  }
 };
 
 /*

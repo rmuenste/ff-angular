@@ -1,0 +1,295 @@
+<mat-tab-group>
+  <mat-tab label="Introduction" class="hidden-cursor">
+  <div class="heading-wrapper">
+    <h4 class="my-h4">
+      Sedimentation of a Single Spherical Particle
+    </h4>
+  </div>
+  <div class="text-wrapper">
+  <p>
+  This benchmark examines the sedimentation of a single spherical particle in a confined tank, designed specifically to validate numerical methods for simulating particulate flows. The study compares experiments and lattice-Boltzmann simulations of a sphere settling through silicon oil over a range of particle Reynolds numbers (1.5–31.9). By using a confined box with controlled dimensions, the experimental setup ensures that wall effects are consistently captured both in the laboratory and in the simulations, eliminating the need for uncertain boundary assumptions.
+  </p>
+  </div>
+  
+  <div class="text-wrapper">
+  <p>
+  Key to this benchmark is the use of <strong>Particle Image Velocimetry (PIV)</strong>, which enables detailed, spatially and temporally resolved measurements of the flow field around the settling sphere. PIV allows researchers to observe not only the sphere’s trajectory and velocity over time, but also the surrounding fluid motion in high detail. These measurements are critical for validating simulation codes, as they test whether numerical models accurately capture both the particle motion and the complex, evolving fluid flow—especially during acceleration, steady descent, and deceleration near the bottom wall.
+  </p>
+  </div>
+  
+  <div class="text-wrapper">
+  <p>
+  The main observables provided in this benchmark are:
+  <ul>
+    <li>The sphere's position and velocity over time (trajectory and settling velocity).</li>
+    <li>Detailed snapshots of the fluid velocity field around the sphere from PIV measurements.</li>
+    <li>Time series of fluid velocities at selected monitoring points in the tank.</li>
+  </ul>
+  These datasets enable thorough validation of numerical approaches, including the treatment of moving boundaries, near-wall lubrication effects, and transient hydrodynamic interactions.
+
+  <h4>References</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>Number</th>
+        <th>Reference</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>[1]</td>
+        <td>A. ten Cate, C. H. Nieuwstad, J. J. Derksen, H. E. A. Van den Akker; Particle imaging velocimetry experiments and lattice-Boltzmann simulations on a single sphere settling under gravity. Physics of Fluids 1 November 2002; 14 (11): 4012–4025. https://doi.org/10.1063/1.1512918</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  </mat-tab>
+
+  <mat-tab label="Definition">
+  <div class="heading-wrapper">
+    <h4 class="my-h4">
+      Geometry and flow configuration
+    </h4>
+  </div>
+  <div class="text-wrapper">
+    The benchmark models a single solid sphere settling under gravity in a confined rectangular tank filled with silicone oil. 
+    The container has internal dimensions of <app-mathjax [content]="'$100 \\times 100 \\times 160\\,\\text{mm}$'"></app-mathjax> (width × depth × height). 
+    A precision Nylon sphere with diameter <app-mathjax [content]="'$d_p = 15\\,\\text{mm}$'"></app-mathjax> is released from rest at a known height and its trajectory is tracked until it comes to rest at the bottom wall.
+    The sphere is placed 120 mm above the bottom wall which means the sphere center is located 127.5 mm above the bottom wall.
+    <br>
+    No-slip boundary conditions (<app-mathjax [content]="'$\\mathbf{u} = 0$'"></app-mathjax>) are imposed on all container walls. 
+    The confined geometry ensures wall effects are consistently captured in both the experiment and the numerical simulations.
+  </div>
+
+  <div class="image-container2">
+    <div class="image-gallery">
+       <h3 class="mat-h3 image-caption">Experimental setup and boundary conditions</h3>
+      <div class="image-item">
+      <img src="assets/sedimentation_setup.png" alt="Experimental setup of settling sphere">
+      </div>
+    </div>
+  </div>
+
+  <div class="heading-wrapper">
+    <h4 class="my-h4">
+      Particle and fluid properties
+    </h4>
+  </div>
+  <div class="text-wrapper">
+    The working fluid is silicone oil with varied viscosity and density to produce different Reynolds numbers.
+    The Nylon sphere has a density of <app-mathjax [content]="'$\\rho_p = 1120\\,\\text{kg/m}^3$'"></app-mathjax>.
+    The fluid properties were selected to achieve particle Reynolds numbers between approximately 1.5 and 32.
+  </div>
+
+  <div class="table-wrapper">
+    <table mat-table [dataSource]="dataSourceSedimentation" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="case">
+        <th mat-header-cell *matHeaderCellDef> Case </th>
+        <td mat-cell *matCellDef="let element"> {{element.case}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="rho_f">
+        <th mat-header-cell *matHeaderCellDef> ρ<sub>f</sub> [kg/m³] </th>
+        <td mat-cell *matCellDef="let element"> {{element.rho_f}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="mu_f">
+        <th mat-header-cell *matHeaderCellDef> μ<sub>f</sub> [mPa·s] </th>
+        <td mat-cell *matCellDef="let element"> {{element.mu_f}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Re">
+        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$Re$'"></app-mathjax> </th>
+        <td mat-cell *matCellDef="let element"> {{element.Re}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="St">
+        <th mat-header-cell *matHeaderCellDef> <app-mathjax [content]="'$St$'"></app-mathjax> </th>
+        <td mat-cell *matCellDef="let element"> {{element.St}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsSedimentation"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsSedimentation;"></tr>
+    </table>
+  </div>
+
+  <div class="text-wrapper">
+    <p>
+      The table lists the four experimental conditions with varying fluid properties. Cases cover laminar settling from low (<app-mathjax [content]="'$Re \\approx 1.5$'"></app-mathjax>) to transitional (<app-mathjax [content]="'$Re \\approx 32$'"></app-mathjax>) flow regimes.
+    </p>
+  </div>
+
+  <div class="heading-wrapper">
+    <h4>
+      Key equations
+    </h4>
+  </div>
+  <div class="text-wrapper">
+    The benchmark measures the transient motion of the sphere and the induced flow field. The key dimensionless numbers are:
+    <ul>
+      <li>Reynolds number: <app-mathjax [content]="'$Re = \\frac{\\rho_f u_\\infty d_p}{\\mu_f}$'"></app-mathjax></li>
+      <li>Stokes number: <app-mathjax [content]="'$St = \\frac{1}{9} \\frac{\\rho_p d_p u_\\infty}{\\rho_f \\nu}$'"></app-mathjax></li>
+    </ul>
+    <p>
+      Near-wall lubrication forces are modeled in the simulation by applying:
+      <br>
+      <app-mathjax [content]="'$F_{lub} = -6 \\pi \\mu_f d_p u_\\perp \\left( \\frac{d_p}{h} - \\frac{d_p}{D_0} \\right)$'"></app-mathjax>,
+      <br>
+      where <app-mathjax [content]="'$h$'"></app-mathjax> is the gap distance and <app-mathjax [content]="'$u_\\perp$'"></app-mathjax> is the normal velocity component.
+    </p>
+  </div>
+</mat-tab>
+  
+  <mat-tab label="Results">
+    <div class="heading-wrapper">
+      <h4 class="my-h4">
+     Verification and Results
+      </h4>
+    </div>
+
+    <div class="text-wrapper">
+      <p>
+        The figures below show simulation results for the benchmark Cases E1–E4. 
+        Each case represents a different settling regime, with particle Reynolds numbers ranging from approximately 1.5 to 32.
+        The simulations were performed using a <em>Finite Element Method with Fictitious Boundary Method (FEM-FBM)</em> approach,
+        which enables direct numerical resolution of fluid–solid interaction by imposing no-slip boundary conditions on the moving sphere surface.
+      </p>
+    </div>
+  
+    <div class="text-wrapper">
+      <p>
+        The <em>Trajectory by dimensionless gap height</em> plot shows the sphere's normalized distance to the bottom wall 
+        (<app-mathjax [content]="'$h/d_p$'"></app-mathjax>) as a function of time. 
+        This trajectory captures the transient stages of sedimentation: initial acceleration under gravity, approach to a near-constant settling velocity, 
+        and deceleration due to lubrication forces as the particle nears the bottom wall. 
+        Simulation results are shown alongside experimental PIV measurements, demonstrating good agreement across the full range of Reynolds numbers.
+      </p>
+    </div>
+  
+    <div class="text-wrapper">
+      <p>
+        The <em>Sedimentation</em> plot shows the vertical velocity component (<app-mathjax [content]="'$u_z$'"></app-mathjax>) over time. 
+        This is a sensitive measure of the dynamic response of the sphere to hydrodynamic forces. 
+        In lower-Re cases (E1–E2), the particle smoothly reaches a steady velocity and decelerates gradually near the wall. 
+        In higher-Re cases (E3–E4), the approach to terminal velocity is more rapid and deceleration occurs closer to impact, reflecting reduced viscous damping. 
+        The simulation tracks these variations accurately, validating the numerical treatment of inertia, wall effects, and lubrication corrections.
+      </p>
+    </div>
+  
+    <div class="text-wrapper">
+      <p>
+        These results demonstrate the FEM-FBM approach's capability to resolve the transient settling behavior and near-wall hydrodynamics of 
+        a particle in confined viscous flow. They also highlight the benchmark’s utility in validating advanced numerical schemes 
+        against detailed experimental data including time-resolved particle trajectories and flow fields measured via PIV.
+      </p>
+    </div>    
+
+    <div class="results-images">
+      <img src="assets/velocities.png" alt="Particle velocities over time">
+      <img src="assets/positions.png" alt="Particle positions over time">
+    </div>
+
+
+  </mat-tab>
+
+  <mat-tab label="Reference Data">
+    <div class="heading-wrapper">
+      <h4 class="my-h4">
+        Reference Data
+      </h4>
+    </div>
+
+    <div class="text-wrapper">
+      <p>
+        The following tables provide the data for the four simulation cases (E1-E4). Each case was simulated at two different resolution levels. The data for each observable (velocity and position) is available for download.
+      </p>
+    </div>
+
+    <div class="table-wrapper">
+      <h5>Case E1</h5>
+      <table mat-table [dataSource]="dataSourceE1" class="mat-elevation-z8">
+        <ng-container matColumnDef="resolution">
+          <th mat-header-cell *matHeaderCellDef> Resolution </th>
+          <td mat-cell *matCellDef="let element"> {{element.resolution}} </td>
+        </ng-container>
+        <ng-container matColumnDef="velocity">
+          <th mat-header-cell *matHeaderCellDef> Velocity </th>
+          <td mat-cell *matCellDef="let element"> <a [href]="element.velocity" download>Download</a> </td>
+        </ng-container>
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> Position </th>
+          <td mat-cell *matCellDef="let element"> <a [href]="element.position" download>Download</a> </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="['resolution', 'velocity', 'position']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['resolution', 'velocity', 'position'];"></tr>
+      </table>
+    </div>
+
+    <div class="table-wrapper">
+      <h5>Case E2</h5>
+      <table mat-table [dataSource]="dataSourceE2" class="mat-elevation-z8">
+        <ng-container matColumnDef="resolution">
+          <th mat-header-cell *matHeaderCellDef> Resolution </th>
+          <td mat-cell *matCellDef="let element"> {{element.resolution}} </td>
+        </ng-container>
+        <ng-container matColumnDef="velocity">
+          <th mat-header-cell *matHeaderCellDef> Velocity </th>
+          <td mat-cell *matCellDef="let element"> <a [href]="element.velocity" download>Download</a> </td>
+        </ng-container>
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> Position </th>
+          <td mat-cell *matCellDef="let element"> <a [href]="element.position" download>Download</a> </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="['resolution', 'velocity', 'position']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['resolution', 'velocity', 'position'];"></tr>
+      </table>
+    </div>
+
+    <div class="table-wrapper">
+      <h5>Case E3</h5>
+      <table mat-table [dataSource]="dataSourceE3" class="mat-elevation-z8">
+        <ng-container matColumnDef="resolution">
+          <th mat-header-cell *matHeaderCellDef> Resolution </th>
+          <td mat-cell *matCellDef="let element"> {{element.resolution}} </td>
+        </ng-container>
+        <ng-container matColumnDef="velocity">
+          <th mat-header-cell *matHeaderCellDef> Velocity </th>
+          <td mat-cell *matCellDef="let element"> <a [href]="element.velocity" download>Download</a> </td>
+        </ng-container>
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> Position </th>
+          <td mat-cell *matCellDef="let element"> <a [href]="element.position" download>Download</a> </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="['resolution', 'velocity', 'position']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['resolution', 'velocity', 'position'];"></tr>
+      </table>
+    </div>
+
+    <div class="table-wrapper">
+      <h5>Case E4</h5>
+      <table mat-table [dataSource]="dataSourceE4" class="mat-elevation-z8">
+        <ng-container matColumnDef="resolution">
+          <th mat-header-cell *matHeaderCellDef> Resolution </th>
+          <td mat-cell *matCellDef="let element"> {{element.resolution}} </td>
+        </ng-container>
+        <ng-container matColumnDef="velocity">
+          <th mat-header-cell *matHeaderCellDef> Velocity </th>
+          <td mat-cell *matCellDef="let element"> <a [href]="element.velocity" download>Download</a> </td>
+        </ng-container>
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> Position </th>
+          <td mat-cell *matCellDef="let element"> <a [href]="element.position" download>Download</a> </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="['resolution', 'velocity', 'position']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['resolution', 'velocity', 'position'];"></tr>
+      </table>
+    </div>
+
+    <div class="text-wrapper">
+      <p>
+        <a href="assets/sedimentation.zip" download>Download all data as an archive</a>
+      </p>
+    </div>
+  </mat-tab>
+</mat-tab-group>

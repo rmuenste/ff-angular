@@ -1,10 +1,8 @@
-@import 'src/styles.scss';
 
 .page-header {
   height: 80px;
-  background: $my-primary-color;
-  color: white;
-  color: var(--primary-text-color);
+  background: var(--primary-color);
+  color: var(--text-on-primary);
   display: flex;
   align-items: center;
   padding-left: 20px;
@@ -31,47 +29,51 @@ h1 {
 
 .benchmarks-container {
   height: 100%;
+  background: var(--background-color);
+  color: var(--text-primary);
 }
 
 .my-drawer {
   overflow: auto;
+  background: var(--surface-color) !important;
+  color: var(--text-primary) !important;
 }
 
 .mat-drawer-container h3 {
   margin-bottom: 0px;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: var(--surface-color);
+  color: var(--text-primary);
   padding: 5px 5px 5px 5px;
   font-weight: normal;
   text-align: center;
 }
 
 .nav-item-style {
-  color: #ffffffa6;
+  color: var(--text-secondary);
 }
 
 .myA {
-background-color: #8bc34a7c !important;
+background: var(--primary-color) !important;
+opacity: 0.8 !important;
+color: var(--text-on-primary) !important;
 }
 
 .myA:hover {
-background-color: #c5f7517c !important;
+background: var(--primary-lighter) !important;
+opacity: 0.9 !important;
+color: var(--text-on-primary) !important;
 }
 
 
-/*
-a.benchmarks-selected {
-color:rgb(154, 212, 159);
-background-color: #8bc34a7c;
-}
-
-.myA:focus {
-}
+// Active/focus states for navigation items  
 .myA:active {
-background-color: #8bc34a7c !important;
+  background: var(--primary-color) !important;
+  opacity: 1 !important;
+  color: var(--text-on-primary) !important;
 }
 
 .mat-focus-indicator {
-  background-color: #424242;
+  background-color: var(--surface-color);
 }
 
 

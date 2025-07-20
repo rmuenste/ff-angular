@@ -63,6 +63,33 @@
 							],
 							"outputHashing": "all"
 						},
+						"staging": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "900kb",
+									"maximumError": "5mb"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "2kb",
+									"maximumError": "200kb"
+								}
+							],
+							"fileReplacements": [
+								{
+									"replace": "src/environments/environment.ts",
+									"with": "src/environments/environment.staging.ts"
+								}
+							],
+							"outputHashing": "all",
+							"optimization": true,
+							"sourceMap": false,
+							"namedChunks": false,
+							"extractLicenses": true,
+							"vendorChunk": false,
+							"buildOptimizer": true
+						},
 						"development": {
 							"buildOptimizer": false,
 							"optimization": false,
@@ -79,6 +106,9 @@
 					"configurations": {
 						"production": {
 							"browserTarget": "new-material:build:production"
+						},
+						"staging": {
+							"browserTarget": "new-material:build:staging"
 						},
 						"development": {
 							"browserTarget": "new-material:build:development"
