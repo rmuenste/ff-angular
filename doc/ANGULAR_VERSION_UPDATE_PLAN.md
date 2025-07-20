@@ -1,178 +1,240 @@
-Thanks for confirming. I’ll research how to upgrade an Angular 13 project to Angular 17, focusing on using default Angular CLI settings and Angular Material, and considering this is a staging app (not yet live).
+Thanks for confirming. I’ll now analyze what’s required to update your Angular 15 project—using only non-legacy Angular Material components and no advanced features or third-party build tools—to Angular 20.
 
-I’ll provide detailed step-by-step upgrade instructions, including compatibility updates, Angular Material guidance, and best practices to ensure a smooth transition.
-
-I’ll get back to you shortly with the findings.
+I’ll focus on identifying breaking changes, key CLI and dependency updates, and version-specific upgrade requirements from Angular 15 through 20. I’ll get back to you shortly with a detailed step-by-step migration plan.
 
 
-# Upgrading an Angular 13 Project to Angular 17: Step-by-Step Guide
+# Migrating an Angular 15 Project to Angular 20
 
-## Preparation: Update Prerequisites
+Upgrading an Angular 15 application to Angular 20 requires a step-by-step approach through each major version (16, 17, 18, 19, then 20). At each stage, we'll address breaking changes, update commands, Angular Material changes, and validation steps. Before starting, ensure your project is under version control and all tests pass on Angular 15. You should upgrade sequentially and verify the app at each step.
 
-* **Node and Angular CLI:** Ensure Node.js and npm are updated to supported versions for Angular 17. Angular 16+ supports Node 16 and Node 18 (Node 18 LTS is recommended for Angular 17). Update the global Angular CLI to the latest version (`npm install -g @angular/cli@latest`) so you have Angular CLI 17 for new commands.
-* **Backup and Branch:** Back up your project or use version control (e.g. create a new Git branch) before starting the upgrade. This allows you to track changes and rollback if needed.
-* **Verify Current State:** Make sure your Angular 13 app is in a healthy state. All tests should be passing and there should be no pending runtime errors. This baseline will help identify issues introduced by the upgrade at each step.
+## Step 1: Upgrade to Angular 16
 
-## Step 1: Upgrade from Angular 13 to Angular 14
+### Breaking Changes in Angular 16
 
-1. **Update Angular Core & CLI to v14:** In the project directory, run the Angular CLI update command targeting v14:
+* **Node.js and TypeScript Requirements:** Angular 16 supports Node.js 16.14+ or 18.10+, and requires TypeScript >=4.9.3 (up to <5.1). Update your development environment if needed (Node 14 is no longer supported).
+* **Standalone Components by Default:** Angular 16 introduced schematics that generate standalone components by default (no NgModule). This isn’t a runtime breaking change, but new components generated via CLI will be standalone unless you opt out. Your existing NgModule-based code will continue to work.
+* **Deprecations:** No major Angular APIs were removed in v16, but it continued the deprecation of older module-based patterns in favor of standalone APIs. For example, the Protractor e2e tool was removed in Angular 15; ensure you use modern testing tools. Angular 16 also paved the way for optional Zone.js (still default in v16).
+* **Angular Material:** Angular Material v16 includes the MDC-based components and deprecates legacy (non-MDC) components. A warning was issued that **legacy Material components will be removed in v17**. Since your project already uses MDC components, you’re prepared – just avoid using any `MatLegacy*` imports. No breaking CSS changes occurred in v16, but it’s a good time to update any Angular Material theming to the latest practices (Material v16 still uses the old theming API, with optional preview of Material Design 3).
 
-   ```bash
-   ng update @angular/core@14 @angular/cli@14
-   ```
+### Update Commands for Angular 16
 
-   This will update Angular framework packages and the CLI to version 14. If you encounter peer dependency incompatibilities (the console will warn you), update those specific packages manually to compatible versions and re-run the `ng update` command. For example, Angular ESLint or other schematics might need an update.
-2. **Update Angular Material to v14:** If your project uses Angular Material, update it (and Angular CDK) to v14 as well:
+Run the official Angular update schematics to move to v16:
 
-   ```bash
-   ng update @angular/material@14 @angular/cdk@14
-   ```
+```bash
+# Upgrade Angular frameworks and CLI to v16
+ng update @angular/core@16 @angular/cli@16
 
-   Keeping Angular Material in sync with the Angular core version ensures compatibility. Angular Material 14 should not introduce breaking changes from 13, but always check the console output for any migration messages.
-3. **Re-install Dependencies:** After updating package versions, it’s a good idea to get a fresh install. Delete your `package-lock.json` (and optionally `node_modules` folder) and run:
+# If using Angular Material/CDK, upgrade them as well
+ng update @angular/material@16 @angular/cdk@16
+```
 
-   ```bash
-   npm install
-   ```
+This will update your `package.json` and run any v16 migrations. Ensure the CLI, framework, and Material versions are all aligned to 16.x.
 
-   This cleans up any version mismatches and installs the Angular 14 packages cleanly.
-4. **Address Angular 14 Changes:** Angular 14 introduces *optional* new features like **typed forms** and standalone component APIs, but these do not break existing code by default. For example, forms now support strict typing; you can gradually introduce those types but it’s not required for the app to run. Angular 14 also dropped IE11 support, so you can remove any IE-specific polyfills if present. Review the official Angular 14 update guide for any framework-specific notes, and fix any TypeScript errors that the upgrade might surface (e.g. if you were using deprecated APIs). In most cases, Angular 13 -> 14 is straightforward.
-5. **Test the App on v14:** Run `ng serve` to compile the application with Angular 14 and ensure it starts without errors. Execute your test suite (`ng test`) to verify all unit tests still pass. Pay attention to any warnings or deprecation messages in the terminal. At this point, the app should behave as it did before. Proceed to the next step once you are confident Angular 14 is stable.
+### Post-update Validation (Angular 16)
 
-## Step 2: Upgrade from Angular 14 to Angular 15
+* **Build and Serve:** After updating, run `ng serve` or `ng build` to verify the app compiles without errors. Fix any TypeScript issues that arise (often due to stricter types in TS 4.9+).
+* **Run Tests:** Execute `ng test`. Angular 16 should not introduce breaking changes in tests, but update any deprecated testing APIs. For example, if you still use the old `async()` from `@angular/core/testing`, switch to `waitForAsync()`.
+* **Material Components:** Visually inspect a few Material UI pieces. There should be no appearance changes yet. If you see any console warnings about legacy components, remove or replace those usages.
+* **Commit Changes:** Once the app runs and tests pass on Angular 16, commit the changes before proceeding.
 
-1. **Update Angular Core & CLI to v15:** Run the update command for Angular 15:
+## Step 2: Upgrade to Angular 17
 
-   ```bash
-   ng update @angular/core@15 @angular/cli@15
-   ```
+### Breaking Changes in Angular 17
 
-   This upgrades your project to Angular 15. Angular 15 may require an updated TypeScript version (TS 4.8+), which the CLI will handle. It also makes **Standalone Components** stable (so new projects default to standalone APIs). Your existing app can continue using NgModules, but be aware of this change for future development. Watch the console output for any automated migrations. For example, Angular 15 tightened some type checks and may point out issues that need fixing (such as stricter types in templates). Fix any such issues after the update.
-2. **Update Angular Material to v15:** Now update Angular Material and CDK to 15:
+* **Node.js and TypeScript:** Angular 17 requires Node.js 18.13+ or 20.9+, and TypeScript \~5.2 (>=5.2 <5.3). Ensure your environment meets these requirements. (Node 16 is no longer officially supported as of v17.)
+* **Framework Changes:** Angular 17 introduced built-in control flow syntax (`@if`, `@for`, etc.) and deferrable views, but these are additive features. The legacy structural directives (`*ngIf`, `*ngFor`, etc.) are still supported, so existing templates continue to work. There are no removals of those APIs in v17 – they’re just now optional. You may ignore the new syntax for now or gradually adopt it.
+* **Angular Material:** **Legacy Angular Material components are removed in v17**. This means any component imported from `@angular/material` without the MDC foundation (the ones marked as “legacy” in v15/16) will no longer exist. Since you already migrated to MDC components, you should not encounter component missing errors. However, double-check that you aren’t using any old prefixes or APIs from Material v15. Material 17 primarily focused on removal of legacy components and internal prep for Material Design 3 support, with no major theming changes yet.
+* **Deprecations:** Angular 17 continued to deprecate obsolete APIs. For example, the old `DebugElement.properties` for outputs was removed (use `outputs`), and the View Engine compiler is fully gone (which only affects very old libraries). Ensure all your libraries are Ivy-compatible (likely true if they worked in v15). No common public API that is widely used was outright removed in 17 aside from the Material changes.
 
-   ```bash
-   ng update @angular/material@15 @angular/cdk@15
-   ```
+### Update Commands for Angular 17
 
-   Angular Material 15 is a **major** update because it adopts the new Material Design Components (MDC) implementation for many components. The Angular CLI will run a migration that automatically switches your imports to the new *legacy* component classes to avoid breaking changes. For example, after the update you might see:
+```bash
+ng update @angular/core@17 @angular/cli@17
+ng update @angular/material@17 @angular/cdk@17
+```
 
-   ```ts
-   // Before (v14):
-   import { MatDialog } from '@angular/material/dialog';
-   // After (v15 update):
-   import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
-   ```
+Angular CLI v17 may prompt to adjust configuration or tsconfig. Accept recommended changes (for example, enabling new flag in `tsconfig.json` if prompted). The Material update will remove any remaining deprecated component imports. It’s wise to also update Angular CDK alongside Material for consistency.
 
-   This is expected – the `MatLegacy...` components are the old implementations, now labeled as legacy. Your app will continue to use the old Material design for now, which minimizes visual disruption. The Angular team introduced these legacy aliases so that you can upgrade incrementally. **Do not** simply revert these changes; leave the imports as `MatLegacy...` unless you plan to immediately refactor to the new components.
-3. **Address Material v15 Template Changes:** A few breaking changes in Angular Material templates need attention when moving to v15:
+### Post-update Validation (Angular 17)
 
-   * **Form Field Label:** The `floatLabel="never"` option on `<mat-form-field>` has been removed in v15. Use `floatLabel="always"` or omit the attribute to use the default (`"auto"`).
-   * **Form Field Appearance:** The old `appearance="standard"` style is discontinued. Update your `<mat-form-field>` to use `appearance="fill"` or `appearance="outline"` which are the supported options.
-   * **Tab Navigation Bar:** If you use `<nav mat-tab-nav-bar>`, the API has changed in v15. You must wrap the content in a `<mat-tab-nav-panel>` and bind it using the `[tabPanel]` property on the nav bar. For example, `<nav mat-tab-nav-bar [tabPanel]="myPanel">…</nav>` with a corresponding `<mat-tab-nav-panel #myPanel>…</mat-tab-nav-panel>` wrapping the router outlet or tab content. Update your template accordingly so that your tab nav continues to work.
-     Make these template changes **before** or immediately after the update to avoid runtime errors in Angular 15.
-4. **Run the MDC Migration (optional but recommended):** Angular Material v15 provides a schematic to help migrate to the new MDC-based components. When you’re ready, execute:
+* **Compile and Lint:** Run a fresh build. If you were accidentally still using a legacy Material component, the build will error (component not found). If so, replace it with its MDC equivalent (`MatLegacyButton` -> `MatButton`, etc.). Given your project’s use of MDC already, this should not happen.
+* **Unit Tests:** Run `ng test` again. Tests should mostly pass as before. If you used any internal APIs that changed (unlikely), update those tests. For example, if you used ComponentFixture’s debug element in unusual ways, adjust to the new patterns.
+* **Smoke Test the App:** Click through critical paths in your application in a browser. Angular 17 changes (like deferrable views) are opt-in, so behavior should be unchanged. Ensure Material components still render and behave normally.
+* **Note on Optional Features:** You might see console info about new control flow or prompts to try `ng g @angular/core:control-flow` to migrate templates. This is optional; you can gradually adopt the new syntax in future refactors. For now, verify everything works as it did.
+* **Commit Changes:** When all looks good on Angular 17, commit the updates.
 
-   ```bash
-   ng generate @angular/material:mdc-migration
-   ```
+## Step 3: Upgrade to Angular 18
 
-   This will scan your project and update component selectors, class names, and theme styles to their MDC equivalents where possible. It will also mark places that need manual intervention with `// TODO(mdc-migration)` comments in your stylesheets. For example, if you had custom CSS targeting internal classes like `.mat-form-field-flex`, after migration you’ll need to target `.mat-mdc-form-field-flex`. The schematic can perform bulk of the work, but you must **manually adjust** any styles or tests that relied on the old classes. Check your SCSS/CSS for **mdc-migration TODO** comments to identify what to update.
-5. **Validate on Angular 15:** Serve the application and run the test suite on Angular 15. Because the update is using legacy Material components, your app should look and behave mostly the same after the upgrade. However, Angular Material v15’s underlying changes might still affect spacing, typography, or other subtle styling aspects (the MDC implementations have slightly different default styles). Test all critical UI flows. If you notice any design regressions that are unacceptable right now, you have two options:
+### Breaking Changes in Angular 18
 
-   * Temporarily stick with the legacy components (as is, with the `MatLegacy...` imports) and plan to address the visual differences later. The legacy components are fully functional in v15 and v16, just deprecated.
-   * Start adjusting your styles to accommodate the new MDC components (perhaps enabled via the migration schematic). This could involve tweaking CSS, updating theme definitions, etc., to match the new Material look.
-     In either case, ensure the app’s functionality is intact with Angular 15. All unit tests and e2e tests should pass. Once everything looks good, proceed to the next step.
+* **Node.js and TypeScript:** Angular 18 supports Node.js 18.19+, 20.11+, or 22.0+, and requires TypeScript \~5.4 (>=5.4 <5.5). Update Node if needed (Node 16 is unsupported; Node 18+ recommended). Ensure your TS is updated (the Angular CLI update will typically bump the TypeScript devDependency).
+* **HttpClientModule Deprecation:** A major change in v18 is that `HttpClientModule` is **deprecated**. Angular introduced the `provideHttpClient()` function for standalone APIs, and now the module is redundant. **Migration:** Remove `HttpClientModule` imports from your `AppModule` (or any module). Instead, add the `provideHttpClient()` call in your module’s `providers` array. For example:
 
-## Step 3: Upgrade from Angular 15 to Angular 16
+  ```ts
+  @NgModule({
+    imports: [BrowserModule /*, (remove HttpClientModule) */],
+    providers: [provideHttpClient(/* optional: withInterceptorsFromDi() */)],
+    bootstrap: [AppComponent]
+  })
+  export class AppModule {}
+  ```
 
-1. **Update Angular Core & CLI to v16:** Run the update for Angular 16:
+  If your app was bootstrapped with `bootstrapApplication` (standalone), include `provideHttpClient()` in the `providers` of `bootstrapApplication`. This change ensures you don’t declare HttpClientModule twice. After this, HttpClient will still work as before, but you won’t get deprecation warnings. (If you forget to do this and remove HttpClientModule, you’d get a runtime `No provider for HttpClient` error – so double-check that `provideHttpClient` is added.)
+* **Angular Material (Material Design 3):** Angular Material 18 stabilizes Material Design 3 (MD3) support and design tokens. This is a **significant theming change**. The Angular Material update schematic will attempt to migrate your Sass styles to the new system. Key points:
 
-   ```bash
-   ng update @angular/core@16 @angular/cli@16
-   ```
+  * The **theming API has changed** to use CSS Custom Properties (CSS variables) via design tokens. For example, you’ll see a new `@use`-based Sass API and a unified `mat.theme(...)` mixin for applying theme styles. Many old mixins (e.g. `mat.button-theme`, `mat.dark-theme`) are replaced or consolidated.
+  * If you maintained a custom theme SCSS file (e.g. defining `$primary`, `$accent` palettes and calling `angular-material-theme` mixins), you may need to adjust it. The v18 update will introduce new variables like `use-system-variables: true` and generate CSS variables for colors. It may also update your typography definitions. For example, you might see code moving from:
 
-   This brings your project to Angular 16. Make sure your environment meets the requirements (Angular 16 supports Node 16 or 18, and requires TypeScript \~4.9 or 5.0). The CLI will typically bump the TypeScript version for you. After the update, scan the terminal for any migration messages. Angular 16’s update may adjust your configuration files (for example, it might remove the now-obsolete `es5BrowserSupport` flag in `angular.json`, since IE11 support is gone).
-2. **Update Angular Material to v16:** Update Material and CDK to v16:
+    ```scss
+    @include mat.all-component-themes($my-theme);
+    ```
 
-   ```bash
-   ng update @angular/material@16 @angular/cdk@16
-   ```
+    to new usage like:
 
-   Angular Material 16 is mostly a maintenance release. It continues to support the legacy components (with the `MatLegacy*` classes), but this is the last Angular Material version that will include them. By updating to v16, you get the latest fixes and improvements. There shouldn’t be major breaking changes from Material 15 to 16, but do check the release notes for any deprecations.
-3. **Address Angular 16 Breaking Changes:** Angular 16 itself introduces a few notable breaking changes that you should address:
+    ```scss
+    @include mat.theme($my-theme);
+    ```
 
-   * **Routing Guards and Resolvers:** Angular 16 **removed support for class-based and InjectionToken-based guards/resolvers** in the Router. If your app defines route guards or resolvers as classes (e.g. services implementing `CanActivate`, or providers using `provideGuard` tokens), you need to refactor them to the new **functional guard** style. In practice, this means instead of:
+    The specifics depend on whether you opt into Material 3. **After updating, review the official Angular Material theming guide for v19** (as v18’s changes are fully realized in v19).
+  * **No Legacy Components:** By v18, you should already be on MDC components. Angular Material v18 no longer supports the old non-MDC components at all (they were removed in v17).
+* **Optional Builder Migration:** Angular CLI 18 introduces a new lightweight builder package `@angular/build` (using Vite and esbuild). If you are **not using Webpack-specific features** (for example, if you aren’t using Karma or custom webpack config), the update may suggest migrating your `angular.json` to the new builder. This can speed up builds, but it’s optional. The old `@angular-devkit/build-angular` is still compatible (it aliases to the new builder). If you **do use Karma** for tests or any webpack plugins, you might hold off on this migration for now. You can answer “No” to the prompt or skip the schematic; your project will continue using the legacy builder (which still works in v18).
+* **Zone.js and Change Detection:** Angular 18 introduced *experimental* zoneless change detection and enabled **event coalescing** by default for new projects. This doesn’t break existing apps – zone.js remains required unless you opt out. Your app will behave the same, but you have the option to opt into zoneless mode and coalescing for performance. No action is needed unless you want to experiment with these features (which would involve adding `provideExperimentalZonelessChangeDetection()` and removing zone.js from polyfills). This is purely optional and backward-compatible.
 
-     ```ts
-     canActivate: [AuthGuardService]  // class-based guard
-     ```
+### Update Commands for Angular 18
 
-     you define:
+```bash
+ng update @angular/core@18 @angular/cli@18
 
-     ```ts
-     canActivate: [() => inject(AuthService).isLoggedIn() ? true : router.createUrlTree(['/login'])]
-     ```
+ng update @angular/material@18 @angular/cdk@18
+```
 
-     using an inline arrow function (or a named function) that uses `inject()` to get needed services. Write your guard logic in that function and return a boolean or `UrlTree`. Do similarly for resolvers (returning the data directly or a `resolve` function). This functional API was introduced in Angular 14-15 and is now the only way forward in v16+. If you don’t refactor, your old class guards will simply never be called by the router in v16. Convert them and test your navigation flows to ensure everything still works (authentication/authorization, etc.).
-   * **Removal of View Engine (NGCC):** Angular 16 completes the transition to Ivy by removing the View Engine compatibility compiler (NGCC) entirely. All libraries in your project must be built for Ivy. If you have very old third-party packages (from Angular 8 or earlier) that haven’t been updated, they will likely break now. Most libraries have long since updated, but double-check any rarely updated dependency. If something breaks at build time with missing metadata or similar errors, that’s a sign a library isn’t Ivy-compatible. You’ll need to update or replace it.
-   * **Material Ripple Inputs:** Angular Material v16 removed the `disableRipple` and related ripple inputs from several components (e.g., buttons, checkboxes, slide toggles). Ripples are now always controlled by global theming or via CSS, not individual component inputs. If your templates were using `[disableRipple]` on any Material component, you’ll get a compile error. Remove those inputs or update your code to use the global ripple configuration (by importing `MatRippleModule` and configuring through theming). This change moves ripples to a private implementation detail, so you typically won’t control them at the component attribute level anymore.
-   * **Dependency Updates:** Angular 16 may also require updates to other Angular-adjacent libraries. For example, if you use RxJS, ensure you’re on a version compatible with Angular 16 (likely RxJS 7.8+). The CLI update should handle RxJS if needed. Also, if using Angular ESLint, upgrade `@angular-eslint` to the latest version for Angular 16 compatibility.
-4. **Optional New Features in v16:** Angular 16 introduced some great new features like **Signals** (a new reactivity model) and **Non-destructive Hydration** for SSR. These are opt-in and won’t affect your app unless you use them. You might explore signals as a replacement for `EventEmitter` or RxJS in component state, but this can be done gradually and isn’t required for the upgrade. Another feature is the built-in **View Transition API** support to easily animate route changes. Keep these enhancements in mind as you continue development, but migrating your existing code to use them is not mandatory.
-5. **Test the App on v16:** Run your application and tests again. With the router guard changes, pay special attention to navigation and data loading flows – ensure that all guards and resolvers are functioning with the new approach. Also test any Material components that had ripple effects or other subtle behavior changes. The app’s functionality should otherwise remain consistent. If you still have any Angular Material legacy components in use, remember that this is the last version where those legacy APIs exist. It’s strongly recommended to finish migrating any remaining legacy Material components to their MDC equivalents at this stage (import from `@angular/material` instead of `@angular/material/legacy-*`). This will make the final step to Angular 17 much easier.
+The core/cli update will likely prompt about the builder migration (choose based on your needs as discussed). The Material update will perform theming-related migrations. Read the console output carefully; it may outline changes made to your SCSS. After these commands, ensure all Angular packages (core, cli, cdk, material) are 18.x.
 
-## Step 4: Upgrade from Angular 16 to Angular 17
+### Post-update Validation (Angular 18)
 
-1. **Update Angular Core & CLI to v17:** Finally, run the update for Angular 17:
+* **Project Build:** Do a full build (`ng build`). Pay special attention to any errors or warnings:
 
-   ```bash
-   ng update @angular/core@17 @angular/cli@17
-   ```
+  * If you see **`HttpClientModule is deprecated` warnings** or TypeScript errors about `HttpClientModule`, ensure you removed its import and added `provideHttpClient` as described. The app should compile without any HttpClient deprecation warnings once properly migrated.
+  * If you get Sass compile errors from your styles, address them. The Material schematic tries to update your theme, but if you had custom Sass, you might need to manually adjust. For example, if you see an error about `mat.get-theme-color` or missing `$theme` variable, it means the old APIs changed. Use the new token APIs or wrap legacy calls in the new functions. (Angular Material’s documentation and migration guide for v18/v19 provide mapping of old to new theming APIs.)
+* **Unit Tests:** Run `ng test`. If you removed `HttpClientModule`, your tests using `HttpClientTestingModule` might still pass (it provides its own HttpClient). However, **note**: Angular 18 did **not** yet deprecate `HttpClientTestingModule` (that comes in v20), but you can proactively refactor tests. The new way is to use `provideHttpClientTesting()` in tests instead of importing the module. This is optional in v18, but doing it now will smooth the v20 upgrade. For example:
 
-   This will update your project to Angular 17. Angular 17 includes some nice improvements such as the new **declarative control flow syntax** (`@if`, `@for`, etc. in templates) and **deferrable views** for lazy-loading parts of the template. These features are additive – your existing `*ngIf`/`*ngFor` will still work as is, and you can opt to use the new `@if`/`@for` syntax at your leisure. The update should also bump your TypeScript to \~5.2 (since Angular 17 supports TS 5.2) and possibly update other dependencies like RxJS to 7.8 or 7.9. Check the terminal output for any messages (for example, Angular might inform you of deprecated usages that will be removed in v18).
-2. **Update Angular Material to v17:** **This is a critical step for projects using Angular Material.** Update Angular Material and CDK to v17:
+  ```ts
+  TestBed.configureTestingModule({
+    providers: [
+      provideHttpClient(),
+      provideHttpClientTesting(),
+      MyService
+    ]
+  });
+  ```
 
-   ```bash
-   ng update @angular/material@17 @angular/cdk@17
-   ```
+  This replaces `imports: [HttpClientTestingModule]` in your tests. Ensure all tests still pass after any refactor.
+* **Functional Testing:** Serve the app and click through it in a browser. Focus on areas using HTTP calls (they should function as before). Also check **Angular Material** UI: because of theming changes, colors or typography might differ if the migration toggled Material 3. If you opted into Material 3 design tokens (the default in v18+), your app’s colors might shift to the Material 3 palette. Verify the contrast and theming are acceptable.
+* **Theming Adjustments:** If the look is off or certain custom styles no longer apply, you may need to update your CSS/SCSS. For instance, with design tokens, some CSS custom properties (like `--mdc-theme-primary`) might replace old Sass variables. You can customize the theme by overriding CSS variables or using the new Sass mixins. The Angular Material guide on theming (for v19) is a great resource. As a quick fix, ensure your global styles include the output of the new `mat.theme(...)` mixin so that all components are styled. The update schematic usually adds this for you in `styles.scss`.
+* **Commit Changes:** Once Angular 18 is running well (all tests passing and no major regressions), commit the changes. This is a big step; take time to stabilize here before moving on.
 
-   Angular Material v17 **drops support for all legacy components** – the `MatLegacy*` classes are removed from the library. If you have been using legacy imports (from the v15 update), you must now migrate fully to the MDC components. This means:
+## Step 4: Upgrade to Angular 19
 
-   * Change your imports to import the component classes directly from `@angular/material`. For example, replace `MatLegacyDialog` with `MatDialog` (from `@angular/material/dialog`), `MatLegacyButtonModule` with `MatButtonModule`, etc. The legacy symbols will no longer exist in v17.
-   * Ensure that any styling or behavior differences are handled. The MDC components might have slightly different CSS classes and default styles. By now, if you ran the migration and addressed the TODOs in v15, you should be in good shape. If not, do a thorough review of your Material components’ styles.
-   * Remove any remaining deprecated Material usage. For instance, if some component was marked deprecated in v16 (like legacy theming APIs or utility functions), switch to the recommended alternatives as those could be removed in v17.
-     If you are **not** prepared to do this migration right now, there is a short-term workaround: you can continue using Angular Material v16 alongside Angular core v17. Angular 17 is compatible with Material 16, so your app will run, but you’ll get peer dependency warnings. This would allow you to upgrade the Angular framework now and tackle the Material upgrade next. **However, this is only a temporary solution.** You’d need to upgrade to Material 17 (or newer) before moving to Angular 18, and running an outdated Material version means you miss out on fixes and could encounter incompatibilities later. The best practice is to complete the Material migration and use Angular Material 17 so your project is fully up-to-date.
-3. **Final Code Adjustments:** After updating to Angular 17, comb through your application for any last issues:
+### Breaking Changes in Angular 19
 
-   * **Component Styles Cleanup:** Angular 17 introduced automatic removal of component styles from the DOM when components are destroyed. This helps avoid memory leaks and stale styles. It shouldn’t require changes from you, but be aware in case you had any workaround for style cleanup – it’s now handled by Angular.
-   * **Optional Enhancements:** You can now use the new `@if/@else` and `@for` template syntax to simplify complex conditionals/loops in templates. Consider gradually refactoring templates to use these for improved readability. Also, the new View Transition API integration makes it easier to add animations when navigating between routes. If your app would benefit from that, you can look into the documentation for using the `@angular/platform-browser/animations` features with the ViewTransition. These are not required changes, just opportunities now available on Angular 17.
-   * **Dependency Audit:** Check that all your third-party dependencies are on versions compatible with Angular 17. Most libraries that worked on 16 will work on 17, since there were not many breaking changes in the core framework. But update things like Angular Fire, NGX libraries, etc., to their latest versions. Also verify your TypeScript is updated as needed (the Angular update may have done this).
-4. **Test and Verify on v17:** Do a full regression test on the Angular 17 version of the app:
+* **Node.js and TypeScript:** Angular 19 requires Node.js 18.19+, 20.11+, or 22.x, and TypeScript \~5.5 (>=5.5 <5.7). Node 18 was still LTS during v19, so it’s supported (Node 20+ recommended). Make sure you’re on at least Node 18.19 or later. Update to the latest npm as well.
+* **Standalone Components Default:** In Angular 19, **standalone components are the default** for new projects and the recommended approach. This isn’t a breaking change for existing code – your NgModules still work. However, CLI generators (`ng generate component`) will produce standalone components by default. Be aware of this if you generate new components after upgrading (you can add `--standalone=false` if you want a module-based component). It’s a good time to consider migrating feature modules to standalone components, but it’s not required.
+* **Dependency Injection and Signals:** Angular 19 includes DI enhancements and signal improvements (like the Resource API for async data). These are new features and should not break existing code. For example, Angular 19 introduced `destroyRef` and `effect` improvements, but if you aren’t using signals yet, you won’t be affected.
+* **Angular Material Theming Overhaul:** **This is the crucial part of Angular 19 for Material users.** Material v19 finalizes the shift to the new theming API using design tokens. Many Sass APIs that were present for Material Design 2 are removed or replaced. Breaking changes in theming include:
 
-   * Run `ng build` (both dev and production builds) to ensure the build succeeds without errors.
-   * Run your unit tests (`ng test`) and any end-to-end tests. All tests should pass as before.
-   * Manually test the application in a staging environment. Pay close attention to any UI component that was affected by the Material upgrade. Since legacy components are gone, confirm that all dialogs, forms, tables, etc., look correct and behave properly with the MDC versions. You might notice minor UI differences (spacing, typography changes) – address these with CSS tweaks or updated Material theme settings as needed.
-   * Monitor the console for any warnings. By Angular 17, a lot of deprecations from earlier versions (e.g. old forms API, old HTTP APIs, etc.) might have been removed. If you missed something, Angular will throw an error or warning. Fix those immediately.
+  * Removal of the old `mat-` theming mixins for individual components. For example, in earlier versions you might have:
 
-## Testing and Validation Before Production
+    ```scss
+    @include mat.button-theme($theme);
+    @include mat.form-field-theme($theme);
+    ```
 
-Upgrading across multiple major versions is a significant change. Here are recommended practices to ensure the upgrade is successful before you release the app:
+    These are replaced by the global `mat.theme($theme)` mixin that applies all theme styles in one go. The update schematic should remove or comment out the per-component theme mixins in your styles.
+  * The `$theme` Sass object (previously created via `mat.define-theme`) is no longer manipulated directly in the same way. In v19+, you don’t pass the `$theme` into each component’s theme mixin; instead, you call `mat.theme($theme)` once. The new API expects that your `$theme` includes color, typography, and density config.
+  * CSS Variables (System tokens): Material 19 uses CSS custom properties for theming. If you had custom styles using Sass functions like `mat.get-color-config($theme)` or `mat.get-theme-color(...)`, these will no longer work as before. Instead, you might need to use CSS variable references or the new `mat.color` mixin functions. For example, you can use CSS var `--mat-primary` to get your primary color in runtime styles, or use the new Sass token APIs for compile-time styling.
+  * **Migration Tip:** After updating to v19, open your `styles.scss` (or wherever you define your theme). You will likely see changes. For instance, the update might have added:
 
-* **Test at Each Stage:** Don’t wait until the end to test. After each major version upgrade (14, 15, 16, 17), run your application and execute all tests. This incremental testing will help you pinpoint which upgrade introduced a problem. For instance, if something worked in Angular 15 but breaks in Angular 16, you know to focus your debugging there. This stepwise approach is advocated by Angular update guides and prevents version leap issues.
-* **Unit and Integration Tests:** Run `ng test` to execute your unit tests. Ensure all tests pass. Fix any failing tests ASAP – they often indicate something in the upgrade that changed expected behavior. Also run any integration or UI tests you have (for example, Protractor or Cypress tests) to catch regressions in actual user flows.
-* **Manual Exploratory Testing:** Deploy the upgraded app to a staging environment that mirrors production. Perform an end-to-end manual test: click through the application as a user would. Focus on critical workflows and also specifically on components that were likely affected by upgrades (for example, Angular Material components, routing navigation, forms with custom validation, etc.). Verify that the UI looks correct and no functionality is broken. Remember that Angular Material’s visual changes (from legacy to MDC) might require UX approval, so get feedback if needed.
-* **Performance and Bundle Checks:** After the final Angular 17 build, analyze your bundle size and performance. Major upgrades can sometimes unexpectedly increase bundle size (though Angular 17 actually tends to reduce it with build optimizations). Use tools like source-map-explorer to ensure no large polyfills or duplicates have crept in. Also test performance-critical paths in the app; Angular 17’s improvements (like deferrable views and faster hydration) should help, but verify that there are no regressions in load time or runtime performance.
-* **Consult Official Update Guide:** The Angular team provides an official update guide tool. It can generate a list of specific changes and recommended actions between any two versions. Even after completing the steps above, it’s wise to visit [update.angular.io](https://update.angular.io/) and check if there are any version-specific instructions for v13 -> v14, v14 -> v15, etc., that apply to your project (for example, changes in the compiler options or known deprecated APIs). This can highlight any small changes we might have missed.
-* **Stabilize and Monitor:** Once all tests pass in staging, consider running a soak test (leave the application running and have QA use it extensively) to catch any sporadic errors. Monitor the browser console and server logs for any warnings or errors that appear under real usage. It’s easier to fix them in staging than post-release.
-* **Gradual Release:** Since this upgrade is significant, you might plan a gradual rollout. For example, deploy the new version to a subset of users or an internal beta environment first. Monitor error tracking tools (like Sentry) for new issues. This can give confidence that the Angular 17 version is production-ready.
-* **Backup Plan:** Keep a backup of the last known good build (Angular 13 version) until you’re confident in the new release. In case an unexpected critical issue arises in production, you could revert to the old build as a last resort while you address the problem. With proper testing, this shouldn’t be necessary, but it’s a good risk mitigation practice.
+    ```scss
+    @include mat.core();
+    :root {
+      @include mat.theme($my-app-theme);
+    }
+    ```
 
-By following this guide – upgrading through each major version step-by-step, addressing breaking changes proactively, and thoroughly testing at each phase – you can upgrade your Angular 13 application to Angular 17 with minimal disruption. In the end, you’ll benefit from the many improvements (performance, new features, and long-term support) that come with the latest Angular version. Good luck, and happy upgrading!
+    and removed older includes. If something is missing (like dark theme support or typography), consult the Angular Material theming guide for v19+. You may need to explicitly include a dark theme using the new API (e.g., define a separate \$dark-theme and apply it with `@include mat.theme($dark-theme, $selector: '.dark-theme')`). Ensure that your app’s light and dark themes (if any) are configured properly with the new mixins.
+* **Other Angular Changes:** Angular 19 continued to deprecate older APIs in preparation for Angular 20. For example, the old `HttpClientTestingModule` is marked for deprecation (if not already) – we will address that in v20. Also, Angular 19 introduced the **Resource and `rxResource` APIs** to handle async data as signals. This doesn’t break anything; it’s a new feature you can ignore or adopt gradually.
+* **Builder and Testing:** If you didn’t adopt the new `@angular/build` in v18, you can still do so in v19. The old builder package is likely still working via alias, but expect it to be removed in the near future. Angular 19’s CLI might print a notice about it. Also, Karma (if you still use it for unit tests) is still supported, but consider migrating to Jest or Web Test Runner in the long term as the ecosystem shifts toward vite-powered tooling.
 
-**Sources:**
+### Update Commands for Angular 19
 
-1. Official Angular Update Guide (Angular 13→17)
-2. Angular v16 Release Notes – Breaking Changes
-3. Stack Overflow – Angular Material v15 Legacy Migration Discussion
-4. Angular Material 15 Upgrade Tips (Dev.to)
-5. Stack Overflow – Legacy Material Components Removal in v17
-6. Angular 17 Features and Improvements (S. Seta, Medium)
+```bash
+ng update @angular/core@19 @angular/cli@19
+ng update @angular/material@19 @angular/cdk@19
+```
+
+This will update Angular frameworks to v19. The Material update will perform a crucial migration for your SCSS. **Review the console output and any modified files**, especially your global styles, theme definition, and `angular.json` configuration.
+
+### Post-update Validation (Angular 19)
+
+* **Build Application:** Run `ng build` or `ng serve` and address any errors:
+
+  * **Sass/CSS Errors:** Given the extensive theming changes, this is where you may encounter issues. For example, if you had custom `::ng-deep` styles targeting Material internals, some CSS class names might have changed with Material 3. Adjust those as needed (or better, use the new CSS vars or component `styling` APIs introduced on material.angular.dev for v19).
+  * If the Sass compiler complains about undefined mixins or functions, ensure that you have `@use '@angular/material' as mat` at the top of your SCSS and that you’re calling the correct functions. The update should have added needed imports (often via `@angular/material/schematics` or similar). Missing `@use` statements can cause mixins to be undefined.
+  * **Theming Check:** After a successful compile, inspect the browser. The visual differences might be more pronounced now. Material Design 3 has different default styles (e.g., larger elevation shadows, updated colors). Confirm that your primary/accent colors are applied (buttons, toggles, etc., should reflect your theme). If something looks off, it could be that your theme variables weren’t applied correctly. For instance, if all components look gray or the color is wrong, ensure the `mat.theme($theme)` mixin is present and receiving the right `$theme` object. You might need to set `color: (primary: ..., secondary: ..., surface: ...)` in your theme definition explicitly if defaults changed.
+* **Run Unit Tests:** Execute `ng test`. If you hadn’t yet migrated away from `HttpClientTestingModule`, you might see deprecation warnings (but tests should still pass). It’s highly recommended by this point to remove `HttpClientTestingModule` usage. Use `provideHttpClientTesting()` in tests instead, to avoid failures in Angular 20. Also, if any tests were inspecting Material component internals (like CSS classes), those may need updates due to MD3 changes. Update any selectors or test expectations that rely on Material’s internal DOM if needed.
+* **E2E/Integration Tests:** If you have end-to-end tests (Protractor was removed earlier; perhaps you use Cypress or WebDriverIO), run them. Pay attention to any failures due to changed selectors or text (Material 3 components might have different structure or default aria labels). Update your tests accordingly.
+* **Manual Testing:** Manually test critical flows. With Angular 19’s improvements largely under the hood, your app’s functionality should remain the same. Focus on style and UI/UX regressions due to Material theming. Also test any dynamic theming (dark mode toggles, etc.) to ensure the new CSS variable system reflects changes.
+* **Deprecation Warnings:** Check the terminal and browser console for any warnings. Angular might log deprecation warnings for APIs that will be removed in v20. Common ones to look for: usage of `provideLocationStrategy` (if any), old forms APIs, etc. Addressing them now (if any) will make the final upgrade smoother.
+* **Commit Changes:** Once the app is stable on Angular 19, commit the changes. You are now ready for the final step.
+
+## Step 5: Upgrade to Angular 20
+
+### Breaking Changes in Angular 20
+
+* **Node.js Requirement (Major):** Angular 20 drops support for Node 18 (which reached end-of-life in April 2025). **Node.js 20.11.1 or later is required**. Before upgrading, install Node 20 (or newer LTS) on your machine. Using an unsupported Node version will cause the Angular CLI to refuse running.
+* **TypeScript:** Angular 20 requires TypeScript 5.8 or above. The update will likely bump your TS to \~5.8.x. If you have custom TS config, ensure compatibility with TS5.8 features. One new compiler option in strict mode is `typeCheckHostBindings` (Angular 20 introduces this flag to tighten template binding checks), but it’s off by default. You can opt in to catch more errors, but it’s not mandatory.
+* **Removal of Deprecated APIs:** Angular 20 is a “stabilization” release – many features introduced since v16 are now stable. It also means deprecated APIs from earlier versions are likely removed. For example:
+
+  * **HttpClientModule:** If you somehow still have `HttpClientModule` in use (despite v18’s deprecation), Angular 20 may remove it or at least break it. By now, you should have migrated to `provideHttpClient`. Verify once more that no `HttpClientModule` import remains.
+  * **HttpClientTestingModule:** This testing module is officially deprecated in v20. In Angular 20, using it will trigger TypeScript errors or warnings. **Removal/Migration:** All tests should use `provideHttpClientTesting()` instead. If you haven’t done this yet, do it now: import `provideHttpClientTesting` from `@angular/common/http/testing` and add it to your test providers. Remove `HttpClientTestingModule` imports. This migration will fix any failing HTTP tests in Angular 20.
+  * **Angular Forms (NgModules):** While Template-driven and Reactive Forms still use `FormsModule`/`ReactiveFormsModule`, Angular 20 has an *experimental* signal-based Forms API (not yet stable). The traditional FormsModule is still supported in v20, but keep an eye on future changes. No action needed now, just be aware of upcoming forms refactor in later versions.
+  * **Deprecated Common APIs:** Any functions in `@angular/common` marked deprecated in v18/v19 could be removed. For instance, `getLocaleDateFormat` and related i18n functions were deprecated in v18. If you used those, switch to the native Intl API or `formatDate` from Angular.
+  * **Platform Browser:** If your code used the deprecated `DomSanitizer.bypassSecurityTrust...` methods or old APIs for Title/Meta services, ensure you use the latest APIs (these old ones might still exist in v20, but it’s good practice to use the current ones).
+* **Angular Material:** Angular Material 20 builds on the v19 changes. There aren’t major new breaking changes reported for v20 Material, as the big shift happened in v19. Material v20 likely continues with the Material 3 design. It’s possible that any remaining backward-compatibility shims for the old theming API are removed in v20. For example, if v19 left any Sass aliases or temporary deprecation warnings, v20 might clean those up. **Action:** Review the console output of `ng update @angular/material@20`. If it performs any additional migrations, apply them. Ensure your theme SCSS has no deprecated calls. By now you should be fully on the design token system. One thing to check: If you have not yet updated typography to use the new CSS vars (instead of the old `mat-typography-config` mixin), Angular 20 might finalize that. Consider using the new `TypographyConfig` API or CSS variables for fonts.
+* **Stable APIs:** Many APIs introduced as experimental in earlier versions are now stable in Angular 20. For example, Signals APIs (`effect()`, `toSignal()`, etc.) are fully stable. This doesn’t break anything; it simply means you can rely on them for new development. Also, zoneless change detection, while still preview, is more accessible in v20 (the CLI `ng new` will prompt to enable it). None of these affect existing apps unless you opt in.
+* **CLI Changes:** The Angular CLI v20 may introduce new defaults. One noteworthy change: when generating new components, the CLI might shorten file name prefixes or use a new convention (some users noted the CLI generating files like `user.ts` instead of `user.component.ts` for standalone components, as part of an experimental “selectorless components” feature). This is experimental and not a breaking runtime change – just be aware of CLI prompts or unusual file naming schemes for newly generated pieces. You can always override or stick to your preferred conventions.
+* **ESM Output and Builder:** Angular 20’s build output is fully optimized for ESM and modern browsers. If you stayed on the old build system, strongly consider migrating to the new one now. The old `@angular-devkit/build-angular` may be completely removed in favor of `@angular/build` in v20 (or soon after). The `ng update` should handle this if you haven’t switched. After updating, check your `angular.json`: under `projects -> architect -> build`, it should use `"builder": "@angular/build:browser"` instead of the old builder. Similarly for `serve` and `test` targets. If not, you might need to manually adjust or run `ng update @angular/cli --migrate-only` for the builder migration.
+* **Cleanup:** Angular 20 is a good point to clean up any leftover **migration backups**. Sometimes, update schematics leave TODO comments or backup files (e.g., `theme.scss.bak` or commented out code). Search your project for `TODO` or `DEPRECATED` notes inserted during updates and resolve them. Remove any old code that’s no longer used.
+
+### Update Commands for Angular 20
+
+```bash
+ng update @angular/core@20 @angular/cli@20
+ng update @angular/material@20 @angular/cdk@20
+```
+
+This final update will bring you to Angular 20. The CLI might prompt to enable optional features (like an prompt to turn on zoneless mode or strict host binding checks). You can say yes or no; these are not required and can be enabled later. Focus on getting the project building first. The Material update will ensure you’re on Material 20 – review any output for changes, though it’s likely minimal if you handled v19 correctly.
+
+### Post-update Validation (Angular 20)
+
+* **Node/Environment:** Verify you’re running on Node 20+ (`node -v`). If not, upgrade Node and reinstall your dependencies (`npm install`) to ensure native node modules (if any) are rebuilt for the new Node version.
+* **Full Build & Lint:** Run a production build (`ng build --configuration production`). This ensures that TypeScript 5.8 and Angular IVY compilation succeed without errors. If you see TS errors, address them – they could be due to stricter type checks. For example, Angular 20’s stricter binding checks might catch a template type mistake that was previously unnoticed. Fix any such issues (the error messages usually guide you to the problematic binding or query). Run `ng lint` to catch any leftover deprecated usage.
+* **Unit Tests:** Run `ng test`. This is where any lingering issues with HttpClient tests will surface if not fixed. If you get errors like “Cannot find module HttpClientTestingModule” or similar, ensure you removed those imports. Tests that failed due to changed behavior should be updated. All tests should be green now.
+* **E2E Tests & Manual Testing:** Do a thorough test of the application in a browser. By Angular 20, your app should function as it did in Angular 15, with improvements under the hood. Check forms, routing, HTTP calls, and particularly **Material components**:
+
+  * Look at UI elements like buttons, menus, dialogs to confirm styling is correct. Angular 20 with Material 3 might introduce subtle changes (e.g., denser layouts or updated iconography). Ensure these are acceptable.
+  * If any component looks off (for example, a theme color missing), it could indicate a missing CSS variable or an outdated customization. Use the browser dev tools to inspect CSS variables on an element (Material components now expose `--mdc-*` or `--mat-*` variables for colors, etc.). You can adjust your global styles to override these if needed (for instance, to fine-tune a background or border radius).
+  * Test interactive components (e.g., date pickers, drop-downs) to ensure no console errors and correct behavior.
+* **Performance and Bundle Check:** Angular 20 has optimizations like tree-shaking improvements and optional zone removal. Build your app and compare bundle sizes or performance if you like. You might notice smaller bundles thanks to dropping legacy polyfills (especially if you removed zone.js for signals-only apps, but if not, it’s similar).
+* **Finalize and Document:** Remove any references to older Angular versions in your documentation. Update README or comments to note that the project now requires Node 20 and Angular 20. It’s also wise to update any CI pipelines to use Node 20.
+
+## Conclusion and Next Steps
+
+You have now incrementally upgraded from Angular 15 to Angular 20. Each phase involved updating dependencies, adjusting code for breaking changes, and testing the application:
+
+* **Breaking Changes Summary:** We addressed all major breaking changes: removed legacy Material components (v17), replaced HttpClientModule with `provideHttpClient` (v18), overhauled theming to Material Design 3 (v18/v19), and dropped deprecated testing modules by v20. We also kept the environment up-to-date (Node, TypeScript) at each step.
+* **Testing:** At each upgrade step, we ran unit tests and performed manual verification to catch issues early. This phased approach ensures that when something breaks, you know which version caused it and can fix it in isolation.
+* **Angular Material:** Your project uses modern Angular Material components, and now it also uses the modern theming system. All legacy APIs from Angular Material are gone by v19, and you’re well-positioned to use Material’s latest features. If you need to further customize the Material theme, use the new CSS variable theming guide as a reference.
+* **Future-Proofing:** Angular 20 sets the stage for future features like signal-based forms and zoneless change detection. While you might not use these yet, your app is now clean of old patterns and ready to adopt new Angular innovations when you choose. Keep an eye on Angular’s deprecation guide for anything that might be phased out in v21+ (for example, FormsModule might get a new alternative in the future).
+
+Finally, run one more full regression test on the Angular 20 application. With everything passing, you can confidently deploy the updated app. Enjoy the performance improvements and new features of Angular 16–20 in your project!
