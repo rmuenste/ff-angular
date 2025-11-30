@@ -1,9 +1,8 @@
-> **STATUS: PARTIALLY-COMPLETE**
+> **STATUS: COMPLETE**
 >
-> - **✅ Completed:** The core SCSS structure, theme definitions, and CSS custom property system are fixed and fully implemented.
-> - **🚩 Pending:** A user-facing UI component and service for runtime theme switching still need to be built.
+> - **✅ Completed:** The core SCSS structure, theme definitions, and CSS custom property system are fixed and fully implemented. The user-facing UI component (`ThemeSwitcherComponent`) and a `ThemeService` for runtime theme switching are also implemented.
 >
-> This guide accurately describes the completed foundation. The "Theme Switching Implementation Plan" section outlines the remaining work.
+> This guide now fully describes the current, implemented theming system.
 
 # Angular Material Theming Guide - Updated Implementation
 
@@ -177,20 +176,18 @@ Currently using **compile-time theming** where the default theme is built into `
 
 ## Next Implementation Steps
 
-1. **Create ThemeService** - Manage theme state and persistence
-2. **Build Theme Switcher Component** - User-friendly theme selection
-3. **Add Runtime Switching** - Dynamic theme changes without reload
-4. **Implement System Detection** - Auto light/dark based on OS preference
-5. **Create Theme Editor** - Allow custom color scheme creation
+1. **Implement System Detection** - Auto light/dark based on OS preference
+2. **Create Theme Editor** - Allow custom color scheme creation
+3. **Theme Persistence** - Save user preference to localStorage
 
 ## Migration Notes
 
 If you need to add new components or modify existing ones:
 
-1. **Use CSS custom properties** instead of hard-coded colors
-2. **Don't import styles.scss** in component files
-3. **Follow the existing pattern** in updated components
-4. **Test with theme switching** once implemented
+11. Use CSS custom properties instead of hard-coded colors
+12. Don't import styles.scss in component files
+13. Follow the existing pattern in updated components
+14. Test with theme switching once implemented
 
 The foundation is now solid and ready for the theme switcher implementation!
 

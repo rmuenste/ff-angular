@@ -23,8 +23,6 @@ This list tracks the next development priorities. For a full overview of the pro
 - [ ] **Complete Angular v20 Upgrade:** The project is currently on v18.
     -   **Action:** Follow the `ANGULAR_VERSION_UPDATE_PLAN.md` to upgrade to v19 and v20.
 
-- [ ] **Implement Theme Switcher UI:** The theming engine is ready, but a UI is needed.
-    -   **Action:** Create a `ThemeService` and a component to allow users to switch themes.
 
 ### ⚪️ Low Priority
 

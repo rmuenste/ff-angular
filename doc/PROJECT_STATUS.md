@@ -32,6 +32,10 @@ However, critical gaps remain in code quality and testing, which must be address
     *   **Status:** The core theming system has been **fixed and stabilized**.
     *   **Details:** Resolved SCSS compilation errors and implemented a clean, maintainable theming structure based on CSS Custom Properties. Light and dark themes are defined and functional.
 
+5.  **Theme Switcher UI (Complete)**
+    *   **Status:** **100% complete.**
+    *   **Details:** A dedicated `ThemeSwitcherComponent` has been implemented, providing a user interface for toggling between available themes and interacting with the `ThemeService`.
+
 ---
 
 ## 🚩 Priority Issues & Next Steps
@@ -68,13 +72,6 @@ The following issues represent the most critical technical debt and must be prio
 
 ### 🟡 Medium Priority
 
-1.  **Build Theme Switcher UI**
-    *   **Problem:** The theming backend is ready, but there is no UI for users to switch between themes.
-    *   **Next Steps:**
-        *   Create a `ThemeService` to manage the currently active theme.
-        *   Build a UI component (e.g., a button toggle in the navbar) to allow users to select their preferred theme.
-        *   Implement theme persistence in `localStorage`.
-
-2.  **Improve Test Readability**
+1.  **Improve Test Readability**
     *   **Problem:** Default Karma test output can be noisy.
     *   **Next Steps:** Implement `karma-spec-reporter` as outlined in `TODO.md`.
