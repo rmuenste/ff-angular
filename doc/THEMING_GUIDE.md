@@ -1,3 +1,10 @@
+> **STATUS: PARTIALLY-COMPLETE**
+>
+> - **✅ Completed:** The core SCSS structure, theme definitions, and CSS custom property system are fixed and fully implemented.
+> - **🚩 Pending:** A user-facing UI component and service for runtime theme switching still need to be built.
+>
+> This guide accurately describes the completed foundation. The "Theme Switching Implementation Plan" section outlines the remaining work.
+
 # Angular Material Theming Guide - Updated Implementation
 
 ## Overview

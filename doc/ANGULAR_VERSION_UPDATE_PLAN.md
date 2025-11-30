@@ -1,3 +1,10 @@
+> **STATUS: IN-PROGRESS**
+>
+> - **Current Version:** Angular 18
+> - **Next Steps:** Proceed with "Step 4: Upgrade to Angular 19".
+>
+> This plan is actively being followed. Steps 1, 2, and 3 are complete.
+
 Thanks for confirming. I’ll now analyze what’s required to update your Angular 15 project—using only non-legacy Angular Material components and no advanced features or third-party build tools—to Angular 20.
 
 I’ll focus on identifying breaking changes, key CLI and dependency updates, and version-specific upgrade requirements from Angular 15 through 20. I’ll get back to you shortly with a detailed step-by-step migration plan.
