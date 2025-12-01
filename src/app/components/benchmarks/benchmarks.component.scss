@@ -48,6 +48,7 @@ h1 {
   text-align: center;
 }
 
+
 .nav-item-style {
   color: var(--text-secondary);
 }
@@ -85,6 +86,16 @@ a.benchmarks-selected:hover {
 mat-drawer mat-list-item a.benchmark-selected {
  background-color: #b3e7787c;
 }
+
+.my-drawer mat-nav-list {
+  padding-top: 0px;
+}
+
+// Hover state for non-active items
+mat-nav-list a[mat-list-item]:hover:not(.myA) {
+  background-color: var(--divider-color) !important;
+}
+
 /*
 */
 @media screen and (max-width: 720px) {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PostService } from '../../services/post.service';
+import { PostService } from './post.service';
 import { IDataService } from './interfaces/data-service.interface';
 
 @Injectable({

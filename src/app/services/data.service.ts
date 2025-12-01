@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
   
-import { PostService } from 'src/services/post.service';
+import { PostService } from './post.service';
 import { MESH_DATA } from '../data/mesh-data';
 import { ELEMENT_DATA } from '../data/element-data';
 

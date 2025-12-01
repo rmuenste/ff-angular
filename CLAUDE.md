@@ -81,6 +81,12 @@ Run unit tests:
 ```bash
 ng test
 ```
+
+In LLM AI terminal workflows use the following command:
+```bash
+ng test --watch=false --browsers=ChromeHeadless
+```
+
 Tests are executed via Karma.
 
 ### Code Generation
@@ -93,7 +99,7 @@ ng generate component component-name
 
 ## Architecture Overview
 
-This is an Angular (v13.1.0) application for visualizing benchmark data with the following key aspects:
+This is an Angular (v18.2.13) application for visualizing benchmark data with the following key aspects:
 
 1. **Main Framework & Libraries**:
    - Angular Material for UI components

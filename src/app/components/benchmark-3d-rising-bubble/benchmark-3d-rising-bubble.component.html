@@ -240,9 +240,9 @@ surface. The dimensionless timespan of the simulation covers the time interval f
 
 <!-- Results Tab
  -->
-  <div fxLayout="row wrap" fxLayoutAlign="space-around space-around" fxLayoutGap="16px">
+  <div class="flex-row-wrap justify-around items-center gap-4">
 
-   <div fxFlex.gt-sm="40%" fxFlex.lt-lg="100%">
+   <div class="flex-40-sm flex-100-lt-lg">
      <div *ngIf="sphericityGraph; else loading">
        <app-filterable-plot
          [graph]="sphericityGraph"
@@ -251,7 +251,7 @@ surface. The dimensionless timespan of the simulation covers the time interval f
    </div>
 
 
-  <div fxFlex.gt-sm="40%" fxFlex.lt-lg="100%">
+  <div class="flex-40-sm flex-100-lt-lg">
     <div *ngIf="graphMassConservation; else loading">
       <app-filterable-plot
         [graph]="graphMassConservation"
@@ -259,7 +259,7 @@ surface. The dimensionless timespan of the simulation covers the time interval f
     </div>
   </div>
 
-  <div fxFlex.gt-sm="40%" fxFlex.lt-lg="100%">
+  <div class="flex-40-sm flex-100-lt-lg">
     <div *ngIf="graphSize; else loading">
       <app-filterable-plot
         [graph]="graphSize"
@@ -267,7 +267,7 @@ surface. The dimensionless timespan of the simulation covers the time interval f
     </div>
   </div>
 
-  <div fxFlex.gt-sm="40%" fxFlex.lt-lg="100%">
+  <div class="flex-40-sm flex-100-lt-lg">
     <div *ngIf="graphSurface; else loading">
       <app-filterable-plot
         [graph]="graphSurface"

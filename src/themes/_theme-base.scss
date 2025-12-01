@@ -7,7 +7,7 @@
   @include mat.all-component-themes($theme);
   
   // Extract theme-specific color palettes
-  $color-config: mat.get-color-config($theme);
+  $color-config: mat.m2-get-color-config($theme);
   $primary: map-get($color-config, 'primary');
   $accent: map-get($color-config, 'accent');
   $warn: map-get($color-config, 'warn');
@@ -15,11 +15,11 @@
   
   // Define CSS custom properties based on theme
   :root {
-    --primary-color: #{mat.get-color-from-palette($primary, 500)};
-    --primary-lighter: #{mat.get-color-from-palette($primary, 300)};
-    --primary-darker: #{mat.get-color-from-palette($primary, 700)};
-    --accent-color: #{mat.get-color-from-palette($accent, 500)};
-    --warn-color: #{mat.get-color-from-palette($warn, 500)};
+    --primary-color: #{mat.m2-get-color-from-palette($primary, 500)};
+    --primary-lighter: #{mat.m2-get-color-from-palette($primary, 300)};
+    --primary-darker: #{mat.m2-get-color-from-palette($primary, 700)};
+    --accent-color: #{mat.m2-get-color-from-palette($accent, 500)};
+    --warn-color: #{mat.m2-get-color-from-palette($warn, 500)};
     
     @if $is-dark {
       --background-color: #303030;
@@ -30,7 +30,9 @@
       --divider-color: rgba(255, 255, 255, 0.12);
       // High contrast text for colored backgrounds
       --text-on-primary: rgba(0, 0, 0, 0.87);  // Black text on green
+      --text-on-primary-rgb: 0, 0, 0; // RGB components for rgba()
       --text-on-accent: rgba(255, 255, 255, 0.87);  // White text on orange
+      --text-on-accent-rgb: 255, 255, 255; // RGB components for rgba()
     } @else {
       --background-color: #fafafa;
       --surface-color: #ffffff;
@@ -39,15 +41,17 @@
       --text-disabled: rgba(0, 0, 0, 0.38);
       --divider-color: rgba(0, 0, 0, 0.12);
       // High contrast text for colored backgrounds
-      --text-on-primary: rgba(0, 0, 0, 0.87);  // Black text on green
+      --text-on-primary: #ffffff;  // White text on green (User preference)
+      --text-on-primary-rgb: 255, 255, 255; // RGB components for rgba()
       --text-on-accent: rgba(255, 255, 255, 0.87);  // White text on orange
+      --text-on-accent-rgb: 255, 255, 255; // RGB components for rgba()
     }
   }
 }
 
 // Custom component theme mixins
 @mixin custom-component-themes($theme) {
-  $color-config: mat.get-color-config($theme);
+  $color-config: mat.m2-get-color-config($theme);
   $is-dark: map-get($color-config, 'is-dark');
   
   // Main header component theming
@@ -92,29 +96,30 @@
   // Override Angular Material component colors to use CSS custom properties
   // This ensures components like mat-tab ink-bar respond to theme switching
   
-  // Tab ink bar (tab underline indicator)
-  .mat-tab-group.mat-primary .mat-ink-bar,
-  .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  // Tab ink bar (tab underline indicator) - MDC classes
+  .mat-mdc-tab-group.mat-primary .mdc-tab-indicator__content--underline,
+  .mat-mdc-tab-nav-bar.mat-primary .mdc-tab-indicator__content--underline {
+    border-color: var(--primary-color) !important;
     background-color: var(--primary-color) !important;
   }
   
-  // Tab header styling for proper navigation appearance
-  .mat-tab-group .mat-tab-header {
+  // Tab header styling for proper navigation appearance - MDC classes  
+  .mat-mdc-tab-header {
     border-bottom: 1px solid var(--divider-color) !important;
     background: var(--surface-color) !important;
   }
   
-  // Tab labels - use proper contrast colors
-  .mat-tab-group.mat-primary .mat-tab-label.mat-tab-label-active {
-    color: var(--text-primary) !important;  // Use primary text color for better readability
+  // Tab labels - use proper contrast colors - MDC classes
+  .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+    color: var(--text-primary) !important;  // Active tab uses primary text color
   }
   
-  .mat-tab-group.mat-primary .mat-tab-label:not(.mat-tab-label-active) {
+  .mat-mdc-tab:not(.mdc-tab--active) .mdc-tab__text-label {
     color: var(--text-secondary) !important;  // Inactive tabs use secondary text
   }
   
-  // Tab body background
-  .mat-tab-group .mat-tab-body-wrapper {
+  // Tab body background - MDC classes
+  .mat-mdc-tab-body-wrapper {
     background: var(--background-color) !important;
   }
   
@@ -188,6 +193,126 @@
     // For complex tables with descriptive text, keep left alignment
     .mat-cell:first-child {
       text-align: left !important;
+    }
+  }
+  
+  // MDC Checkbox theming - ensure proper contrast in all themes
+  .mat-mdc-checkbox {
+    // Unchecked state border and background
+    .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate) ~ .mdc-checkbox__background {
+      border-color: var(--text-secondary) !important;
+      background-color: transparent !important;
+    }
+    
+    // Checked state
+    .mdc-checkbox__native-control:enabled:checked ~ .mdc-checkbox__background,
+    .mdc-checkbox__native-control:enabled:indeterminate ~ .mdc-checkbox__background {
+      border-color: var(--primary-color) !important;
+      background-color: var(--primary-color) !important;
+    }
+    
+    // Checkmark color
+    .mdc-checkbox__native-control:enabled:checked ~ .mdc-checkbox__background .mdc-checkbox__checkmark,
+    .mdc-checkbox__native-control:enabled:indeterminate ~ .mdc-checkbox__background .mdc-checkbox__mixedmark {
+      color: var(--text-on-primary) !important;
+    }
+    
+    // Label text color
+    .mdc-form-field > label {
+      color: var(--text-primary) !important;
+    }
+    
+    // Focus/hover states
+    .mdc-checkbox__native-control:enabled:focus ~ .mdc-checkbox__background {
+      border-color: var(--primary-color) !important;
+    }
+  }
+  
+  // MDC Radio Button theming - ensure proper contrast in all themes
+  .mat-mdc-radio-button {
+    // Unchecked state outer circle
+    .mdc-radio__native-control:enabled:not(:checked) + .mdc-radio__background .mdc-radio__outer-circle {
+      border-color: var(--text-secondary) !important;
+    }
+    
+    // Checked state outer circle
+    .mdc-radio__native-control:enabled:checked + .mdc-radio__background .mdc-radio__outer-circle {
+      border-color: var(--primary-color) !important;
+    }
+    
+    // Checked state inner circle
+    .mdc-radio__native-control:enabled:checked + .mdc-radio__background .mdc-radio__inner-circle {
+      border-color: var(--primary-color) !important;
+      background-color: var(--primary-color) !important;
+    }
+    
+    // Label text color
+    .mdc-form-field > label {
+      color: var(--text-primary) !important;
+    }
+    
+    // Focus/hover states
+    .mdc-radio__native-control:enabled:focus + .mdc-radio__background .mdc-radio__outer-circle {
+      border-color: var(--primary-color) !important;
+    }
+  }
+
+  // MDC Form Field and Select Theming
+  .mat-mdc-form-field {
+    // Text color (input value, select value)
+    .mat-mdc-select-value,
+    .mat-mdc-input-element {
+      color: var(--text-primary) !important;
+    }
+
+    // Label color
+    .mdc-floating-label,
+    .mat-mdc-floating-label {
+      color: var(--text-secondary) !important;
+    }
+
+    // Focused label color
+    &.mat-focused .mdc-floating-label,
+    &.mat-focused .mat-mdc-floating-label {
+      color: var(--primary-color) !important;
+    }
+
+    // Arrow/Dropdown icon color
+    .mat-mdc-select-arrow {
+      color: var(--text-secondary) !important;
+    }
+
+    &.mat-focused .mat-mdc-select-arrow {
+      color: var(--primary-color) !important;
+    }
+
+    // Outline/Fill colors (depending on appearance)
+    // For Fill appearance (background)
+    .mdc-text-field--filled {
+      background-color: var(--surface-color) !important;
+    }
+  }
+
+  // Select Panel (Dropdown options)
+  .mat-mdc-select-panel {
+    background-color: var(--surface-color) !important;
+    
+    .mat-mdc-option {
+      color: var(--text-primary) !important;
+      
+      &:hover:not(.mdc-list-item--disabled),
+      &.mat-mdc-option-active {
+        background-color: rgba(var(--text-primary), 0.08) !important;
+      }
+      
+      &.mdc-list-item--selected {
+        color: var(--primary-color) !important;
+        background-color: rgba(var(--primary-color), 0.12) !important;
+        
+        .mat-mdc-option-pseudo-checkbox {
+          color: var(--primary-color) !important;
+        }
+      }
     }
   }
 }

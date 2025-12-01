@@ -1,7 +1,7 @@
 import { useAnimation } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
-import { PostService } from 'src/services/post.service'; 
+import { PostService } from '../../services/post.service'; 
 import { PeriodicElement, Notation, Reference, benchFormat,
          ReferenceBubbleS, ELEMENT_DATA, NOTATION_DATA,
          REFERENCE_DATA, BENCHMARK_FORMAT, REFERENCE_BubbleS

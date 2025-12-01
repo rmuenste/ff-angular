@@ -15,6 +15,14 @@ mat-toolbar {
   background: var(--primary-color);
   color: var(--text-on-primary);
   // Theme-specific shadows are handled in the theme files
+
+  a.mat-button, button.mat-icon-button, .nav-button {
+    color: var(--text-on-primary) !important;
+    
+    mat-icon {
+      color: var(--text-on-primary) !important;
+    }
+  }
 }
 
 .nav-content {
@@ -30,11 +38,11 @@ mat-toolbar {
 }
 
 a:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(var(--text-on-primary-rgb), 0.08);
 }
 
 .mat-active {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(var(--text-on-primary-rgb), 0.12);
 }
 
 a[routerlink] {

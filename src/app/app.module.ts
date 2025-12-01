@@ -17,7 +17,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { BenchmarksComponent } from './components/benchmarks/benchmarks.component';
 import { MainComponent } from './components/main/main.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -31,7 +31,6 @@ import { BenchmarkFacComponent } from './components/benchmark-fac/benchmark-fac.
 import * as PlotlyJS from 'plotly.js-dist-min';
 import { PlotlyModule } from 'angular-plotly.js';
 import { BenchmarksMainComponent } from './components/benchmarks-main/benchmarks-main/benchmarks-main.component';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { BasePlotComponent } from './components/base-plot/base-plot.component';
 import { LevelSelectionPlotComponent } from './components/level-selection-plot/level-selection-plot.component';
 import { FilterablePlotComponent } from './components/filterable-plot/filterable-plot.component';
@@ -41,48 +40,40 @@ import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switch
 
 PlotlyModule.plotlyjs = PlotlyJS;
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    BenchmarksComponent,
-    MainComponent,
-    FooterComponent,
-    MathjaxComponent,
-    Benchmark2DRisingBubbleComponent,
-    Benchmark3DRisingBubbleComponent,
-    BenchmarkFacComponent,
-    BenchmarksMainComponent,
-    BasePlotComponent,
-    LevelSelectionPlotComponent,
-    FilterablePlotComponent,
-    BenchmarkParticleSedimentationComponent,
-    ThemeSwitcherComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    FlexLayoutModule,
-    MatButtonModule,
-    MatRadioModule,
-    MatCheckboxModule,
-    MatIconModule,
-    MatTableModule,
-    MatTabsModule,
-    MatFormFieldModule,
-    MatListModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatDividerModule,
-    MatButtonToggleModule,
-    HttpClientModule,
-    MatSelectModule,
-    PlotlyModule
-  ],
-  providers: [DATA_SERVICE_PROVIDER],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        NavbarComponent,
+        BenchmarksComponent,
+        MainComponent,
+        FooterComponent,
+        MathjaxComponent,
+        Benchmark2DRisingBubbleComponent,
+        Benchmark3DRisingBubbleComponent,
+        BenchmarkFacComponent,
+        BenchmarksMainComponent,
+        BasePlotComponent,
+        LevelSelectionPlotComponent,
+        FilterablePlotComponent,
+        BenchmarkParticleSedimentationComponent,
+        ThemeSwitcherComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatRadioModule,
+        MatCheckboxModule,
+        MatIconModule,
+        MatTableModule,
+        MatTabsModule,
+        MatFormFieldModule,
+        MatListModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatDividerModule,
+        MatButtonToggleModule,
+        MatSelectModule,
+        PlotlyModule], providers: [DATA_SERVICE_PROVIDER, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }

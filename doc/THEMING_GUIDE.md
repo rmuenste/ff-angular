@@ -1,3 +1,9 @@
+> **STATUS: COMPLETE**
+>
+> - **✅ Completed:** The core SCSS structure, theme definitions, and CSS custom property system are fixed and fully implemented. The user-facing UI component (`ThemeSwitcherComponent`) and a `ThemeService` for runtime theme switching are also implemented.
+>
+> This guide now fully describes the current, implemented theming system.
+
 # Angular Material Theming Guide - Updated Implementation
 
 ## Overview
@@ -77,6 +83,22 @@ All themes now use consistent CSS custom properties that update automatically:
   border: 1px solid var(--divider-color);
 }
 ```
+
+#### Special Note for Angular Material Tables (`mat-table`)
+
+When styling `mat-table` components, it's crucial to explicitly set text colors on `mat-header-cell` and `mat-cell` using CSS variables (`--text-primary`, `--text-secondary`). Angular Material's default theme styles, generated at compile time, can often override inherited `color` properties on `<table>` elements. This can lead to issues such as white text appearing on a white background in the light theme, even when `var(--text-primary)` on the `<table>` element should resolve to black.
+
+**Example for `mat-table` cells:**
+```scss
+th.mat-header-cell {
+  color: var(--text-secondary); // For header text
+}
+td.mat-cell, td.mat-footer-cell {
+  color: var(--text-primary);   // For cell data text
+}
+```
+This ensures that table text colors properly adapt to the active theme.
+
 
 ### ❌ Avoid (Fixed in Restructure)
 ```scss
@@ -170,20 +192,18 @@ Currently using **compile-time theming** where the default theme is built into `
 
 ## Next Implementation Steps
 
-1. **Create ThemeService** - Manage theme state and persistence
-2. **Build Theme Switcher Component** - User-friendly theme selection
-3. **Add Runtime Switching** - Dynamic theme changes without reload
-4. **Implement System Detection** - Auto light/dark based on OS preference
-5. **Create Theme Editor** - Allow custom color scheme creation
+1. **Implement System Detection** - Auto light/dark based on OS preference
+2. **Create Theme Editor** - Allow custom color scheme creation
+3. **Theme Persistence** - Save user preference to localStorage
 
 ## Migration Notes
 
 If you need to add new components or modify existing ones:
 
-1. **Use CSS custom properties** instead of hard-coded colors
-2. **Don't import styles.scss** in component files
-3. **Follow the existing pattern** in updated components
-4. **Test with theme switching** once implemented
+11. Use CSS custom properties instead of hard-coded colors
+12. Don't import styles.scss in component files
+13. Follow the existing pattern in updated components
+14. Test with theme switching once implemented
 
 The foundation is now solid and ready for the theme switcher implementation!
 

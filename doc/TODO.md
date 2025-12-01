@@ -1,47 +1,30 @@
-Certainly! Here's a concise and informative note you can paste directly into your `TODO.md`:
+# Project TODO List
+
+This list tracks the next development priorities. For a full overview of the project's status, see `PROJECT_STATUS.md`.
 
 ---
 
-### ✅ Improve Test Output Readability with `karma-spec-reporter`
+### 🔴 Critical (Highest Priority)
 
-To make test results more readable and reduce noise in the console output, consider using the [`karma-spec-reporter`](https://www.npmjs.com/package/karma-spec-reporter). It provides a clean, focused summary of each test case, showing pass/fail status with your test labels.
+- [ ] **Restore Unit Test Coverage:** The project currently has almost no unit tests. This is a critical regression that must be addressed before any new features are added.
+    -   **Action:** Re-create unit tests for all major components and services.
+    -   **Goal:** Achieve >80% test coverage.
 
-#### 🛠 Installation
+### 🟠 High Priority
 
-```bash
-npm install --save-dev karma-spec-reporter
-```
+- [ ] **Refactor Monolithic `DataService`:** The `DataService` violates the single-responsibility principle.
+    -   **Action:** Separate data transformation logic from presentation (layout) logic. Move layout configuration into the components that use the plots.
 
-#### ⚙️ Configuration
+- [ ] **Introduce State Management:** The app lacks a central store, making state management difficult.
+    -   **Action:** Evaluate and implement a state management library like NgRx or Elf.
 
-In `karma.conf.js`:
+### 🟡 Medium Priority
 
-1. Add `'spec'` to the `reporters` array:
+- [ ] **Complete Angular v20 Upgrade:** The project is currently on v18.
+    -   **Action:** Follow the `ANGULAR_VERSION_UPDATE_PLAN.md` to upgrade to v19 and v20.
 
-   ```js
-   reporters: ['spec'];
-   ```
 
-2. Ensure the reporter is included in `plugins` (if using manual plugin setup):
+### ⚪️ Low Priority
 
-   ```js
-   plugins: [
-     require('karma-spec-reporter'),
-     // other plugins...
-   ];
-   ```
-
-3. Optionally, disable default reporters like `'progress'` to avoid duplicate output:
-
-   ```js
-   reporters: ['spec'];
-   ```
-
-#### ✅ Benefits
-
-* Clear, minimal test output (e.g., ✓ or ✗ per test)
-* Your `it(...)` labels appear directly next to the result
-* Easier to spot failed test names amidst noisy logs
-
----
-
+- [ ] **Improve Test Output Readability:** The Karma test reporter can be improved.
+    -   **Action:** Install and configure `karma-spec-reporter` to provide cleaner test result summaries in the console.

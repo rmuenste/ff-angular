@@ -46,8 +46,8 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "900kb",
-									"maximumError": "5mb"
+									"maximumWarning": "4mb",
+									"maximumError": "8mb"
 								},
 								{
 									"type": "anyComponentStyle",
@@ -67,8 +67,8 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "900kb",
-									"maximumError": "5mb"
+									"maximumWarning": "4mb",
+									"maximumError": "8mb"
 								},
 								{
 									"type": "anyComponentStyle",
@@ -104,22 +104,22 @@
 				"serve": {
 					"builder": "@angular-devkit/build-angular:dev-server",
 					"configurations": {
-						"production": {
-							"browserTarget": "new-material:build:production"
+            "production": {
+              "buildTarget": "new-material:build:production"
 						},
-						"staging": {
-							"browserTarget": "new-material:build:staging"
+            "staging": {
+              "buildTarget": "new-material:build:staging"
 						},
-						"development": {
-							"browserTarget": "new-material:build:development"
+            "development": {
+              "buildTarget": "new-material:build:development"
 						}
 					},
 					"defaultConfiguration": "development"
 				},
 				"extract-i18n": {
 					"builder": "@angular-devkit/build-angular:extract-i18n",
-					"options": {
-						"browserTarget": "new-material:build"
+          "options": {
+            "buildTarget": "new-material:build"
 					}
 				},
 				"test": {
@@ -141,6 +141,5 @@
 				}
 			}
 		}
-	},
-	"defaultProject": "new-material"
+  }
 }

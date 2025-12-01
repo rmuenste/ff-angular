@@ -24,7 +24,7 @@ export class MathjaxComponent implements OnInit, OnChanges {
   }
 
   updateMathObj() {
-    let mathJaxGlobal: any = this.cs.nativeGlobal()['MathJax'];
+    let mathJaxGlobal: any = (this.cs.nativeGlobal() as any)['MathJax'];
     this.mathJaxObject = mathJaxGlobal;
   }
 
