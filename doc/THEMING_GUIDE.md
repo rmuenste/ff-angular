@@ -84,6 +84,22 @@ All themes now use consistent CSS custom properties that update automatically:
 }
 ```
 
+#### Special Note for Angular Material Tables (`mat-table`)
+
+When styling `mat-table` components, it's crucial to explicitly set text colors on `mat-header-cell` and `mat-cell` using CSS variables (`--text-primary`, `--text-secondary`). Angular Material's default theme styles, generated at compile time, can often override inherited `color` properties on `<table>` elements. This can lead to issues such as white text appearing on a white background in the light theme, even when `var(--text-primary)` on the `<table>` element should resolve to black.
+
+**Example for `mat-table` cells:**
+```scss
+th.mat-header-cell {
+  color: var(--text-secondary); // For header text
+}
+td.mat-cell, td.mat-footer-cell {
+  color: var(--text-primary);   // For cell data text
+}
+```
+This ensures that table text colors properly adapt to the active theme.
+
+
 ### ❌ Avoid (Fixed in Restructure)
 ```scss
 // These patterns were removed:

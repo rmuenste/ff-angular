@@ -90,6 +90,12 @@ mat-drawer mat-list-item a.benchmark-selected {
 .my-drawer mat-nav-list {
   padding-top: 0px;
 }
+
+// Hover state for non-active items
+mat-nav-list a[mat-list-item]:hover:not(.myA) {
+  background-color: var(--divider-color) !important;
+}
+
 /*
 */
 @media screen and (max-width: 720px) {

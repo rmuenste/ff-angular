@@ -30,7 +30,9 @@
       --divider-color: rgba(255, 255, 255, 0.12);
       // High contrast text for colored backgrounds
       --text-on-primary: rgba(0, 0, 0, 0.87);  // Black text on green
+      --text-on-primary-rgb: 0, 0, 0; // RGB components for rgba()
       --text-on-accent: rgba(255, 255, 255, 0.87);  // White text on orange
+      --text-on-accent-rgb: 255, 255, 255; // RGB components for rgba()
     } @else {
       --background-color: #fafafa;
       --surface-color: #ffffff;
@@ -39,8 +41,10 @@
       --text-disabled: rgba(0, 0, 0, 0.38);
       --divider-color: rgba(0, 0, 0, 0.12);
       // High contrast text for colored backgrounds
-      --text-on-primary: rgba(0, 0, 0, 0.87);  // Black text on green
+      --text-on-primary: #ffffff;  // White text on green (User preference)
+      --text-on-primary-rgb: 255, 255, 255; // RGB components for rgba()
       --text-on-accent: rgba(255, 255, 255, 0.87);  // White text on orange
+      --text-on-accent-rgb: 255, 255, 255; // RGB components for rgba()
     }
   }
 }
@@ -250,6 +254,65 @@
     // Focus/hover states
     .mdc-radio__native-control:enabled:focus + .mdc-radio__background .mdc-radio__outer-circle {
       border-color: var(--primary-color) !important;
+    }
+  }
+
+  // MDC Form Field and Select Theming
+  .mat-mdc-form-field {
+    // Text color (input value, select value)
+    .mat-mdc-select-value,
+    .mat-mdc-input-element {
+      color: var(--text-primary) !important;
+    }
+
+    // Label color
+    .mdc-floating-label,
+    .mat-mdc-floating-label {
+      color: var(--text-secondary) !important;
+    }
+
+    // Focused label color
+    &.mat-focused .mdc-floating-label,
+    &.mat-focused .mat-mdc-floating-label {
+      color: var(--primary-color) !important;
+    }
+
+    // Arrow/Dropdown icon color
+    .mat-mdc-select-arrow {
+      color: var(--text-secondary) !important;
+    }
+
+    &.mat-focused .mat-mdc-select-arrow {
+      color: var(--primary-color) !important;
+    }
+
+    // Outline/Fill colors (depending on appearance)
+    // For Fill appearance (background)
+    .mdc-text-field--filled {
+      background-color: var(--surface-color) !important;
+    }
+  }
+
+  // Select Panel (Dropdown options)
+  .mat-mdc-select-panel {
+    background-color: var(--surface-color) !important;
+    
+    .mat-mdc-option {
+      color: var(--text-primary) !important;
+      
+      &:hover:not(.mdc-list-item--disabled),
+      &.mat-mdc-option-active {
+        background-color: rgba(var(--text-primary), 0.08) !important;
+      }
+      
+      &.mdc-list-item--selected {
+        color: var(--primary-color) !important;
+        background-color: rgba(var(--primary-color), 0.12) !important;
+        
+        .mat-mdc-option-pseudo-checkbox {
+          color: var(--primary-color) !important;
+        }
+      }
     }
   }
 }

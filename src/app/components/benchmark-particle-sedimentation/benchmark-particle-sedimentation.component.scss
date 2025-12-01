@@ -19,8 +19,45 @@
 }
 
 
-table {
+// Standard HTML table styling (e.g. References)
+table:not([mat-table]) {
   width: 100%;
+  background-color: var(--surface-color);
+  
+  th {
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--divider-color);
+    padding: 8px;
+    text-align: left;
+  }
+  
+  td {
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--divider-color);
+    padding: 8px;
+  }
+}
+
+// Angular Material Table Overrides
+table[mat-table] {
+  width: 100%;
+  background-color: var(--surface-color);
+}
+
+th.mat-header-cell, th.mat-mdc-header-cell {
+    padding: 0 16px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: var(--divider-color) !important;
+    color: var(--text-secondary) !important;
+}
+
+td.mat-cell, td.mat-mdc-cell, td.mat-footer-cell, td.mat-mdc-footer-cell {
+    padding: 0 16px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: var(--divider-color) !important;
+    color: var(--text-primary) !important;
 }
 
 .fac-ul {
@@ -134,9 +171,18 @@ height: 100px;
 }
 /*
 */
-th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+th.mat-header-cell {
     padding: 0;
     border-bottom-width: 1px;
     border-bottom-style: solid;
-    border-bottom-color:rgba(255, 255, 255, 0.12);
+    border-bottom-color: var(--divider-color);
+    color: var(--text-secondary);
+}
+
+td.mat-cell, td.mat-footer-cell {
+    padding: 0;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: var(--divider-color);
+    color: var(--text-primary);
 }

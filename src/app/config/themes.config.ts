@@ -14,8 +14,10 @@ export const THEME_COLORS = {
     textSecondary: 'rgba(0, 0, 0, 0.6)',
     textDisabled: 'rgba(0, 0, 0, 0.38)',
     dividerColor: 'rgba(0, 0, 0, 0.12)',
-    textOnPrimary: 'rgba(0, 0, 0, 0.87)',      // Black text on green
+    textOnPrimary: '#ffffff',                  // White text on green (User preference)
+    textOnPrimaryRgb: '255, 255, 255',         // RGB components for rgba()
     textOnAccent: 'rgba(255, 255, 255, 0.87)', // White text on orange
+    textOnAccentRgb: '255, 255, 255',          // RGB components for rgba()
   },
   dark: {
     primaryColor: '#8bc34a',      // Light green 500 (same as light)
@@ -30,7 +32,9 @@ export const THEME_COLORS = {
     textDisabled: 'rgba(255, 255, 255, 0.38)',
     dividerColor: 'rgba(255, 255, 255, 0.12)',
     textOnPrimary: 'rgba(0, 0, 0, 0.87)',      // Black text on green
+    textOnPrimaryRgb: '0, 0, 0',               // RGB components for rgba()
     textOnAccent: 'rgba(255, 255, 255, 0.87)', // White text on orange
+    textOnAccentRgb: '255, 255, 255',          // RGB components for rgba()
   },
   custom: {
     primaryColor: '#3f51b5',      // Indigo 500
@@ -45,7 +49,9 @@ export const THEME_COLORS = {
     textDisabled: 'rgba(255, 255, 255, 0.38)',
     dividerColor: 'rgba(255, 255, 255, 0.12)',
     textOnPrimary: 'rgba(255, 255, 255, 0.87)', // White text on indigo
+    textOnPrimaryRgb: '255, 255, 255',          // RGB components for rgba()
     textOnAccent: 'rgba(255, 255, 255, 0.87)',  // White text on pink
+    textOnAccentRgb: '255, 255, 255',           // RGB components for rgba()
   }
 } as const;
 
@@ -89,7 +95,9 @@ export const CSS_VARIABLES_MAP = {
   textDisabled: '--text-disabled',
   dividerColor: '--divider-color',
   textOnPrimary: '--text-on-primary',
-  textOnAccent: '--text-on-accent'
+  textOnPrimaryRgb: '--text-on-primary-rgb',
+  textOnAccent: '--text-on-accent',
+  textOnAccentRgb: '--text-on-accent-rgb'
 } as const;
 
 // Storage key for localStorage
