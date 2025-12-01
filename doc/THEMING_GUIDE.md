@@ -314,3 +314,40 @@ Values are defined in `src/themes/_theme-base.scss` lines 32-33 and 42-43.
 ```
 
 This approach ensures your components always have proper contrast regardless of theme changes!
+
+## ⚠️ Troubleshooting & Tricky Scenarios
+
+During the implementation, several specific challenges were encountered. Here is how to resolve them:
+
+### 1. Inline Styles and Embedded `<style>` Blocks
+**Problem:** Components with HTML elements containing `style="..."` attributes or embedded `<style>` blocks in templates will override theme CSS variables.
+**Solution:** rigorously remove all inline styles (e.g., `background-color: #373636`) and move them to the component's SCSS file, replacing hardcoded colors with theme variables like `var(--surface-color)`.
+
+### 2. Angular Material Component Specificity (e.g., Navbar Buttons)
+**Problem:** Standard `mat-button` elements, especially inside other Material components like `mat-toolbar`, have high-specificity default styles that may ignore inherited colors.
+**Solution:**
+*   Add a specific class to the element (e.g., `.nav-button`).
+*   Target that class in SCSS and use `!important` if necessary to force the theme variable application.
+```scss
+.nav-button {
+  color: var(--text-on-primary) !important;
+}
+```
+
+### 3. Plotly.js Charts
+**Problem:** Plotly renders on a Canvas or SVG and does not automatically inherit CSS variables for its internal layout (backgrounds, axis titles, fonts).
+**Solution:**
+*   Inject `ThemeService` into the wrapper component (`BasePlotComponent`).
+*   Subscribe to theme changes.
+*   Manually update the Plotly `layout` object with theme values whenever the theme changes.
+```typescript
+const themeStyles = {
+  paper_bgcolor: 'rgba(0,0,0,0)', // Transparent
+  font: { color: isDark ? 'rgba(255, 255, 255, 0.87)' : 'rgba(0, 0, 0, 0.87)' }
+};
+this.plotLayout = { ...this.layout, ...themeStyles };
+```
+
+### 4. Text Contrast on Primary Color
+**Problem:** Default "on-primary" text might be black for accessibility on light-green backgrounds, but design requirements might call for white text in specific themes (like Light mode).
+**Solution:** Explicitly define `textOnPrimary` in `themes.config.ts` and `_theme-base.scss` for each theme to enforce the desired contrast (White vs. Black).
