@@ -6,7 +6,23 @@
 .main-header {
 width: 100%;
 background: var(--primary-color);
-color: var(--text-on-primary);
+  color: var(--text-on-primary);
+  
+  /* BACKGROUND IMAGE CONFIGURATION */
+  
+  /* 1. The image and a dark overlay for text readability */
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('/assets/hero_white_web.jpeg'); /* Replace with your image path */
+
+  /* 2. Scale the image to fill the container completely */
+  background-size: cover; 
+
+  /* 3. Center the image so the main focus remains visible */
+  background-position: center center;
+
+  /* 4. Prevent the image from repeating */
+  background-repeat: no-repeat;
 height: 420px;
 position: relative;
 }
@@ -14,7 +30,7 @@ position: relative;
 .main-header:before {
   position: absolute;
   content: "";
-  background-image: url("/assets/ff-logo-4.png");
+  background-image: url("/assets/ff-new-logo.png");
   background-size: 300px;
   top: 0;
   bottom: 0;
