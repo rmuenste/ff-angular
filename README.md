@@ -93,20 +93,20 @@ This project is configured for easy deployment to GitHub Pages using the `angula
 
 #### Deploy to GitHub Pages
 ```bash
-# Build and deploy to GitHub Pages in one command
+# IMPORTANT: Replace YOUR_REPO_NAME with your actual GitHub repository name (e.g., 'my-project-repo')
+# If deploying to a project page (e.g., https://username.github.io/YOUR_REPO_NAME/),
+# you MUST specify the --base-href for the build step. Here YOUR_REPO_NAME=ff-angular
+ng build --configuration=production --base-href /ff-angular/
+
+# Then deploy the built application to GitHub Pages
 npx angular-cli-ghpages --dir=dist/new-material
-
-# Or if you want to specify a custom message
-npx angular-cli-ghpages --dir=dist/new-material --message="Deploy latest version"
-
-# Deploy to a specific branch (default is gh-pages)
-npx angular-cli-ghpages --dir=dist/new-material --branch=gh-pages
 ```
 
 #### Full Deployment Workflow
 ```bash
-# 1. Build the application for production
-ng build --configuration=production
+# 1. Build the application for production with the correct base-href
+#    IMPORTANT: Replace YOUR_REPO_NAME with your actual GitHub repository name (e.g., 'my-project-repo')
+ng build --configuration=production --base-href /YOUR_REPO_NAME/
 
 # 2. Deploy to GitHub Pages
 npx angular-cli-ghpages --dir=dist/new-material
