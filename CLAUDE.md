@@ -21,7 +21,10 @@ ng serve --configuration=production
 
 ### JSON Backend Server
 
-The application requires a backend server running on port 3000 to serve JSON data. Two implementations are provided in the `server` directory:
+The application requires a backend server to serve JSON data. Two implementations are provided in the `server` directory:
+
+- **Node.js**: Runs on port 3000 by default
+- **Python (FastAPI)**: Runs on port 8000 by default
 
 **Node.js implementation**:
 ```bash
@@ -33,9 +36,14 @@ npm run prod         # Production
 ```
 
 **Error handling**
-The node.js can continue to run if the application crashed. Terminate it with:
+The node.js server can continue to run if the application crashed. Terminate it with:
 
 ```bash
+# For Node.js backend (port 3000)
+sudo lsof -i :3000
+# Then kill the process: kill -9 <PID>
+
+# For Angular dev server (port 4200)
 sudo lsof -i :4200
 ```
 
@@ -146,3 +154,13 @@ The application relies heavily on JSON data files in the `server/data` directory
 - `RB3[metric]LZ.json`: Rising Bubble 3D data for a specific metric at Level Z
 
 When fetching data, use the PostService which provides methods for requesting single or multiple JSON files.
+
+## Documentation
+
+Additional documentation is available in the `doc/` directory:
+
+- **THEMING_GUIDE.md**: Comprehensive guide to the Angular Material theming system, theme switching, and customization
+- **ENVIRONMENT_SETUP.md**: Environment-specific configuration for development, staging, and production
+- **PROJECT_STATUS.md**: Current project status and implementation tracking
+- **ANGULAR_VERSION_UPDATE_PLAN.md**: Version update strategy and migration notes
+- **TODO.md**: Outstanding tasks and future improvements
